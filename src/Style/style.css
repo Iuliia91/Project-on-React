@@ -28,12 +28,24 @@
 .button {
   border: none;
 }
-
-.button__singIn {
+.button_option {
+  display: flex;
   position: absolute;
-  right: 0;
   top: 0;
-  display: block;
+  right: 0;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button__singIn,
+.button__registration {
   padding: 10px;
-  margin: 10px;
+  margin-right: 20px;
+}
+
+.button__singIn:hover {
+  background-color: rgb(199, 211, 222);
+}
+.button__registration:hover {
+  background-color: rgb(199, 211, 222);
 }
