@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.layot {
+  background-image: url(/src/Helpers/imiges/gfb.jpg);
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(223, 230, 236);
+}
+.main {
+  max-width: 1200px;
+  position: fixed;
+  display: block;
+  right: 0;
+  width: 60%;
+}
+
+.main_content {
+  width: 100%;
+  position: absolute;
+  padding-top: 250px;
+  text-align: center;
+}
+.button {
+  border: none;
+}
+
+.button__singIn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  padding: 10px;
+  margin: 10px;
+}
