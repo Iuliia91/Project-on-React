@@ -4,7 +4,6 @@ import { faUserCircle, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 const Navigation = () => {
   const listItemText = [
     <FontAwesomeIcon icon={faUserCircle} style={{ color: 'red' }} />,
-    { id: 1, optins: [{ protein: protein, milk: milk }] },
     'Products',
     <FontAwesomeIcon icon={faCalendarAlt} />,
   ]
