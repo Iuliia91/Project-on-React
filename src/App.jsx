@@ -1,10 +1,13 @@
 import React from 'react'
 import Mainlayouts from 'Layouts/MainLayouts/Mainlayouts'
-import './Style/style.css'
-import Navigation from 'Components/Navigation'
+import GlobalModalProvider from 'HOC/GlobalModalProvider'
 
 const App = () => {
-  return <Mainlayouts />
+  return (
+    <GlobalModalProvider>
+      <Mainlayouts />
+    </GlobalModalProvider>
+  )
 }
 
 export default App

@@ -4,10 +4,9 @@
   box-sizing: border-box;
 }
 .main {
-  background-image: url(/src/Helpers/imiges/gfb.jpg);
 }
 
-.modalwindow {
+.modal {
   background-color: rgb(199, 134, 134, 0.5);
   width: 400px;
   height: 400px;
