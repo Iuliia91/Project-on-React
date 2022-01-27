@@ -1,23 +1,15 @@
-import React from 'react'
-import { faUser, faHome } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-const ButtonOptions = () => {
-  return (
-    <div className="button_option">
-      <button className="button button__singIn">
-        <div>
-          <FontAwesomeIcon icon={faHome} />
-          SingIn
-        </div>
-      </button>
+import React, { useState } from 'react'
 
-      <button className="button button__registration">
-        <div>
-          <FontAwesomeIcon icon={faUser} />
-          Registr{' '}
-        </div>
-      </button>
-    </div>
+const ButtonOptions = (props) => {
+  const [textInsideButton, setTextInsideButton] = useState()
+  const [iconOptions, setIconOptions] = useState()
+  const [className, setClassName] = useState()
+
+  return (
+    <button className={props.className}>
+      {props.iconOptions}
+      {props.textInsideButton}
+    </button>
   )
 }
 
