@@ -4,9 +4,9 @@ import { faUser, faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ButtonOptions from 'Components/ButtonOptions'
 import { ModalContext } from 'HOC/GlobalModalProvider'
+import { Link } from 'react-router-dom'
 
 const StyledInitialScenes = styled.div`
-  /* background-image: url(../src/Helpers/imiges/gfb.jpg);*/
   background-repeat: no-repeat;
   position: absolute;
   height: 100%;
@@ -56,7 +56,7 @@ const StyledInitialScenes = styled.div`
   }
 `
 
-const InitialScenes = () => {
+const InitialScenes = (props) => {
   const setModalContext = useContext(ModalContext)
 
   return (
@@ -72,6 +72,12 @@ const InitialScenes = () => {
             <ButtonOptions
               className="button button__registration"
               textInsideButton={'Registr'}
+              modalText={
+                <div>
+                  Privet iz tenei
+                  <button>Yes</button>
+                </div>
+              }
               iconOptions={<FontAwesomeIcon icon={faUser} />}
             />
           </div>
@@ -80,9 +86,12 @@ const InitialScenes = () => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos
             tempora eos eum enim molestias! Doloremque soluta quo quisquam
           </p>
+          <Link to={'/initialscenes/aboutproj'}>Read about project</Link>
           <button
             className="button button__read-more"
-            onClick={() => setModalContext(<div>are you shoor?</div>)}
+            onClick={() => {
+              setModalContext(<div>Privet</div>)
+            }}
           >
             Read more
           </button>
