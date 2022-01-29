@@ -8,16 +8,14 @@ import { ProgressPlugin } from 'webpack'
 
 import RootRouter from 'Route/RootRouter'
 
-/*const StyledMainLayouts = styled.div`
-  .layot {
-    background-image: url(/src/Helpers/imiges/gfb.jpg);
-  }
-`*/
+const StyledMainLayouts = styled.div`
+  background-color: rgb(223, 230, 236);
+`
 
 const MainLayouts = (props) => {
   return (
     <div className="layot">
-      <RootRouter />
+      <InitialScenes />
     </div>
   )
 }
