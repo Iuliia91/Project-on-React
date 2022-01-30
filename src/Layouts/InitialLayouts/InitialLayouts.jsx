@@ -65,12 +65,19 @@ const InitialLayouts = (props) => {
             />
           </div>
 
+          <p>Помоги своему телу обрести легкость.</p>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos
-            tempora eos eum enim molestias! Doloremque soluta quo quisquam
+            Мы разработали крутую программу питания. Ты не будешь чувствовать
+            голод, а вес будет снижаться.{' '}
           </p>
+
+          <p>Ты можешь, мы тебе поможем!</p>
+
           <Link to={'/aboutproject'}>
-            <button className="button button__read-more">Read more</button>
+            <ButtonOptions
+              className="button button__read-more"
+              textInsideButton={'Read more'}
+            />
           </Link>
         </div>
       </div>
