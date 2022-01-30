@@ -5,9 +5,11 @@ import { BrowserRouter } from 'react-router-dom'
 
 const App = () => {
   return (
-    <GlobalModalProvider>
-      <Mainlayouts />
-    </GlobalModalProvider>
+    <BrowserRouter>
+      <GlobalModalProvider>
+        <Mainlayouts />
+      </GlobalModalProvider>
+    </BrowserRouter>
   )
 }
 

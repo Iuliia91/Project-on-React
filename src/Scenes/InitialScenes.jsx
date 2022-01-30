@@ -86,7 +86,7 @@ const InitialScenes = (props) => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos
             tempora eos eum enim molestias! Doloremque soluta quo quisquam
           </p>
-
+          <Link to={'/fgghh'}>Push</Link>
           <button
             className="button button__read-more"
             onClick={() => {

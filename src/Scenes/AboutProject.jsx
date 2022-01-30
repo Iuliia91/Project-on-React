@@ -3,8 +3,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledAboutProject = styled.div`
-  width: 100%;
-  heigth: 100%;
   background-color: rgb(143, 135, 126);
   position: absolute;
   alingn-items: center;
