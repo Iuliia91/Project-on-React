@@ -36,24 +36,6 @@ const StyledInitialScenes = styled.div`
     justify-content: space-around;
     align-items: center;
   }
-  .button {
-    border: none;
-  }
-
-  .button:hover {
-    background-color: rgb(199, 211, 222);
-  }
-
-  .button__singIn,
-  .button__registration {
-    padding: 10px;
-    margin-right: 20px;
-  }
-
-  .button__read-more {
-    padding: 10px;
-    margin-right: 20px;
-  }
 `
 
 const InitialScenes = (props) => {
@@ -69,6 +51,7 @@ const InitialScenes = (props) => {
               textInsideButton={'Sing In'}
               iconOptions={<FontAwesomeIcon icon={faHome} />}
             />
+
             <ButtonOptions
               className="button button__registration"
               textInsideButton={'Registr'}
@@ -86,15 +69,9 @@ const InitialScenes = (props) => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos
             tempora eos eum enim molestias! Doloremque soluta quo quisquam
           </p>
-          <Link to={'/fgghh'}>Push</Link>
-          <button
-            className="button button__read-more"
-            onClick={() => {
-              setModalContext(<div>Privet</div>)
-            }}
-          >
-            Read more
-          </button>
+          <Link to={'/aboutproject'}>
+            <button className="button button__read-more">Read more</button>
+          </Link>
         </div>
       </div>
     </StyledInitialScenes>

@@ -1,20 +1,26 @@
 import React from 'react'
-
+import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { faUser, faHome } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const StyledAboutProject = styled.div`
-  width: 100%;
-  heigth: 100%;
-
-  position: absolute;
-  alingn-items: center;
-
+  height: 100%;
+  background-color: rgb(223, 230, 236);
   .main {
     display: flex;
-    width: 70%;
+    width: 50%;
+    heigth: 100%;
+    justify-content: end;
     flex-direction: column;
-    justify-content: center;
+    margin: auto;
     color: black;
+  }
+
+  .button_options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `
 
@@ -49,7 +55,25 @@ const AboutProject = () => {
             qui quae repudiandae, quas quibusdam. Culpa, iure.
           </p>
         </div>
-        <Link to={'/'}>Return</Link>
+        <div className="button_options">
+          <ButtonOptions
+            className="button button__singIn"
+            textInsideButton={'Sing In'}
+            iconOptions={<FontAwesomeIcon icon={faHome} />}
+          />
+
+          <ButtonOptions
+            className="button button__registration"
+            textInsideButton={'Registr'}
+            modalText={
+              <div>
+                Privet iz tenei
+                <button>Yes</button>
+              </div>
+            }
+            iconOptions={<FontAwesomeIcon icon={faUser} />}
+          />
+        </div>
       </div>
     </StyledAboutProject>
   )
