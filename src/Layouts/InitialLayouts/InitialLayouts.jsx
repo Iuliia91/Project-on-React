@@ -38,7 +38,7 @@ const StyledInitialScenes = styled.div`
   }
 `
 
-const InitialScenes = (props) => {
+const InitialLayouts = (props) => {
   const setModalContext = useContext(ModalContext)
 
   return (
@@ -78,4 +78,4 @@ const InitialScenes = (props) => {
   )
 }
 
-export default InitialScenes
+export default InitialLayouts
