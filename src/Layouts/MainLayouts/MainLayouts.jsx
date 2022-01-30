@@ -1,20 +1,12 @@
-import React, { useState } from 'react'
-
+import React from 'react'
+import InitialScenes from 'Scenes/InitialScenes'
 import styled from 'styled-components'
 
-import RootRouter from 'Route/RootRouter'
-
-const StyledMainLayouts = styled.div`
-  background-color: rgb(223, 230, 236);
-`
-
-const MainLayouts = () => {
+const MainLayouts = (props) => {
   return (
-    <StyledMainLayouts>
-      <div className="layot">
-        <RootRouter />
-      </div>
-    </StyledMainLayouts>
+    <div className="layot">
+      <InitialScenes />
+    </div>
   )
 }
 

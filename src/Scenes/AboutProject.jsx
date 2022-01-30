@@ -1,9 +1,11 @@
 import React from 'react'
 
 import styled from 'styled-components'
-
+import { Link } from 'react-router-dom'
 const StyledAboutProject = styled.div`
-  background-color: rgb(143, 135, 126);
+  width: 100%;
+  heigth: 100%;
+
   position: absolute;
   alingn-items: center;
 
@@ -47,6 +49,7 @@ const AboutProject = () => {
             qui quae repudiandae, quas quibusdam. Culpa, iure.
           </p>
         </div>
+        <Link to={'/'}>Return</Link>
       </div>
     </StyledAboutProject>
   )

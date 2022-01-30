@@ -1,13 +1,14 @@
 import React from 'react'
-import Mainlayouts from 'Layouts/MainLayouts/Mainlayouts'
+
 import GlobalModalProvider from 'HOC/GlobalModalProvider'
 import { BrowserRouter } from 'react-router-dom'
+import RootRouter from 'Route/RootRouter'
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalModalProvider>
-        <Mainlayouts />
+        <RootRouter />
       </GlobalModalProvider>
     </BrowserRouter>
   )
