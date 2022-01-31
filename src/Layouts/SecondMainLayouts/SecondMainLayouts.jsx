@@ -1,35 +1,75 @@
 import React from 'react'
 import Navigation from 'Components/Navigation'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import { Link, NavLink } from 'react-router-dom'
+const StyledNavigation = styled.div`
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 
-const StyledSecondMainLayouts = styled.div`
-  background-color: rgb(199, 211, 222);
+  .sidenav {
+    height: 100%;
+    width: 170px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(223, 230, 236);
+    overflow-x: hidden;
+  }
+
+  .sidenav a {
+    padding: 20px 10px 15px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    text-align: center;
+  }
+
+  .sidenav a:hover {
+    background-color: rgb(199, 211, 222);
+  }
 
   .main {
-    margin-left: 150px;
-    padding: 0px 10px;
     height: 100%;
-    width: 160px;
+    width: 100%;
+    background-color: rgb(199, 211, 222);
+    margin-left: 160px;
+    padding: 0px 10px;
   }
 `
 
-const SecondMainLayouts = () => {
-  const profil = ['Iuliia', '30age', '70kg']
-  const fillProfil = profil.map((item1, index) => (
-    <li className="user-information" key={index}>
-      {item1}
-    </li>
-  ))
+const SecondMainLayouts = (props) => {
   return (
-    <StyledSecondMainLayouts>
+    <StyledNavigation>
+      <nav className="sidenav">
+        <Link to={'/profil/informstion'}>
+          <FontAwesomeIcon icon={faUserCircle} />
+          Профиль
+        </Link>
+
+        <a>Меню</a>
+        <a href="#">Список продуктов</a>
+        <a href="#">Подсчет калорийности блюда</a>
+        <a href="#">
+          <FontAwesomeIcon icon={faCalendarAlt} />
+        </a>
+      </nav>
+      <div className="main">{props.children}</div>
+    </StyledNavigation>
+  )
+  /* return (
+    <StyledNavigation>
       <div>
         <Navigation />
       </div>
-      <div className="main">
-        <div>{fillProfil}</div>
-      </div>
-    </StyledSecondMainLayouts>
-  )
+      <div className="main"> {props.children} </div>
+    </StyledNavigation>
+  )*/
 }
 
 export default SecondMainLayouts

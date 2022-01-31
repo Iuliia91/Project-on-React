@@ -2,11 +2,12 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const StyledNavigation = styled.div`
   .sidenav {
     height: 100%;
-    width: 160px;
+    width: 170px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -42,10 +43,10 @@ const Navigation = () => {
   return (
     <StyledNavigation>
       <div className="sidenav">
-        <a href="#">
+        <Link to={'/profil/informstion'}>
           <FontAwesomeIcon icon={faUserCircle} />
           Профиль
-        </a>
+        </Link>
 
         <a href="#">Меню</a>
         <a href="#">Список продуктов</a>
