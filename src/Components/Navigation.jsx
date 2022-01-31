@@ -1,39 +1,60 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import styled from 'styled-components'
+
+const StyledNavigation = styled.div`
+  .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(223, 230, 236);
+    overflow-x: hidden;
+  }
+
+  .sidenav a {
+    padding: 20px 10px 15px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    text-align: center;
+  }
+
+  .sidenav a:hover {
+    background-color: rgb(199, 211, 222);
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {
+      padding-top: 15px;
+    }
+    .sidenav a {
+      font-size: 18px;
+    }
+  }
+`
+
 const Navigation = () => {
-  const listItemText = [
-    <FontAwesomeIcon icon={faUserCircle} style={{ color: 'red' }} />,
-    'Products',
-    <FontAwesomeIcon icon={faCalendarAlt} />,
-  ]
-
-  const list = listItemText.map((item) => (
-    <li className="nav-item text-center list-group-item">{item}</li>
-  ))
-  const profil = ['Iuliia', '30age', '70kg']
-  const fillProfil = profil.map((item1) => (
-    <li className="user-information" key={profil.length}>
-      {item1}
-    </li>
-  ))
-
   return (
-    <div className="Profil">
-      <div>
-        <nav class="navbar">
-          <ul class="navbar-nav list-group">{list}</ul>
-        </nav>
-      </div>
+    <StyledNavigation>
+      <div className="sidenav">
+        <a href="#">
+          <FontAwesomeIcon icon={faUserCircle} />
+          Профиль
+        </a>
 
-      <div>
-        <ul className="user">{fillProfil}</ul>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis
-        accusantium reiciendis iure consequuntur hic! Sint officia maxime
-        quisquam consectetur sequi voluptatem porro esse suscipit, optio
-        repellendus reiciendis labore! Nisi, molestiae.
+        <a href="#">Меню</a>
+        <a href="#">Список продуктов</a>
+        <a href="#">Подсчет калорийности блюда</a>
+        <a href="#">
+          <FontAwesomeIcon icon={faCalendarAlt} />
+        </a>
       </div>
-    </div>
+    </StyledNavigation>
   )
 }
 
