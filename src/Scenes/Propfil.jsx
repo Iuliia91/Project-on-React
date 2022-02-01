@@ -7,7 +7,12 @@ const Profil = () => {
       {item1}
     </li>
   ))
-  return <div>{fillProfil}</div>
+  return (
+    <div>
+      {fillProfil}
+      jnhjunhui
+    </div>
+  )
 }
 
 export default Profil

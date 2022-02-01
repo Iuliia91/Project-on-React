@@ -59,7 +59,7 @@ const SecondMainLayouts = (props) => {
           <FontAwesomeIcon icon={faCalendarAlt} />
         </a>
       </nav>
-      <div className="main">{props.children}</div>
+      <div className="main"></div>
     </StyledNavigation>
   )
   /* return (

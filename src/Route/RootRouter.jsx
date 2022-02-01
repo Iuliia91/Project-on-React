@@ -7,11 +7,12 @@ import Profil from 'Scenes/Propfil'
 const RootRouter = () => {
   return (
     <Routes>
-      <Route path={'/profil'} element={<SecondMainLayouts />}>
-        <Route path={'/profil/informstion'} element={<Profil />} />
-      </Route>
       <Route path={'/'} element={<MainLayouts />} />
-      <Route path={'/aboutproject'} element={<AboutProject />} />
+      <Route path={'aboutproject'} element={<AboutProject />} />
+
+      <Route path={'profil'} element={<SecondMainLayouts />}>
+        <Route path={'profil/informstion'} element={<Profil />} />
+      </Route>
     </Routes>
   )
 }
