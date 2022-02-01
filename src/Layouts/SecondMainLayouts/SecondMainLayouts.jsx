@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navigation from 'Components/Navigation'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 const StyledNavigation = styled.div`
   background-repeat: no-repeat;
   position: absolute;
@@ -33,6 +33,9 @@ const StyledNavigation = styled.div`
   .sidenav a:hover {
     background-color: rgb(199, 211, 222);
   }
+  .active {
+    background-color: rgb(199, 211, 222);
+  }
 
   .main {
     height: 100%;
@@ -44,25 +47,55 @@ const StyledNavigation = styled.div`
 `
 
 const SecondMainLayouts = (props) => {
+  const [click, setClick] = useState()
+
+  const g = (Event) => {
+    if (Event.target.className('gt ')) {
+      setClick('gt active')
+    }
+  }
+
   return (
     <StyledNavigation>
       <nav className="sidenav">
-        <Link to={'/profil/informstion'}>
+        <NavLink
+          to={'/profil/informstion'}
+          className={'dscf'}
+          activeclassname={'active'}
+        >
           <FontAwesomeIcon icon={faUserCircle} />
           Профиль
-        </Link>
+        </NavLink>
 
-        <Link to={'menu'}>Меню</Link>
-        <Link to={'listofproducts'}>Список продуктов</Link>
-        <Link to={'caloriecount'}>Подсчет калорийности блюда</Link>
+        <NavLink to={'menu'} className={'dscf'} activeclassname={'active'}>
+          Меню
+        </NavLink>
+        <NavLink
+          to={'listofproducts'}
+          className={'dscf'}
+          activeclassname={'active'}
+        >
+          Список продуктов
+        </NavLink>
+        <NavLink
+          to={'caloriecount'}
+          className={'dscf'}
+          activeclassname={'active'}
+        >
+          Подсчет калорийности блюда
+        </NavLink>
         <a href="#">
           <FontAwesomeIcon icon={faCalendarAlt} />
         </a>
       </nav>
-      <div className="main"></div>
+      <div className="main">
+        <Outlet />
+      </div>
     </StyledNavigation>
   )
-  /* return (
+  /* 
+   
+  return (
     <StyledNavigation>
       <div>
         <Navigation />

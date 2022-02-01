@@ -4,7 +4,8 @@ import { faUser, faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ButtonOptions from 'Components/ButtonOptions'
 import { ModalContext } from 'HOC/GlobalModalProvider'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
+import img from 'assets/images/gfb.jpg'
 
 const StyledInitialScenes = styled.div`
   background-repeat: no-repeat;
@@ -12,7 +13,8 @@ const StyledInitialScenes = styled.div`
   height: 100%;
   width: 100%;
   background-color: rgb(223, 230, 236);
-
+  background-image: url(${img});
+  overflow-x: hidden;
   .main {
     max-width: 1200px;
     position: fixed;

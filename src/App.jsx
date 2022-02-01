@@ -4,6 +4,8 @@ import GlobalModalProvider from 'HOC/GlobalModalProvider'
 import { BrowserRouter } from 'react-router-dom'
 import RootRouter from 'Route/RootRouter'
 
+import styled from 'styled-components'
+
 const App = () => {
   return (
     <BrowserRouter>
