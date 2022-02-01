@@ -52,9 +52,9 @@ const SecondMainLayouts = (props) => {
           Профиль
         </Link>
 
-        <a>Меню</a>
-        <a href="#">Список продуктов</a>
-        <a href="#">Подсчет калорийности блюда</a>
+        <Link to={'menu'}>Меню</Link>
+        <Link to={'listofproducts'}>Список продуктов</Link>
+        <Link to={'caloriecount'}>Подсчет калорийности блюда</Link>
         <a href="#">
           <FontAwesomeIcon icon={faCalendarAlt} />
         </a>
