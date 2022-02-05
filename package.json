@@ -24,6 +24,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
+    "@reduxjs/toolkit": "^1.7.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-styled-components": "^2.0.2",
     "css-loader": "^6.5.1",
