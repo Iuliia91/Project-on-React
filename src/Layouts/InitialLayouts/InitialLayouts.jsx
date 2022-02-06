@@ -46,7 +46,7 @@ const StyledInitialScenes = styled.div`
 const InitialLayouts = (props) => {
   const setModalContext = useContext(ModalContext)
 
-  const textr = useSelector(textSelector)
+  const textr = useSelector((store) => store.textReducer.textReducer)
   const dispatch = useDispatch()
   const [nameP, setNameP] = useState('')
 

@@ -1,3 +1,3 @@
 export const textSelector = (store) => {
-  store.textReducer
+  store.textReducer.textReducer
 }
