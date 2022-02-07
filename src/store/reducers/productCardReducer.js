@@ -8,16 +8,9 @@ const initialState = {
 
 const cardList = createReducer(initialState, (builder) => {
   builder.addCase(recipeCard, (state, action) => {
-    state.cardList = action.payload
+    if (!state.cardList) state.cardList = []
+    state.cardList.push(action.payload)
   })
 })
-/*const cardList = (store = initialState, action) => {
-  switch (action.type) {
-    case recipeCard.toString():
-      return { ...store, ...action.payload }
-    default:
-      return { ...store }
-  }
-}*/
 
 export default cardList
