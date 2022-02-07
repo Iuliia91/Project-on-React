@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import recipeCardList from 'store/selectors/recipeCardList'
 import { useSelector, useDispatch } from 'react-redux'
-
+import Card from 'Components/Card/Card'
+import { recipeCard } from 'store/actions/recipeCard'
 const StyledCalorieCount = styled.div``
 
 const CalorieCount = () => {
-  const [textHolder, setTextHolder] = useState()
+  const [textHolder1, setTextHolder1] = useState('')
+  const listOfCasrd = useSelector((store) => store.cardList.cardList)
 
-  /*const recipeList = useSelector(recipeCardList)
-  const dispatch = useDispatch()*/
-
+  const dispatch = useDispatch()
+  console.log(listOfCasrd)
   const handleProductName = (Event) => {
-    setTextHolder(Event.target.value)
+    setTextHolder1(Event.target.value)
   }
-  /* <button onClick={() => {}}>Add recipe</button>*/
-  console.log(setTextHolder)
+  const handleAddTheCard = () => {
+    dispatch(recipeCard({ id: Date.now(), product: textHolder1 }))
+    setTextHolder1('')
+  }
   return (
     <StyledCalorieCount>
       <div>
@@ -25,14 +28,15 @@ const CalorieCount = () => {
               onChange={handleProductName}
               type="text"
               placeholder="write the product name"
-              value={textHolder}
+              value={textHolder1}
             />
             <input type="text" placeholder="gram" />
           </section>
         </form>
       </div>
-
-      <div>{textHolder}</div>
+      <button onClick={() => handleAddTheCard()}>add product</button>
+      <div>{textHolder1}</div>
+      <main></main>
     </StyledCalorieCount>
   )
 }

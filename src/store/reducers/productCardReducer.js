@@ -13,8 +13,8 @@ const cardList = createReducer(initialState, (builder) => {
 })
 /*const cardList = (store = initialState, action) => {
   switch (action.type) {
-    case CARD_LIST_ACTIONS.list:
-      return { ...store, cardList: [...action.payload] }
+    case recipeCard.toString():
+      return { ...store, ...action.payload }
     default:
       return { ...store }
   }
