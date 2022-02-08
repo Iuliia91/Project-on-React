@@ -4,14 +4,8 @@ import { ModalContext } from 'HOC/GlobalModalProvider'
 import styled from 'styled-components'
 
 const StyledCard = styled.div`
-  width: 200px;
-  height: 200px;
-  background-color: blue;
-  margin: 20px;
-  border-radius: 5px;
-
   .cardHeader {
-    width: 100%;
+    width: 10%;
     height: 50px;
     padding: 10px 20px;
     box-sizing: border-box;
@@ -42,8 +36,12 @@ const StyledCard = styled.div`
 const Card = (props) => {
   return (
     <StyledCard>
-      <div className={'cardHeader'}>{props.cardName}</div>
-      <div className={'cardBody'}>{props.cardText}</div>
+      <div className={'cardHeader'}>
+        {props.cardText.map((item) => {
+          ;<li>{item}</li>
+        })}
+      </div>
+
       <div className={'cardFooter'}></div>
     </StyledCard>
   )

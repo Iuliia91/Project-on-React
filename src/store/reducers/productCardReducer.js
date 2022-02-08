@@ -3,7 +3,7 @@ import { recipeCard } from '../actions/recipeCard.js'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
-  cardList: null,
+  cardList: [],
 }
 
 const cardList = createReducer(initialState, (builder) => {

@@ -7,6 +7,11 @@ import { recipeCard } from 'store/actions/recipeCard'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 const StyledCalorieCount = styled.div``
 
+const listOfInputValue = {
+  productName: '',
+  Weigth: '',
+}
+
 const CalorieCount = () => {
   const setModalContext = useContext(ModalContext)
   const [textHolder1, setTextHolder1] = useState('')
@@ -14,23 +19,29 @@ const CalorieCount = () => {
   const listOfCasrd = useSelector((store) => store.cardList.cardList)
 
   const dispatch = useDispatch()
-  console.log(listOfCasrd)
+
+  const [inputDate, setInputDate] = useState(listOfInputValue)
+  const [listOfProduct, setListOfProduct] = useState([])
+
+  console.log(inputDate)
   const handleProductName = (Event) => {
     setTextHolder1(Event.target.value)
   }
-  const product = { textHolder1, numberHolder1 }
+  const product = { textHolder1, numberHolder1, id: Date.now() }
+
   const handleAddTheCard = () => {
-    /* setModalContext(<div>{textHolder1}</div>)
-     { id: Date.now(), product: textHolder1 }*/
+    console.log(product)
     dispatch(recipeCard(product))
     setTextHolder1('')
+    setNumberHolder1('')
   }
 
-  const sortProduct = (listOfCasrd) => {
-    listOfCasrd.map((item) => {
-      item.textHolder1
-    })
+  const handleSubmitForm = (e) => {
+    e.preventDefault()
+    setListOfProduct((prevetState) => [...prevetState, inputDate])
+    setInputDate(listOfInputValue)
   }
+  console.log(listOfProduct)
   return (
     <StyledCalorieCount>
       <div>
@@ -54,11 +65,53 @@ const CalorieCount = () => {
         </form>
       </div>
       <button onClick={() => handleAddTheCard()}>add product</button>
-      <div>{textHolder1}</div>
+
       <main>
-        {listOfCasrd.map((item) => {
-          ;<div>{item.textHolder1}</div>
-        })}
+        <div>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Product</th>
+                  <th>Weigth</th>
+                  <th>Calories</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody></tbody>
+            </table>
+          </div>
+          <div>
+            <form onSubmit={handleSubmitForm}>
+              <input
+                placeholder="Write the product name"
+                onChange={(e) => {
+                  setInputDate((prevState) => ({
+                    ...prevState,
+                    productName: e.target.value,
+                  }))
+                }}
+                value={inputDate.productName}
+              />
+              <input
+                placeholder="Write the weigth of product"
+                onChange={(e) =>
+                  setInputDate((prevState) => ({
+                    ...prevState,
+                    Weigth: `${e.target.value} g`,
+                  }))
+                }
+                value={inputDate.Weigth}
+              />
+              <div>
+                <button tyte="reset">Clean</button>
+                <button type="submit">Add product</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </main>
     </StyledCalorieCount>
   )
