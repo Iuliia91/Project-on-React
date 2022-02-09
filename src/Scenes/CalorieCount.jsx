@@ -17,6 +17,10 @@ const StyledCalorieCount = styled.div`
     flex-direction: column;
     margin: auto;
   }
+  .buttons {
+    display: flex;
+    aling-items: center;
+  }
 `
 
 const listOfInputValue = {
@@ -117,7 +121,7 @@ const CalorieCount = () => {
                 }
                 value={inputDate.Weigth}
               />
-              <div>
+              <div className="buttons">
                 <ButtonOptions
                   type="button"
                   textInsideButton="Clean"
@@ -138,6 +142,7 @@ const CalorieCount = () => {
             handleRemoveClick={handleRemoveClick}
           />
         </div>
+        <button>Save</button>
       </main>
     </StyledCalorieCount>
   )

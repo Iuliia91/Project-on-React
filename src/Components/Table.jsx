@@ -61,11 +61,15 @@ const TableList = (props) => {
         </tbody>
         <tfoot>
           <tr>
-            <td>Total</td>
+            <td>
+              <div>
+                <p>Total{props.listOfProduct.length} </p>
+              </div>
+            </td>
 
-            <td>{props.listOfProduct.length}</td>
-
-            <td>Save</td>
+            <td>
+              <button>Save</button>
+            </td>
           </tr>
         </tfoot>
       </table>
