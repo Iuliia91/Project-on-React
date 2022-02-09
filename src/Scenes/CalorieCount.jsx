@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import Card from 'Components/Card/Card'
 import { recipeCard } from 'store/actions/recipeCard'
 import { ModalContext } from 'HOC/GlobalModalProvider'
+import ButtonOptions from 'Components/ButtonOptions'
+import TableList from 'Components/Table'
 const StyledCalorieCount = styled.div``
 
 const listOfInputValue = {
@@ -23,6 +25,7 @@ const CalorieCount = () => {
   const [inputDate, setInputDate] = useState(listOfInputValue)
   const [listOfProduct, setListOfProduct] = useState([])
 
+  const isFilledFields = inputDate.productName && inputDate.Weigth
   console.log(inputDate)
   const handleProductName = (Event) => {
     setTextHolder1(Event.target.value)
@@ -36,15 +39,27 @@ const CalorieCount = () => {
     setNumberHolder1('')
   }
 
+  const handleRemoveClick = (index) => {
+    setListOfProduct(
+      listOfProduct.filter((product, productIndex) => productIndex !== index)
+    )
+  }
+
   const handleSubmitForm = (e) => {
     e.preventDefault()
-    setListOfProduct((prevetState) => [...prevetState, inputDate])
-    setInputDate(listOfInputValue)
+    if (isFilledFields) {
+      setListOfProduct((prevetState) => [...prevetState, inputDate])
+      setInputDate(listOfInputValue)
+    }
   }
+  const handle = () => {
+    return setInputDate(listOfInputValue)
+  }
+
   console.log(listOfProduct)
   return (
     <StyledCalorieCount>
-      <div>
+      {/* <div>
         <form>
           <section>
             <input
@@ -64,24 +79,16 @@ const CalorieCount = () => {
           </section>
         </form>
       </div>
-      <button onClick={() => handleAddTheCard()}>add product</button>
+
+      <button onClick={() => handleAddTheCard()}>add product</button>*/}
 
       <main>
         <div>
           <div>
-            <table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Product</th>
-                  <th>Weigth</th>
-                  <th>Calories</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-
-              <tbody></tbody>
-            </table>
+            <TableList
+              listOfProduct={listOfProduct}
+              handleRemoveClick={handleRemoveClick}
+            />
           </div>
           <div>
             <form onSubmit={handleSubmitForm}>
@@ -95,19 +102,29 @@ const CalorieCount = () => {
                 }}
                 value={inputDate.productName}
               />
+
               <input
                 placeholder="Write the weigth of product"
                 onChange={(e) =>
                   setInputDate((prevState) => ({
                     ...prevState,
-                    Weigth: `${e.target.value} g`,
+                    Weigth: e.target.value,
                   }))
                 }
                 value={inputDate.Weigth}
               />
               <div>
-                <button tyte="reset">Clean</button>
-                <button type="submit">Add product</button>
+                <ButtonOptions
+                  type="button"
+                  textInsideButton="Clean"
+                  handleClick={handle}
+                />
+
+                <ButtonOptions
+                  type="submit"
+                  textInsideButton="Add product"
+                  disabled={!isFilledFields}
+                />
               </div>
             </form>
           </div>

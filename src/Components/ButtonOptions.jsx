@@ -23,20 +23,14 @@ const StyledButtonOptions = styled.div`
   }
 `
 
-const ButtonOptions = (props) => {
-  const [textInsideButton, setTextInsideButton] = useState()
-  const [iconOptions, setIconOptions] = useState()
-  const [className, setClassName] = useState()
-  const setModalContext = useContext(ModalContext)
-  const [modalText, setModalText] = useState()
-
+const ButtonOptions = (props, { disabled = false }) => {
   return (
     <StyledButtonOptions>
       <button
+        type={props.type}
         className={props.className}
-        onClick={() => {
-          setModalContext(props.modalText)
-        }}
+        onClick={props.handleClick}
+        disabled={props.disabled}
       >
         {props.iconOptions}
         {props.textInsideButton}
