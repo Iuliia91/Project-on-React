@@ -7,7 +7,17 @@ import { recipeCard } from 'store/actions/recipeCard'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import ButtonOptions from 'Components/ButtonOptions'
 import TableList from 'Components/Table'
-const StyledCalorieCount = styled.div``
+const StyledCalorieCount = styled.div`
+  .main {
+    text-align: center;
+    margin: auto;
+  }
+  .main__content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+`
 
 const listOfInputValue = {
   productName: '',
@@ -82,14 +92,8 @@ const CalorieCount = () => {
 
       <button onClick={() => handleAddTheCard()}>add product</button>*/}
 
-      <main>
-        <div>
-          <div>
-            <TableList
-              listOfProduct={listOfProduct}
-              handleRemoveClick={handleRemoveClick}
-            />
-          </div>
+      <main className="main">
+        <div className="main__content">
           <div>
             <form onSubmit={handleSubmitForm}>
               <input
@@ -128,6 +132,11 @@ const CalorieCount = () => {
               </div>
             </form>
           </div>
+
+          <TableList
+            listOfProduct={listOfProduct}
+            handleRemoveClick={handleRemoveClick}
+          />
         </div>
       </main>
     </StyledCalorieCount>
