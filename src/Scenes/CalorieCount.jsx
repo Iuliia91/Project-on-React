@@ -19,7 +19,8 @@ const StyledCalorieCount = styled.div`
   }
   .buttons {
     display: flex;
-    aling-items: center;
+
+    justify-content: center;
   }
 `
 
@@ -97,7 +98,9 @@ const CalorieCount = (props) => {
   }
 
   const handleSaveRecipe = () => {
-    ;<Card />
+    listOfProduct.map((product) => list.push(product.productName))
+    setListOfProduct([])
+    console.log(list)
   }
 
   console.log(listOfProduct)
@@ -175,12 +178,7 @@ const CalorieCount = (props) => {
             handleEditClick={handleEditClick}
           />
         </div>
-        <button onClick={() => handleSaveRecipe}>Save</button>
-        {listOfProduct.map(
-          (product) => (
-            list.push(product.productName), (<Card cardText={list} />)
-          )
-        )}
+        <button onClick={handleSaveRecipe}>Save</button>
       </main>
     </StyledCalorieCount>
   )
