@@ -37,9 +37,9 @@ const Card = (props) => {
   return (
     <StyledCard>
       <div className={'cardHeader'}>
-        {props.cardText.map((item) => {
-          ;<li>{item}</li>
-        })}
+        {props.cardText.map((item) => (
+          <li>{item}</li>
+        ))}
       </div>
 
       <div className={'cardFooter'}></div>

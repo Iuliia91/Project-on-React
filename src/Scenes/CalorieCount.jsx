@@ -28,7 +28,7 @@ const listOfInputValue = {
   Weigth: '',
 }
 
-const CalorieCount = () => {
+const CalorieCount = (props) => {
   const setModalContext = useContext(ModalContext)
   const [textHolder1, setTextHolder1] = useState('')
   const [numberHolder1, setNumberHolder1] = useState('')
@@ -38,13 +38,17 @@ const CalorieCount = () => {
 
   const [inputDate, setInputDate] = useState(listOfInputValue)
   const [listOfProduct, setListOfProduct] = useState([])
+  const [editProductDate, setEditProductDate] = useState({
+    isEdit: false,
+    productIndex: null,
+  })
 
-  const isFilledFields = inputDate.productName && inputDate.Weigth
   console.log(inputDate)
+  console.log(listOfProduct)
+
   const handleProductName = (Event) => {
     setTextHolder1(Event.target.value)
   }
-  const product = { textHolder1, numberHolder1, id: Date.now() }
 
   const handleAddTheCard = () => {
     console.log(product)
@@ -59,15 +63,41 @@ const CalorieCount = () => {
     )
   }
 
+  const isFilledFields = inputDate.productName && inputDate.Weigth
+
   const handleSubmitForm = (e) => {
     e.preventDefault()
     if (isFilledFields) {
-      setListOfProduct((prevetState) => [...prevetState, inputDate])
+      if (editProductDate.isEdit) {
+        const editedproduct = listOfProduct
+        editedproduct.splice(editProductDate.productIndex, 1, inputDate)
+        setListOfProduct(editedproduct)
+        setEditProductDate({
+          isEdit: false,
+          productIndex: null,
+        })
+      } else {
+        setListOfProduct((prevetState) => [...prevetState, inputDate])
+      }
+
       setInputDate(listOfInputValue)
     }
   }
-  const handle = () => {
+  let list = []
+  const handleClean = () => {
     return setInputDate(listOfInputValue)
+  }
+
+  const handleEditClick = (product, index) => {
+    setInputDate(product)
+    setEditProductDate({
+      isEdit: true,
+      productIndex: index,
+    })
+  }
+
+  const handleSaveRecipe = () => {
+    ;<Card />
   }
 
   console.log(listOfProduct)
@@ -125,12 +155,14 @@ const CalorieCount = () => {
                 <ButtonOptions
                   type="button"
                   textInsideButton="Clean"
-                  handleClick={handle}
+                  handleClick={handleClean}
                 />
 
                 <ButtonOptions
                   type="submit"
-                  textInsideButton="Add product"
+                  textInsideButton={
+                    editProductDate.isEdit ? 'Edit' : 'Add product'
+                  }
                   disabled={!isFilledFields}
                 />
               </div>
@@ -140,9 +172,15 @@ const CalorieCount = () => {
           <TableList
             listOfProduct={listOfProduct}
             handleRemoveClick={handleRemoveClick}
+            handleEditClick={handleEditClick}
           />
         </div>
-        <button>Save</button>
+        <button onClick={() => handleSaveRecipe}>Save</button>
+        {listOfProduct.map(
+          (product) => (
+            list.push(product.productName), (<Card cardText={list} />)
+          )
+        )}
       </main>
     </StyledCalorieCount>
   )

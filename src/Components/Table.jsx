@@ -46,7 +46,13 @@ const TableList = (props) => {
               <td>{product.Weigth} g</td>
               <td>{product.Weigth * 20}</td>
               <td>
-                <button>Edit</button>
+                <button
+                  onClick={() => {
+                    props.handleEditClick(product, index)
+                  }}
+                >
+                  Edit
+                </button>
 
                 <button
                   onClick={() => {
