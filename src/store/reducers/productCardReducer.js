@@ -1,5 +1,5 @@
 import { CARD_LIST_ACTIONS } from 'store/actionTypes'
-import { recipeCard } from '../actions/recipeCard.js'
+import recipeCard from 'store/actions/recipeCard'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {

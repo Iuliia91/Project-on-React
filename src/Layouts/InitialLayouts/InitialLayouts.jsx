@@ -66,7 +66,7 @@ const InitialLayouts = (props) => {
           <div className="main_header">
             <ButtonOptions
               className="button button__singIn"
-              textInsideButton={'Sing In'}
+              textInsideButton={'LogIn'}
               iconOptions={<FontAwesomeIcon icon={faHome} />}
             />
 

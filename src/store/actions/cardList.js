@@ -5,4 +5,4 @@ import { createAction } from '@reduxjs/toolkit'
   return { type: 'CARD_LIST_ACTIONS.add', payload: text }
 }*/
 
-export const textAction = createAction('addCard')
+export const textAction = createAction(CARD_LIST_ACTIONS.add)
