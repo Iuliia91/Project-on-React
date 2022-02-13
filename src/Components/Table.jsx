@@ -46,21 +46,21 @@ const TableList = (props) => {
               <td>{product.Weigth} g</td>
               <td>{product.Weigth * 20}</td>
               <td>
-                <button
-                  onClick={() => {
+                <ButtonOptions
+                  textInsideButton="Edit"
+                  type="button"
+                  handleClick={() => {
                     props.handleEditClick(product, index)
                   }}
-                >
-                  Edit
-                </button>
+                />
 
-                <button
-                  onClick={() => {
+                <ButtonOptions
+                  textInsideButton="Delete"
+                  type="button"
+                  handleClick={() => {
                     props.handleRemoveClick(index)
                   }}
-                >
-                  Delete
-                </button>
+                />
               </td>
             </tr>
           ))}
