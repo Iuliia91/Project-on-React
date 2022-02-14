@@ -10,13 +10,5 @@ export const textReducer = createReducer(initialState, (builder) => {
     state.textReducer += action.payload
   })
 })
-/*const textReducer = (store = initialState, action) => {
-  switch (action.type) {
-    case CARD_LIST_ACTIONS.add:
-      return { ...store, textReducer: action.payload }
-    default:
-      return { ...store }
-  }
-}*/
 
 export default textReducer

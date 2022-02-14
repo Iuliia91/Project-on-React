@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-
+import Server from 'api/server.instance'
 import styled from 'styled-components'
-
+import { userLoggedIn, userLoggedOut } from '../store/actions/userAction'
 import { useDispatch } from 'react-redux'
 
 const StyledLoginHolder = styled.div`
@@ -78,20 +78,18 @@ const LogIn = (props) => {
           <div className={'cardFooter'}>
             <button
               onClick={() => {
-                fakeServerAPI
-                  .post('/login', {
-                    email: email,
-                    password: password,
-                  })
-                  .then((response) => {
-                    dispatch(
-                      userLoggedIn({
-                        userName: 'email',
-                        userRoles: ['regularUser'],
-                        isLoggedIn: response.data.accessToken,
-                      })
-                    )
-                  })
+                Server.post('/login', {
+                  email: 'olivier@mail.com',
+                  password: 'bestPassw0rd',
+                }).then((response) => {
+                  dispatch(
+                    userLoggedIn({
+                      userName: 'email',
+                      userRoles: ['regularUser'],
+                      isLoggedIn: response.data.accessToken,
+                    })
+                  )
+                })
               }}
             >
               Login
@@ -127,20 +125,18 @@ const LogIn = (props) => {
           <div className={'cardFooter'}>
             <button
               onClick={() => {
-                fakeServerAPI
-                  .post('/register', {
-                    email: email,
-                    password: password,
-                  })
-                  .then((response) => {
-                    dispatch(
-                      userLoggedIn({
-                        userName: 'email',
-                        userRoles: ['regularUser'],
-                        isLoggedIn: response.data.accessToken,
-                      })
-                    )
-                  })
+                Server.post('/register', {
+                  email: email,
+                  password: password,
+                }).then((response) => {
+                  dispatch(
+                    userLoggedIn({
+                      userName: 'email',
+                      userRoles: ['regularUser'],
+                      isLoggedIn: response.data.accessToken,
+                    })
+                  )
+                })
               }}
             >
               Register
