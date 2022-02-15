@@ -79,9 +79,10 @@ const LogIn = (props) => {
             <button
               onClick={() => {
                 Server.post('/login', {
-                  email: 'olivier@mail.com',
-                  password: 'bestPassw0rd',
+                  email: email,
+                  password: password,
                 }).then((response) => {
+                  console.log(response)
                   dispatch(
                     userLoggedIn({
                       userName: 'email',

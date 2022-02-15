@@ -7,6 +7,20 @@ const Server = axios.create({
   timeout: 1000,
 })
 
-/*Server.interceptors.request.use(()=>)*/
+Server.interceptors.request.use((request) => {
+  request.headers.acces = store.getState().userReducer.isLoggedIn
+  return request
+})
+
+Server.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  (response) => {
+    if (response.code === 401) {
+      store.dispatch(userLoggedOut({ logOutReason: 'session time out' }))
+    }
+  }
+)
 
 export default Server
