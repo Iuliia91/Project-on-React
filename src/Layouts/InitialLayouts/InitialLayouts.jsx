@@ -9,7 +9,9 @@ import img from 'assets/images/gfb.jpg'
 import { exsampl } from 'store/actions/cardList'
 import { CARD_LIST_ACTIONS } from 'store/actionTypes'
 import { useDispatch, useSelector } from 'react-redux'
+import { ApiRequest } from '../../api/ApiInstance'
 import { textSelector } from 'store/selectors/textReducer'
+import axios from 'axios'
 const StyledInitialScenes = styled.div`
   background-repeat: no-repeat;
   position: absolute;
@@ -57,7 +59,14 @@ const InitialLayouts = (props) => {
     return dispatch({ type: CARD_LIST_ACTIONS.add, payload: nameP })
   }
 
-  console.log(textr)
+  const options = {
+    method: 'GET',
+    url: 'https://nutrifai1.p.rapidapi.com/v1/speech/results/%7Bid%7D',
+    headers: {
+      'x-rapidapi-host': 'nutrifai1.p.rapidapi.com',
+      'x-rapidapi-key': 'd891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12',
+    },
+  }
 
   return (
     <StyledInitialScenes>
@@ -106,6 +115,21 @@ const InitialLayouts = (props) => {
               textInsideButton={'Read more'}
             />
           </Link>
+          <button
+            onClick={() =>
+              axios
+                .request(options)
+                .then(function (response) {
+                  console.log(response.data)
+                  console.log('privet')
+                })
+                .catch(function (error) {
+                  console.error(error)
+                })
+            }
+          >
+            Get Api
+          </button>
         </div>
       </div>
     </StyledInitialScenes>
