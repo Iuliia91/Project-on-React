@@ -3,7 +3,8 @@ import Server from 'api/server.instance'
 import styled from 'styled-components'
 import { userLoggedIn, userLoggedOut } from '../store/actions/userAction'
 import { useDispatch } from 'react-redux'
-
+import { globalApiAction } from '../store/selectors/globalApiSelector'
+import { useSelector } from 'react-redux'
 const StyledLoginHolder = styled.div`
   width: 100%;
   height: 100%;
@@ -45,6 +46,9 @@ const StyledLoginHolder = styled.div`
 `
 
 const LogIn = (props) => {
+  const apiError = useSelector(
+    (store) => store.globalApiStateReducer.appiError.message
+  )
   const [isLogin, setIsLogin] = useState(false)
   const [email, setEmail] = useState('olivier@mail.com')
   const [password, setPassword] = useState('bestPassw0rd')
@@ -81,19 +85,24 @@ const LogIn = (props) => {
                 Server.post('/login', {
                   email: email,
                   password: password,
-                }).then((response) => {
-                  console.log(response)
-                  dispatch(
-                    userLoggedIn({
-                      userName: 'email',
-                      userRoles: ['regularUser'],
-                      isLoggedIn: response.data.accessToken,
-                    })
-                  )
                 })
+                  .then((response) => {
+                    console.log(response)
+                    dispatch(
+                      userLoggedIn({
+                        userName: 'email',
+                        userRoles: ['regularUser'],
+                        isLoggedIn: response.data.accessToken,
+                      })
+                    )
+                  })
+                  .catch((error) => {
+                    console.log('appi call catch', error)
+                  })
               }}
             >
               Login
+              {apiError}
             </button>
             <button onClick={toggleCardMode}>Register</button>
           </div>
@@ -108,6 +117,7 @@ const LogIn = (props) => {
         <div className={'loginCard'}>
           <div className={'cardHeader'}>Register</div>
           <div className={'cardBody'}>
+            <div>{apiError}</div>
             <input
               onChange={(e) => {
                 setEmail(e.target.value)
@@ -129,19 +139,24 @@ const LogIn = (props) => {
                 Server.post('/register', {
                   email: email,
                   password: password,
-                }).then((response) => {
-                  dispatch(
-                    userLoggedIn({
-                      userName: 'email',
-                      userRoles: ['regularUser'],
-                      isLoggedIn: response.data.accessToken,
-                    })
-                  )
                 })
+                  .then((response) => {
+                    dispatch(
+                      userLoggedIn({
+                        userName: 'email',
+                        userRoles: ['regularUser'],
+                        isLoggedIn: response.data.accessToken,
+                      })
+                    )
+                  })
+                  .catch((error) => {
+                    console.log('appi call catch', error)
+                  })
               }}
             >
               Register
             </button>
+
             <button onClick={toggleCardMode}>Login</button>
           </div>
         </div>
