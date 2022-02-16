@@ -22,7 +22,8 @@ const RootRouter = () => {
 
   const getUserStartPage = () => {
     if (user.isLoggedIn) {
-      return <Navigate to={'/information'} />
+      console.log(user.isLoggedIn)
+      return <Navigate to={'/profil/information'} />
     } else {
       return <Navigate to={'/login'} />
     }
@@ -39,6 +40,7 @@ const RootRouter = () => {
         path={'/profil'}
         element={renderForLoggedInUser(<SecondMainLayouts />)}
       >
+        <Route index element={getUserStartPage()} />
         <Route path={'information'} element={<Profil />} />
         <Route path={'menu'} element={<Menu />} />
         <Route path={'listofproducts'} element={<ListOfProducts />} />

@@ -59,7 +59,7 @@ const SecondMainLayouts = (props) => {
     <StyledNavigation>
       <nav className="sidenav">
         <NavLink
-          to={'/profil/informstion'}
+          to={'/profil/information'}
           className={'dscf'}
           activeclassname={'active'}
         >
