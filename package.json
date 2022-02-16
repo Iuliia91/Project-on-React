@@ -39,6 +39,7 @@
     "react-refresh-webpack-plugin": "^0.1.0",
     "react-router-dom": "^6.2.1",
     "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
     "style-loader": "^3.3.1",
     "styled-components": "^5.3.3",
     "webpack": "^5.66.0",

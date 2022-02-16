@@ -1,4 +1,4 @@
-import store from 'store/initStore'
+import { store } from 'store/initStore'
 import axios from 'axios'
 import { userLoggedOut } from '../store/actions/userAction'
 import { globalApiAction } from '../store/actions/globalApiStateAction'
