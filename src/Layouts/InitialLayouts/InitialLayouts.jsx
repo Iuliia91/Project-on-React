@@ -64,11 +64,13 @@ const InitialLayouts = (props) => {
       <div className="main">
         <div className="main_content">
           <div className="main_header">
-            <ButtonOptions
-              className="button button__singIn"
-              textInsideButton={'LogIn'}
-              iconOptions={<FontAwesomeIcon icon={faHome} />}
-            />
+            <Link to={'/login'}>
+              <ButtonOptions
+                className="button button__singIn"
+                textInsideButton={'LogIn'}
+                iconOptions={<FontAwesomeIcon icon={faHome} />}
+              />
+            </Link>
 
             <ButtonOptions
               className="button button__registration"

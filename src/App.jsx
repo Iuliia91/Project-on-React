@@ -11,7 +11,7 @@ import GlobalStyledProvide from 'HOC/GlobalStyled'
 const App = () => {
   return (
     <Provider store={store}>
-      <PersistGate persisor={persist} loading={null}>
+      <PersistGate persistor={persist} loading={null}>
         <BrowserRouter>
           <GlobalStyledProvide />
           <GlobalModalProvider>
