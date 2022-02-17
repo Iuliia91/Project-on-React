@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Server from 'api/server.instance'
 import styled from 'styled-components'
 import ButtonOptions from 'Components/ButtonOptions'
-
+import { useDispatch } from 'react-redux'
+import { userLoggedIn, userLoggedOut } from '../store/actions/userAction'
 const StyledRegistrationHolder = styled.div`
   width: 100%;
   height: 100%;
@@ -48,6 +49,8 @@ const initialData = {
   userHeigth: '',
   userWeigth: '',
   userGoaldWeigth: '',
+  email: '',
+  password: '',
 }
 const Registration = () => {
   const [userInfromation, setUserInformation] = useState(initialData)
@@ -69,10 +72,12 @@ const Registration = () => {
       }))
     }
   }
-
+  const handleSubmitForm = (e) => {
+    e.preventDefault()
+  }
   return (
     <StyledRegistrationHolder>
-      <form>
+      <form onSubmit={handleSubmitForm}>
         <section>
           <input
             onChange={(e) =>
@@ -142,12 +147,37 @@ const Registration = () => {
             value={userInfromation.userGoaldWeigth}
           />
         </section>
-        <ButtonOptions
+        <section>
+          <input
+            onChange={(e) => {
+              setUserInformation((prevState) => ({
+                ...prevState,
+                password: e.target.value,
+              }))
+            }}
+            placeholder={'password'}
+            value={userInfromation.password}
+          />
+        </section>
+        <section>
+          <input
+            onChange={(e) => {
+              setUserInformation((prevState) => ({
+                ...prevState,
+                email: e.target.value,
+              }))
+            }}
+            placeholder={'email'}
+            value={userInfromation.email}
+          />
+        </section>
+        <button
           type="submit"
-          textInsideButton="Registered"
           disabled={!isFilledFields}
-          handleClick={() =>
+          onClick={() =>
             Server.post('/register', {
+              email: userInfromation.email,
+              password: userInfromation.password,
               userName: userInfromation.userName,
               Gender: userInfromation.Gender,
               userHeigth: userInfromation.userHeigth,
@@ -158,8 +188,11 @@ const Registration = () => {
                 console.log(response)
                 dispatch(
                   userLoggedIn({
-                    userName: 'email',
-                    userRoles: ['regularUser'],
+                    userName: userInfromation.userName,
+                    Gender: userInfromation.Gender,
+                    userHeigth: userInfromation.userHeigth,
+                    userWeigth: userInfromation.userWeigth,
+                    userGoaldWeigth: userInfromation.userGoaldWeigth,
                     isLoggedIn: response.data.accessToken,
                   })
                 )
@@ -168,26 +201,9 @@ const Registration = () => {
                 console.log('appi call catch', error)
               })
           }
-        />
-        <button
-          type="submit"
-          disabled={!isFilledFields}
-          onClick={() =>
-            Server.post('/register', {
-              userName: userInfromation.userName,
-              Gender: userInfromation.Gender,
-              userHeigth: userInfromation.userHeigth,
-              userWeigth: userInfromation.userWeigth,
-              userGoaldWeigth: userInfromation.userGoaldWeigth,
-            })
-              .then((response) => {
-                console.log(response)
-              })
-              .catch((error) => {
-                console.log('appi call catch', error)
-              })
-          }
-        />
+        >
+          Registration
+        </button>
       </form>
     </StyledRegistrationHolder>
   )

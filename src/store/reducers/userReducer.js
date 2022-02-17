@@ -11,41 +11,23 @@ const InitialState = {
 }
 
 const userReducer = createReducer(InitialState, (builder) => {
-  builder.addCase(userLoggedIn, (state, action) => {
-    state.userName = action.payload.userName
-    state.userRole = action.payload.Gender
-    state.userRole = action.payload.userHeigth
-    state.userRole = action.payload.userWeigth
-    state.userRole = action.payload.userGoaldWeigth
-    state.isLoggedIn = action.payload.isLoggedIn
-  })
-  /*.addCase(userLoggedOut, (state, action) => {
-      state.userName = ''
-      state.userRole = []
-      state.isLoggedIn = false
-    })*/
-})
-
-export default userReducer
-
-/*const InitialState = {
-  userName: '',
-  userRole: [],
-  isLoggedIn: false,
-}
-
-const userReducer = createReducer(InitialState, (builder) => {
   builder
     .addCase(userLoggedIn, (state, action) => {
       state.userName = action.payload.userName
-      state.userRole = action.payload.userRole
+      state.Gender = action.payload.Gender
+      state.userHeigth = action.payload.userHeigth
+      state.userWeigth = action.payload.userWeigth
+      state.userGoaldWeigth = action.payload.userGoaldWeigth
       state.isLoggedIn = action.payload.isLoggedIn
     })
     .addCase(userLoggedOut, (state, action) => {
       state.userName = ''
-      state.userRole = []
+      state.useGenderrRole = ''
+      state.userHeigth = ''
+      state.userWeigth = ''
+      state.userGoaldWeigth = ''
       state.isLoggedIn = false
     })
 })
 
-export default userReducer*/
+export default userReducer

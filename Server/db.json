@@ -4,6 +4,46 @@
       "email": "olivier@mail.com",
       "password": "$2a$10$KaKAhprwNc5iARW73Y5q2e9.PGXYbKsHLVd3XClcK7ZldO2UBtHGu",
       "id": 1
+    },
+    {
+      "email": "iuliia@gmail.com",
+      "password": "$2a$10$u90nkdVPlF1QfQqU3SzEo.yv.Upg00JSUJ3303hWR1ZA6pI/Zswvq",
+      "userName": "Iuliia",
+      "Gender": "Female",
+      "userHeigth": "168",
+      "userWeigth": "75",
+      "userGoaldWeigth": "60",
+      "id": 2
+    },
+    {
+      "email": "ulapru@gmail.com",
+      "password": "$2a$10$xJacwcx6Ica9wMD7mc/Nfut0KNXuf2gX31MUElVHWEVH8J0f5cnAi",
+      "c": "iuliia",
+      "Gender": "Female",
+      "userHeigth": "168",
+      "userWeigth": "75",
+      "userGoaldWeigth": "60",
+      "id": 3
+    },
+    {
+      "email": "ula5@gmail.com",
+      "password": "$2a$10$CpLkCkP7T/ffEx1PNnnXxOviQBgmihVxfMPiGMQvChMvuZ93GNaYi",
+      "userName": "1",
+      "Gender": "Female",
+      "userHeigth": "3",
+      "userWeigth": "4",
+      "userGoaldWeigth": "5",
+      "id": 4
+    },
+    {
+      "email": "Zxcvbnm@gmail.com",
+      "password": "$2a$10$VRe8335v8jYwnkuAMwBsiuTnbc/WhnqUlu1G1NZSWENxX0VeX8ocO",
+      "userName": "Anna",
+      "Gender": "Female",
+      "userHeigth": "168",
+      "userWeigth": "75",
+      "userGoaldWeigth": "60",
+      "id": 5
     }
   ],
   "phase": [

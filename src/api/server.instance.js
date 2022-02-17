@@ -8,7 +8,7 @@ const Server = axios.create({
   timeout: 1000,
 })
 
-/*Server.interceptors.request.use((request) => {
+Server.interceptors.request.use((request) => {
   request.headers.acces = store.getState().userReducer.isLoggedIn
   return request
 })
@@ -25,6 +25,6 @@ Server.interceptors.response.use(
       throw error
     }
   }
-)*/
+)
 
 export default Server

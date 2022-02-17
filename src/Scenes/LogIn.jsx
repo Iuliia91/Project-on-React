@@ -49,124 +49,59 @@ const LogIn = (props) => {
   const apiError = useSelector(
     (store) => store.globalApiStateReducer.appiError.message
   )
-  const [isLogin, setIsLogin] = useState(false)
+
   const [email, setEmail] = useState('olivier@mail.com')
   const [password, setPassword] = useState('bestPassw0rd')
   const dispatch = useDispatch()
 
-  const toggleCardMode = () => {
-    setIsLogin(!isLogin)
-  }
-
-  const getLoginCard = () => {
-    return (
-      <StyledLoginHolder>
-        <div className={'loginCard'}>
-          <div className={'cardHeader'}>Login</div>
-          <div className={'cardBody'}>
-            <input
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-              value={email}
-              placeholder={'Email'}
-            />
-            <input
-              onChange={(e) => {
-                setPassword(e.target.value)
-              }}
-              value={password}
-              placeholder={'Password'}
-            />
-          </div>
-          <div className={'cardFooter'}>
-            <button
-              onClick={() => {
-                Server.post('/login', {
-                  email: email,
-                  password: password,
-                })
-                  .then((response) => {
-                    console.log(response)
-                    dispatch(
-                      userLoggedIn({
-                        userName: 'email',
-                        userRoles: ['regularUser'],
-                        isLoggedIn: response.data.accessToken,
-                      })
-                    )
-                  })
-                  .catch((error) => {
-                    console.log('appi call catch', error)
-                  })
-              }}
-            >
-              Login
-            </button>
-            <button onClick={toggleCardMode}>Register</button>
-          </div>
+  return (
+    <StyledLoginHolder>
+      <div className={'loginCard'}>
+        <div className={'cardHeader'}>Login</div>
+        <div className={'cardBody'}>
+          <input
+            onChange={(e) => {
+              setEmail(e.target.value)
+            }}
+            value={email}
+            placeholder={'Email'}
+          />
+          <input
+            onChange={(e) => {
+              setPassword(e.target.value)
+            }}
+            value={password}
+            placeholder={'Password'}
+          />
         </div>
-      </StyledLoginHolder>
-    )
-  }
-
-  const getRegisterCard = () => {
-    return (
-      <StyledLoginHolder>
-        <div className={'loginCard'}>
-          <div className={'cardHeader'}>Register</div>
-          <div className={'cardBody'}>
-            <input
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-              value={email}
-              placeholder={'Email'}
-            />
-            <input
-              onChange={(e) => {
-                setPassword(e.target.value)
-              }}
-              value={password}
-              placeholder={'Password'}
-            />
-          </div>
-          <div className={'cardFooter'}>
-            <button
-              onClick={() => {
-                Server.post('/register', {
-                  email: email,
-                  password: password,
+        <div className={'cardFooter'}>
+          <button
+            onClick={() => {
+              Server.post('/login', {
+                email: email,
+                password: password,
+              })
+                .then((response) => {
+                  console.log(response)
+                  dispatch(
+                    userLoggedIn({
+                      userName: 'email',
+                      userRoles: ['regularUser'],
+                      isLoggedIn: response.data.accessToken,
+                    })
+                  )
                 })
-                  .then((response) => {
-                    dispatch(
-                      userLoggedIn({
-                        userName: 'email',
-                        userRoles: ['regularUser'],
-                        isLoggedIn: response.data.accessToken,
-                      })
-                    )
-                  })
-                  .catch((error) => {
-                    console.log('appi call catch', error)
-                  })
-              }}
-            >
-              Register
-            </button>
-
-            <button onClick={toggleCardMode}>Login</button>
-          </div>
+                .catch((error) => {
+                  console.log('appi call catch', error)
+                })
+            }}
+          >
+            Login
+          </button>
         </div>
-      </StyledLoginHolder>
-    )
-  }
-
-  if (isLogin) {
-    return getLoginCard()
-  } else {
-    return getRegisterCard()
-  }
+      </div>
+    </StyledLoginHolder>
+  )
 }
 
 export default LogIn
