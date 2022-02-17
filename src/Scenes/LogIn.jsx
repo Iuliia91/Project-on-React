@@ -102,7 +102,6 @@ const LogIn = (props) => {
               }}
             >
               Login
-              {apiError}
             </button>
             <button onClick={toggleCardMode}>Register</button>
           </div>
@@ -117,7 +116,6 @@ const LogIn = (props) => {
         <div className={'loginCard'}>
           <div className={'cardHeader'}>Register</div>
           <div className={'cardBody'}>
-            <div>{apiError}</div>
             <input
               onChange={(e) => {
                 setEmail(e.target.value)

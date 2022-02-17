@@ -4,16 +4,6 @@
       "email": "olivier@mail.com",
       "password": "$2a$10$KaKAhprwNc5iARW73Y5q2e9.PGXYbKsHLVd3XClcK7ZldO2UBtHGu",
       "id": 1
-    },
-    {
-      "email": "Iuliia@gmail",
-      "password": "$2a$10$sv6Wu5DAApOUieqSgaYPGujE.DnpToToUtQC1lmvjO/XxeKbJcRCu",
-      "id": 2
-    },
-    {
-      "email": "ewefe@gmail",
-      "password": "$2a$10$/CFp9KoUGH3CZpG2uyIQHu533R5kg17.kex6qSaElnaTZkoVcPXFu",
-      "id": 3
     }
   ],
   "phase": [

@@ -8,12 +8,13 @@ import Menu from 'Scenes/Menu'
 import ListOfProducts from 'Scenes/ListOfProducts'
 import CalorieCount from 'Scenes/CalorieCount'
 import LogIn from 'Scenes/LogIn'
+import Registration from 'Scenes/Registration'
 import { useSelector } from 'react-redux'
 
 const RootRouter = () => {
   const user = useSelector((state) => state.userReducer)
 
-  const getUserStartPage = () => {
+  /* const getUserStartPage = () => {
     if (user.isLoggedIn) {
       console.log(user.isLoggedIn)
       return <Navigate to={'/profil/information'} />
@@ -35,19 +36,20 @@ const RootRouter = () => {
     } else {
       return <LogIn />
     }
-  }
+  }*/
 
   return (
     <Routes>
       <Route index element={<MainLayouts />} />
 
       <Route path={'aboutproject'} element={<AboutProject />} />
-      <Route path={'login'} element={getLoginpge()} />
-
-      <Route
+      {/* <Route path={'login'} element={getLoginpge()} />*/}
+      <Route path={'registration'} element={<Registration />} />
+      {/*<Route
         path={'/profil'}
         element={renderForLoggedInUser(<SecondMainLayouts />)}
-      >
+      >*/}
+      <Route path={'/profil'} element={<SecondMainLayouts />}>
         <Route path={'information'} element={<Profil />} />
         <Route path={'menu'} element={<Menu />} />
         <Route path={'listofproducts'} element={<ListOfProducts />} />

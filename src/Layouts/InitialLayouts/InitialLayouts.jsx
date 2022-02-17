@@ -61,9 +61,10 @@ const InitialLayouts = (props) => {
 
   const options = {
     method: 'GET',
-    url: 'https://nutrifai1.p.rapidapi.com/v1/speech/results/%7Bid%7D',
+    url: 'https://food-nutrition-information.p.rapidapi.com/foods/search',
+
     headers: {
-      'x-rapidapi-host': 'nutrifai1.p.rapidapi.com',
+      'x-rapidapi-host': 'food-nutrition-information.p.rapidapi.com',
       'x-rapidapi-key': 'd891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12',
     },
   }
@@ -80,18 +81,19 @@ const InitialLayouts = (props) => {
                 iconOptions={<FontAwesomeIcon icon={faHome} />}
               />
             </Link>
-
-            <ButtonOptions
-              className="button button__registration"
-              textInsideButton={'Registr'}
-              modalText={
-                <div>
-                  Privet iz tenei
-                  <button>Yes</button>
-                </div>
-              }
-              iconOptions={<FontAwesomeIcon icon={faUser} />}
-            />
+            <Link to={'/registration'}>
+              <ButtonOptions
+                className="button button__registration"
+                textInsideButton={'Registr'}
+                modalText={
+                  <div>
+                    Privet iz tenei
+                    <button>Yes</button>
+                  </div>
+                }
+                iconOptions={<FontAwesomeIcon icon={faUser} />}
+              />
+            </Link>
           </div>
           <input
             onChange={hendleName}
@@ -118,10 +120,13 @@ const InitialLayouts = (props) => {
           <button
             onClick={() =>
               axios
-                .request(options)
+                .request(options, {
+                  params: {
+                    query: 'mushrooms',
+                  },
+                })
                 .then(function (response) {
-                  console.log(response.data)
-                  console.log('privet')
+                  console.log(response.data.foods[0].foodNutrients[3].value)
                 })
                 .catch(function (error) {
                   console.error(error)
