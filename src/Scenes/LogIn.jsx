@@ -50,8 +50,8 @@ const LogIn = (props) => {
     (store) => store.globalApiStateReducer.appiError.message
   )
 
-  const [email, setEmail] = useState('olivier@mail.com')
-  const [password, setPassword] = useState('bestPassw0rd')
+  const [email, setEmail] = useState('ulapru@gmail.com')
+  const [password, setPassword] = useState('Zxcvbnm')
   const dispatch = useDispatch()
 
   return (
@@ -82,10 +82,15 @@ const LogIn = (props) => {
                 password: password,
               })
                 .then((response) => {
-                  console.log(response)
+                  console.log(response.data)
                   dispatch(
                     userLoggedIn({
-                      userName: 'email',
+                      userName: response.data.user.userName,
+                      email: response.data.user.email,
+                      Gender: response.data.user.Gender,
+                      userHeigth: response.data.user.userHeigth,
+                      userWeigth: response.data.user.userWeigth,
+                      userGoaldWeigth: response.data.user.userGoaldWeigth,
                       userRoles: ['regularUser'],
                       isLoggedIn: response.data.accessToken,
                     })

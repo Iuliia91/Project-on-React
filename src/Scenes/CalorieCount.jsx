@@ -44,9 +44,6 @@ const CalorieCount = (props) => {
     productIndex: null,
   })
 
-  console.log(inputDate)
-  console.log(listOfProduct)
-
   const handleProductName = (Event) => {
     setTextHolder1(Event.target.value)
   }
@@ -100,35 +97,11 @@ const CalorieCount = (props) => {
   const handleSaveRecipe = () => {
     listOfProduct.map((product) => list.push(product.productName))
     setListOfProduct([])
-    console.log(list)
+    setModalContext(<Card cardText={list} setModal={setModalContext} />)
   }
 
-  console.log(listOfProduct)
   return (
     <StyledCalorieCount>
-      {/* <div>
-        <form>
-          <section>
-            <input
-              onChange={handleProductName}
-              type="text"
-              placeholder="write the product name"
-              value={textHolder1}
-            />
-            <input
-              onChange={(Event) => {
-                setNumberHolder1(Event.target.value)
-              }}
-              type="text"
-              placeholder="g"
-              value={numberHolder1}
-            />
-          </section>
-        </form>
-      </div>
-
-      <button onClick={() => handleAddTheCard()}>add product</button>*/}
-
       <main className="main">
         <div className="main__content">
           <div>

@@ -18,7 +18,7 @@
     {
       "email": "ulapru@gmail.com",
       "password": "$2a$10$xJacwcx6Ica9wMD7mc/Nfut0KNXuf2gX31MUElVHWEVH8J0f5cnAi",
-      "c": "iuliia",
+      "userName": "iuliia",
       "Gender": "Female",
       "userHeigth": "168",
       "userWeigth": "75",
@@ -46,6 +46,8 @@
       "id": 5
     }
   ],
+  "recipes": [],
+
   "phase": [
     {
       "Phase 1": "1200 cal",

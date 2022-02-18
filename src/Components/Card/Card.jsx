@@ -1,21 +1,21 @@
 import React, { useContext, useState } from 'react'
 import { ModalContext } from 'HOC/GlobalModalProvider'
-
+import ButtonOptions from '../ButtonOptions'
 import styled from 'styled-components'
 
 const StyledCard = styled.div`
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
   .cardHeader {
-    width: 10%;
-    height: 50px;
+    width: 70%;
     padding: 10px 20px;
-    box-sizing: border-box;
-    background-color: grey;
-    font-size: 25px;
-    line-height: 30px;
+    background-color: #f5d7bf;
+    font-size: 16px;
     color: black;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    font-family: 'supermercado';
   }
 
   .cardBody {
@@ -42,7 +42,15 @@ const Card = (props) => {
         ))}
       </div>
 
-      <div className={'cardFooter'}></div>
+      <div className={'cardFooter'}>
+        <ButtonOptions
+          type="button"
+          handleClick={() => {
+            props.setModal(false)
+          }}
+          textInsideButton="Save"
+        />
+      </div>
     </StyledCard>
   )
 }

@@ -5,14 +5,24 @@ export const ModalContext = React.createContext()
 
 const StyledGlobalModalProvider = styled.div`
   position: absolute;
-  z-index: 1000;
+  position: absolute;
   top: 0;
   left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .modal {
-    background-color: rgb(199, 134, 134, 0.5);
-    width: 400px;
-    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(236, 233, 224, 0.7);
+    border-radius: 20px;
+    width: 60%;
+    height: 70%;
     position: absolute;
   }
 `
