@@ -7,6 +7,7 @@ import recipeCard from 'store/actions/recipeCard'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import ButtonOptions from 'Components/ButtonOptions'
 import TableList from 'Components/Table'
+
 const StyledCalorieCount = styled.div`
   .main {
     text-align: center;
@@ -31,29 +32,13 @@ const listOfInputValue = {
 
 const CalorieCount = (props) => {
   const setModalContext = useContext(ModalContext)
-  const [textHolder1, setTextHolder1] = useState('')
-  const [numberHolder1, setNumberHolder1] = useState('')
-  const listOfCasrd = useSelector((store) => store.cardList.cardList)
-
   const dispatch = useDispatch()
-
   const [inputDate, setInputDate] = useState(listOfInputValue)
   const [listOfProduct, setListOfProduct] = useState([])
   const [editProductDate, setEditProductDate] = useState({
     isEdit: false,
     productIndex: null,
   })
-
-  const handleProductName = (Event) => {
-    setTextHolder1(Event.target.value)
-  }
-
-  const handleAddTheCard = () => {
-    console.log(product)
-    dispatch(recipeCard(product))
-    setTextHolder1('')
-    setNumberHolder1('')
-  }
 
   const handleRemoveClick = (index) => {
     setListOfProduct(
@@ -70,6 +55,7 @@ const CalorieCount = (props) => {
         const editedproduct = listOfProduct
         editedproduct.splice(editProductDate.productIndex, 1, inputDate)
         setListOfProduct(editedproduct)
+
         setEditProductDate({
           isEdit: false,
           productIndex: null,
@@ -93,9 +79,11 @@ const CalorieCount = (props) => {
       productIndex: index,
     })
   }
-
+  /*list.push(product.productName))*/
+  console.log(listOfProduct)
   const handleSaveRecipe = () => {
     listOfProduct.map((product) => list.push(product.productName))
+    dispatch(recipeCard(listOfProduct))
     setListOfProduct([])
     setModalContext(<Card cardText={list} setModal={setModalContext} />)
   }

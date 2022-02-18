@@ -3,14 +3,14 @@ import recipeCard from 'store/actions/recipeCard'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
-  cardList: [],
+  productCardReducer: null,
 }
 
-const cardList = createReducer(initialState, (builder) => {
+const productCardReducer = createReducer(initialState, (builder) => {
   builder.addCase(recipeCard, (state, action) => {
-    if (!state.cardList) state.cardList = []
-    state.cardList.push(action.payload)
+    if (!state.productCardReducer) state.productCardReducer = []
+    state.productCardReducer.push(action.payload)
   })
 })
 
-export default cardList
+export default productCardReducer
