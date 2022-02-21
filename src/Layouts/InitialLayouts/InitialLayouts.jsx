@@ -59,16 +59,6 @@ const InitialLayouts = (props) => {
     return dispatch({ type: CARD_LIST_ACTIONS.add, payload: nameP })
   }
 
-  const options = {
-    method: 'GET',
-    url: 'https://food-nutrition-information.p.rapidapi.com/foods/search',
-
-    headers: {
-      'x-rapidapi-host': 'food-nutrition-information.p.rapidapi.com',
-      'x-rapidapi-key': 'd891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12',
-    },
-  }
-
   return (
     <StyledInitialScenes>
       <div className="main">
@@ -120,11 +110,7 @@ const InitialLayouts = (props) => {
           <button
             onClick={() =>
               axios
-                .request(options, {
-                  params: {
-                    query: 'mushrooms',
-                  },
-                })
+                .request(options)
                 .then(function (response) {
                   console.log(response.data.foods[0].foodNutrients[3].value)
                 })

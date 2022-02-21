@@ -7,7 +7,7 @@ import recipeCard from 'store/actions/recipeCard'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import ButtonOptions from 'Components/ButtonOptions'
 import TableList from 'Components/Table'
-
+import axios from 'axios'
 const StyledCalorieCount = styled.div`
   .main {
     text-align: center;
@@ -35,12 +35,12 @@ const CalorieCount = (props) => {
   const dispatch = useDispatch()
   const [inputDate, setInputDate] = useState(listOfInputValue)
   const [listOfProduct, setListOfProduct] = useState([])
-
+  const [calorCalue, setCalorValue] = useState()
   const [editProductDate, setEditProductDate] = useState({
     isEdit: false,
     productIndex: null,
   })
-
+  console.log(inputDate.productName)
   const handleRemoveClick = (index) => {
     setListOfProduct(
       listOfProduct.filter((product, productIndex) => productIndex !== index)
@@ -65,7 +65,7 @@ const CalorieCount = (props) => {
         setListOfProduct((prevetState) => [...prevetState, inputDate])
       }
 
-      setInputDate(listOfInputValue)
+      /*  setInputDate(listOfInputValue)*/
     }
   }
   let list = []
@@ -80,9 +80,31 @@ const CalorieCount = (props) => {
       productIndex: index,
     })
   }
-
+  const options = {
+    method: 'GET',
+    url: 'https://food-nutrition-information.p.rapidapi.com/foods/search',
+    params: {
+      query: `${inputDate.productName}`,
+    },
+    headers: {
+      'x-rapidapi-host': 'food-nutrition-information.p.rapidapi.com',
+      'x-rapidapi-key': 'd891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12',
+    },
+  }
+  console.log(listOfProduct)
   const handleSaveRecipe = () => {
     /*listOfProduct.map((product) => list.push(product))*/
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response)
+        setCalorValue(response.data.foods[0].foodNutrients[3].value)
+        console.log(response.data.foods[0].foodNutrients[3].value)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
+
     dispatch(recipeCard(listOfProduct))
     console.log(listOfProduct)
 
@@ -144,6 +166,7 @@ const CalorieCount = (props) => {
           />
         </div>
         <button onClick={handleSaveRecipe}>Save</button>
+        <div>{calorCalue}</div>
       </main>
     </StyledCalorieCount>
   )

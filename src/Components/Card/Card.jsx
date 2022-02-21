@@ -49,8 +49,8 @@ const Card = (props) => {
       if (isEdit) {
         axios
           .post(
-            `http://localhost:3000/recipes?id=${userID.id}`,
-
+            /*`http://localhost:3000/recipes/:${userID.id}`*/
+            'http://localhost:3000/recipes:products',
             [...lest]
           )
           .then(function (response) {})

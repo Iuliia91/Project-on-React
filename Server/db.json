@@ -96,30 +96,7 @@
       "id": 10
     }
   ],
-  "recipes": [
-    [
-      {
-        "productName": "111111",
-        "Weigth": "222222"
-      }
-    ],
-    [
-      {
-        "productName": "2000000",
-        "Weigth": "200000"
-      },
-      {
-        "productName": "3333333333",
-        "Weigth": "3333333333"
-      }
-    ],
-    [
-      {
-        "productName": "30000",
-        "Weigth": "10101010101"
-      }
-    ]
-  ],
+  "recipes": [],
   "phase": [
     {
       "Phase 1": "1200 cal",
