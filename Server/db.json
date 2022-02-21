@@ -44,42 +44,41 @@
       "userWeigth": "75",
       "userGoaldWeigth": "60",
       "id": 5
+    },
+    {
+      "email": "anna@gmail.com",
+      "password": "$2a$10$rjXvbztmz3K5zkepv3UCO.kvJB3uy/eWTTqdeEKejZiT25VXelDdC",
+      "userName": "Anna",
+      "Gender": "Female",
+      "userHeigth": "1",
+      "userWeigth": "2",
+      "userGoaldWeigth": "3",
+      "id": 6
     }
   ],
   "recipes": [
-    {
-      "id": 1
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "id": 7
-    },
-    {
-      "id": 8
-    },
-    {
-      "id": 9
-    },
-    {
-      "id": 10
-    },
-    {
-      "id": 11
-    }
+    [
+      {
+        "productName": "111111",
+        "Weigth": "222222"
+      }
+    ],
+    [
+      {
+        "productName": "2000000",
+        "Weigth": "200000"
+      },
+      {
+        "productName": "3333333333",
+        "Weigth": "3333333333"
+      }
+    ],
+    [
+      {
+        "productName": "30000",
+        "Weigth": "10101010101"
+      }
+    ]
   ],
   "phase": [
     {

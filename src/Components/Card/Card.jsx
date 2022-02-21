@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { recipesSelector } from 'store/selectors/recipesSelector'
 import ButtonOptions from '../ButtonOptions'
 import styled from 'styled-components'
 import axios from 'axios'
-import { useEffect } from 'react'
+
 import { useSelector } from 'react-redux'
 const StyledCard = styled.div`
   width: 70%;
@@ -36,34 +36,40 @@ const StyledCard = styled.div`
 `
 /* <button onClick={() => {props.deleteCard()}}>delete</button>*/
 const Card = (props) => {
-  const recipesDate = useSelector(recipesSelector)
-  const [lest, setList] = useState(props.cardText)
-  const options = {
-    method: 'POST',
-    url: 'http://localhost:3000/recipes',
-  }
+  const isEdit = useSelector((state) => state.productCardReducer.isEdited)
 
-  console.log(lest)
+  const [lest, setList] = useState(props.cardText)
+
+  console.log(isEdit)
+
+  useEffect(() => {
+    return () => {
+      if (isEdit) {
+        axios
+          .post(
+            'http://localhost:3000/recipes',
+            
+            [...lest]
+          )
+          .then(function (response) {})
+          .catch(function (error) {})
+      }
+    }
+  })
+
   const handleSaveOnServer = () => {
-    axios
-      .request(options, { recipesDate })
-      .then(function (response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
     {
       props.setModal(false)
     }
   }
+
   return (
     <StyledCard>
-      <div className={'cardHeader'}>
+      {/* <div className={'cardHeader'}>
         {lest.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
-      </div>
+      </div>*/}
 
       <div className={'cardFooter'}>
         <ButtonOptions

@@ -35,6 +35,7 @@ const CalorieCount = (props) => {
   const dispatch = useDispatch()
   const [inputDate, setInputDate] = useState(listOfInputValue)
   const [listOfProduct, setListOfProduct] = useState([])
+
   const [editProductDate, setEditProductDate] = useState({
     isEdit: false,
     productIndex: null,
@@ -79,10 +80,9 @@ const CalorieCount = (props) => {
       productIndex: index,
     })
   }
-  /*list.push(product.productName))*/
-  console.log(listOfProduct)
+
   const handleSaveRecipe = () => {
-    listOfProduct.map((product) => list.push(product.productName))
+    listOfProduct.map((product) => list.push(product))
     dispatch(recipeCard(listOfProduct))
     setListOfProduct([])
     setModalContext(<Card cardText={list} setModal={setModalContext} />)

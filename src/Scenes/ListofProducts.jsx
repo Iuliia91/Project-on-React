@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import recipeCard from 'store/actions/recipeCard'
 import axios from 'axios'
 
-const StyledListOfProducts = styled.div``
+const StyledListOfProducts = styled.div`
+  background: white;
+`
 
 const ListOfProducts = (props) => {
   const options = {
@@ -13,8 +15,6 @@ const ListOfProducts = (props) => {
 
   return (
     <StyledListOfProducts>
-      <div></div>
-
       <div>
         <button
           onClick={() => {
