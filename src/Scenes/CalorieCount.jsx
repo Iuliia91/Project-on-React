@@ -82,10 +82,14 @@ const CalorieCount = (props) => {
   }
 
   const handleSaveRecipe = () => {
-    listOfProduct.map((product) => list.push(product))
+    /*listOfProduct.map((product) => list.push(product))*/
     dispatch(recipeCard(listOfProduct))
+    console.log(listOfProduct)
+
     setListOfProduct([])
-    setModalContext(<Card cardText={list} setModal={setModalContext} />)
+    setModalContext(
+      <Card cardText={listOfProduct} setModal={setModalContext} />
+    )
   }
 
   return (

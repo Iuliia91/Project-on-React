@@ -54,6 +54,46 @@
       "userWeigth": "2",
       "userGoaldWeigth": "3",
       "id": 6
+    },
+    {
+      "email": "iuliia91@gmail.com",
+      "password": "$2a$10$.aYitFZ7.FbVmScw/jOEbu8u/1jGTGLuH9jjewasG4Hln1nX2hs/K",
+      "userName": "Anna",
+      "Gender": "Female",
+      "userHeigth": "100",
+      "userWeigth": "45",
+      "userGoaldWeigth": "60",
+      "id": 7
+    },
+    {
+      "email": "mnbvcxz@gmail.com",
+      "password": "$2a$10$SHp8pT6.iq2wJbZShJUq6uLJh2YqEZ5VRpMKHqKjdS5lnt0g2U6N.",
+      "userName": "Petja",
+      "Gender": "Male",
+      "userHeigth": "2",
+      "userWeigth": "160",
+      "userGoaldWeigth": "90",
+      "id": 8
+    },
+    {
+      "email": "1234567@gmail.com",
+      "password": "$2a$10$VXgNoLtPXrr0aZwbNQeP0eflAwidcbUWy2RT6a.R9q8KCMiJYvz8G",
+      "userName": "Sasha",
+      "Gender": "Male",
+      "userHeigth": "190",
+      "userWeigth": "100",
+      "userGoaldWeigth": "80",
+      "id": 9
+    },
+    {
+      "email": "Dmitri@gmail.com",
+      "password": "$2a$10$khPIlPsaczbb/QqnxxL8nOtq/FiVy1rq25czam/YVrwhWtuy8NZf2",
+      "userName": "Dmitri",
+      "Gender": "Male",
+      "userHeigth": "174",
+      "userWeigth": "85",
+      "userGoaldWeigth": "75",
+      "id": 10
     }
   ],
   "recipes": [

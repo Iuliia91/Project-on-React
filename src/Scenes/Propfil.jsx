@@ -10,7 +10,7 @@ margin:auto;
 aling-item:center;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-auto-columns: 100px;
+  
  grid-gap:20px;
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', 
   border: 16px solid #ece9e0;
@@ -20,8 +20,9 @@ aling-item:center;
 
   .user_name{
 background: #ece9e0;
- grid-column: 2/4;
- padding:30px 100px;
+width:80%;
+ grid-column: 3/4;
+ padding:30px 50px;
  margin:auto;
   border-radius: 20px;
   }
@@ -42,6 +43,8 @@ const Profil = () => {
   const user = useSelector((store) => store.userReducer)
   console.log(user)
 
+  const getDifferenceInWeight = user.userWeigth - user.userGoaldWeigth
+
   const fillProfil = profil.map((item1, index) => (
     <li className="user-information" key={index}>
       {item1}
@@ -51,6 +54,9 @@ const Profil = () => {
     <StyledProfil>
       <div className="user_name">
         <p className="user_name_text">Hi, {user.userName}</p>
+        <div>
+          <p> You have overweight - {getDifferenceInWeight} kg</p>
+        </div>
       </div>
       <div className="user_information">{fillProfil}</div>
     </StyledProfil>

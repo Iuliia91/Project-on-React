@@ -9,7 +9,6 @@ const StyledNavigation = styled.div`
   position: absolute;
   height: 100%;
   width: 100%;
-
   .sidenav {
     height: 100%;
     width: 170px;
@@ -39,7 +38,7 @@ const StyledNavigation = styled.div`
 
   .main {
     height: 100%;
-    width: 100%;
+
     background-color: rgb(199, 211, 222);
     margin-left: 160px;
     padding: 0px 10px;

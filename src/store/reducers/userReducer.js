@@ -7,6 +7,7 @@ const InitialState = {
   userHeigth: '',
   userWeigth: '',
   userGoaldWeigth: '',
+  id: '',
   isLoggedIn: false,
 }
 
@@ -18,6 +19,7 @@ const userReducer = createReducer(InitialState, (builder) => {
       state.userHeigth = action.payload.userHeigth
       state.userWeigth = action.payload.userWeigth
       state.userGoaldWeigth = action.payload.userGoaldWeigth
+      state.id = action.payload.id
       state.isLoggedIn = action.payload.isLoggedIn
     })
     .addCase(userLoggedOut, (state, action) => {
@@ -26,6 +28,7 @@ const userReducer = createReducer(InitialState, (builder) => {
       state.userHeigth = ''
       state.userWeigth = ''
       state.userGoaldWeigth = ''
+      state.id = ''
       state.isLoggedIn = false
     })
 })

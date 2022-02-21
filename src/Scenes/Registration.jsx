@@ -52,11 +52,11 @@ const initialData = {
   email: '',
   password: '',
 }
+
 const Registration = () => {
   const [userInfromation, setUserInformation] = useState(initialData)
   const [isLogin, setIsLogin] = useState(false)
   const dispatch = useDispatch()
-  console.log(userInfromation)
 
   const isFilledFields =
     userInfromation.userName &&
@@ -193,6 +193,7 @@ const Registration = () => {
                     userHeigth: userInfromation.userHeigth,
                     userWeigth: userInfromation.userWeigth,
                     userGoaldWeigth: userInfromation.userGoaldWeigth,
+                    id: response.data.user.id,
                     isLoggedIn: response.data.accessToken,
                   })
                 )
