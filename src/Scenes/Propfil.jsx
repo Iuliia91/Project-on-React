@@ -41,7 +41,6 @@ const Profil = () => {
   const axios = require('axios').default
   const profil = ['Iuliia', '30age', '50k']
   const user = useSelector((store) => store.userReducer)
-  console.log(user)
 
   const getDifferenceInWeight = user.userWeigth - user.userGoaldWeigth
 

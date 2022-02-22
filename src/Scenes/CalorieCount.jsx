@@ -28,6 +28,7 @@ const StyledCalorieCount = styled.div`
 const listOfInputValue = {
   productName: '',
   Weigth: '',
+  calorie: '',
 }
 
 const CalorieCount = (props) => {
@@ -65,7 +66,7 @@ const CalorieCount = (props) => {
         setListOfProduct((prevetState) => [...prevetState, inputDate])
       }
 
-      /*  setInputDate(listOfInputValue)*/
+      /* setInputDate(listOfInputValue)*/
     }
   }
   let list = []
@@ -80,7 +81,7 @@ const CalorieCount = (props) => {
       productIndex: index,
     })
   }
-  /* const options = {
+  const options = {
     method: 'GET',
     url: 'https://food-nutrition-information.p.rapidapi.com/foods/search',
     params: {
@@ -90,18 +91,19 @@ const CalorieCount = (props) => {
       'x-rapidapi-host': 'food-nutrition-information.p.rapidapi.com',
       'x-rapidapi-key': 'd891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12',
     },
-  }*/
+  }
 
-  const options = {
+  /* const options = {
     method: 'GET',
     url: 'http://localhost:3000/recipes?userid=3',
-  }
+  }*/
   const handleSaveRecipe = () => {
     /*listOfProduct.map((product) => list.push(product))*/
     axios
       .request(options)
       .then(function (response) {
-        /*setCalorValue(response.data.foods[0].foodNutrients[3].value)*/
+        setCalorValue(response.data.foods[0].foodNutrients[3].value)
+        listOfProduct.calorie = calorCalue
         console.log(response)
       })
       .catch(function (error) {})
@@ -113,7 +115,7 @@ const CalorieCount = (props) => {
       <Card cardText={listOfProduct} setModal={setModalContext} />
     )
   }
-
+  console.log(inputDate)
   return (
     <StyledCalorieCount>
       <main className="main">
@@ -150,6 +152,7 @@ const CalorieCount = (props) => {
 
                 <ButtonOptions
                   type="submit"
+                  handleClick={handleSaveRecipe}
                   textInsideButton={
                     editProductDate.isEdit ? 'Edit' : 'Add product'
                   }
@@ -165,7 +168,7 @@ const CalorieCount = (props) => {
             handleEditClick={handleEditClick}
           />
         </div>
-        <button onClick={handleSaveRecipe}>Save</button>
+        <button>Save</button>
         <div>{calorCalue}</div>
       </main>
     </StyledCalorieCount>

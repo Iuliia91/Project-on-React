@@ -9,6 +9,7 @@ import ListOfProducts from 'Scenes/ListOfProducts'
 import CalorieCount from 'Scenes/CalorieCount'
 import LogIn from 'Scenes/LogIn'
 import Registration from 'Scenes/Registration'
+import { DIRECTION_TYPE } from './directionTypes'
 import { useSelector } from 'react-redux'
 
 const RootRouter = () => {
@@ -16,7 +17,6 @@ const RootRouter = () => {
 
   const getUserStartPage = () => {
     if (user.isLoggedIn) {
-      console.log(user.isLoggedIn)
       return <Navigate to={'/profil/information'} />
     } else {
       return <Navigate to={'/login'} />
@@ -50,17 +50,23 @@ const RootRouter = () => {
     <Routes>
       <Route index element={<MainLayouts />} />
 
-      <Route path={'aboutproject'} element={<AboutProject />} />
-      <Route path={'login'} element={getLoginpge()} />
-      <Route path={'registration'} element={getRegistrationpge()} />
+      <Route path={DIRECTION_TYPE.about} element={<AboutProject />} />
+      <Route path={DIRECTION_TYPE.login} element={getLoginpge()} />
       <Route
-        path={'/profil'}
+        path={DIRECTION_TYPE.registration}
+        element={getRegistrationpge()}
+      />
+      <Route
+        path={DIRECTION_TYPE.profile}
         element={renderForLoggedInUser(<SecondMainLayouts />)}
       >
-        <Route path={'information'} element={<Profil />} />
-        <Route path={'menu'} element={<Menu />} />
-        <Route path={'listofproducts'} element={<ListOfProducts />} />
-        <Route path={'caloriecount'} element={<CalorieCount />} />
+        <Route path={DIRECTION_TYPE.information} element={<Profil />} />
+        <Route path={DIRECTION_TYPE.menu} element={<Menu />} />
+        <Route
+          path={DIRECTION_TYPE.listofproducts}
+          element={<ListOfProducts />}
+        />
+        <Route path={DIRECTION_TYPE.caloriecount} element={<CalorieCount />} />
       </Route>
     </Routes>
   )

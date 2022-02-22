@@ -38,11 +38,13 @@ const StyledCard = styled.div`
 const Card = (props) => {
   const isEdit = useSelector((state) => state.productCardReducer.isEdited)
   const userID = useSelector((state) => state.userReducer)
-
+  const [recipeName, setRecipeName] = useState('')
   const [lest, setList] = useState(props.cardText)
 
+  const name = recipeName
+
   const Recipes = {
-    name: 'name',
+    name: name,
     products: [...lest],
     userid: userID.id,
   }
@@ -70,7 +72,13 @@ const Card = (props) => {
 
   return (
     <StyledCard>
-      <input />
+      <input
+        placeholder="Write the recipe name"
+        onChange={(e) => {
+          setRecipeName(e.target.value)
+        }}
+        value={recipeName}
+      />
       {/*<div className={'cardHeader'}>
         {lest[0].map((item, index) => (
           <li key={index}>{item}</li>

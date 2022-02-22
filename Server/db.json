@@ -108,60 +108,15 @@
   ],
   "recipes": [
     {
-      "name": "name",
+      "name": "",
       "products": [
         {
-          "productName": "2222222222",
-          "Weigth": "22222222222222"
-        },
-        {
-          "productName": "4444444",
-          "Weigth": "44444444444"
+          "productName": "ppppp",
+          "Weigth": "pppp"
         }
       ],
       "userid": 3,
       "id": 1
-    },
-    {
-      "name": "name",
-      "products": [
-        {
-          "productName": "2222222222",
-          "Weigth": "2222222"
-        },
-        {
-          "productName": "paper",
-          "Weigth": "4000"
-        }
-      ],
-      "userid": 11,
-      "id": 2
-    },
-    {
-      "name": "name",
-      "products": [
-        {
-          "productName": "44444444",
-          "Weigth": "444444"
-        }
-      ],
-      "userid": 11,
-      "id": 3
-    },
-    {
-      "name": "name",
-      "products": [
-        {
-          "productName": "potato",
-          "Weigth": "5000"
-        },
-        {
-          "productName": "milkiway",
-          "Weigth": "5000"
-        }
-      ],
-      "userid": 3,
-      "id": 4
     }
   ],
   "phase": [
