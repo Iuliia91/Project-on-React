@@ -111,9 +111,7 @@ const InitialLayouts = (props) => {
             onClick={() =>
               axios
                 .request(options)
-                .then(function (response) {
-                  console.log(response.data.foods[0].foodNutrients[3].value)
-                })
+                .then(function (response) {})
                 .catch(function (error) {
                   console.error(error)
                 })

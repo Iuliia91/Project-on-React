@@ -40,7 +40,7 @@ const CalorieCount = (props) => {
     isEdit: false,
     productIndex: null,
   })
-  console.log(inputDate.productName)
+
   const handleRemoveClick = (index) => {
     setListOfProduct(
       listOfProduct.filter((product, productIndex) => productIndex !== index)
@@ -80,7 +80,7 @@ const CalorieCount = (props) => {
       productIndex: index,
     })
   }
-  const options = {
+  /* const options = {
     method: 'GET',
     url: 'https://food-nutrition-information.p.rapidapi.com/foods/search',
     params: {
@@ -90,23 +90,23 @@ const CalorieCount = (props) => {
       'x-rapidapi-host': 'food-nutrition-information.p.rapidapi.com',
       'x-rapidapi-key': 'd891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12',
     },
+  }*/
+
+  const options = {
+    method: 'GET',
+    url: 'http://localhost:3000/recipes?userid=3',
   }
-  console.log(listOfProduct)
   const handleSaveRecipe = () => {
     /*listOfProduct.map((product) => list.push(product))*/
     axios
       .request(options)
       .then(function (response) {
+        /*setCalorValue(response.data.foods[0].foodNutrients[3].value)*/
         console.log(response)
-        setCalorValue(response.data.foods[0].foodNutrients[3].value)
-        console.log(response.data.foods[0].foodNutrients[3].value)
       })
-      .catch(function (error) {
-        console.error(error)
-      })
+      .catch(function (error) {})
 
     dispatch(recipeCard(listOfProduct))
-    console.log(listOfProduct)
 
     setListOfProduct([])
     setModalContext(

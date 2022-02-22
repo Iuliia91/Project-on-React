@@ -185,7 +185,6 @@ const Registration = () => {
               userGoaldWeigth: userInfromation.userGoaldWeigth,
             })
               .then((response) => {
-                console.log(response)
                 dispatch(
                   userLoggedIn({
                     userName: userInfromation.userName,

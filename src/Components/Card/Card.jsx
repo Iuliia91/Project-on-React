@@ -41,8 +41,11 @@ const Card = (props) => {
 
   const [lest, setList] = useState(props.cardText)
 
-  console.log(lest)
-  console.log(userID.id)
+  const Recipes = {
+    name: 'name',
+    products: [...lest],
+    userid: userID.id,
+  }
 
   useEffect(() => {
     return () => {
@@ -50,8 +53,8 @@ const Card = (props) => {
         axios
           .post(
             /*`http://localhost:3000/recipes/:${userID.id}`*/
-            'http://localhost:3000/recipes:products',
-            [...lest]
+            'http://localhost:3000/recipes',
+            Recipes
           )
           .then(function (response) {})
           .catch(function (error) {})
@@ -67,8 +70,9 @@ const Card = (props) => {
 
   return (
     <StyledCard>
-      {/* <div className={'cardHeader'}>
-        {lest.map((item, index) => (
+      <input />
+      {/*<div className={'cardHeader'}>
+        {lest[0].map((item, index) => (
           <li key={index}>{item}</li>
         ))}
       </div>*/}

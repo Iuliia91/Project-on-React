@@ -94,9 +94,76 @@
       "userWeigth": "85",
       "userGoaldWeigth": "75",
       "id": 10
+    },
+    {
+      "email": "Stas@gmail.com",
+      "password": "$2a$10$YcZRrbX/bSiM7f8WIlXAIujpK31CfJTQAWa8Jzf4m8.oGul9a/X0C",
+      "userName": "Stast",
+      "Gender": "Male",
+      "userHeigth": "178",
+      "userWeigth": "78",
+      "userGoaldWeigth": "60",
+      "id": 11
     }
   ],
-  "recipes": [],
+  "recipes": [
+    {
+      "name": "name",
+      "products": [
+        {
+          "productName": "2222222222",
+          "Weigth": "22222222222222"
+        },
+        {
+          "productName": "4444444",
+          "Weigth": "44444444444"
+        }
+      ],
+      "userid": 3,
+      "id": 1
+    },
+    {
+      "name": "name",
+      "products": [
+        {
+          "productName": "2222222222",
+          "Weigth": "2222222"
+        },
+        {
+          "productName": "paper",
+          "Weigth": "4000"
+        }
+      ],
+      "userid": 11,
+      "id": 2
+    },
+    {
+      "name": "name",
+      "products": [
+        {
+          "productName": "44444444",
+          "Weigth": "444444"
+        }
+      ],
+      "userid": 11,
+      "id": 3
+    },
+    {
+      "name": "name",
+      "products": [
+        {
+          "productName": "potato",
+          "Weigth": "5000"
+        },
+        {
+          "productName": "milkiway",
+          "Weigth": "5000"
+        }
+      ],
+      "userid": 3,
+      "id": 4
+    }
+  ],
   "phase": [
     {
       "Phase 1": "1200 cal",
