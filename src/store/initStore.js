@@ -8,10 +8,10 @@ enableES5()
 
 const middleWare = [thunk]
 const middleWareEnhancer = applyMiddleware(...middleWare)
-const enhasers = []
+const enhasers = [middleWareEnhancer]
 
 const composedEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION__(...enhasers)
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(...enhasers)
   : compose([...enhasers])
 
 const persistConfig = {

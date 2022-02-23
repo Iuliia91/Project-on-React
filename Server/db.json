@@ -106,7 +106,22 @@
       "id": 11
     }
   ],
-  "recipes": [],
+  "recipes": [
+    {
+      "Recipes": {
+        "name": "",
+        "products": [
+          {
+            "productName": "111",
+            "Weigth": "111",
+            "calorie": ""
+          }
+        ],
+        "userid": 3
+      },
+      "id": 1
+    }
+  ],
   "phase": [
     {
       "Phase 1": "1200 cal",

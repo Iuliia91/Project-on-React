@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
-import recipeCardList from 'store/selectors/recipeCardList'
+import { getProductCalorie } from 'store/actions/recipeCard'
 import { useSelector, useDispatch } from 'react-redux'
 import Card from 'Components/Card/Card'
 import recipeCard from 'store/actions/recipeCard'
@@ -63,7 +63,7 @@ const CalorieCount = (props) => {
   }
   const handleSubmitForm = (e) => {
     e.preventDefault()
-    if (isFilledFields) {
+    /* if (isFilledFields) {
       if (editProductDate.isEdit) {
         const editedproduct = listOfProduct
         editedproduct.splice(editProductDate.productIndex, 1, inputDate)
@@ -75,9 +75,10 @@ const CalorieCount = (props) => {
         })
       } else {
         setListOfProduct((prevetState) => [...prevetState, inputDate])
-      }
+      }*/
 
-      axios
+    dispatch(getProductCalorie)
+    /* axios
         .request(options)
         .then(function (response) {
           console.log(response.data.foods[0].foodNutrients[3].value)
@@ -89,9 +90,9 @@ const CalorieCount = (props) => {
           console.log(error)
         })
 
-      setTimeout(setInputDate(listOfInputValue), 1000)
-      /* */
-    }
+      
+    }*/
+    setInputDate(listOfInputValue)
   }
   let list = []
   const handleClean = () => {
@@ -123,6 +124,7 @@ const CalorieCount = (props) => {
     )
   }
   console.log(inputDate)
+
   return (
     <StyledCalorieCount>
       <main className="main">
