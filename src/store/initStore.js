@@ -10,7 +10,7 @@ const middleWare = [thunk]
 const middleWareEnhancer = applyMiddleware(...middleWare)
 const enhasers = []
 
-const composedEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__
+const composedEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION__(...enhasers)
   : compose([...enhasers])
 

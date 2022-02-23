@@ -106,19 +106,7 @@
       "id": 11
     }
   ],
-  "recipes": [
-    {
-      "name": "",
-      "products": [
-        {
-          "productName": "ppppp",
-          "Weigth": "pppp"
-        }
-      ],
-      "userid": 3,
-      "id": 1
-    }
-  ],
+  "recipes": [],
   "phase": [
     {
       "Phase 1": "1200 cal",

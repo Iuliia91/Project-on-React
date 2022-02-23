@@ -50,21 +50,20 @@ const Card = (props) => {
   }
 
   useEffect(() => {
-    return () => {
-      if (isEdit) {
-        axios
-          .post(
-            /*`http://localhost:3000/recipes/:${userID.id}`*/
-            'http://localhost:3000/recipes',
-            Recipes
-          )
-          .then(function (response) {})
-          .catch(function (error) {})
-      }
-    }
+    return () => {}
   })
 
   const handleSaveOnServer = () => {
+    if (isEdit) {
+      axios
+        .post(
+          /*`http://localhost:3000/recipes/:${userID.id}`*/
+          'http://localhost:3000/recipes',
+          { Recipes }
+        )
+        .then(function (response) {})
+        .catch(function (error) {})
+    }
     {
       props.setModal(false)
     }
@@ -79,11 +78,6 @@ const Card = (props) => {
         }}
         value={recipeName}
       />
-      {/*<div className={'cardHeader'}>
-        {lest[0].map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </div>*/}
 
       <div className={'cardFooter'}>
         <ButtonOptions
