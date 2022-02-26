@@ -7,6 +7,7 @@ import {
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
+  calorie: '',
   productCardReducer: null,
   isEdited: false,
 }
@@ -18,23 +19,7 @@ const productCardReducer = createReducer(initialState, (builder) => {
       state.productCardReducer.push(action.payload)
     })
     .addCase(getCalorieCount, (state, action) => {
-      const isFilledFields = inputDate.productName && inputDate.Weigth
-      if (isFilledFields) {
-        if (editProductDate.isEdit) {
-          const editedproduct = listOfProduct
-          editedproduct.splice(editProductDate.productIndex, 1, inputDate)
-          setListOfProduct(editedproduct)
-
-          setEditProductDate({
-            isEdit: false,
-            productIndex: null,
-          })
-        } else {
-          setListOfProduct((prevetState) => [...prevetState, inputDate])
-        }
-
-        setInputDate(listOfInputValue)
-      }
+      state.calorie = action.payload
     })
     .addMatcher(
       (action) => {

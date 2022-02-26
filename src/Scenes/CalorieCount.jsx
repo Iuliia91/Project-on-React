@@ -58,7 +58,6 @@ const CalorieCount = (props) => {
     e.preventDefault(listOfProduct)
     if (isFilledFields) {
       if (editProductDate.isEdit) {
-        dispatch(getCalorieCount(inputDate.productName))
       }
     }
 
@@ -104,7 +103,6 @@ const CalorieCount = (props) => {
 
   const handleSaveRecipe = () => {
     dispatch(recipeCard(listOfProduct))
-    console.log(listOfProduct)
     setListOfProduct([])
     setModalContext(
       <Card cardText={listOfProduct} setModal={setModalContext} />
@@ -113,15 +111,30 @@ const CalorieCount = (props) => {
   console.log(inputDate)
   console.log(products)
 
+  const validationFormik = (formValues) => {
+    const errorObj = {}
+    let isValid = true
+    const formFields = formValues.productName && formValues.Weigth
+    if (formFields) {
+      isValid = false
+      errorObj.formFields = 'Yorfgv'
+    }
+  }
+
   return (
     <StyledCalorieCount>
       <main className="main">
         <div className="main__content">
           <Formik
             initialValues={{ productName: '', Weigth: '' }}
-            onSubmit={(formValues) => {
+            validate={(formValues) => {}}
+            onSubmit={(formValues, { resetForm }) => {
               setProducts((prevState) => [...prevState, formValues])
+              dispatch(getCalorieCount(formValues.productName))
 
+              console.log(formValues.calorie)
+
+              resetForm()
               console.log(formValues)
             }}
           >

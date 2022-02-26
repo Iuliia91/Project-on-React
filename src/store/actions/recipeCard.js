@@ -1,15 +1,13 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { CARD_LIST_ACTIONS } from 'store/actionTypes'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
 
 export const recipeCard = createAction(CARD_LIST_ACTIONS.list)
 
-export const addProductToTable = createAction('addProduct')
-
-export const getProductCalorie = createAction(CARD_LIST_ACTIONS.calorie)
-
 export const getCalorieCount = createAsyncThunk(
   'getCalorus',
+
   async (productItem) => {
     const options = {
       method: 'GET',
