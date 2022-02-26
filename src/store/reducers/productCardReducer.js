@@ -1,5 +1,9 @@
 import { CARD_LIST_ACTIONS } from 'store/actionTypes'
-import { recipeCard, getProductCalorie } from 'store/actions/recipeCard'
+import {
+  recipeCard,
+  addProductToTable,
+  getCalorieCount,
+} from 'store/actions/recipeCard'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
@@ -13,7 +17,8 @@ const productCardReducer = createReducer(initialState, (builder) => {
       if (!state.productCardReducer) state.productCardReducer = []
       state.productCardReducer.push(action.payload)
     })
-    .addCase(getProductCalorie, (state, action) => {
+    .addCase(getCalorieCount, (state, action) => {
+      const isFilledFields = inputDate.productName && inputDate.Weigth
       if (isFilledFields) {
         if (editProductDate.isEdit) {
           const editedproduct = listOfProduct
@@ -27,6 +32,8 @@ const productCardReducer = createReducer(initialState, (builder) => {
         } else {
           setListOfProduct((prevetState) => [...prevetState, inputDate])
         }
+
+        setInputDate(listOfInputValue)
       }
     })
     .addMatcher(

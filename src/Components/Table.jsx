@@ -40,7 +40,7 @@ const TableList = (props) => {
 
         <tbody>
           {props.listOfProduct.map((product, index) => (
-            <tr>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{product.productName}</td>
               <td>{product.Weigth} g</td>

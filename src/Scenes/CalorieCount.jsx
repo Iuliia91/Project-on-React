@@ -3,11 +3,13 @@ import styled from 'styled-components'
 import { getProductCalorie } from 'store/actions/recipeCard'
 import { useSelector, useDispatch } from 'react-redux'
 import Card from 'Components/Card/Card'
-import recipeCard from 'store/actions/recipeCard'
+import { recipeCard, getCalorieCount } from 'store/actions/recipeCard'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import ButtonOptions from 'Components/ButtonOptions'
 import TableList from 'Components/Table'
 import axios from 'axios'
+import FormikInput from 'Components/formikFields/FormikFields'
+import { Formik, Form, Field, useFormik } from 'formik'
 const StyledCalorieCount = styled.div`
   .main {
     text-align: center;
@@ -36,12 +38,14 @@ const CalorieCount = (props) => {
   const dispatch = useDispatch()
   const [inputDate, setInputDate] = useState(listOfInputValue)
   const [listOfProduct, setListOfProduct] = useState([])
-  const [calorCalue, setCalorValue] = useState()
+
+  const [calorValue, setCalorValue] = useState()
   const [editProductDate, setEditProductDate] = useState({
     isEdit: false,
     productIndex: null,
   })
 
+  const [products, setProducts] = useState([])
   const handleRemoveClick = (index) => {
     setListOfProduct(
       listOfProduct.filter((product, productIndex) => productIndex !== index)
@@ -49,21 +53,17 @@ const CalorieCount = (props) => {
   }
 
   const isFilledFields = inputDate.productName && inputDate.Weigth
-
-  const options = {
-    method: 'GET',
-    url: 'https://food-nutrition-information.p.rapidapi.com/foods/search',
-    params: {
-      query: `${inputDate.productName}`,
-    },
-    headers: {
-      'x-rapidapi-host': 'food-nutrition-information.p.rapidapi.com',
-      'x-rapidapi-key': 'd891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12',
-    },
-  }
+  console.log()
   const handleSubmitForm = (e) => {
-    e.preventDefault()
+    e.preventDefault(listOfProduct)
+    if (isFilledFields) {
+      if (editProductDate.isEdit) {
+        dispatch(getCalorieCount(inputDate.productName))
+      }
+    }
+
     /* if (isFilledFields) {
+     
       if (editProductDate.isEdit) {
         const editedproduct = listOfProduct
         editedproduct.splice(editProductDate.productIndex, 1, inputDate)
@@ -75,25 +75,12 @@ const CalorieCount = (props) => {
         })
       } else {
         setListOfProduct((prevetState) => [...prevetState, inputDate])
-      }*/
+      }
 
-    dispatch(getProductCalorie)
-    /* axios
-        .request(options)
-        .then(function (response) {
-          console.log(response.data.foods[0].foodNutrients[3].value)
-          setCalorValue(response.data.foods[0].foodNutrients[3].value)
-
-          console.log(response)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-
-      
+      setInputDate(listOfInputValue)
     }*/
-    setInputDate(listOfInputValue)
   }
+
   let list = []
   const handleClean = () => {
     return setInputDate(listOfInputValue)
@@ -124,11 +111,37 @@ const CalorieCount = (props) => {
     )
   }
   console.log(inputDate)
+  console.log(products)
 
   return (
     <StyledCalorieCount>
       <main className="main">
         <div className="main__content">
+          <Formik
+            initialValues={{ productName: '', Weigth: '' }}
+            onSubmit={(formValues) => {
+              setProducts((prevState) => [...prevState, formValues])
+
+              console.log(formValues)
+            }}
+          >
+            <Form>
+              <FormikInput
+                name="productName"
+                placeholder="Write the product name"
+              />
+              <FormikInput
+                name="Weigth"
+                placeholder="Write the weigth of product"
+              />
+              <ButtonOptions
+                type="submit"
+                /* handleClick={handleSubmitForm}*/
+                textInsideButton={'Add product'}
+              />
+            </Form>
+          </Formik>
+
           <div>
             <form onSubmit={handleSubmitForm}>
               <input
@@ -179,7 +192,7 @@ const CalorieCount = (props) => {
           />
         </div>
         <button onClick={handleSaveRecipe}>Save</button>
-        <div>{calorCalue}</div>
+        <div>{calorValue}</div>
       </main>
     </StyledCalorieCount>
   )

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import ButtonOptions from 'Components/ButtonOptions'
 import { useDispatch } from 'react-redux'
 import { userLoggedIn, userLoggedOut } from '../store/actions/userAction'
+import { Formik } from 'formik'
 const StyledRegistrationHolder = styled.div`
   width: 100%;
   height: 100%;
