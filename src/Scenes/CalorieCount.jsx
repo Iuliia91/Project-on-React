@@ -111,23 +111,24 @@ const CalorieCount = (props) => {
   console.log(inputDate)
   console.log(products)
 
-  const validationFormik = (formValues) => {
-    const errorObj = {}
-    let isValid = true
-    const formFields = formValues.productName && formValues.Weigth
-    if (formFields) {
-      isValid = false
-      errorObj.formFields = 'Yorfgv'
-    }
-  }
-
   return (
     <StyledCalorieCount>
       <main className="main">
         <div className="main__content">
           <Formik
             initialValues={{ productName: '', Weigth: '' }}
-            validate={(formValues) => {}}
+            validate={(formValues) => {
+              const errorObj = {}
+              let isValid = true
+              const formFields = formValues.productName && formValues.Weigth
+              if (!formFields) {
+                isValid = false
+                errorObj.productName = 'Field the fields'
+                errorObj.Weigth = 'Field the fields'
+              }
+
+              return errorObj
+            }}
             onSubmit={(formValues, { resetForm }) => {
               setProducts((prevState) => [...prevState, formValues])
               dispatch(getCalorieCount(formValues.productName))
