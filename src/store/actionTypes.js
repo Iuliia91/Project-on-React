@@ -1,6 +1,7 @@
 export const CARD_LIST_ACTIONS = {
   add: 'addCard',
   list: 'addRecipe',
+  calorie: 'getCalorie',
 }
 
 export const USER_ACTION = {

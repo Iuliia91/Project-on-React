@@ -45,24 +45,38 @@ const CalorieCount = (props) => {
     productIndex: null,
   })
 
+  const listOfProductState = useSelector(
+    (state) => state.productCardReducer.productCardReducer
+  )
   const [products, setProducts] = useState([])
-  const handleRemoveClick = (index) => {
+  /*  const handleRemoveClick = (index) => {
     setListOfProduct(
       listOfProduct.filter((product, productIndex) => productIndex !== index)
     )
-  }
-
+  }*/
+  console.log(listOfProductState)
   const isFilledFields = inputDate.productName && inputDate.Weigth
   console.log()
   const handleSubmitForm = (e) => {
-    e.preventDefault(listOfProduct)
+    e.preventDefault(listOfProductState)
     if (isFilledFields) {
       if (editProductDate.isEdit) {
+        const editedproduct = listOfProductState
+        const [products, setProducts] = useState([])
+        editedproduct.splice(editProductDate.productIndex, 1, products)
+        setListOfProduct(editedproduct)
+
+        setEditProductDate({
+          isEdit: false,
+          productIndex: null,
+        })
+      } else {
+        /* setListOfProduct((prevetState) => [...prevetState, products])*/
+        setListOfProduct((prevetState) => [...prevetState, products])
       }
     }
-
+    console.log(products, inputDate)
     /* if (isFilledFields) {
-     
       if (editProductDate.isEdit) {
         const editedproduct = listOfProduct
         editedproduct.splice(editProductDate.productIndex, 1, inputDate)
@@ -75,12 +89,12 @@ const CalorieCount = (props) => {
       } else {
         setListOfProduct((prevetState) => [...prevetState, inputDate])
       }
-
+      console.log(listOfProductState)
       setInputDate(listOfInputValue)
     }*/
   }
 
-  let list = []
+  /* let list = []
   const handleClean = () => {
     return setInputDate(listOfInputValue)
   }
@@ -101,15 +115,13 @@ const CalorieCount = (props) => {
     /*listOfProduct.map((product) => list.push(product))*/
   }
 
-  const handleSaveRecipe = () => {
+  /* const handleSaveRecipe = () => {
     dispatch(recipeCard(listOfProduct))
     setListOfProduct([])
     setModalContext(
       <Card cardText={listOfProduct} setModal={setModalContext} />
     )
-  }
-  console.log(inputDate)
-  console.log(products)
+  }*/
 
   return (
     <StyledCalorieCount>
@@ -131,12 +143,11 @@ const CalorieCount = (props) => {
             }}
             onSubmit={(formValues, { resetForm }) => {
               setProducts((prevState) => [...prevState, formValues])
-              dispatch(getCalorieCount(formValues.productName))
 
-              console.log(formValues.calorie)
+              dispatch(getCalorieCount(formValues.productName))
+              dispatch(recipeCard(formValues))
 
               resetForm()
-              console.log(formValues)
             }}
           >
             <Form>
@@ -150,7 +161,7 @@ const CalorieCount = (props) => {
               />
               <ButtonOptions
                 type="submit"
-                /* handleClick={handleSubmitForm}*/
+                handleClick={(handleSubmitForm, console.log('Privet'))}
                 textInsideButton={'Add product'}
               />
             </Form>
@@ -183,7 +194,7 @@ const CalorieCount = (props) => {
                 <ButtonOptions
                   type="button"
                   textInsideButton="Clean"
-                  handleClick={handleClean}
+                  /* handleClick={handleClean}*/
                 />
 
                 <ButtonOptions
@@ -199,13 +210,13 @@ const CalorieCount = (props) => {
           </div>
 
           <TableList
-            listOfProduct={listOfProduct}
-            handleRemoveClick={handleRemoveClick}
-            handleEditClick={handleEditClick}
-            handleEditClick={handleCalorieValue}
+            listOfProduct={products}
+            getcalory={getCalorie}
+            /* handleRemoveClick={handleRemoveClick}
+            handleEditClick={handleEditClick}*/
           />
         </div>
-        <button onClick={handleSaveRecipe}>Save</button>
+        {/* <button onClick={handleSaveRecipe}>Save</button>*/}
         <div>{calorValue}</div>
       </main>
     </StyledCalorieCount>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 
@@ -25,6 +26,9 @@ const StyledTable = styled.div`
 `
 
 const TableList = (props) => {
+  const getCalorie = useSelector((state) => state.productCardReducer.calorie)
+
+  let cal = getCalorie
   return (
     <StyledTable>
       <table>
@@ -44,9 +48,9 @@ const TableList = (props) => {
               <td>{index + 1}</td>
               <td>{product.productName}</td>
               <td>{product.Weigth} g</td>
-              <td>
-                {product.Weigth}*{}
-              </td>
+
+              <td>{cal}</td>
+
               <td>
                 <ButtonOptions
                   textInsideButton="Edit"

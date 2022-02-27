@@ -7,7 +7,7 @@ import {
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
-  calorie: '',
+  calorie: null,
   productCardReducer: null,
   isEdited: false,
 }
@@ -18,8 +18,10 @@ const productCardReducer = createReducer(initialState, (builder) => {
       if (!state.productCardReducer) state.productCardReducer = []
       state.productCardReducer.push(action.payload)
     })
-    .addCase(getCalorieCount, (state, action) => {
-      state.calorie = action.payload
+
+    .addCase(getCalorieCount.fulfilled, (state, action) => {
+      if (!state.calorie) state.calorie = []
+      state.calorie.push(action.payload)
     })
     .addMatcher(
       (action) => {
