@@ -3,7 +3,7 @@ import { recipesSelector } from 'store/selectors/recipesSelector'
 import ButtonOptions from '../ButtonOptions'
 import styled from 'styled-components'
 import axios from 'axios'
-
+import { userLoggedIn } from 'store/actions/userAction'
 import { useSelector } from 'react-redux'
 const StyledCard = styled.div`
   width: 70%;
@@ -37,27 +37,33 @@ const StyledCard = styled.div`
 /* <button onClick={() => {props.deleteCard()}}>delete</button>*/
 const Card = (props) => {
   const isEdit = useSelector((state) => state.productCardReducer.isEdited)
-
+  const userID = useSelector((state) => state.userReducer)
+  const [recipeName, setRecipeName] = useState('')
   const [lest, setList] = useState(props.cardText)
 
-  console.log(isEdit)
+  const name = recipeName
+
+  const Recipes = {
+    name: name,
+    products: [...lest],
+    userid: userID.id,
+  }
 
   useEffect(() => {
-    return () => {
-      if (isEdit) {
-        axios
-          .post(
-            'http://localhost:3000/recipes',
-            
-            [...lest]
-          )
-          .then(function (response) {})
-          .catch(function (error) {})
-      }
-    }
+    return () => {}
   })
 
   const handleSaveOnServer = () => {
+    if (isEdit) {
+      axios
+        .post(
+          /*`http://localhost:3000/recipes/:${userID.id}`*/
+          'http://localhost:3000/recipes',
+          { Recipes }
+        )
+        .then(function (response) {})
+        .catch(function (error) {})
+    }
     {
       props.setModal(false)
     }
@@ -65,11 +71,13 @@ const Card = (props) => {
 
   return (
     <StyledCard>
-      {/* <div className={'cardHeader'}>
-        {lest.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </div>*/}
+      <input
+        placeholder="Write the recipe name"
+        onChange={(e) => {
+          setRecipeName(e.target.value)
+        }}
+        value={recipeName}
+      />
 
       <div className={'cardFooter'}>
         <ButtonOptions

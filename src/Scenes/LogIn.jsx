@@ -82,7 +82,6 @@ const LogIn = (props) => {
                 password: password,
               })
                 .then((response) => {
-                  console.log(response.data)
                   dispatch(
                     userLoggedIn({
                       userName: response.data.user.userName,
@@ -91,6 +90,7 @@ const LogIn = (props) => {
                       userHeigth: response.data.user.userHeigth,
                       userWeigth: response.data.user.userWeigth,
                       userGoaldWeigth: response.data.user.userGoaldWeigth,
+                      id: response.data.user.id,
                       userRoles: ['regularUser'],
                       isLoggedIn: response.data.accessToken,
                     })

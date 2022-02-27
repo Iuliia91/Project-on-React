@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import ButtonOptions from 'Components/ButtonOptions'
 import { useDispatch } from 'react-redux'
 import { userLoggedIn, userLoggedOut } from '../store/actions/userAction'
+import { Formik } from 'formik'
 const StyledRegistrationHolder = styled.div`
   width: 100%;
   height: 100%;
@@ -52,11 +53,11 @@ const initialData = {
   email: '',
   password: '',
 }
+
 const Registration = () => {
   const [userInfromation, setUserInformation] = useState(initialData)
   const [isLogin, setIsLogin] = useState(false)
   const dispatch = useDispatch()
-  console.log(userInfromation)
 
   const isFilledFields =
     userInfromation.userName &&
@@ -185,7 +186,6 @@ const Registration = () => {
               userGoaldWeigth: userInfromation.userGoaldWeigth,
             })
               .then((response) => {
-                console.log(response)
                 dispatch(
                   userLoggedIn({
                     userName: userInfromation.userName,
@@ -193,6 +193,7 @@ const Registration = () => {
                     userHeigth: userInfromation.userHeigth,
                     userWeigth: userInfromation.userWeigth,
                     userGoaldWeigth: userInfromation.userGoaldWeigth,
+                    id: response.data.user.id,
                     isLoggedIn: response.data.accessToken,
                   })
                 )

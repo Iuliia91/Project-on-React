@@ -54,20 +54,72 @@
       "userWeigth": "2",
       "userGoaldWeigth": "3",
       "id": 6
+    },
+    {
+      "email": "iuliia91@gmail.com",
+      "password": "$2a$10$.aYitFZ7.FbVmScw/jOEbu8u/1jGTGLuH9jjewasG4Hln1nX2hs/K",
+      "userName": "Anna",
+      "Gender": "Female",
+      "userHeigth": "100",
+      "userWeigth": "45",
+      "userGoaldWeigth": "60",
+      "id": 7
+    },
+    {
+      "email": "mnbvcxz@gmail.com",
+      "password": "$2a$10$SHp8pT6.iq2wJbZShJUq6uLJh2YqEZ5VRpMKHqKjdS5lnt0g2U6N.",
+      "userName": "Petja",
+      "Gender": "Male",
+      "userHeigth": "2",
+      "userWeigth": "160",
+      "userGoaldWeigth": "90",
+      "id": 8
+    },
+    {
+      "email": "1234567@gmail.com",
+      "password": "$2a$10$VXgNoLtPXrr0aZwbNQeP0eflAwidcbUWy2RT6a.R9q8KCMiJYvz8G",
+      "userName": "Sasha",
+      "Gender": "Male",
+      "userHeigth": "190",
+      "userWeigth": "100",
+      "userGoaldWeigth": "80",
+      "id": 9
+    },
+    {
+      "email": "Dmitri@gmail.com",
+      "password": "$2a$10$khPIlPsaczbb/QqnxxL8nOtq/FiVy1rq25czam/YVrwhWtuy8NZf2",
+      "userName": "Dmitri",
+      "Gender": "Male",
+      "userHeigth": "174",
+      "userWeigth": "85",
+      "userGoaldWeigth": "75",
+      "id": 10
+    },
+    {
+      "email": "Stas@gmail.com",
+      "password": "$2a$10$YcZRrbX/bSiM7f8WIlXAIujpK31CfJTQAWa8Jzf4m8.oGul9a/X0C",
+      "userName": "Stast",
+      "Gender": "Male",
+      "userHeigth": "178",
+      "userWeigth": "78",
+      "userGoaldWeigth": "60",
+      "id": 11
     }
   ],
   "recipes": [
-    [
-      {
-        "productName": "111111",
-        "Weigth": "222222"
-      }
-    ],
-    [
-      {
-        "productName": "2000000",
-        "Weigth": "200000"
+    {
+      "Recipes": {
+        "name": "",
+        "products": [
+          {
+            "productName": "111",
+            "Weigth": "111",
+            "calorie": ""
+          }
+        ],
+        "userid": 3
       },
+<<<<<<< HEAD
       {
         "productName": "3333333333",
         "Weigth": "3333333333"
@@ -103,6 +155,10 @@
         "Weigth": "444444444"
       }
     ]
+=======
+      "id": 1
+    }
+>>>>>>> 97bf36d919ef34d25ad822b513e73eec35a4ecf5
   ],
   "phase": [
     {

@@ -21,7 +21,6 @@ const ListOfProducts = (props) => {
             axios
               .request(options)
               .then((response) => {
-                console.log(response.data)
                 /*dispatch(recipeCard(response.data))*/
               })
               .catch((error) => console.log(error))
