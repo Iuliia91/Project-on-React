@@ -75,7 +75,7 @@ const CalorieCount = (props) => {
         setListOfProduct((prevetState) => [...prevetState, products])
       }
     }
-    console.log(products, inputDate)
+
     /* if (isFilledFields) {
       if (editProductDate.isEdit) {
         const editedproduct = listOfProduct
@@ -211,7 +211,7 @@ const CalorieCount = (props) => {
 
           <TableList
             listOfProduct={products}
-            getcalory={getCalorie}
+            getcalory={products}
             /* handleRemoveClick={handleRemoveClick}
             handleEditClick={handleEditClick}*/
           />
