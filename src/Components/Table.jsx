@@ -27,7 +27,7 @@ const StyledTable = styled.div`
 
 const TableList = (props) => {
   const getCalorie = useSelector((state) => state.productCardReducer.calorie)
-
+  console.log(getCalorie)
   let cal = getCalorie
   return (
     <StyledTable>

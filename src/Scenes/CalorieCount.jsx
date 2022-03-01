@@ -54,9 +54,9 @@ const CalorieCount = (props) => {
       listOfProduct.filter((product, productIndex) => productIndex !== index)
     )
   }*/
-  console.log(listOfProductState)
+
   const isFilledFields = inputDate.productName && inputDate.Weigth
-  console.log()
+
   const handleSubmitForm = (e) => {
     e.preventDefault(listOfProductState)
     if (isFilledFields) {
@@ -71,27 +71,9 @@ const CalorieCount = (props) => {
           productIndex: null,
         })
       } else {
-        /* setListOfProduct((prevetState) => [...prevetState, products])*/
         setListOfProduct((prevetState) => [...prevetState, products])
       }
     }
-
-    /* if (isFilledFields) {
-      if (editProductDate.isEdit) {
-        const editedproduct = listOfProduct
-        editedproduct.splice(editProductDate.productIndex, 1, inputDate)
-        setListOfProduct(editedproduct)
-
-        setEditProductDate({
-          isEdit: false,
-          productIndex: null,
-        })
-      } else {
-        setListOfProduct((prevetState) => [...prevetState, inputDate])
-      }
-      console.log(listOfProductState)
-      setInputDate(listOfInputValue)
-    }*/
   }
 
   /* let list = []
@@ -159,6 +141,8 @@ const CalorieCount = (props) => {
                 name="Weigth"
                 placeholder="Write the weigth of product"
               />
+              <ButtonOptions type="reset" textInsideButton="Reset" />
+
               <ButtonOptions
                 type="submit"
                 handleClick={(handleSubmitForm, console.log('Privet'))}
@@ -169,34 +153,7 @@ const CalorieCount = (props) => {
 
           <div>
             <form onSubmit={handleSubmitForm}>
-              <input
-                placeholder="Write the product name"
-                onChange={(e) => {
-                  setInputDate((prevState) => ({
-                    ...prevState,
-                    productName: e.target.value,
-                  }))
-                }}
-                value={inputDate.productName}
-              />
-
-              <input
-                placeholder="Write the weigth of product"
-                onChange={(e) =>
-                  setInputDate((prevState) => ({
-                    ...prevState,
-                    Weigth: e.target.value,
-                  }))
-                }
-                value={inputDate.Weigth}
-              />
               <div className="buttons">
-                <ButtonOptions
-                  type="button"
-                  textInsideButton="Clean"
-                  /* handleClick={handleClean}*/
-                />
-
                 <ButtonOptions
                   type="submit"
                   handleClick={handleSubmitForm}
