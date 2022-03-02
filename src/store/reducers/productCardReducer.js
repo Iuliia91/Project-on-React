@@ -7,7 +7,8 @@ import {
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
-  calorie: null,
+  calorie: [],
+
   productCardReducer: null,
   isEdited: false,
 }

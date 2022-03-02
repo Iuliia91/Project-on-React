@@ -36,15 +36,17 @@ const listOfInputValue = {
 const CalorieCount = (props) => {
   const setModalContext = useContext(ModalContext)
   const dispatch = useDispatch()
+  const [calorie, setCalorie] = useState([])
   const [inputDate, setInputDate] = useState(listOfInputValue)
   const [listOfProduct, setListOfProduct] = useState([])
 
-  const [calorValue, setCalorValue] = useState()
+  const [calorValue, setCalorValue] = useState([])
   const [editProductDate, setEditProductDate] = useState({
     isEdit: false,
     productIndex: null,
   })
 
+  const getCalorie = useSelector((state) => state.productCardReducer.calorie)
   const listOfProductState = useSelector(
     (state) => state.productCardReducer.productCardReducer
   )
@@ -59,11 +61,11 @@ const CalorieCount = (props) => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault(listOfProductState)
-    if (isFilledFields) {
+    /* if (isFilledFields) {
       if (editProductDate.isEdit) {
         const editedproduct = listOfProductState
         const [products, setProducts] = useState([])
-        editedproduct.splice(editProductDate.productIndex, 1, products)
+        /* editedproduct.splice(editProductDate.productIndex, 1, products)
         setListOfProduct(editedproduct)
 
         setEditProductDate({
@@ -73,9 +75,9 @@ const CalorieCount = (props) => {
       } else {
         setListOfProduct((prevetState) => [...prevetState, products])
       }
-    }
+    }*/
   }
-
+  console.log(products)
   /* let list = []
   const handleClean = () => {
     return setInputDate(listOfInputValue)
@@ -110,7 +112,7 @@ const CalorieCount = (props) => {
       <main className="main">
         <div className="main__content">
           <Formik
-            initialValues={{ productName: '', Weigth: '' }}
+            initialValues={{ productName: '', Weigth: '', calorie: '' }}
             validate={(formValues) => {
               const errorObj = {}
               let isValid = true
@@ -125,8 +127,15 @@ const CalorieCount = (props) => {
             }}
             onSubmit={(formValues, { resetForm }) => {
               setProducts((prevState) => [...prevState, formValues])
+              /*  setCalorie((prevState) => [
+                ...prevState,
+                dispatch(getCalorieCount(formValues.productName)),
+              ])*/
 
-              dispatch(getCalorieCount(formValues.productName))
+              setCalorie(dispatch(getCalorieCount(formValues.productName)))
+
+              /* dispatch(getCalorieCount(formValues.productName))*/
+
               dispatch(recipeCard(formValues))
 
               resetForm()
@@ -145,7 +154,7 @@ const CalorieCount = (props) => {
 
               <ButtonOptions
                 type="submit"
-                handleClick={(handleSubmitForm, console.log('Privet'))}
+                /* handleClick={(handleSubmitForm, console.log('Privet'))}*/
                 textInsideButton={'Add product'}
               />
             </Form>
@@ -157,10 +166,7 @@ const CalorieCount = (props) => {
                 <ButtonOptions
                   type="submit"
                   handleClick={handleSubmitForm}
-                  textInsideButton={
-                    editProductDate.isEdit ? 'Edit' : 'Add product'
-                  }
-                  disabled={!isFilledFields}
+                  textInsideButton="Add product"
                 />
               </div>
             </form>
@@ -168,13 +174,13 @@ const CalorieCount = (props) => {
 
           <TableList
             listOfProduct={products}
-            getcalory={products}
+            getCalorie={calorie}
+
             /* handleRemoveClick={handleRemoveClick}
             handleEditClick={handleEditClick}*/
           />
         </div>
         {/* <button onClick={handleSaveRecipe}>Save</button>*/}
-        <div>{calorValue}</div>
       </main>
     </StyledCalorieCount>
   )

@@ -5,7 +5,9 @@ import { userLoggedIn, userLoggedOut } from '../store/actions/userAction'
 import { useDispatch } from 'react-redux'
 import { globalApiAction } from '../store/selectors/globalApiSelector'
 import { useSelector } from 'react-redux'
-import { Formik, Form } from 'formik'
+import ButtonOptions from 'Components/ButtonOptions'
+import FormikInput from 'Components/formikFields/FormikFields'
+import { Formik, Form, Field, useFormik } from 'formik'
 const StyledLoginHolder = styled.div`
   width: 100%;
   height: 100%;
@@ -54,57 +56,57 @@ const LogIn = (props) => {
   const [email, setEmail] = useState('ulapru@gmail.com')
   const [password, setPassword] = useState('Zxcvbnm')
   const dispatch = useDispatch()
-
+  const handleSubmitForm = () => {}
   return (
     <StyledLoginHolder>
       <div className={'loginCard'}>
         <div className={'cardHeader'}>Login</div>
-        <div className={'cardBody'}>
-          <input
-            onChange={(e) => {
-              setEmail(e.target.value)
-            }}
-            value={email}
-            placeholder={'Email'}
-          />
-          <input
-            onChange={(e) => {
-              setPassword(e.target.value)
-            }}
-            value={password}
-            placeholder={'Password'}
-          />
-        </div>
-        <div className={'cardFooter'}>
-          <button
-            onClick={() => {
-              Server.post('/login', {
-                email: email,
-                password: password,
+
+        <Formik
+          initialValues={{ email: 'ulapru@gmail.com', password: 'Zxcvbnm' }}
+          validate={(formValues) => {
+            const errorObj = {}
+            let isValid = true
+            const formFields = formValues.email && formValues.password
+            if (!formFields) {
+              isValid = false
+              errorObj.email = 'Field the fields'
+              errorObj.password = 'Field the fields'
+            }
+
+            return errorObj
+          }}
+          onSubmit={(formValues) => {
+            Server.post('/login', {
+              email: formValues.email,
+              password: formValues.password,
+            })
+              .then((response) => {
+                dispatch(
+                  userLoggedIn({
+                    userName: response.data.user.userName,
+                    email: response.data.user.email,
+                    Gender: response.data.user.Gender,
+                    userHeigth: response.data.user.userHeigth,
+                    userWeigth: response.data.user.userWeigth,
+                    userGoaldWeigth: response.data.user.userGoaldWeigth,
+                    id: response.data.user.id,
+                    userRoles: ['regularUser'],
+                    isLoggedIn: response.data.accessToken,
+                  })
+                )
               })
-                .then((response) => {
-                  dispatch(
-                    userLoggedIn({
-                      userName: response.data.user.userName,
-                      email: response.data.user.email,
-                      Gender: response.data.user.Gender,
-                      userHeigth: response.data.user.userHeigth,
-                      userWeigth: response.data.user.userWeigth,
-                      userGoaldWeigth: response.data.user.userGoaldWeigth,
-                      id: response.data.user.id,
-                      userRoles: ['regularUser'],
-                      isLoggedIn: response.data.accessToken,
-                    })
-                  )
-                })
-                .catch((error) => {
-                  console.log('appi call catch', error)
-                })
-            }}
-          >
-            Login
-          </button>
-        </div>
+              .catch((error) => {
+                console.log('appi call catch', error)
+              })
+          }}
+        >
+          <Form>
+            <FormikInput name="email" placeholder="email" />
+            <FormikInput name="password" placeholder="password" />
+            <ButtonOptions type="submit" textInsideButton={'Login'} />
+          </Form>
+        </Formik>
       </div>
     </StyledLoginHolder>
   )

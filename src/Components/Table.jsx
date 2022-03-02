@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 const StyledTable = styled.div`
   table {
@@ -26,9 +28,14 @@ const StyledTable = styled.div`
 `
 
 const TableList = (props) => {
+  const [value, setValue] = useState('')
   const getCalorie = useSelector((state) => state.productCardReducer.calorie)
-  console.log(getCalorie)
-  let cal = getCalorie
+
+  useEffect(() => {
+    setValue(getCalorie)
+  })
+
+  console.log(value)
   return (
     <StyledTable>
       <table>
@@ -48,8 +55,13 @@ const TableList = (props) => {
               <td>{index + 1}</td>
               <td>{product.productName}</td>
               <td>{product.Weigth} g</td>
+              {value.map((item) => (
+                <td>{item.calori}</td>
+              ))}
 
-              <td>{cal}</td>
+              {/*{props.getCalorie.slice((value, index) => (
+                <td>{value}</td>
+              ))}*/}
 
               <td>
                 <ButtonOptions

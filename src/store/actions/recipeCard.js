@@ -9,7 +9,7 @@ export const getCalorieCount = createAsyncThunk(
   'getCalorus',
 
   async (productItem) => {
-    /* const options = {
+    const options = {
       method: 'GET',
       url: 'https://food-nutrition-information.p.rapidapi.com/foods/search',
       params: {
@@ -21,7 +21,7 @@ export const getCalorieCount = createAsyncThunk(
       },
     }
     const response = await axios.request(options)
-    /*response.data.foods[0].foodNutrients[3].value*/
-    return [40, 20, 30]
+
+    return { calori: response.data.foods[0].foodNutrients[3].value }
   }
 )
