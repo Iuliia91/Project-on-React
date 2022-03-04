@@ -4,6 +4,7 @@ import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import Spinner from './Spinner/Spinner'
 
 const StyledTable = styled.div`
   table {
@@ -25,74 +26,75 @@ const StyledTable = styled.div`
     background: #f5d7bf;
     padding: 10px;
   }
+  .pending {
+    background-color: pink;
+    width: 100%;
+    heigth: 100%;
+  }
 `
+const TableElement = () => {
+  const listOfProduct = useSelector(
+    (state) => state.productCardReducer.listOfProduct
+  )
 
-const TableList = (props) => {
-  const [value, setValue] = useState('')
-  const getCalorie = useSelector((state) => state.productCardReducer.calorie)
-
-  useEffect(() => {
-    setValue(getCalorie)
-  })
-
-  console.log(value)
   return (
-    <StyledTable>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Product</th>
-            <th>Weigth</th>
-            <th>Calories</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product</th>
+          <th>Weigth</th>
+          <th>Calories</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          {props.listOfProduct.map((product, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{product.productName}</td>
-              <td>{product.Weigth} g</td>
-              {value.map((item) => (
-                <td>{item.calori}</td>
-              ))}
-
-              {/*{props.getCalorie.slice((value, index) => (
-                <td>{value}</td>
-              ))}*/}
-
-              <td>
-                <ButtonOptions
-                  textInsideButton="Edit"
-                  type="button"
-                  handleClick={() => {
-                    props.handleEditClick(product, index)
-                  }}
-                />
-
-                <ButtonOptions
-                  textInsideButton="Delete"
-                  type="button"
-                  handleClick={() => {
-                    props.handleRemoveClick(index)
-                  }}
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          <tr>
+      <tbody>
+        {listOfProduct.map((product, index) => (
+          <tr key={index}>
+            <td>{index + 1}</td>
+            <td>{product.productName}</td>
+            <td>{product.Weigth} g</td>
+            <td>{product.calorie}</td>
             <td>
-              <div>
-                <p>Total{props.listOfProduct.length} </p>
-              </div>
+              <ButtonOptions
+                textInsideButton="Edit"
+                type="button"
+                handleClick={() => {
+                  props.handleEditClick(product, index)
+                }}
+              />
+
+              <ButtonOptions
+                textInsideButton="Delete"
+                type="button"
+                handleClick={() => {
+                  props.handleRemoveClick(index)
+                }}
+              />
             </td>
           </tr>
-        </tfoot>
-      </table>
+        ))}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>
+            <div>
+              <p>Total{listOfProduct.length} </p>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  )
+}
+
+const TableList = (props) => {
+  const loading = useSelector((state) => state.productCardReducer.loading)
+  return (
+    <StyledTable>
+      <div>{loading === 'pending' && <Spinner />}</div>
+      <div>{loading === 'fulfilled' && <TableElement />}</div>
     </StyledTable>
   )
 }

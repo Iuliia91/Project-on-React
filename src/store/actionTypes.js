@@ -1,5 +1,5 @@
 export const CARD_LIST_ACTIONS = {
-  add: 'addCard',
+  add: 'addProduct',
   list: 'addRecipe',
   calorie: 'getCalorie',
 }

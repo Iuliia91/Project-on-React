@@ -2,26 +2,24 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { CARD_LIST_ACTIONS } from 'store/actionTypes'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
+import apiRequest from 'api/ApiInstance'
 
 export const recipeCard = createAction(CARD_LIST_ACTIONS.list)
 
-export const getCalorieCount = createAsyncThunk(
-  'getCalorus',
+export const addProduct = createAsyncThunk(
+  CARD_LIST_ACTIONS.add,
 
   async (productItem) => {
     const options = {
-      method: 'GET',
-      url: 'https://food-nutrition-information.p.rapidapi.com/foods/search',
       params: {
-        query: `${productItem}`,
-      },
-      headers: {
-        'x-rapidapi-host': 'food-nutrition-information.p.rapidapi.com',
-        'x-rapidapi-key': 'd891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12',
+        query: `${productItem.productName}`,
       },
     }
-    const response = await axios.request(options)
+    const response = await apiRequest.request('/foods/search', options)
 
-    return { calori: response.data.foods[0].foodNutrients[3].value }
+    return {
+      ...productItem,
+      calorie: response.data.foods[0].foodNutrients[3].value,
+    }
   }
 )

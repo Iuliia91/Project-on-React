@@ -14,25 +14,30 @@ const StyledFormikInput = styled.div`
     border-radius: 20px;
   }
   input:: placeholder {
-    color: ${(props) => (props.error ? 'red' : 'grey')};
+    color: grey;
+  }
+
+  .errorMessagerHolder {
+    color: red;
   }
 `
 const FormikInput = (props) => {
   const [field, meta, helpers] = useField(props.name)
 
   return (
-    <StyledFormikInput error={meta.error}>
+    <StyledFormikInput error={meta.error && meta.touched}>
       <input
         onChange={field.onChange}
         onBlur={field.onBlur}
         name={props.name}
+        type={props.type}
         value={field.value}
         inputcolor="blue"
-        placeholder={
-          meta.error && meta.touched ? meta.error : props.placeholder
-        }
+        placeholder={props.placeholder}
       />
-      {meta.error && meta.touched}
+      {meta.error && meta.touched && (
+        <div className="errorMessagerHolder">{meta.error}</div>
+      )}
     </StyledFormikInput>
   )
 }

@@ -2,15 +2,16 @@ import { CARD_LIST_ACTIONS } from 'store/actionTypes'
 import {
   recipeCard,
   addProductToTable,
+  addProduct,
   getCalorieCount,
 } from 'store/actions/recipeCard'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
-  calorie: [],
-
-  productCardReducer: null,
+  calorie: '',
+  listOfProduct: [],
   isEdited: false,
+  loading: 'loading',
 }
 
 const productCardReducer = createReducer(initialState, (builder) => {
@@ -20,7 +21,15 @@ const productCardReducer = createReducer(initialState, (builder) => {
       state.productCardReducer.push(action.payload)
     })
 
-    .addCase(getCalorieCount.fulfilled, (state, action) => {
+    .addCase(addProduct.pending, (state, action) => {
+      state.loading = 'pending'
+      console.log('pending')
+    })
+    .addCase(addProduct.fulfilled, (state, action) => {
+      state.loading = 'fulfilled'
+      state.listOfProduct.push(action.payload)
+    })
+    .addCase(addProduct.rejected, (state, action) => {
       if (!state.calorie) state.calorie = []
       state.calorie.push(action.payload)
     })

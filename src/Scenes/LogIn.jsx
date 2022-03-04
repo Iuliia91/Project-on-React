@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { globalApiAction } from '../store/selectors/globalApiSelector'
 import { useSelector } from 'react-redux'
 import ButtonOptions from 'Components/ButtonOptions'
-import FormikInput from 'Components/formikFields/FormikFields'
+import FormikInput from 'Components/formikFields/FormikInput'
 import { Formik, Form, Field, useFormik } from 'formik'
 const StyledLoginHolder = styled.div`
   width: 100%;

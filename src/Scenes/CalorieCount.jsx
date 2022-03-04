@@ -1,14 +1,18 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
-import { getProductCalorie } from 'store/actions/recipeCard'
+
 import { useSelector, useDispatch } from 'react-redux'
-import Card from 'Components/Card/Card'
-import { recipeCard, getCalorieCount } from 'store/actions/recipeCard'
+
+import {
+  recipeCard,
+  getCalorieCount,
+  addProduct,
+} from 'store/actions/recipeCard'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import ButtonOptions from 'Components/ButtonOptions'
 import TableList from 'Components/Table'
 import axios from 'axios'
-import FormikInput from 'Components/formikFields/FormikFields'
+import FormikInput from 'Components/formikFields/FormikInput'
 import { Formik, Form, Field, useFormik } from 'formik'
 const StyledCalorieCount = styled.div`
   .main {
@@ -34,50 +38,11 @@ const listOfInputValue = {
 }
 
 const CalorieCount = (props) => {
-  const setModalContext = useContext(ModalContext)
   const dispatch = useDispatch()
-  const [calorie, setCalorie] = useState([])
-  const [inputDate, setInputDate] = useState(listOfInputValue)
-  const [listOfProduct, setListOfProduct] = useState([])
-
-  const [calorValue, setCalorValue] = useState([])
-  const [editProductDate, setEditProductDate] = useState({
-    isEdit: false,
-    productIndex: null,
-  })
-
-  const getCalorie = useSelector((state) => state.productCardReducer.calorie)
   const listOfProductState = useSelector(
-    (state) => state.productCardReducer.productCardReducer
+    (state) => state.productCardReducer.listOfProduct
   )
-  const [products, setProducts] = useState([])
-  /*  const handleRemoveClick = (index) => {
-    setListOfProduct(
-      listOfProduct.filter((product, productIndex) => productIndex !== index)
-    )
-  }*/
 
-  const isFilledFields = inputDate.productName && inputDate.Weigth
-
-  const handleSubmitForm = (e) => {
-    e.preventDefault(listOfProductState)
-    /* if (isFilledFields) {
-      if (editProductDate.isEdit) {
-        const editedproduct = listOfProductState
-        const [products, setProducts] = useState([])
-        /* editedproduct.splice(editProductDate.productIndex, 1, products)
-        setListOfProduct(editedproduct)
-
-        setEditProductDate({
-          isEdit: false,
-          productIndex: null,
-        })
-      } else {
-        setListOfProduct((prevetState) => [...prevetState, products])
-      }
-    }*/
-  }
-  console.log(products)
   /* let list = []
   const handleClean = () => {
     return setInputDate(listOfInputValue)
@@ -95,17 +60,6 @@ const CalorieCount = (props) => {
     method: 'GET',
     url: 'http://localhost:3000/recipes?userid=3',
   }*/
-  const handleCalorieValue = () => {
-    /*listOfProduct.map((product) => list.push(product))*/
-  }
-
-  /* const handleSaveRecipe = () => {
-    dispatch(recipeCard(listOfProduct))
-    setListOfProduct([])
-    setModalContext(
-      <Card cardText={listOfProduct} setModal={setModalContext} />
-    )
-  }*/
 
   return (
     <StyledCalorieCount>
@@ -117,33 +71,27 @@ const CalorieCount = (props) => {
               const errorObj = {}
               let isValid = true
               const formFields = formValues.productName && formValues.Weigth
-              if (!formFields) {
+              if (!formValues.productName) {
                 isValid = false
-                errorObj.productName = 'Field the fields'
-                errorObj.Weigth = 'Field the fields'
+                errorObj.productName = 'Fill the fields'
+              } else if (!formValues.Weigth) {
+                errorObj.Weigth = 'Fill the fields'
+              } else if (!formValues.Weigth.replace(/\D+/g, '')) {
+                errorObj.Weigth = 'Write the number'
               }
 
               return errorObj
             }}
             onSubmit={(formValues, { resetForm }) => {
-              setProducts((prevState) => [...prevState, formValues])
-              /*  setCalorie((prevState) => [
-                ...prevState,
-                dispatch(getCalorieCount(formValues.productName)),
-              ])*/
-
-              setCalorie(dispatch(getCalorieCount(formValues.productName)))
-
-              /* dispatch(getCalorieCount(formValues.productName))*/
-
-              dispatch(recipeCard(formValues))
-
-              resetForm()
+              dispatch(addProduct(formValues)).then(() => {
+                resetForm()
+              })
             }}
           >
             <Form>
               <FormikInput
                 name="productName"
+                type="text"
                 placeholder="Write the product name"
               />
               <FormikInput
@@ -152,35 +100,15 @@ const CalorieCount = (props) => {
               />
               <ButtonOptions type="reset" textInsideButton="Reset" />
 
-              <ButtonOptions
-                type="submit"
-                /* handleClick={(handleSubmitForm, console.log('Privet'))}*/
-                textInsideButton={'Add product'}
-              />
+              <ButtonOptions type="submit" textInsideButton={'Add product'} />
             </Form>
           </Formik>
 
-          <div>
-            <form onSubmit={handleSubmitForm}>
-              <div className="buttons">
-                <ButtonOptions
-                  type="submit"
-                  handleClick={handleSubmitForm}
-                  textInsideButton="Add product"
-                />
-              </div>
-            </form>
-          </div>
-
           <TableList
-            listOfProduct={products}
-            getCalorie={calorie}
-
-            /* handleRemoveClick={handleRemoveClick}
+          /* handleRemoveClick={handleRemoveClick}
             handleEditClick={handleEditClick}*/
           />
         </div>
-        {/* <button onClick={handleSaveRecipe}>Save</button>*/}
       </main>
     </StyledCalorieCount>
   )

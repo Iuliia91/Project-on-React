@@ -1,9 +1,12 @@
 import axios from 'axios'
 
-const ApiRequest = axios.create({
-  baseURL:
-    'https://api.spoonacular.com/food/ingredients/9266/information?amount=1',
-  timeout: 1000,
+const apiRequest = axios.create({
+  baseURL: 'https://food-nutrition-information.p.rapidapi.com',
+  headers: {
+    'x-rapidapi-host': 'food-nutrition-information.p.rapidapi.com',
+    'x-rapidapi-key': 'd891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12',
+  },
+  timeout: 3000,
 })
 
-export default ApiRequest
+export default apiRequest
