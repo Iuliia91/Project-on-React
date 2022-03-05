@@ -15,11 +15,13 @@ export const addProduct = createAsyncThunk(
         query: `${productItem.productName}`,
       },
     }
-    const response = await apiRequest.request('/foods/search', options)
-
-    return {
+    /* const response = await apiRequest.request('/foods/search', options)
+    {
       ...productItem,
       calorie: response.data.foods[0].foodNutrients[3].value,
-    }
+    }*/
+    return { productName: 'carrot', Weigth: '200', calorie: '65' }
   }
 )
+
+export const deleteItem = createAction('deleteItem')

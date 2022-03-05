@@ -3,12 +3,11 @@ import {
   recipeCard,
   addProductToTable,
   addProduct,
-  getCalorieCount,
+  deleteItem,
 } from 'store/actions/recipeCard'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
-  calorie: '',
   listOfProduct: [],
   isEdited: false,
   loading: 'loading',
@@ -29,9 +28,14 @@ const productCardReducer = createReducer(initialState, (builder) => {
       state.loading = 'fulfilled'
       state.listOfProduct.push(action.payload)
     })
-    .addCase(addProduct.rejected, (state, action) => {
-      if (!state.calorie) state.calorie = []
-      state.calorie.push(action.payload)
+    .addCase(addProduct.rejected, (state, action) => {})
+    .addCase(deleteItem, (state, action) => {
+      console.log(action.payload)
+      const newlistofProduct = [...state.listOfProduct]
+      newlistofProduct.splice(action.payload, 1)
+
+      state.listOfProduct = newlistofProduct
+      console.log(state.listOfProduct)
     })
     .addMatcher(
       (action) => {

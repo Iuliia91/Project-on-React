@@ -1,11 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Spinner from './Spinner/Spinner'
 
+import { deleteItem } from 'store/actions/recipeCard'
 const StyledTable = styled.div`
   table {
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', Sans-Serif;
@@ -32,10 +33,16 @@ const StyledTable = styled.div`
     heigth: 100%;
   }
 `
-const TableElement = () => {
+const TableElement = (props) => {
+  const dispatch = useDispatch()
   const listOfProduct = useSelector(
     (state) => state.productCardReducer.listOfProduct
   )
+
+  const handleRemoveItem = (index) => {
+    console.log(index)
+    dispatch(deleteItem(index))
+  }
 
   return (
     <table>
@@ -57,19 +64,20 @@ const TableElement = () => {
             <td>{product.Weigth} g</td>
             <td>{product.calorie}</td>
             <td>
-              <ButtonOptions
+              {/*  <ButtonOptions
                 textInsideButton="Edit"
                 type="button"
                 handleClick={() => {
+                  console.log(product, index)
                   props.handleEditClick(product, index)
                 }}
-              />
+              />*/}
 
               <ButtonOptions
                 textInsideButton="Delete"
                 type="button"
                 handleClick={() => {
-                  props.handleRemoveClick(index)
+                  handleRemoveItem(index)
                 }}
               />
             </td>
@@ -83,6 +91,16 @@ const TableElement = () => {
               <p>Total{listOfProduct.length} </p>
             </div>
           </td>
+          <td>
+            <ButtonOptions
+              textInsideButton="Save the recipe"
+              type="button"
+              handleClick={() => {
+                handleRemoveClick
+              }}
+            />
+            <button> </button>
+          </td>
         </tr>
       </tfoot>
     </table>
@@ -94,7 +112,15 @@ const TableList = (props) => {
   return (
     <StyledTable>
       <div>{loading === 'pending' && <Spinner />}</div>
-      <div>{loading === 'fulfilled' && <TableElement />}</div>
+      <div>
+        {loading === 'fulfilled' && (
+          <TableElement
+            handleEditClick={() => {
+              props.handleeditClick
+            }}
+          />
+        )}
+      </div>
     </StyledTable>
   )
 }

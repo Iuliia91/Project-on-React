@@ -31,42 +31,43 @@ const StyledCalorieCount = styled.div`
   }
 `
 
-const listOfInputValue = {
-  productName: '',
-  Weigth: '',
-  calorie: '',
-}
-
 const CalorieCount = (props) => {
   const dispatch = useDispatch()
-  const listOfProductState = useSelector(
+  const [editElement, setEditElement] = useState({
+    productName: '',
+    Weigth: '',
+    calorie: '',
+  })
+  const listOfProduct = useSelector(
     (state) => state.productCardReducer.listOfProduct
   )
 
-  /* let list = []
-  const handleClean = () => {
-    return setInputDate(listOfInputValue)
-  }
-
-  const handleEditClick = (product, index) => {
-    setInputDate(product)
+  const [editProductDate, setEditProductDate] = useState({
+    isEdit: false,
+    productIndex: null,
+  })
+  /* const handleEditClick = (product, index) => {
+    const obj = { ...product }
+    console.log(obj)
+    setEditElement(product)
+    
     setEditProductDate({
       isEdit: true,
       productIndex: index,
     })
-  }
+  }*/
 
   /* const options = {
     method: 'GET',
     url: 'http://localhost:3000/recipes?userid=3',
   }*/
-
+  console.log(editElement)
   return (
     <StyledCalorieCount>
       <main className="main">
         <div className="main__content">
           <Formik
-            initialValues={{ productName: '', Weigth: '', calorie: '' }}
+            initialValues={editElement}
             validate={(formValues) => {
               const errorObj = {}
               let isValid = true
@@ -83,6 +84,7 @@ const CalorieCount = (props) => {
               return errorObj
             }}
             onSubmit={(formValues, { resetForm }) => {
+              console.log(formValues)
               dispatch(addProduct(formValues)).then(() => {
                 resetForm()
               })
@@ -105,8 +107,7 @@ const CalorieCount = (props) => {
           </Formik>
 
           <TableList
-          /* handleRemoveClick={handleRemoveClick}
-            handleEditClick={handleEditClick}*/
+          /*handleEditClick={handleEditClick}*/
           />
         </div>
       </main>

@@ -9,6 +9,7 @@ const CommonReducer = combineReducers({
   userReducer,
   productCardReducer,
   textReducer,
+
   globalApiStateReducer,
 })
 
