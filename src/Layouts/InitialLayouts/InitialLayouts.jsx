@@ -46,10 +46,6 @@ const StyledInitialScenes = styled.div`
 `
 
 const InitialLayouts = (props) => {
-  const setModalContext = useContext(ModalContext)
-
-  const textr = useSelector((store) => store.textReducer.textReducer)
-  const dispatch = useDispatch()
   const [nameP, setNameP] = useState('')
 
   const hendleName = (Event) => {
@@ -85,14 +81,6 @@ const InitialLayouts = (props) => {
               />
             </Link>
           </div>
-          <input
-            onChange={hendleName}
-            type="text"
-            placeholder="write the product name"
-            value={nameP}
-          />
-          <div>{textr}</div>
-          <button onClick={() => getName()}>add name</button>
           <p>Помоги своему телу обрести легкость. </p>
           <p>
             Мы разработали крутую программу питания. Ты не будешь чувствовать
@@ -107,18 +95,6 @@ const InitialLayouts = (props) => {
               textInsideButton={'Read more'}
             />
           </Link>
-          <button
-            onClick={() =>
-              axios
-                .request(options)
-                .then(function (response) {})
-                .catch(function (error) {
-                  console.error(error)
-                })
-            }
-          >
-            Get Api
-          </button>
         </div>
       </div>
     </StyledInitialScenes>

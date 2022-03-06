@@ -1,13 +1,14 @@
 import { CARD_LIST_ACTIONS } from 'store/actionTypes'
 import {
   recipeCard,
-  addProductToTable,
+  editItem,
   addProduct,
   deleteItem,
 } from 'store/actions/recipeCard'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
+  product: null,
   listOfProduct: [],
   isEdited: false,
   loading: 'loading',
@@ -30,12 +31,23 @@ const productCardReducer = createReducer(initialState, (builder) => {
     })
     .addCase(addProduct.rejected, (state, action) => {})
     .addCase(deleteItem, (state, action) => {
-      console.log(action.payload)
       const newlistofProduct = [...state.listOfProduct]
       newlistofProduct.splice(action.payload, 1)
 
       state.listOfProduct = newlistofProduct
-      console.log(state.listOfProduct)
+    })
+
+    .addCase(editItem, (state, action) => {
+      const { index, weigth } = action.payload
+
+      const newlistofProduct = [...state.listOfProduct]
+
+      newlistofProduct.find((product, productIndex) => {
+        if (productIndex === index) {
+          product.Weigth = weigth
+        }
+      })
+      state.listOfProduct = newlistofProduct
     })
     .addMatcher(
       (action) => {

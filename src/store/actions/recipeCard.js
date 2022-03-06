@@ -25,3 +25,5 @@ export const addProduct = createAsyncThunk(
 )
 
 export const deleteItem = createAction('deleteItem')
+
+export const editItem = createAction('editItem')

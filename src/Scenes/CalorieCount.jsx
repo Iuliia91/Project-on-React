@@ -24,50 +24,33 @@ const StyledCalorieCount = styled.div`
     flex-direction: column;
     margin: auto;
   }
-  .buttons {
+  .formik_button {
     display: flex;
-
-    justify-content: center;
+    position: absolute;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
   }
 `
 
 const CalorieCount = (props) => {
   const dispatch = useDispatch()
-  const [editElement, setEditElement] = useState({
-    productName: '',
-    Weigth: '',
-    calorie: '',
-  })
-  const listOfProduct = useSelector(
-    (state) => state.productCardReducer.listOfProduct
-  )
-
-  const [editProductDate, setEditProductDate] = useState({
-    isEdit: false,
-    productIndex: null,
-  })
-  /* const handleEditClick = (product, index) => {
-    const obj = { ...product }
-    console.log(obj)
-    setEditElement(product)
-    
-    setEditProductDate({
-      isEdit: true,
-      productIndex: index,
-    })
-  }*/
 
   /* const options = {
     method: 'GET',
     url: 'http://localhost:3000/recipes?userid=3',
   }*/
-  console.log(editElement)
+
   return (
     <StyledCalorieCount>
       <main className="main">
         <div className="main__content">
           <Formik
-            initialValues={editElement}
+            initialValues={{
+              productName: '',
+              Weigth: '',
+              calorie: '',
+            }}
             validate={(formValues) => {
               const errorObj = {}
               let isValid = true
@@ -100,15 +83,23 @@ const CalorieCount = (props) => {
                 name="Weigth"
                 placeholder="Write the weigth of product"
               />
-              <ButtonOptions type="reset" textInsideButton="Reset" />
+              <div className="formik_button">
+                <ButtonOptions
+                  type="reset"
+                  className="button button_reset"
+                  textInsideButton="Reset"
+                />
 
-              <ButtonOptions type="submit" textInsideButton={'Add product'} />
+                <ButtonOptions
+                  type="submit"
+                  className="button button_add"
+                  textInsideButton={'Add product'}
+                />
+              </div>
             </Form>
           </Formik>
 
-          <TableList
-          /*handleEditClick={handleEditClick}*/
-          />
+          <TableList />
         </div>
       </main>
     </StyledCalorieCount>
