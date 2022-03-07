@@ -1,15 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { useState } from 'react'
 import { useEffect } from 'react'
-
+import { usePopper } from 'react-popper'
 import Spinner from './Spinner/Spinner'
 import Card from 'Components/Card/Card'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import { deleteItem, editItem } from 'store/actions/recipeCard'
 const StyledTable = styled.div`
+  margin-top: 30px;
   table {
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', Sans-Serif;
     text-align: left;
@@ -26,6 +27,7 @@ const StyledTable = styled.div`
     padding: 10px;
   }
   td {
+    position: relavite;
     background: #f5d7bf;
     padding: 10px;
   }
@@ -51,20 +53,17 @@ const StyledTable = styled.div`
     top: 50%;
     left: 50%;
   }
+`
+const StyledTooltip = styled.div`
+  overflow: hidden;
+  position: absolute;
+  top: ${(props) => props.leftValue};
+  left: ${(props) => props.topValue};
 
-  #container {
-    width: 95vw;
-    height: 95vh;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
-
-  #tooltip {
-    border: 1px solid black;
-    padding: 5px;
-    position: absolute;
-    background-color: white;
+  .tooltip_add {
+    background: #000;
+    border-radius: 4px;
+    color: #fff;
   }
 `
 
@@ -94,14 +93,28 @@ const InputNewValueWeigth = (props) => {
   )
 }
 
-const TableElement = (props) => {
-  const openModal = useContext(ModalContext)
+const Tooltip = (props) => {
+  let topX = props.pageX + 10 + 'px'
+  let leftY = props.pageY + 10 + 'px'
+  console.log(topX, leftY)
+  return (
+    <StyledTooltip topValue={topX} leftValue={leftY}>
+      <div className={props.addClassName}>add</div>
+    </StyledTooltip>
+  )
+}
 
+const TableElement = (props) => {
+  const [coordinataX, setcoordinataX] = useState(0)
+  const [coordinataY, setcoordinataY] = useState(0)
+  const [visible, setVisible] = useState(false)
+  const openModal = useContext(ModalContext)
+  const coords = useRef('')
   const dispatch = useDispatch()
   const listOfProduct = useSelector(
     (state) => state.productCardReducer.listOfProduct
   )
-
+  const rect = {}
   const handleRemoveItem = (index) => {
     console.log(index)
     dispatch(deleteItem(index))
@@ -111,71 +124,100 @@ const TableElement = (props) => {
     openModal(<InputNewValueWeigth setModal={openModal} indexValue={index} />)
   }
 
+  const show = (Event) => {
+    const { pageX, pageY } = Event
+
+    const rect = coords.current.getBoundingClientRect()
+    setcoordinataX(rect.x)
+    setcoordinataY(rect.y)
+    console.log(rect)
+    setVisible(true)
+  }
+
+  const hidden = () => {
+    setVisible(false)
+  }
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Product</th>
-          <th>Weigth</th>
-          <th>Calories</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
+    <div>
+      {visible && (
+        <Tooltip
+          pageX={coordinataX}
+          pageY={coordinataY}
+          addClassName={'tooltip_add'}
+        />
+      )}
 
-      <tbody>
-        {listOfProduct.map((product, index) => (
-          <tr key={index}>
-            <td>{index + 1}</td>
-            <td>{product.productName}</td>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product</th>
+            <th>Weigth</th>
+            <th>Calories</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {listOfProduct.map((product, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{product.productName}</td>
+              <td ref={coords}>
+                <button
+                  onMouseEnter={(e) => {
+                    show(e)
+                  }}
+                  onMouseLeave={hidden}
+                  onClick={() => {
+                    handleChangeWeigth(index)
+                  }}
+                >
+                  {product.Weigth} g
+                </button>
+              </td>
+
+              <td>{product.calorie}</td>
+              <td>
+                <ButtonOptions
+                  textInsideButton="Delete"
+                  type="button"
+                  handleClick={() => {
+                    handleRemoveItem(index)
+                  }}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot>
+          <tr>
             <td>
-              <button
-                onClick={() => {
-                  handleChangeWeigth(index)
-                }}
-              >
-                {product.Weigth} g
-              </button>{' '}
+              <div>
+                <p>Total{listOfProduct.length} </p>
+              </div>
             </td>
-
-            <td>{product.calorie}</td>
             <td>
               <ButtonOptions
-                textInsideButton="Delete"
+                textInsideButton="Save the recipe"
                 type="button"
                 handleClick={() => {
-                  handleRemoveItem(index)
+                  handleRemoveClick
                 }}
               />
+              <button> </button>
             </td>
           </tr>
-        ))}
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>
-            <div>
-              <p>Total{listOfProduct.length} </p>
-            </div>
-          </td>
-          <td>
-            <ButtonOptions
-              textInsideButton="Save the recipe"
-              type="button"
-              handleClick={() => {
-                handleRemoveClick
-              }}
-            />
-            <button> </button>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
+        </tfoot>
+      </table>
+    </div>
   )
 }
 
 const TableList = (props) => {
   const loading = useSelector((state) => state.productCardReducer.loading)
+
   return (
     <StyledTable>
       <div>{loading === 'pending' && <Spinner />}</div>

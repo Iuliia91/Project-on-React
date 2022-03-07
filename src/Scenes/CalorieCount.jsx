@@ -18,18 +18,28 @@ const StyledCalorieCount = styled.div`
   .main {
     text-align: center;
     margin: auto;
+    width: 50%;
   }
   .main__content {
     display: flex;
     flex-direction: column;
+
     margin: auto;
   }
   .formik_button {
     display: flex;
     position: absolute;
-    justify-content: space-around;
-    align-items: center;
-    margin: auto;
+    justify-content: center;
+    left: 50%;
+  }
+  .form {
+    padding-bottmo: 30px;
+  }
+  button {
+    padding: 12px;
+    margin-right: 20px;
+  }
+
   }
 `
 
@@ -45,59 +55,62 @@ const CalorieCount = (props) => {
     <StyledCalorieCount>
       <main className="main">
         <div className="main__content">
-          <Formik
-            initialValues={{
-              productName: '',
-              Weigth: '',
-              calorie: '',
-            }}
-            validate={(formValues) => {
-              const errorObj = {}
-              let isValid = true
-              const formFields = formValues.productName && formValues.Weigth
-              if (!formValues.productName) {
-                isValid = false
-                errorObj.productName = 'Fill the fields'
-              } else if (!formValues.Weigth) {
-                errorObj.Weigth = 'Fill the fields'
-              } else if (!formValues.Weigth.replace(/\D+/g, '')) {
-                errorObj.Weigth = 'Write the number'
-              }
+          <div className="form">
+            {' '}
+            <Formik
+              initialValues={{
+                productName: '',
+                Weigth: '',
+                calorie: '',
+              }}
+              validate={(formValues) => {
+                const errorObj = {}
+                let isValid = true
+                const formFields = formValues.productName && formValues.Weigth
+                if (!formValues.productName) {
+                  isValid = false
+                  errorObj.productName = 'Fill the fields'
+                } else if (!formValues.Weigth) {
+                  errorObj.Weigth = 'Fill the fields'
+                } else if (!formValues.Weigth.replace(/\D+/g, '')) {
+                  errorObj.Weigth = 'Write the number'
+                }
 
-              return errorObj
-            }}
-            onSubmit={(formValues, { resetForm }) => {
-              console.log(formValues)
-              dispatch(addProduct(formValues)).then(() => {
-                resetForm()
-              })
-            }}
-          >
-            <Form>
-              <FormikInput
-                name="productName"
-                type="text"
-                placeholder="Write the product name"
-              />
-              <FormikInput
-                name="Weigth"
-                placeholder="Write the weigth of product"
-              />
-              <div className="formik_button">
-                <ButtonOptions
-                  type="reset"
-                  className="button button_reset"
-                  textInsideButton="Reset"
+                return errorObj
+              }}
+              onSubmit={(formValues, { resetForm }) => {
+                console.log(formValues)
+                dispatch(addProduct(formValues)).then(() => {
+                  resetForm()
+                })
+              }}
+            >
+              <Form>
+                <FormikInput
+                  name="productName"
+                  type="text"
+                  placeholder="Write the product name"
                 />
+                <FormikInput
+                  name="Weigth"
+                  placeholder="Write the weigth of product"
+                />
+                <div className="formik_button">
+                  <ButtonOptions
+                    type="reset"
+                    className="button button_reset"
+                    textInsideButton="Reset"
+                  />
 
-                <ButtonOptions
-                  type="submit"
-                  className="button button_add"
-                  textInsideButton={'Add product'}
-                />
-              </div>
-            </Form>
-          </Formik>
+                  <ButtonOptions
+                    type="submit"
+                    className="button button_add"
+                    textInsideButton={'Add product'}
+                  />
+                </div>
+              </Form>
+            </Formik>
+          </div>
 
           <TableList />
         </div>
