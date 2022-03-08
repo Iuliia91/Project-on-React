@@ -46,6 +46,10 @@ const StyledTable = styled.div`
     background: #f5d7bf;
   }
 
+  .button_weigth {
+    margin: 0;
+  }
+
   .element {
     display: block;
     width: 70%;
@@ -59,11 +63,14 @@ const StyledTooltip = styled.div`
   position: absolute;
   top: ${(props) => props.leftValue};
   left: ${(props) => props.topValue};
+  width: 10%;
+  heigth: 100%;
 
   .tooltip_add {
-    background: #000;
+    background: white;
+    padding: 20px;
     border-radius: 4px;
-    color: #fff;
+    color: black;
   }
 `
 
@@ -94,12 +101,14 @@ const InputNewValueWeigth = (props) => {
 }
 
 const Tooltip = (props) => {
-  let topX = props.pageX + 10 + 'px'
-  let leftY = props.pageY + 10 + 'px'
+  let topX = props.pageX + 'px'
+  let leftY = props.pageY + 15 + 'px'
   console.log(topX, leftY)
   return (
     <StyledTooltip topValue={topX} leftValue={leftY}>
-      <div className={props.addClassName}>add</div>
+      <div className={props.addClassName}>
+        <p>change weigth</p>
+      </div>
     </StyledTooltip>
   )
 }
@@ -128,7 +137,7 @@ const TableElement = (props) => {
     const { pageX, pageY } = Event
 
     const rect = coords.current.getBoundingClientRect()
-    setcoordinataX(rect.x)
+    setcoordinataX(rect.right)
     setcoordinataY(rect.y)
     console.log(rect)
     setVisible(true)
@@ -166,6 +175,7 @@ const TableElement = (props) => {
               <td>{product.productName}</td>
               <td ref={coords}>
                 <button
+                  className="button_weigth"
                   onMouseEnter={(e) => {
                     show(e)
                   }}

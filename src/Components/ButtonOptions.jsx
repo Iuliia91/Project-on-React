@@ -5,7 +5,6 @@ import styled from 'styled-components'
 const StyledButtonOptions = styled.div`
   .button {
     border: none;
-    border-radius: 10%;
   }
 
   .button:hover {
@@ -14,7 +13,7 @@ const StyledButtonOptions = styled.div`
 
   .button__singIn,
   .button__registration,
-  . button_reset,
+  .button_reset,
   .button_add {
     padding: 12px;
     margin-right: 20px;
