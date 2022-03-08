@@ -1,10 +1,8 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { useState } from 'react'
-import { useEffect } from 'react'
-import { usePopper } from 'react-popper'
 import Spinner from './Spinner/Spinner'
 import Card from 'Components/Card/Card'
 import { ModalContext } from 'HOC/GlobalModalProvider'
@@ -102,8 +100,8 @@ const InputNewValueWeigth = (props) => {
 
 const Tooltip = (props) => {
   let topX = props.pageX + 'px'
-  let leftY = props.pageY + 15 + 'px'
-  console.log(topX, leftY)
+  let leftY = props.pageY + 10 + 'px'
+
   return (
     <StyledTooltip topValue={topX} leftValue={leftY}>
       <div className={props.addClassName}>
@@ -118,12 +116,13 @@ const TableElement = (props) => {
   const [coordinataY, setcoordinataY] = useState(0)
   const [visible, setVisible] = useState(false)
   const openModal = useContext(ModalContext)
+
   const coords = useRef('')
   const dispatch = useDispatch()
   const listOfProduct = useSelector(
     (state) => state.productCardReducer.listOfProduct
   )
-  const rect = {}
+  const rect = null
   const handleRemoveItem = (index) => {
     console.log(index)
     dispatch(deleteItem(index))
@@ -134,8 +133,6 @@ const TableElement = (props) => {
   }
 
   const show = (Event) => {
-    const { pageX, pageY } = Event
-
     const rect = coords.current.getBoundingClientRect()
     setcoordinataX(rect.right)
     setcoordinataY(rect.y)

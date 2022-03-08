@@ -1,49 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
-import Server from 'api/server.instance'
+import { usersWeigth } from 'store/actions/userAction'
+import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
-import Card from 'Components/Card/Card'
+import { Formik, Form } from 'formik'
+import FormikInput from 'Components/formikFields/FormikInput'
 import { ModalContext } from 'HOC/GlobalModalProvider'
-/*  input[type='range'] {
-    overflow: hidden;
-    width: 80px;
-    -webkit-appearance: none;
-    background-color: #9a905d;
-  }
-  
-  input[type='range']::-webkit-slider-runnable-track {
-    height: 10px;
-    -webkit-appearance: none;
-    color: #13bba4;
-    margin-top: -1px;
-  }
-  
-  input[type='range']::-webkit-slider-thumb {
-    width: 10px;
-    -webkit-appearance: none;
-    height: 10px;
-    cursor: ew-resize;
-    background: #434343;
-    box-shadow: -80px 0 0 80px #43e5f7;
-  }
-  
-  input[type="range"]::-moz-range-progress {
-    background-color: #43e5f7;
-  }
-  
-  input[type="range"]::-moz-range-track {
-    background-color: #9a905d;
-  }
-  
-  input[type="range"]::-ms-fill-lower {
-    background-color: #43e5f7;
-  }
-  
-  input[type="range"]::-ms-fill-upper {
-    background-color: #9a905d;*/
-
-/* */
 
 const StyledProfil = styled.div`
 width:80%;
@@ -57,8 +19,6 @@ aling-item:center;
   border: 16px solid #ece9e0;
   padding:10px;
  
-
-
   .user_name{
 background: #ece9e0;
 width:80%;
@@ -76,7 +36,6 @@ width:80%;
  border-radius: 20px;
   }
 
-
   .user_line{
     display:flex;
     
@@ -84,69 +43,143 @@ width:80%;
 
 
 `
+const StyledProgressBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  width: 400px;
+
+  margin: 0 auto;
+
+  .bar-wrap {
+    width: 60%;
+    padding: 6px;
+    margin-top: 50px;
+
+    border-radius: 100px;
+
+    background-color: white;
+  }
+
+  .bar {
+    width: ${(props) => props.value};
+    height: 15px;
+
+    transition: width 0.15s ease-out;
+
+    background-color: #38b000;
+    border-radius: 100px;
+    box-shadow: inset -1px -1px 10px rgb(0 0 0 / 0.5);
+  }
+`
 
 const Profil = () => {
-  const axios = require('axios').default
   const profil = ['Iuliia', '30age', '50k']
   const user = useSelector((store) => store.userReducer)
   const setModalContext = useContext(ModalContext)
-  const [newWeigthValue, setNewWeigthValue] = useState(user.userWeigth)
+  const [newWeigthValue, setNewWeigthValue] = useState('')
   const [listOfWeigth, setListOfWeigth] = useState([])
-  const [total, setTotal] = useState(user.userWeigth + user.userGoaldWeigth)
+  const dayToda = useSelector((store) => store.userReducer)
   const getDifferenceInWeight = user.userWeigth - user.userGoaldWeigth
-
+  const dispatch = useDispatch()
   const fillProfil = profil.map((item1, index) => (
     <li className="user-information" key={index}>
       {item1}
     </li>
   ))
-  console.log()
 
   const handleAddNewWeigth = () => {
-    setListOfWeigth((prevetState) => [...prevetState, newWeigthValue])
+    let day = new Date()
+    setListOfWeigth({ weigthValue: newWeigthValue, dayData: day })
+
+    dispatch(usersWeigth(listOfWeigth))
     setModalContext()
   }
 
   const hendleAddWeigthValue = () => {
+    let day = new Date()
+    const dayValue = day.getDate()
+
     setModalContext(
       <React.Fragment>
-        <div>
-          <input
-            onChange={(e) => setNewWeigthValue(e.target.value)}
-            placeholder="Write the your weigth today"
-          />
-          <button onClick={handleAddNewWeigth}> add</button>{' '}
-        </div>
+        <Formik
+          initialValues={{
+            weigthValue: '',
+            day: dayValue,
+          }}
+          validate={(formValues) => {
+            const errorObj = {}
+
+            if (!formValues.weigthValue) {
+              errorObj.weigthValue = 'Fill the fields'
+            } else if (!formValues.weigthValue.replace(/\D+/g, '')) {
+              errorObj.weigthValue = 'Write the number'
+            }
+
+            return errorObj
+          }}
+          onSubmit={(formValues) => {
+            console.log(formValues)
+            setListOfWeigth(formValues)
+            dispatch(usersWeigth(formValues))
+
+            setModalContext()
+          }}
+        >
+          <Form>
+            <FormikInput
+              name="weigthValue"
+              type="text"
+              placeholder="Weigth today"
+            />
+            <div className="formik_button">
+              <ButtonOptions
+                type="submit"
+                className="button button_add"
+                textInsideButton={'Add new weigth'}
+              />
+            </div>
+          </Form>
+        </Formik>
       </React.Fragment>
     )
   }
-  console.log(listOfWeigth)
-  return (
-    <StyledProfil>
-      <div className="user_name">
-        <p className="user_name_text">Hi, {user.userName}</p>
-        <div>
-          <p> You have overweight - {getDifferenceInWeight} kg</p>
-        </div>
 
-        <div className="user_line">
-          <label className="flying">{user.userWeigth}</label>
-          <input
-            name="level"
-            type="range"
-            value={newWeigthValue}
-            min={user.userGoaldWeigth}
-            max={user.userWeigth}
-            onChange={() => {}}
-          />
-          <label className="flying">{user.userGoaldWeigth}</label>
+  {
+    dayToda.userListOfWeifth
+  }
+  const ProgressBar = (props) => {
+    const [value, setValue] = useState('')
+
+    return (
+      <StyledProgressBar>
+        <div className="startWeigth">{user.userWeigth}</div>
+        <div className="bar-wrap">
+          <div className="bar"></div>
         </div>
-        <button onClick={hendleAddWeigthValue}>
-          <p>+Weigth</p>
-        </button>
-      </div>
-      <div className="user_information">{fillProfil}</div>
-    </StyledProfil>
+        <div className="startWeigth">{user.userGoaldWeigth}</div>
+      </StyledProgressBar>
+    )
+  }
+
+  return (
+    <React.Fragment>
+      <ProgressBar />
+
+      <StyledProfil>
+        <div className="user_name">
+          <p className="user_name_text">Hi, {user.userName}</p>
+          <div>
+            <p> You have overweight - {getDifferenceInWeight} kg</p>
+          </div>
+          <button onClick={hendleAddWeigthValue}>
+            <p>+Weigth</p>
+          </button>
+        </div>
+        <div className="user_information">{fillProfil}</div>
+      </StyledProfil>
+    </React.Fragment>
   )
 }
 

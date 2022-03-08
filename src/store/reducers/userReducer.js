@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { userLoggedIn, userLoggedOut } from '../actions/userAction'
+import { userLoggedIn, userLoggedOut, usersWeigth } from '../actions/userAction'
 
 const InitialState = {
   userName: '',
@@ -7,6 +7,7 @@ const InitialState = {
   userHeigth: '',
   userWeigth: '',
   userGoaldWeigth: '',
+  userListOfWeifth: [],
   id: '',
   isLoggedIn: false,
 }
@@ -30,6 +31,11 @@ const userReducer = createReducer(InitialState, (builder) => {
       state.userGoaldWeigth = ''
       state.id = ''
       state.isLoggedIn = false
+    })
+
+    .addCase(usersWeigth, (state, action) => {
+      // state.userListOfWeifth.push(action.payload)
+      state.userListOfWeifth()
     })
 })
 

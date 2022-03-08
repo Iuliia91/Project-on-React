@@ -7,6 +7,7 @@ export const CARD_LIST_ACTIONS = {
 export const USER_ACTION = {
   loggIn: 'user_logged_in',
   loggOut: 'user_logged_out',
+  weigth: 'users_weigth',
 }
 
 export const Global_Api_Error = {
