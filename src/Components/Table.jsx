@@ -61,8 +61,8 @@ const StyledTooltip = styled.div`
   position: absolute;
   top: ${(props) => props.leftValue};
   left: ${(props) => props.topValue};
-  width: 10%;
-  heigth: 100%;
+  width: 100px;
+  heigth: 100px;
 
   .tooltip_add {
     background: white;
@@ -116,13 +116,13 @@ const TableElement = (props) => {
   const [coordinataY, setcoordinataY] = useState(0)
   const [visible, setVisible] = useState(false)
   const openModal = useContext(ModalContext)
-
+  const [rect, setRect] = useState()
   const coords = useRef('')
   const dispatch = useDispatch()
   const listOfProduct = useSelector(
     (state) => state.productCardReducer.listOfProduct
   )
-  const rect = null
+
   const handleRemoveItem = (index) => {
     console.log(index)
     dispatch(deleteItem(index))
@@ -133,11 +133,13 @@ const TableElement = (props) => {
   }
 
   const show = (Event) => {
-    const rect = coords.current.getBoundingClientRect()
+    let rect = Event.target.getBoundingClientRect()
+    // setRect(rectt)
     setcoordinataX(rect.right)
     setcoordinataY(rect.y)
-    console.log(rect)
-    setVisible(true)
+    // console.log(rectt)
+
+    setTimeout(() => setVisible(true), 0)
   }
 
   const hidden = () => {
