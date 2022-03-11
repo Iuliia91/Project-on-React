@@ -7,17 +7,22 @@ const StyledFormikInput = styled.div`
     outline: none;
     border: none;
     border: 1px solid;
+    box-shadow: -4px 4px 10px rgba(199, 211, 222);
     border-color: ${(props) => (props.error ? 'red' : 'white')};
-
     padding: 15px 60px;
     margin: 5px;
     border-radius: 20px;
+  }
+  input:hover {
+    box-shadow: 5px 4px 10px rgb(199, 211, 222);
   }
   input:: placeholder {
     color: grey;
   }
 
   .errorMessagerHolder {
+    position: absolute;
+    padding-top: -10px;
     color: red;
   }
 `
@@ -27,6 +32,7 @@ const FormikInput = (props) => {
   return (
     <StyledFormikInput error={meta.error && meta.touched}>
       <input
+        className={props.className}
         onChange={field.onChange}
         onBlur={field.onBlur}
         name={props.name}

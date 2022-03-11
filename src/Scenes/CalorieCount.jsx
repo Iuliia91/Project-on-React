@@ -3,17 +3,12 @@ import styled from 'styled-components'
 
 import { useSelector, useDispatch } from 'react-redux'
 
-import {
-  recipeCard,
-  getCalorieCount,
-  addProduct,
-} from 'store/actions/recipeCard'
-import { ModalContext } from 'HOC/GlobalModalProvider'
+import { addProduct } from 'store/actions/recipeCard'
 import ButtonOptions from 'Components/ButtonOptions'
 import TableList from 'Components/Table'
-import axios from 'axios'
+
 import FormikInput from 'Components/formikFields/FormikInput'
-import { Formik, Form, Field, useFormik } from 'formik'
+import { Formik, Form } from 'formik'
 const StyledCalorieCount = styled.div`
   .main {
     text-align: center;
@@ -66,7 +61,7 @@ const CalorieCount = (props) => {
               validate={(formValues) => {
                 const errorObj = {}
                 let isValid = true
-                const formFields = formValues.productName && formValues.Weigth
+
                 if (!formValues.productName) {
                   isValid = false
                   errorObj.productName = 'Fill the fields'

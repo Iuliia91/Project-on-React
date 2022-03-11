@@ -3,7 +3,7 @@ import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { faUser, faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { Link, Outlet } from 'react-router-dom'
 const StyledAboutProject = styled.div`
   height: 100%;
   background-color: rgb(223, 230, 236);
@@ -55,24 +55,30 @@ const AboutProject = () => {
             qui quae repudiandae, quas quibusdam. Culpa, iure.
           </p>
         </div>
-        <div className="button_options">
-          <ButtonOptions
-            className="button button__singIn"
-            textInsideButton={'Sing In'}
-            iconOptions={<FontAwesomeIcon icon={faHome} />}
-          />
 
-          <ButtonOptions
-            className="button button__registration"
-            textInsideButton={'Registr'}
-            modalText={
-              <div>
-                Privet iz tenei
-                <button>Yes</button>
-              </div>
-            }
-            iconOptions={<FontAwesomeIcon icon={faUser} />}
-          />
+        <div className="button_options">
+          <Link to={'/login'}>
+            <ButtonOptions
+              className="button button__singIn"
+              textInsideButton={'Login'}
+              iconOptions={<FontAwesomeIcon icon={faHome} />}
+            />
+          </Link>
+
+          <Link to={'/registration'}>
+            {' '}
+            <ButtonOptions
+              className="button button__registration"
+              textInsideButton={'Registr'}
+              modalText={
+                <div>
+                  Privet iz tenei
+                  <button>Yes</button>
+                </div>
+              }
+              iconOptions={<FontAwesomeIcon icon={faUser} />}
+            />
+          </Link>
         </div>
       </div>
     </StyledAboutProject>

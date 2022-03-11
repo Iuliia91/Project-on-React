@@ -104,6 +104,86 @@
       "userWeigth": "78",
       "userGoaldWeigth": "60",
       "id": 11
+    },
+    {
+      "email": "iuliiaprusakova91@gmail.com",
+      "password": "$2a$10$tSe9YFy11HIL1Ae5HCG1OeOzzwrT6lNqbznZlnl1lJfED2FpkN4Iq",
+      "userName": "Iuliia",
+      "Gender": "",
+      "userHeigth": "123",
+      "userWeigth": "70",
+      "userGoaldWeigth": "3rd",
+      "id": 12
+    },
+    {
+      "email": "ula1234@gmail.com",
+      "password": "$2a$10$66wG3YeLEjWdiCaspRczPe6JBC40N2VbVPS/RuO6P4PdEnd.Nlbvu",
+      "userName": "Iuliia",
+      "Gender": "",
+      "userHeigth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 13
+    },
+    {
+      "email": "Iuliia11111@GMAIL.COM",
+      "password": "$2a$10$Cc0IfG72FvnoSIXNVXIgxO3alOyO.V7Q8Snc46hTPk4UrQqtofMCu",
+      "userName": "Iuliia",
+      "Gender": "",
+      "userHeigth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 14
+    },
+    {
+      "email": "Ulaprusakova5@gmail.com",
+      "password": "$2a$10$QgbdKwcXg.PGKYbEsJ367ORVMIxD98xXYpiopFHPjO.sFg1iRTwvC",
+      "userName": "Iuliia",
+      "Gender": "",
+      "userHeigth": "123",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 15
+    },
+    {
+      "email": "ef@ftgb",
+      "password": "$2a$10$0aDdkjNEA4w7e/.rs6hWMOg84M/110kVCF5y9uW1gqAMKQf8l.u3W",
+      "userName": "Iuliia",
+      "Gender": "",
+      "userHeigth": "123",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 16
+    },
+    {
+      "email": "Mokkelle@rambler.ru",
+      "password": "$2a$10$rZ3VQUOKhGMRJeOBoNidxu8MERccYK50Yacs7qQcfBBBUGFcB3Q1O",
+      "userName": "Iuliia",
+      "Gender": "",
+      "userHeigth": "123",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 17
+    },
+    {
+      "email": "esasasasa@gmail.com",
+      "password": "$2a$10$H9DTAKWgEjTMFK77WdXe6OtdcHI7cNVkdYwfK7ds30VRKIDrIdtn6",
+      "userName": "Iuliia",
+      "Gender": "[object Object]",
+      "userHeigth": "123",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 18
+    },
+    {
+      "email": "Ulaprusakova24e32re34r@gmail.com",
+      "password": "$2a$10$xQVg6XyvOvy3cPlORsgh2eXVN4RMUtti0IbLuqV6BC.BSZ/ZEpyzC",
+      "userName": "Iuliia",
+      "Gender": "",
+      "userHeigth": "123",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 19
     }
   ],
   "recipes": [

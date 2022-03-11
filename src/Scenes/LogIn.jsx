@@ -14,36 +14,33 @@ const StyledLoginHolder = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #f5d7bf;
 
   .loginCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 400px;
     height: 300px;
-    background-color: ${(props) => props.theme.infoCardBackgroundColor};
+    background-color: #ece9e0;
+    border-radius: 30px;
     margin: 20px;
     border-radius: 5px;
+    box-shadow: -40px 40px 30px rgba(0, 0, 0, 0.5);
+
+    .button {
+      text-align: center;
+    }
     .cardHeader {
       width: 100%;
       height: 50px;
       padding: 10px 20px;
       box-sizing: border-box;
-      background-color: ${(props) => props.theme.accentBackgroundColor};
+      background-color: ;
       font-size: 25px;
+      text-align: center;
       line-height: 30px;
-      color: ${(props) => props.theme.accentTextColor};
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-    }
-    .cardBody {
-      padding: 10px 20px;
-      box-sizing: border-box;
-      color: ${(props) => props.theme.appBaseFontColor};
-    }
-    .cardFooter {
-      padding: 10px 20px;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
   }
 `
@@ -52,11 +49,8 @@ const LogIn = (props) => {
   const apiError = useSelector(
     (store) => store.globalApiStateReducer.appiError.message
   )
-
-  const [email, setEmail] = useState('ulapru@gmail.com')
-  const [password, setPassword] = useState('Zxcvbnm')
   const dispatch = useDispatch()
-  const handleSubmitForm = () => {}
+
   return (
     <StyledLoginHolder>
       <div className={'loginCard'}>
@@ -104,7 +98,9 @@ const LogIn = (props) => {
           <Form>
             <FormikInput name="email" placeholder="email" />
             <FormikInput name="password" placeholder="password" />
-            <ButtonOptions type="submit" textInsideButton={'Login'} />
+            <div className="button">
+              <ButtonOptions type="submit" textInsideButton={'Login'} />
+            </div>
           </Form>
         </Formik>
       </div>
