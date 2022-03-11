@@ -15,14 +15,19 @@ const StyledGlobalModalProvider = styled.div`
   align-items: center;
   justify-content: center;
 
+  .border {
+    margin: 20px;
+    border: 3px solid #f5d7bf;
+  }
   .modal {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.5);
     background-color: rgb(236, 233, 224, 0.7);
     border-radius: 20px;
-    width: 60%;
-    height: 70%;
+    width: 400px;
+    height: 600px;
     position: absolute;
   }
 `
@@ -34,7 +39,9 @@ const GlobalModalProvider = (props) => {
     <React.Fragment>
       {!!modalContext && (
         <StyledGlobalModalProvider>
-          <div className="modal">{modalContext}</div>
+          <div className="modal">
+            <div className="border">{modalContext}</div>
+          </div>
         </StyledGlobalModalProvider>
       )}
 

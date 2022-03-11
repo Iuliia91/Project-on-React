@@ -16,6 +16,7 @@ const StyledNavigation = styled.div`
     z-index: 1;
     top: 0;
     left: 0;
+    //background: #f5d7bf;
     background-color: rgb(223, 230, 236);
     overflow-x: hidden;
   }
@@ -35,7 +36,6 @@ const StyledNavigation = styled.div`
   .active {
     background-color: rgb(199, 211, 222);
   }
-
   .main {
     height: 100%;
 
@@ -92,16 +92,6 @@ const SecondMainLayouts = (props) => {
       </div>
     </StyledNavigation>
   )
-  /* 
-   
-  return (
-    <StyledNavigation>
-      <div>
-        <Navigation />
-      </div>
-      <div className="main"> {props.children} </div>
-    </StyledNavigation>
-  )*/
 }
 
 export default SecondMainLayouts

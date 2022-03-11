@@ -7,6 +7,8 @@ import { Formik, Form } from 'formik'
 import FormikInput from 'Components/formikFields/FormikInput'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import ProgressBar from 'Components/ProgressBar/ProgressBar'
+import Schedule from 'Components/Schedule/Schedule'
+import Server from 'api/server.instance'
 const StyledProfil = styled.div`
 width:80%;
 margin:auto;
@@ -21,7 +23,7 @@ aling-item:center;
  
   .user_name{
    
-   
+    box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
 
 background: #ece9e0;
@@ -41,7 +43,7 @@ width:80%;
   }
 
   .user_information{
-    background: #ece9e0;
+background: #ece9e0;
  grid-column:1/2;
  padding:30px;
  border-radius: 20px;
@@ -58,22 +60,50 @@ width:80%;
   }
 
   button:hover{
-    background-color: rgb(199, 211, 222)
+    background: rgb(199, 211, 222)
   }
   .user_line{
     display:flex;
     
   }
 
+  .user_weigth_data{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+  }
+
+  .user_weigth_today,.user_weigth-differance{
+    text-align: center;
+  }
+
+  .user_schedule{
+    grid-column:3/4;
+    grid-row:3/6
+  }
+
 
 `
+
+const StyledModalProfilForm = styled.div`
+  header {
+    margin: 30px;
+    font-size: 30px;
+    text-align: center;
+    color: black;
+  }
+  .formik_button {
+    margin-top: 20px;
+    text-align: center;
+  }
+`
+
 const Profil = () => {
   const user = useSelector((store) => store.userReducer)
   const setModalContext = useContext(ModalContext)
-  const getDifferenceInWeight = user.userWeigth - user.userGoaldWeigth
-  const [valueOfLoseweigth, setValueOfLoseweigth] = useState(
-    getDifferenceInWeight
-  )
+  const getDifferenceInWeight = user.userWeigth - user.userWeigthToday
+
+  console.log(user.userWeigthToday, user.userWeigth, getDifferenceInWeight)
 
   const dispatch = useDispatch()
 
@@ -82,47 +112,47 @@ const Profil = () => {
     const dayValue = day.getDate()
 
     setModalContext(
-      <Formik
-        initialValues={{
-          weigthValue: '',
-          day: dayValue,
-        }}
-        validate={(formValues) => {
-          const errorObj = {}
+      <StyledModalProfilForm>
+        <header>Add new weigth</header>
+        <Formik
+          initialValues={{
+            weigthValue: '',
+            day: dayValue,
+          }}
+          validate={(formValues) => {
+            const errorObj = {}
 
-          if (!formValues.weigthValue) {
-            errorObj.weigthValue = 'Fill the fields'
-          } else if (!formValues.weigthValue.replace(/\D+/g, '')) {
-            errorObj.weigthValue = 'Write the number'
-          }
+            if (!formValues.weigthValue) {
+              errorObj.weigthValue = 'Fill the fields'
+            } else if (!formValues.weigthValue.replace(/\D+/g, '')) {
+              errorObj.weigthValue = 'Write the number'
+            }
 
-          return errorObj
-        }}
-        onSubmit={(formValues) => {
-          dispatch(usersWeigth(formValues))
-          const howManyLost = setValueOfLoseweigth(
-            user.userWeigthToday - user.userGoaldWeigth
-          )
-          setTimeout(console.log(user.userWeigthToday, user.userGoaldWeigth), 0)
+            return errorObj
+          }}
+          onSubmit={(formValues) => {
+            dispatch(usersWeigth(formValues))
+            Server.post('/historyOfWeigth', {})
 
-          setModalContext()
-        }}
-      >
-        <Form>
-          <FormikInput
-            name="weigthValue"
-            type="text"
-            placeholder="Weigth today"
-          />
-          <div className="formik_button">
-            <ButtonOptions
-              type="submit"
-              className="button button_add"
-              textInsideButton={'Add new weigth'}
+            setModalContext()
+          }}
+        >
+          <Form>
+            <FormikInput
+              name="weigthValue"
+              type="text"
+              placeholder="Weigth today"
             />
-          </div>
-        </Form>
-      </Formik>
+            <div className="formik_button">
+              <ButtonOptions
+                type="submit"
+                className="button button_add"
+                textInsideButton={'Add new weigth'}
+              />
+            </div>
+          </Form>
+        </Formik>
+      </StyledModalProfilForm>
     )
   }
 
@@ -132,10 +162,14 @@ const Profil = () => {
         <div className="user__information-data">
           {' '}
           <p className="user_name_text">Hi, {user.userName}</p>
-          <div>
-            <p className="user_weigth_data">
+          <div className="user_weigth-information">
+            <p className="user_weigth_today">
               {' '}
-              You have overweight - {valueOfLoseweigth} kg
+              Your weigth - {user.userWeigthToday}
+            </p>
+            <p className="user_weigth-differance">
+              {' '}
+              You lost - {getDifferenceInWeight} kg
             </p>
           </div>
           <ProgressBar procent={user.procent} />
@@ -149,7 +183,10 @@ const Profil = () => {
           </div>
         </div>
       </div>
-
+      <div className="user_schedule">
+        {' '}
+        <Schedule />
+      </div>
       <div className="user_information">fdgvbbftbhfg</div>
     </StyledProfil>
   )

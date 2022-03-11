@@ -18,6 +18,7 @@ const userReducer = createReducer(InitialState, (builder) => {
       state.userName = action.payload.userName
       state.userWeigth = action.payload.userWeigth
       state.userGoaldWeigth = action.payload.userGoaldWeigth
+      state.userWeigthToday = state.userWeigth
       state.id = action.payload.id
       state.isLoggedIn = action.payload.isLoggedIn
     })

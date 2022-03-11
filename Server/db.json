@@ -209,5 +209,6 @@
       "lunch": 400,
       "dinner": 400
     }
-  ]
+  ],
+  "historyOfWeigth": []
 }

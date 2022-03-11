@@ -8,7 +8,7 @@ const StyledProgressBar = styled.div`
   .weigth_Informstion {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .bar-wrap {
     width: 75%;
