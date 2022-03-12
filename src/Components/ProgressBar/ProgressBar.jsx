@@ -21,6 +21,7 @@ const StyledProgressBar = styled.div`
 
   .bar {
     width: ${(props) => props.value};
+    max-width: 100%;
     height: 15px;
 
     transition: width 0.15s ease-out;

@@ -10,6 +10,7 @@ const InitialState = {
   userListOfWeifth: [],
   id: '',
   isLoggedIn: false,
+  isEdited: false,
 }
 
 const userReducer = createReducer(InitialState, (builder) => {
@@ -21,6 +22,10 @@ const userReducer = createReducer(InitialState, (builder) => {
       state.userWeigthToday = state.userWeigth
       state.id = action.payload.id
       state.isLoggedIn = action.payload.isLoggedIn
+      state.userListOfWeifth.push({
+        weigthValue: state.userWeigth,
+        day: 8,
+      })
     })
     .addCase(userLoggedOut, (state, action) => {
       state.userName = ''
@@ -40,7 +45,8 @@ const userReducer = createReducer(InitialState, (builder) => {
       const procentValue = 100 + item + '%'
       state.procent = procentValue
 
-      state.userListOfWeifth.push(action.payload)
+      //if (action.payload.day== day.getDate())
+      //state.userListOfWeifth.push(action.payload)
     })
 })
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { usersWeigth } from 'store/actions/userAction'
 import ButtonOptions from 'Components/ButtonOptions'
@@ -130,10 +130,15 @@ const Profil = () => {
 
             return errorObj
           }}
-          onSubmit={(formValues) => {
+          onSubmit={(formValues, { resetForm }) => {
             dispatch(usersWeigth(formValues))
-            Server.post('/historyOfWeigth', {})
-
+            Server.post('/historyOfWeigth', {
+              weigthValue: formValues.weigthValue,
+              day: formValues.day,
+            }).then((response) => {
+              console.log(response)
+            })
+            resetForm()
             setModalContext()
           }}
         >
@@ -185,7 +190,7 @@ const Profil = () => {
       </div>
       <div className="user_schedule">
         {' '}
-        <Schedule />
+        <Schedule weigthToday={user.userWeigthToday} />
       </div>
       <div className="user_information">fdgvbbftbhfg</div>
     </StyledProfil>
