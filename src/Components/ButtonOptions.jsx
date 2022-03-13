@@ -27,6 +27,8 @@ const StyledButtonOptions = styled.div`
     padding: 12px;
     margin-right: 20px;
   }
+
+  .
 `
 
 const ButtonOptions = (props, { disabled = false }) => {
