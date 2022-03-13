@@ -72,6 +72,38 @@ const StyledTooltip = styled.div`
   }
 `
 
+const StyledModalTableElement = styled.div`
+  margin-bottom: 50px;
+  .close_element {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .button_close {
+    border: none;
+    background-color: rgb(236, 233, 224);
+  }
+
+  header {
+    margin: 30px;
+    font-size: 30px;
+    text-align: center;
+    color: black;
+  }
+  .formik_button {
+    margin-top: 20px;
+    text-align: center;
+  }
+  input {
+    outline: none;
+    border: none;
+    padding: 15px 60px;
+    margin: 5px;
+    border-radius: 20px;
+  }
+`
+
 const InputNewValueWeigth = (props) => {
   const [newWeigth, setNewWeigth] = useState('')
 
@@ -82,7 +114,18 @@ const InputNewValueWeigth = (props) => {
   }
 
   return (
-    <React.Fragment>
+    <StyledModalTableElement>
+      <div className="close_element">
+        <button
+          className="button_close"
+          onClick={() => {
+            props.setModalContext
+          }}
+        >
+          X
+        </button>
+      </div>
+      <header>Change the weigth</header>
       <input
         onChange={(e) => {
           setNewWeigth(e.target.value)
@@ -90,11 +133,15 @@ const InputNewValueWeigth = (props) => {
         value={newWeigth}
         placeholder="new weigth"
       />
-      <ButtonOptions
+      <button className="formik_button " onClick={handleEditNewWeigth}>
+        Change
+      </button>
+      {/*<ButtonOptions
+        className={button}
         handleClick={handleEditNewWeigth}
         textInsideButton="make a change"
-      />
-    </React.Fragment>
+      />*/}
+    </StyledModalTableElement>
   )
 }
 
@@ -129,15 +176,20 @@ const TableElement = (props) => {
   }
 
   const handleChangeWeigth = (index) => {
-    openModal(<InputNewValueWeigth setModal={openModal} indexValue={index} />)
+    openModal(
+      <InputNewValueWeigth
+        setModal={openModal}
+        setModalContext={openModal()}
+        indexValue={index}
+      />
+    )
   }
 
   const show = (Event) => {
     let rect = Event.target.getBoundingClientRect()
-    // setRect(rectt)
+
     setcoordinataX(rect.right)
     setcoordinataY(rect.y)
-    // console.log(rectt)
 
     setTimeout(() => setVisible(true), 0)
   }
@@ -202,6 +254,14 @@ const TableElement = (props) => {
         </tbody>
         <tfoot>
           <tr>
+            <td colspan="5">
+              Total product on recipe: {listOfProduct.length}{' '}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="5">Total calories: {listOfProduct.length} </td>
+          </tr>
+          {/*  <tr>
             <td>
               <div>
                 <p>Total{listOfProduct.length} </p>
@@ -217,7 +277,7 @@ const TableElement = (props) => {
               />
               <button> </button>
             </td>
-          </tr>
+          </tr>*/}
         </tfoot>
       </table>
     </div>

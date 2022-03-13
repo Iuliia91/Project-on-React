@@ -5,10 +5,13 @@ import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { Formik, Form } from 'formik'
 import FormikInput from 'Components/formikFields/FormikInput'
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import ProgressBar from 'Components/ProgressBar/ProgressBar'
 import Schedule from 'Components/Schedule/Schedule'
 import Server from 'api/server.instance'
+import ModalContextElement from 'Components/ModalContext/ModalContext'
 const StyledProfil = styled.div`
 width:80%;
 margin:auto;
@@ -55,6 +58,7 @@ background: #ece9e0;
     
   }
 
+  
   button{
     border: none;  
   }
@@ -86,6 +90,18 @@ background: #ece9e0;
 `
 
 const StyledModalProfilForm = styled.div`
+  margin-bottom: 50px;
+  .close_element {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .button_close {
+    border: none;
+    background-color: rgb(236, 233, 224);
+  }
+
   header {
     margin: 30px;
     font-size: 30px;
@@ -103,8 +119,6 @@ const Profil = () => {
   const setModalContext = useContext(ModalContext)
   const getDifferenceInWeight = user.userWeigth - user.userWeigthToday
 
-  console.log(user.userWeigthToday, user.userWeigth, getDifferenceInWeight)
-
   const dispatch = useDispatch()
 
   const hendleAddWeigthValue = () => {
@@ -113,6 +127,16 @@ const Profil = () => {
 
     setModalContext(
       <StyledModalProfilForm>
+        <div className="close_element">
+          <button
+            className="button_close"
+            onClick={() => {
+              setModalContext()
+            }}
+          >
+            X
+          </button>
+        </div>
         <header>Add new weigth</header>
         <Formik
           initialValues={{
@@ -135,9 +159,7 @@ const Profil = () => {
             Server.post('/historyOfWeigth', {
               weigthValue: formValues.weigthValue,
               day: formValues.day,
-            }).then((response) => {
-              console.log(response)
-            })
+            }).then((response) => {})
             resetForm()
             setModalContext()
           }}

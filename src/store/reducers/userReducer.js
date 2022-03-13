@@ -45,8 +45,7 @@ const userReducer = createReducer(InitialState, (builder) => {
       const procentValue = 100 + item + '%'
       state.procent = procentValue
 
-      //if (action.payload.day== day.getDate())
-      //state.userListOfWeifth.push(action.payload)
+      state.userListOfWeifth.push(action.payload)
     })
 })
 

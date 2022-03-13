@@ -210,5 +210,240 @@
       "dinner": 400
     }
   ],
-  "historyOfWeigth": []
+  "historyOfWeigth": [
+    {
+      "weigthValue": "73",
+      "day": 12,
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "weigthValue": "73",
+      "day": 12,
+      "id": 10
+    },
+    {
+      "weigthValue": "70",
+      "day": 12,
+      "id": 11
+    },
+    {
+      "weigthValue": "73",
+      "day": 12,
+      "id": 12
+    },
+    {
+      "weigthValue": "65",
+      "day": 12,
+      "id": 13
+    },
+    {
+      "weigthValue": "73",
+      "day": 12,
+      "id": 14
+    },
+    {
+      "weigthValue": "73",
+      "day": 12,
+      "id": 15
+    },
+    {
+      "weigthValue": "73",
+      "day": 12,
+      "id": 16
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 17
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 18
+    },
+    {
+      "weigthValue": "70",
+      "day": 13,
+      "id": 19
+    },
+    {
+      "weigthValue": "65",
+      "day": 13,
+      "id": 20
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 21
+    },
+    {
+      "weigthValue": "65",
+      "day": 13,
+      "id": 22
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 23
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 24
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 25
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 26
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 27
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 28
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 29
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 30
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 31
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 32
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 33
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 34
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 35
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 36
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 37
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 38
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 39
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 40
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 41
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 42
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 43
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 44
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 45
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 46
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 47
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 48
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 49
+    },
+    {
+      "weigthValue": "73",
+      "day": 13,
+      "id": 50
+    }
+  ]
 }
