@@ -9,7 +9,9 @@ import { ModalContext } from 'HOC/GlobalModalProvider'
 import { deleteItem, editItem } from 'store/actions/recipeCard'
 const StyledTable = styled.div`
   margin-top: 30px;
+  padding-top: 20px;
   table {
+    width: 100%;
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', Sans-Serif;
     text-align: left;
     border-collapse: separate;
@@ -22,7 +24,7 @@ const StyledTable = styled.div`
   }
   th {
     font-size: 18px;
-    padding: 10px;
+    padding: 20px;
   }
   td {
     position: relavite;
@@ -54,6 +56,15 @@ const StyledTable = styled.div`
     heigth: 30%;
     top: 50%;
     left: 50%;
+  }
+  button {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+  }
+
+  button:hover {
+    background-color: grey;
   }
 `
 const StyledTooltip = styled.div`
@@ -119,7 +130,7 @@ const InputNewValueWeigth = (props) => {
         <button
           className="button_close"
           onClick={() => {
-            props.setModalContext
+            props.setModal(false)
           }}
         >
           X
@@ -179,9 +190,25 @@ const TableElement = (props) => {
     openModal(
       <InputNewValueWeigth
         setModal={openModal}
-        setModalContext={openModal()}
+        setModalContext={openModal}
         indexValue={index}
       />
+    )
+  }
+  const handleSaveRecipies = () => {
+    let sum = 0
+
+    for (let i = 0; i < listOfProduct.length; i++) {
+      let item = listOfProduct[i].Weigth
+      sum += item
+    }
+    console.log(sum)
+    openModal(
+      <div>
+        <p>There are {listOfProduct.length} calories in 100 grams</p>
+        <button>Retorn</button>
+        <button>Save</button>
+      </div>
     )
   }
 
@@ -241,6 +268,7 @@ const TableElement = (props) => {
 
               <td>{product.calorie}</td>
               <td>
+                {(product.Weigth * product.calorie) / 100}
                 <ButtonOptions
                   textInsideButton="Delete"
                   type="button"
@@ -255,11 +283,9 @@ const TableElement = (props) => {
         <tfoot>
           <tr>
             <td colspan="5">
-              Total product on recipe: {listOfProduct.length}{' '}
+              <button onClick={handleSaveRecipies}>Save</button>
+              There are {listOfProduct.length} calories in 100 grams
             </td>
-          </tr>
-          <tr>
-            <td colspan="5">Total calories: {listOfProduct.length} </td>
           </tr>
           {/*  <tr>
             <td>

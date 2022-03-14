@@ -35,12 +35,18 @@ const StyledCalorieCount = styled.div`
     margin-right: 20px;
   }
 
+  select {
+    border: none;
+  }
+
+  option:hover {
+    color: red;
   }
 `
 
 const CalorieCount = (props) => {
   const dispatch = useDispatch()
-
+  const [areae, setarea] = useState()
   /* const options = {
     method: 'GET',
     url: 'http://localhost:3000/recipes?userid=3',
@@ -52,6 +58,11 @@ const CalorieCount = (props) => {
         <div className="main__content">
           <div className="form">
             {' '}
+            <select name="dishes">
+              <option>Breacfast</option>
+              <option>Lunch</option>
+              <option>Dinner</option>
+            </select>
             <Formik
               initialValues={{
                 productName: '',

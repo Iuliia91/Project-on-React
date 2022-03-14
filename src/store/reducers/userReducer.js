@@ -3,6 +3,7 @@ import { userLoggedIn, userLoggedOut, usersWeigth } from '../actions/userAction'
 
 const InitialState = {
   userName: '',
+  userGrowth: '',
   userWeigth: '',
   userWeigthToday: '',
   userGoaldWeigth: '',
@@ -17,6 +18,7 @@ const userReducer = createReducer(InitialState, (builder) => {
   builder
     .addCase(userLoggedIn, (state, action) => {
       state.userName = action.payload.userName
+      state.userGrowth = action.payload.userGrowth
       state.userWeigth = action.payload.userWeigth
       state.userGoaldWeigth = action.payload.userGoaldWeigth
       state.userWeigthToday = state.userWeigth
@@ -38,12 +40,20 @@ const userReducer = createReducer(InitialState, (builder) => {
 
     .addCase(usersWeigth, (state, action) => {
       state.userWeigthToday = action.payload.weigthValue
+
       const proportion = (state.userWeigth - state.userGoaldWeigth) / 100
       const item = Math.round(
         (state.userGoaldWeigth - state.userWeigthToday) / proportion
       )
       const procentValue = 100 + item + '%'
-      state.procent = procentValue
+
+      if (state.userWeigthToday > state.userWeigth) {
+        state.procent = 0
+        console.log(state.procent)
+      } else {
+        state.procent = procentValue
+        console.log(state.procent)
+      }
 
       state.userListOfWeifth.push(action.payload)
     })

@@ -36,7 +36,7 @@ const ProgressBar = (props) => {
   const user = useSelector((store) => store.userReducer)
   const { userWeigth, userGoaldWeigth } = user
   const procentt = props.procent
-
+  console.log(procentt)
   return (
     <StyledProgressBar value={procentt}>
       <div className="bar-wrap">

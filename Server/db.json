@@ -184,6 +184,23 @@
       "userWeigth": "70",
       "userGoaldWeigth": "60",
       "id": 19
+    },
+    {
+      "email": "sadxas@gmail.com",
+      "password": "$2a$10$ej.AoNbXaPmX57iRSSxglul1vV6D.MnuYybE9YsaLI6UIe.r9yPKO",
+      "userName": "Anna",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 20
+    },
+    {
+      "email": "fgbftb@gmail.com",
+      "password": "$2a$10$hOoOJXAfrSSeuT6E3sPdb.10FdVj1d8Gu5vx03nuqI3OG9egz0s5y",
+      "userName": "Anna",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 21
     }
   ],
   "recipes": [
@@ -444,6 +461,171 @@
       "weigthValue": "73",
       "day": 13,
       "id": 50
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 51
+    },
+    {
+      "weigthValue": "65",
+      "day": 14,
+      "id": 52
+    },
+    {
+      "weigthValue": "60",
+      "day": 14,
+      "id": 53
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 54
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 55
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 56
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 57
+    },
+    {
+      "weigthValue": "78",
+      "day": 14,
+      "id": 58
+    },
+    {
+      "weigthValue": "78",
+      "day": 14,
+      "id": 59
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 60
+    },
+    {
+      "weigthValue": "78",
+      "day": 14,
+      "id": 61
+    },
+    {
+      "weigthValue": "76",
+      "day": 14,
+      "id": 62
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 63
+    },
+    {
+      "weigthValue": "78",
+      "day": 14,
+      "id": 64
+    },
+    {
+      "weigthValue": "78",
+      "day": 14,
+      "id": 65
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 66
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 67
+    },
+    {
+      "weigthValue": "78",
+      "day": 14,
+      "id": 68
+    },
+    {
+      "weigthValue": "65",
+      "day": 14,
+      "id": 69
+    },
+    {
+      "weigthValue": "79",
+      "day": 14,
+      "id": 70
+    },
+    {
+      "weigthValue": "80",
+      "day": 14,
+      "id": 71
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 72
+    },
+    {
+      "weigthValue": "70",
+      "day": 14,
+      "id": 73
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 74
+    },
+    {
+      "weigthValue": "78",
+      "day": 14,
+      "id": 75
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 76
+    },
+    {
+      "weigthValue": "78",
+      "day": 14,
+      "id": 77
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 78
+    },
+    {
+      "weigthValue": "80",
+      "day": 14,
+      "id": 79
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 80
+    },
+    {
+      "weigthValue": "80",
+      "day": 14,
+      "id": 81
+    },
+    {
+      "weigthValue": "73",
+      "day": 14,
+      "id": 82
+    },
+    {
+      "weigthValue": "65",
+      "day": 14,
+      "id": 83
     }
   ]
 }

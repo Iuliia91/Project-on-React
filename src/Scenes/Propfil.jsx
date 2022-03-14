@@ -114,12 +114,30 @@ const StyledModalProfilForm = styled.div`
   }
 `
 
+const DataIndex = (props) => {
+  const user = useSelector((store) => store.userReducer)
+  const t = Math.pow(user.userGrowth, 2) / 10000
+  const indexBody = user.userWeigth / t
+
+  if (indexBody) return
+}
+
+const DataOfLosingWeigth = () => {
+  if (props.userWeigthToday > props.userWeigth) {
+    return ``
+  }
+}
+
 const Profil = () => {
   const user = useSelector((store) => store.userReducer)
   const setModalContext = useContext(ModalContext)
   const getDifferenceInWeight = user.userWeigth - user.userWeigthToday
 
   const dispatch = useDispatch()
+
+  //const user = useSelector((store) => store.userReducer)
+  // const t = Math.pow(user.userGrowth, 2) / 10000
+  // const indexBody = user.userWeigth / t
 
   const hendleAddWeigthValue = () => {
     let day = new Date()
@@ -195,8 +213,7 @@ const Profil = () => {
               Your weigth - {user.userWeigthToday}
             </p>
             <p className="user_weigth-differance">
-              {' '}
-              You lost - {getDifferenceInWeight} kg
+              <DataOfLosingWeigth /> You lost - {getDifferenceInWeight} kg
             </p>
           </div>
           <ProgressBar procent={user.procent} />

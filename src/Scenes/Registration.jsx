@@ -93,14 +93,9 @@ const Registration = () => {
             } else if (!formValues.userGoaldWeigth) {
               errorObj.userGoaldWeigth = 'Fill the fields'
             } else if (!formValues.userGoaldWeigth.replace(/\D+/g, '')) {
-              errorObj.userWeigth = 'Write the number'
+              errorObj.userGoaldWeigth = 'Write the number'
             } else if (!validateEmail(formValues.email)) {
               errorObj.email = 'Write the correct email'
-            } else if (
-              formValues.password !==
-              '^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$'
-            ) {
-              errorObj.password = 'Write min 8 number'
             }
 
             return errorObj
@@ -111,7 +106,7 @@ const Registration = () => {
               email: formValues.email,
               password: formValues.password,
               userName: formValues.userName,
-
+              userGrowth: formValues.userGrowth,
               userWeigth: formValues.userWeigth,
               userGoaldWeigth: formValues.userGoaldWeigth,
             })
@@ -121,7 +116,7 @@ const Registration = () => {
                   userLoggedIn({
                     userName: response.data.user.userName,
                     Gender: response.data.user.Gender,
-                    userHeigth: response.data.user.userHeigth,
+                    userGrowth: response.data.user.userGrowth,
                     userWeigth: response.data.user.userWeigth,
                     userGoaldWeigth: response.data.user.userGoaldWeigth,
                     id: response.data.user.id,
@@ -140,6 +135,13 @@ const Registration = () => {
                 name="userName"
                 type="text"
                 placeholder="Write your name"
+              />
+            </div>
+            <div className="input">
+              <FormikInput
+                name="userGrowth"
+                type="text"
+                placeholder="Write your growth"
               />
             </div>
             <div className="input">
