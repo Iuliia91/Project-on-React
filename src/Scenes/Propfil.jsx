@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { usersWeigth } from 'store/actions/userAction'
+import { usersWeigth, amountOfLosedWeigth } from 'store/actions/userAction'
 import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { Formik, Form } from 'formik'
 import FormikInput from 'Components/formikFields/FormikInput'
-import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import ProgressBar from 'Components/ProgressBar/ProgressBar'
 import Schedule from 'Components/Schedule/Schedule'
@@ -122,18 +121,25 @@ const DataIndex = (props) => {
   if (indexBody) return
 }
 
-const DataOfLosingWeigth = () => {
-  if (props.userWeigthToday > props.userWeigth) {
-    return ``
-  }
-}
-
 const Profil = () => {
   const user = useSelector((store) => store.userReducer)
   const setModalContext = useContext(ModalContext)
-  const getDifferenceInWeight = user.userWeigth - user.userWeigthToday
-
+  const [getDifferenceInWeight, setGetDifferenceInWeigh] = useState('')
   const dispatch = useDispatch()
+
+  const DataOfLosingWeigth = (weigthToday) => {
+    if (weigthToday > user.userWeigth) {
+      const difference = weigthToday - user.userWeigth
+      dispatch(amountOfLosedWeigth(`You up on weigth + ${difference}kg`))
+      setGetDifferenceInWeigh(`You up on weigth + ${difference}kg`)
+      console.log(weigthToday)
+      return console.log(`today weigth hieg then befor`)
+    }
+    const difference = user.userWeigth - weigthToday
+    setGetDifferenceInWeigh(`You lost - ${difference} kg`)
+
+    return console.log('you losing weigth')
+  }
 
   //const user = useSelector((store) => store.userReducer)
   // const t = Math.pow(user.userGrowth, 2) / 10000
@@ -173,7 +179,16 @@ const Profil = () => {
             return errorObj
           }}
           onSubmit={(formValues, { resetForm }) => {
+            console.log(formValues.day)
+            if (formValues.day % 2 != 0) {
+              let arr = []
+              arr.push(formValues)
+
+              console.log(arr[arr.length - 1])
+            }
             dispatch(usersWeigth(formValues))
+
+            DataOfLosingWeigth(formValues.weigthValue)
             Server.post('/historyOfWeigth', {
               weigthValue: formValues.weigthValue,
               day: formValues.day,
@@ -212,9 +227,7 @@ const Profil = () => {
               {' '}
               Your weigth - {user.userWeigthToday}
             </p>
-            <p className="user_weigth-differance">
-              <DataOfLosingWeigth /> You lost - {getDifferenceInWeight} kg
-            </p>
+            <p className="user_weigth-differance">{getDifferenceInWeight}</p>
           </div>
           <ProgressBar procent={user.procent} />
           <div className="button">

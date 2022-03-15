@@ -1,5 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { userLoggedIn, userLoggedOut, usersWeigth } from '../actions/userAction'
+import {
+  userLoggedIn,
+  userLoggedOut,
+  usersWeigth,
+  amountOfLosedWeigth,
+} from '../actions/userAction'
 
 const InitialState = {
   userName: '',
@@ -8,6 +13,7 @@ const InitialState = {
   userWeigthToday: '',
   userGoaldWeigth: '',
   procent: '0',
+  amountOfDroppedWeigth: '',
   userListOfWeifth: [],
   id: '',
   isLoggedIn: false,
@@ -37,10 +43,13 @@ const userReducer = createReducer(InitialState, (builder) => {
       state.id = ''
       state.isLoggedIn = false
     })
+    .addCase(amountOfLosedWeigth, (state, action) => {
+      state.amountOfDroppedWeigth = action.payload
+    })
 
     .addCase(usersWeigth, (state, action) => {
       state.userWeigthToday = action.payload.weigthValue
-
+      state.amountOfDroppedWeigth = action.payload
       const proportion = (state.userWeigth - state.userGoaldWeigth) / 100
       const item = Math.round(
         (state.userGoaldWeigth - state.userWeigthToday) / proportion

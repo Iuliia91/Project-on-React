@@ -20,10 +20,10 @@ const StyledSchedule = styled.div`
 
 const Schedule = (props) => {
   const weigthData = useSelector((store) => store.userReducer)
-  const maxweigth = weigthData.userWeigth
+  const maxweigth = weigthData.userWeigth - 5
   const WeigthToda = props.weigthToday
   const dataMin = weigthData.userGoaldWeigth
-
+  console.log(maxweigth)
   const data = weigthData.userListOfWeifth
 
   console.log(data)
@@ -43,7 +43,7 @@ const Schedule = (props) => {
           type="number"
           domain={[
             (dataMin) => (dataMin = weigthData.userGoaldWeigth - 3),
-            (dataMax) => (dataMax = maxweigth),
+            (dataMax) => (dataMax = maxweigth + 10.5),
           ]}
         />
 
