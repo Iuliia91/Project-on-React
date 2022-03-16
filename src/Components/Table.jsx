@@ -4,7 +4,7 @@ import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { useState } from 'react'
 import Spinner from './Spinner/Spinner'
-import Card from 'Components/Card/Card'
+import Tooltip from './Tooltip/Tooltip'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import { deleteItem, editItem } from 'store/actions/recipeCard'
 const StyledTable = styled.div`
@@ -65,21 +65,6 @@ const StyledTable = styled.div`
 
   button:hover {
     background-color: grey;
-  }
-`
-const StyledTooltip = styled.div`
-  overflow: hidden;
-  position: absolute;
-  top: ${(props) => props.leftValue};
-  left: ${(props) => props.topValue};
-  width: 100px;
-  heigth: 100px;
-
-  .tooltip_add {
-    background: white;
-    padding: 20px;
-    border-radius: 4px;
-    color: black;
   }
 `
 
@@ -156,19 +141,6 @@ const InputNewValueWeigth = (props) => {
   )
 }
 
-const Tooltip = (props) => {
-  let topX = props.pageX + 'px'
-  let leftY = props.pageY + 10 + 'px'
-
-  return (
-    <StyledTooltip topValue={topX} leftValue={leftY}>
-      <div className={props.addClassName}>
-        <p>change weigth</p>
-      </div>
-    </StyledTooltip>
-  )
-}
-
 const TableElement = (props) => {
   const [coordinataX, setcoordinataX] = useState(0)
   const [coordinataY, setcoordinataY] = useState(0)
@@ -231,6 +203,7 @@ const TableElement = (props) => {
         <Tooltip
           pageX={coordinataX}
           pageY={coordinataY}
+          tooltipText="change weigth"
           addClassName={'tooltip_add'}
         />
       )}

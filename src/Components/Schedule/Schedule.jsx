@@ -14,7 +14,7 @@ import Server from 'api/server.instance'
 const StyledSchedule = styled.div`
   width: 500px;
   heigth: 800px;
-  background: white;
+  background: #ece9e0;
   border-radius: 20px;
 `
 
@@ -29,7 +29,7 @@ const Schedule = (props) => {
   console.log(data)
   return (
     <StyledSchedule>
-      <LineChart width={400} height={400} data={data} margin={{ top: 30 }}>
+      <LineChart width={400} height={350} data={data} margin={{ top: 30 }}>
         <ReferenceLine y={dataMin} label="Goal " stroke="red" />
         <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
         <XAxis
@@ -47,13 +47,7 @@ const Schedule = (props) => {
           ]}
         />
 
-        <Line
-          type="monotone"
-          dataKey="weigthValue"
-          stroke="#8884d8"
-          height={300}
-          width={400}
-        />
+        <Line type="monotone" dataKey="weigthValue" stroke="green" />
       </LineChart>
     </StyledSchedule>
   )

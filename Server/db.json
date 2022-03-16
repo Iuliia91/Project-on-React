@@ -201,6 +201,42 @@
       "userWeigth": "70",
       "userGoaldWeigth": "60",
       "id": 21
+    },
+    {
+      "email": "dmitruppsdi@gmail.com",
+      "password": "$2a$10$6VQNyV4.QG49kxeLqNQvhezl3U5FXxPu45ITWnNGNvaAWavvop2Y2",
+      "userName": "Dmitri",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 22
+    },
+    {
+      "email": "trsgtrh@gmail.com",
+      "password": "$2a$10$fawjUNICKgoXhEtlB172.uqUz/o/M1w/p76i0Ht8T/vCE2L3b1ctO",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 23
+    },
+    {
+      "email": "sdfcsd@gmail.com",
+      "password": "$2a$10$eI6TMaoJtxRl8ccWSlbRhe8ySmqB3CmRQCU6EM2B69xhLcOU2ZZcG",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "90",
+      "userGoaldWeigth": "60",
+      "id": 24
+    },
+    {
+      "email": "annaprusakova91@gmail.com",
+      "password": "$2a$10$RjDsDY/8GYeVnk3PCm9NNOZBpuawkr1uPWkrzR/aq7e99Qiydhl5i",
+      "userName": "Anna",
+      "userGrowth": "168",
+      "userWeigth": "75",
+      "userGoaldWeigth": "60",
+      "id": 25
     }
   ],
   "recipes": [
@@ -220,632 +256,26 @@
   ],
   "phase": [
     {
-      "Phase 1": "1200 cal",
+      "Phase 1": "1200 cal ",
       "breakfast": 200,
       "snack": 100,
       "lunch": 400,
       "dinner": 400
+    },
+    {
+      "Phase 2": "1800 cal- 2200 cal ",
+      "breakfast": 200,
+      "snack": 200,
+      "lunch": 600,
+      "dinner": 600
+    },
+    {
+      "Phase 3": "3000 cal",
+      "breakfast": 500,
+      "snack": 400,
+      "lunch": 800,
+      "dinner": 800
     }
   ],
-  "historyOfWeigth": [
-    {
-      "weigthValue": "73",
-      "day": 12,
-      "id": 1
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "id": 7
-    },
-    {
-      "id": 8
-    },
-    {
-      "id": 9
-    },
-    {
-      "weigthValue": "73",
-      "day": 12,
-      "id": 10
-    },
-    {
-      "weigthValue": "70",
-      "day": 12,
-      "id": 11
-    },
-    {
-      "weigthValue": "73",
-      "day": 12,
-      "id": 12
-    },
-    {
-      "weigthValue": "65",
-      "day": 12,
-      "id": 13
-    },
-    {
-      "weigthValue": "73",
-      "day": 12,
-      "id": 14
-    },
-    {
-      "weigthValue": "73",
-      "day": 12,
-      "id": 15
-    },
-    {
-      "weigthValue": "73",
-      "day": 12,
-      "id": 16
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 17
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 18
-    },
-    {
-      "weigthValue": "70",
-      "day": 13,
-      "id": 19
-    },
-    {
-      "weigthValue": "65",
-      "day": 13,
-      "id": 20
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 21
-    },
-    {
-      "weigthValue": "65",
-      "day": 13,
-      "id": 22
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 23
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 24
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 25
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 26
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 27
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 28
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 29
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 30
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 31
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 32
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 33
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 34
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 35
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 36
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 37
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 38
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 39
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 40
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 41
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 42
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 43
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 44
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 45
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 46
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 47
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 48
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 49
-    },
-    {
-      "weigthValue": "73",
-      "day": 13,
-      "id": 50
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 51
-    },
-    {
-      "weigthValue": "65",
-      "day": 14,
-      "id": 52
-    },
-    {
-      "weigthValue": "60",
-      "day": 14,
-      "id": 53
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 54
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 55
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 56
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 57
-    },
-    {
-      "weigthValue": "78",
-      "day": 14,
-      "id": 58
-    },
-    {
-      "weigthValue": "78",
-      "day": 14,
-      "id": 59
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 60
-    },
-    {
-      "weigthValue": "78",
-      "day": 14,
-      "id": 61
-    },
-    {
-      "weigthValue": "76",
-      "day": 14,
-      "id": 62
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 63
-    },
-    {
-      "weigthValue": "78",
-      "day": 14,
-      "id": 64
-    },
-    {
-      "weigthValue": "78",
-      "day": 14,
-      "id": 65
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 66
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 67
-    },
-    {
-      "weigthValue": "78",
-      "day": 14,
-      "id": 68
-    },
-    {
-      "weigthValue": "65",
-      "day": 14,
-      "id": 69
-    },
-    {
-      "weigthValue": "79",
-      "day": 14,
-      "id": 70
-    },
-    {
-      "weigthValue": "80",
-      "day": 14,
-      "id": 71
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 72
-    },
-    {
-      "weigthValue": "70",
-      "day": 14,
-      "id": 73
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 74
-    },
-    {
-      "weigthValue": "78",
-      "day": 14,
-      "id": 75
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 76
-    },
-    {
-      "weigthValue": "78",
-      "day": 14,
-      "id": 77
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 78
-    },
-    {
-      "weigthValue": "80",
-      "day": 14,
-      "id": 79
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 80
-    },
-    {
-      "weigthValue": "80",
-      "day": 14,
-      "id": 81
-    },
-    {
-      "weigthValue": "73",
-      "day": 14,
-      "id": 82
-    },
-    {
-      "weigthValue": "65",
-      "day": 14,
-      "id": 83
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 84
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 85
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 86
-    },
-    {
-      "weigthValue": "78",
-      "day": 15,
-      "id": 87
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 88
-    },
-    {
-      "weigthValue": "70",
-      "day": 15,
-      "id": 89
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 90
-    },
-    {
-      "weigthValue": "80",
-      "day": 15,
-      "id": 91
-    },
-    {
-      "weigthValue": "78",
-      "day": 15,
-      "id": 92
-    },
-    {
-      "weigthValue": "65",
-      "day": 15,
-      "id": 93
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 94
-    },
-    {
-      "weigthValue": "74",
-      "day": 15,
-      "id": 95
-    },
-    {
-      "weigthValue": "65",
-      "day": 15,
-      "id": 96
-    },
-    {
-      "weigthValue": "78",
-      "day": 15,
-      "id": 97
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 98
-    },
-    {
-      "weigthValue": "80",
-      "day": 15,
-      "id": 99
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 100
-    },
-    {
-      "weigthValue": "80",
-      "day": 15,
-      "id": 101
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 102
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 103
-    },
-    {
-      "weigthValue": "65",
-      "day": 15,
-      "id": 104
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 105
-    },
-    {
-      "weigthValue": "65",
-      "day": 15,
-      "id": 106
-    },
-    {
-      "weigthValue": "80",
-      "day": 15,
-      "id": 107
-    },
-    {
-      "weigthValue": "72",
-      "day": 15,
-      "id": 108
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 109
-    },
-    {
-      "weigthValue": "76",
-      "day": 15,
-      "id": 110
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 111
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 112
-    },
-    {
-      "weigthValue": "666",
-      "day": 15,
-      "id": 113
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 114
-    },
-    {
-      "weigthValue": "70",
-      "day": 15,
-      "id": 115
-    },
-    {
-      "weigthValue": "60",
-      "day": 15,
-      "id": 116
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 117
-    },
-    {
-      "weigthValue": "75",
-      "day": 15,
-      "id": 118
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 119
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 120
-    },
-    {
-      "weigthValue": "65",
-      "day": 15,
-      "id": 121
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 122
-    },
-    {
-      "weigthValue": "65",
-      "day": 15,
-      "id": 123
-    },
-    {
-      "weigthValue": "60",
-      "day": 15,
-      "id": 124
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 125
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 126
-    },
-    {
-      "weigthValue": "73",
-      "day": 15,
-      "id": 127
-    }
-  ]
+  "historyOfWeigth": []
 }

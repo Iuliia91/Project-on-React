@@ -57,7 +57,7 @@ const LogIn = (props) => {
         <div className={'cardHeader'}>Login</div>
 
         <Formik
-          initialValues={{ email: 'ulapru@gmail.com', password: 'Zxcvbnm' }}
+          initialValues={{ email: 'sdfcsd@gmail.com', password: 'Zxcvbnm' }}
           validate={(formValues) => {
             const errorObj = {}
             let isValid = true
@@ -81,7 +81,7 @@ const LogIn = (props) => {
                     userName: response.data.user.userName,
                     email: response.data.user.email,
                     Gender: response.data.user.Gender,
-                    userHeigth: response.data.user.userHeigth,
+                    userGrowth: response.data.user.userGrowth,
                     userWeigth: response.data.user.userWeigth,
                     userGoaldWeigth: response.data.user.userGoaldWeigth,
                     id: response.data.user.id,

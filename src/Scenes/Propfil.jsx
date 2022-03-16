@@ -11,6 +11,7 @@ import ProgressBar from 'Components/ProgressBar/ProgressBar'
 import Schedule from 'Components/Schedule/Schedule'
 import Server from 'api/server.instance'
 import ModalContextElement from 'Components/ModalContext/ModalContext'
+import { render } from 'react-dom'
 const StyledProfil = styled.div`
 width:80%;
 margin:auto;
@@ -46,7 +47,8 @@ width:80%;
 
   .user_information{
 background: #ece9e0;
- grid-column:1/2;
+
+ grid-column:2/5;
  padding:30px;
  border-radius: 20px;
   }
@@ -85,6 +87,13 @@ background: #ece9e0;
     grid-row:3/6
   }
 
+  .user_suggestion{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    text-align: center;
+  }
+
 
 `
 
@@ -113,12 +122,71 @@ const StyledModalProfilForm = styled.div`
   }
 `
 
+/*  if (indexBody >= 16 && indexBody <= 18.5) {
+    const valueCalorisMax = 3000
+    return (
+      <div className="user_suggestion">
+        {'Not enough body weight'}
+        <p>'We recommend eating a 3000 calories meal peer day '</p>
+      </div>
+    )
+  } else if (indexBody >= 18.6 && indexBody <= 25) {
+    const valueCalorisMin = 1800
+    const valueCalorisMax = 2200
+
+    return (
+      <div className="user_suggestion">
+        <p>{'Your weigth is norma'}</p>
+        <p>'We recommend eating a 1800 -2200 calories meal peer day '</p>
+      </div>
+    )
+  } else if (indexBody >= 25.1 && indexBody <= 40) {
+    const valueCaloris = 1200
+
+    return (
+      <div className="user_suggestion">
+        <p>{'You have overweight '}</p>
+        <p>We recommend eating a 1200 calorie meal peer day</p>
+      </div>
+    )
+  }
+
+  return*/
+
 const DataIndex = (props) => {
   const user = useSelector((store) => store.userReducer)
-  const t = Math.pow(user.userGrowth, 2) / 10000
-  const indexBody = user.userWeigth / t
 
-  if (indexBody) return
+  const t = Math.pow(user.userGrowth, 2) / 10000
+
+  const indexBody = user.userWeigth / t
+  console.log(indexBody)
+  console.log(user.userWeigth)
+  console.log(user.userGrowth)
+
+  /* switch (indexBody) {
+    case indexBody >= 16 || indexBody <= 18.5:
+      return (
+        <div className="user_suggestion">
+          {'Not enough body weight'}
+          <p>'We recommend eating a 3000 calories meal peer day '</p>
+        </div>
+      )
+    case indexBody >= 18.6 || indexBody <= 25:
+      return (
+        <div className="user_suggestion">
+          <p>{'Your weigth is norma'}</p>
+          <p>'We recommend eating a 1800 -2200 calories meal peer day '</p>
+        </div>
+      )
+    case indexBody >= 25.1 || indexBody <= 40:
+      return (
+        <div className="user_suggestion">
+          <p>{'You have overweight '}</p>
+          <p>We recommend eating a 1200 calorie meal peer day</p>
+        </div>
+      )
+  }*/
+  return <div></div>
 }
 
 const Profil = () => {
@@ -126,20 +194,6 @@ const Profil = () => {
   const setModalContext = useContext(ModalContext)
   const [getDifferenceInWeight, setGetDifferenceInWeigh] = useState('')
   const dispatch = useDispatch()
-
-  const DataOfLosingWeigth = (weigthToday) => {
-    if (weigthToday > user.userWeigth) {
-      const difference = weigthToday - user.userWeigth
-      dispatch(amountOfLosedWeigth(`You up on weigth + ${difference}kg`))
-      setGetDifferenceInWeigh(`You up on weigth + ${difference}kg`)
-      console.log(weigthToday)
-      return console.log(`today weigth hieg then befor`)
-    }
-    const difference = user.userWeigth - weigthToday
-    setGetDifferenceInWeigh(`You lost - ${difference} kg`)
-
-    return console.log('you losing weigth')
-  }
 
   //const user = useSelector((store) => store.userReducer)
   // const t = Math.pow(user.userGrowth, 2) / 10000
@@ -183,12 +237,12 @@ const Profil = () => {
             if (formValues.day % 2 != 0) {
               let arr = []
               arr.push(formValues)
-
+              console.log(arr)
               console.log(arr[arr.length - 1])
             }
             dispatch(usersWeigth(formValues))
 
-            DataOfLosingWeigth(formValues.weigthValue)
+            dispatch(amountOfLosedWeigth(formValues.weigthValue))
             Server.post('/historyOfWeigth', {
               weigthValue: formValues.weigthValue,
               day: formValues.day,
@@ -227,7 +281,9 @@ const Profil = () => {
               {' '}
               Your weigth - {user.userWeigthToday}
             </p>
-            <p className="user_weigth-differance">{getDifferenceInWeight}</p>
+            <p className="user_weigth-differance">
+              {user.amountOfDroppedWeigth}
+            </p>
           </div>
           <ProgressBar procent={user.procent} />
           <div className="button">
@@ -244,7 +300,10 @@ const Profil = () => {
         {' '}
         <Schedule weigthToday={user.userWeigthToday} />
       </div>
-      <div className="user_information">fdgvbbftbhfg</div>
+      <div className="user_information">
+        {' '}
+        <DataIndex />
+      </div>
     </StyledProfil>
   )
 }

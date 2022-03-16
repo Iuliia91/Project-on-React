@@ -12,6 +12,7 @@ const InitialState = {
   userWeigth: '',
   userWeigthToday: '',
   userGoaldWeigth: '',
+  bodyMassIndex: '',
   procent: '0',
   amountOfDroppedWeigth: '',
   userListOfWeifth: [],
@@ -44,12 +45,20 @@ const userReducer = createReducer(InitialState, (builder) => {
       state.isLoggedIn = false
     })
     .addCase(amountOfLosedWeigth, (state, action) => {
-      state.amountOfDroppedWeigth = action.payload
+      const weigth = action.payload
+      console.log(weigth)
+      if (weigth >= state.userWeigth) {
+        const difference = weigth - state.userWeigth
+        state.amountOfDroppedWeigth = `You up on weigth + ${difference}kg`
+      } else {
+        const difference = state.userWeigth - weigth
+        state.amountOfDroppedWeigth = `You lost - ${difference} kg`
+      }
     })
 
     .addCase(usersWeigth, (state, action) => {
       state.userWeigthToday = action.payload.weigthValue
-      state.amountOfDroppedWeigth = action.payload
+
       const proportion = (state.userWeigth - state.userGoaldWeigth) / 100
       const item = Math.round(
         (state.userGoaldWeigth - state.userWeigthToday) / proportion
@@ -58,10 +67,8 @@ const userReducer = createReducer(InitialState, (builder) => {
 
       if (state.userWeigthToday > state.userWeigth) {
         state.procent = 0
-        console.log(state.procent)
       } else {
         state.procent = procentValue
-        console.log(state.procent)
       }
 
       state.userListOfWeifth.push(action.payload)
