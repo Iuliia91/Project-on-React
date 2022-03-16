@@ -1,8 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { CARD_LIST_ACTIONS } from 'store/actionTypes'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
-import apiRequest from 'api/ApiInstance'
 
 export const recipeCard = createAction(CARD_LIST_ACTIONS.list)
 

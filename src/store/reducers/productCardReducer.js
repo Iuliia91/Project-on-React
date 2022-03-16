@@ -23,7 +23,6 @@ const productCardReducer = createReducer(initialState, (builder) => {
 
     .addCase(addProduct.pending, (state, action) => {
       state.loading = 'pending'
-      console.log('pending')
     })
     .addCase(addProduct.fulfilled, (state, action) => {
       state.loading = 'fulfilled'

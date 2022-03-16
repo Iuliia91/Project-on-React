@@ -163,30 +163,61 @@ const DataIndex = (props) => {
   console.log(user.userWeigth)
   console.log(user.userGrowth)
 
-  /* switch (indexBody) {
+  /*switch (indexBody) {
     case indexBody >= 16 || indexBody <= 18.5:
       return (
         <div className="user_suggestion">
           {'Not enough body weight'}
           <p>'We recommend eating a 3000 calories meal peer day '</p>
         </div>
-      )
+      )[breack]
     case indexBody >= 18.6 || indexBody <= 25:
       return (
         <div className="user_suggestion">
           <p>{'Your weigth is norma'}</p>
           <p>'We recommend eating a 1800 -2200 calories meal peer day '</p>
         </div>
-      )
+      )[breack]
     case indexBody >= 25.1 || indexBody <= 40:
+      console.log('ddddecfv')
       return (
         <div className="user_suggestion">
           <p>{'You have overweight '}</p>
           <p>We recommend eating a 1200 calorie meal peer day</p>
         </div>
       )
+      breack
+    default:
+      return <div>Your wrote smt wrong </div>
   }*/
-  return <div></div>
+  if (indexBody >= 16 && indexBody <= 18.5) {
+    const valueCalorisMax = 3000
+    return (
+      <div className="user_suggestion">
+        {'Not enough body weight'}
+        <p>'We recommend eating a 3000 calories meal peer day '</p>
+      </div>
+    )
+  } else if (indexBody >= 18.6 && indexBody <= 25) {
+    const valueCalorisMin = 1800
+    const valueCalorisMax = 2200
+
+    return (
+      <div className="user_suggestion">
+        <p>{'Your weigth is norma'}</p>
+        <p>'We recommend eating a 1800 -2200 calories meal peer day '</p>
+      </div>
+    )
+  } else if (indexBody >= 25.1 && indexBody <= 40) {
+    const valueCaloris = 1200
+
+    return (
+      <div className="user_suggestion">
+        <p>{'You have overweight '}</p>
+        <p>We recommend eating a 1200 calorie meal peer day</p>
+      </div>
+    )
+  }
 }
 
 const Profil = () => {

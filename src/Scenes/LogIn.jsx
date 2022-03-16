@@ -3,6 +3,7 @@ import Server from 'api/server.instance'
 import styled from 'styled-components'
 import { userLoggedIn, userLoggedOut } from '../store/actions/userAction'
 import { useDispatch } from 'react-redux'
+import { ExampleOfMenue } from '../store/actions/exampleOfMenu'
 import { globalApiAction } from '../store/selectors/globalApiSelector'
 import { useSelector } from 'react-redux'
 import ButtonOptions from 'Components/ButtonOptions'
@@ -71,6 +72,7 @@ const LogIn = (props) => {
             return errorObj
           }}
           onSubmit={(formValues) => {
+            dispatch(ExampleOfMenue())
             Server.post('/login', {
               email: formValues.email,
               password: formValues.password,

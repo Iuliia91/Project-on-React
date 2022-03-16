@@ -14,3 +14,7 @@ export const USER_ACTION = {
 export const Global_Api_Error = {
   apiError: 'global_api_error',
 }
+
+export const ExampleOfMenue = {
+  exampleOfMenue: 'example_of_menue',
+}
