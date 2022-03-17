@@ -28,6 +28,7 @@ const productCardReducer = createReducer(initialState, (builder) => {
     })
     .addCase(addProduct.fulfilled, (state, action) => {
       state.loading = 'fulfilled'
+
       state.listOfProduct.push(action.payload)
     })
     .addCase(addProduct.rejected, (state, action) => {})

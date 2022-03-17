@@ -57,15 +57,15 @@ const CalorieCount = (props) => {
   const [areae, setarea] = useState()
   const [isChoosen, setIsChoosen] = useState('button')
   const typeOfDishes = ['breakfast', 'snack', 'lunch', 'dinner']
-
+  const [disable, setDisable] = useState(false)
   /* const options = {
     method: 'GET',
     url: 'http://localhost:3000/recipes?userid=3',
   }*/
 
-  const handleChoosenType = (index) => {
+  const handleChoosenType = (e, index, item) => {
     setarea(index)
-    //e.target.className = 'active'
+    //setDisable(true)
   }
   console.log(isChoosen)
 
@@ -73,13 +73,28 @@ const CalorieCount = (props) => {
     <StyledCalorieCount>
       <main className="main">
         <div className="main__content">
+          {typeOfDishes.map((item, index) => (
+            <button
+              disabled={disable === index ? true : false}
+              type="button"
+              value={item}
+              className={areae == index ? 'active' : 'button'}
+              onClick={(e) => {
+                setDisable(index)
+                handleChoosenType(e, index, item)
+                setIsChoosen(item)
+                dispatch(typeOfDish({ items: item }))
+              }}
+            >
+              {item}
+            </button>
+          ))}
           <div className="form">
             <Formik
               initialValues={{
                 productName: '',
                 Weigth: '',
                 calorie: '',
-                type: '',
               }}
               validate={(formValues) => {
                 const errorObj = {}
@@ -97,33 +112,14 @@ const CalorieCount = (props) => {
                 return errorObj
               }}
               onSubmit={(formValues, { resetForm }) => {
-                console.log(formValues)
+                const obj = { ...formValues, types: isChoosen }
 
-                dispatch(addProduct(formValues)).then(() => {
+                dispatch(addProduct(obj)).then(() => {
                   resetForm()
                 })
               }}
             >
               <Form>
-                {typeOfDishes.map((item, index) => (
-                  <button
-                    type="button"
-                    value={item}
-                    className={areae == index ? 'active' : 'button'}
-                    onClick={(e) => {
-                      handleChoosenType(index)
-
-                      setIsChoosen('button')
-                      console.log(item)
-                      const value = item
-                      const obj = { isChoosen: true, items: item }
-                      dispatch(typeOfDish(obj))
-                    }}
-                  >
-                    {item}
-                  </button>
-                ))}
-
                 <FormikInput
                   name="productName"
                   type="text"

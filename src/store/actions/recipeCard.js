@@ -15,12 +15,14 @@ export const addProduct = createAsyncThunk(
         query: `${productItem.productName}`,
       },
     }
+    //const obj = { productName: 'carrot', Weigth: '200', calorie: '65' }
+    const obj = productItem
     /* const response = await apiRequest.request('/foods/search', options)
     {
       ...productItem,
       calorie: response.data.foods[0].foodNutrients[3].value,
     }*/
-    return { productName: 'carrot', Weigth: '200', calorie: '65' }
+    return obj
   }
 )
 
