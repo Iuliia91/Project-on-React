@@ -280,5 +280,11 @@
       "dinner": 800
     }
   ],
-  "historyOfWeigth": []
+  "historyOfWeigth": [
+    {
+      "weigthValue": "80",
+      "day": 17,
+      "id": 1
+    }
+  ]
 }

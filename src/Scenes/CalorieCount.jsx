@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { useSelector, useDispatch } from 'react-redux'
 
-import { addProduct } from 'store/actions/recipeCard'
+import { addProduct, typeOfDish } from 'store/actions/recipeCard'
 import ButtonOptions from 'Components/ButtonOptions'
 import TableList from 'Components/Table'
 
@@ -42,32 +42,44 @@ const StyledCalorieCount = styled.div`
   option:hover {
     color: red;
   }
+
+  .active {
+    background: pink;
+  }
+  .button {
+    border: none;
+    background: white;
+  }
 `
 
 const CalorieCount = (props) => {
   const dispatch = useDispatch()
   const [areae, setarea] = useState()
+  const [isChoosen, setIsChoosen] = useState('button')
+  const typeOfDishes = ['breakfast', 'snack', 'lunch', 'dinner']
+
   /* const options = {
     method: 'GET',
     url: 'http://localhost:3000/recipes?userid=3',
   }*/
+
+  const handleChoosenType = (index) => {
+    setarea(index)
+    //e.target.className = 'active'
+  }
+  console.log(isChoosen)
 
   return (
     <StyledCalorieCount>
       <main className="main">
         <div className="main__content">
           <div className="form">
-            {' '}
-            <select name="dishes">
-              <option>Breacfast</option>
-              <option>Lunch</option>
-              <option>Dinner</option>
-            </select>
             <Formik
               initialValues={{
                 productName: '',
                 Weigth: '',
                 calorie: '',
+                type: '',
               }}
               validate={(formValues) => {
                 const errorObj = {}
@@ -86,12 +98,32 @@ const CalorieCount = (props) => {
               }}
               onSubmit={(formValues, { resetForm }) => {
                 console.log(formValues)
+
                 dispatch(addProduct(formValues)).then(() => {
                   resetForm()
                 })
               }}
             >
               <Form>
+                {typeOfDishes.map((item, index) => (
+                  <button
+                    type="button"
+                    value={item}
+                    className={areae == index ? 'active' : 'button'}
+                    onClick={(e) => {
+                      handleChoosenType(index)
+
+                      setIsChoosen('button')
+                      console.log(item)
+                      const value = item
+                      const obj = { isChoosen: true, items: item }
+                      dispatch(typeOfDish(obj))
+                    }}
+                  >
+                    {item}
+                  </button>
+                ))}
+
                 <FormikInput
                   name="productName"
                   type="text"
@@ -118,7 +150,7 @@ const CalorieCount = (props) => {
             </Formik>
           </div>
 
-          <TableList />
+          <TableList typeOfDish={isChoosen} />
         </div>
       </main>
     </StyledCalorieCount>

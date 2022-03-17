@@ -4,6 +4,8 @@ import axios from 'axios'
 
 export const recipeCard = createAction(CARD_LIST_ACTIONS.list)
 
+export const typeOfDish = createAction(CARD_LIST_ACTIONS.typeOfDish)
+
 export const addProduct = createAsyncThunk(
   CARD_LIST_ACTIONS.add,
 

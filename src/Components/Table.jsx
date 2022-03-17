@@ -146,7 +146,6 @@ const TableElement = (props) => {
   const [coordinataY, setcoordinataY] = useState(0)
   const [visible, setVisible] = useState(false)
   const openModal = useContext(ModalContext)
-  const [rect, setRect] = useState()
   const coords = useRef('')
   const dispatch = useDispatch()
   const listOfProduct = useSelector(
@@ -217,6 +216,7 @@ const TableElement = (props) => {
             <th>Calories</th>
             <th>Actions</th>
           </tr>
+          <tr>{props.typeOfDish}</tr>
         </thead>
 
         <tbody>

@@ -4,12 +4,14 @@ import {
   editItem,
   addProduct,
   deleteItem,
+  typeOfDish,
 } from 'store/actions/recipeCard'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
   product: null,
   listOfProduct: [],
+  typeOfDish: '',
   isEdited: false,
   loading: 'loading',
 }
@@ -47,6 +49,10 @@ const productCardReducer = createReducer(initialState, (builder) => {
         }
       })
       state.listOfProduct = newlistofProduct
+    })
+
+    .addCase(typeOfDish, (state, action) => {
+      state.typeOfDish = action.payload
     })
     .addMatcher(
       (action) => {
