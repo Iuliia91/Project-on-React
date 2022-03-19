@@ -4,6 +4,7 @@ export const DIRECTION_TYPE = {
   registration: 'registration',
   profile: '/profil',
   information: 'information',
+
   menu: 'menu',
   listofproducts: 'listofproducts',
   caloriecount: 'caloriecount',

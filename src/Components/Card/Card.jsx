@@ -43,15 +43,11 @@ const Card = (props) => {
 
   const name = recipeName
 
-  const Recipes = {
+  /*const Recipes = {
     name: name,
     products: [...lest],
     userid: userID.id,
-  }
-
-  useEffect(() => {
-    return () => {}
-  })
+  }*/
 
   const handleSaveOnServer = () => {
     if (isEdit) {
@@ -78,7 +74,7 @@ const Card = (props) => {
         }}
         value={recipeName}
       />
-
+      <div>{props.text}</div>
       <div className={'cardFooter'}>
         <ButtonOptions
           type="button"

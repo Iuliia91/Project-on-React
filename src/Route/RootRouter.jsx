@@ -60,7 +60,8 @@ const RootRouter = () => {
         path={DIRECTION_TYPE.profile}
         element={renderForLoggedInUser(<SecondMainLayouts />)}
       >
-        <Route path={DIRECTION_TYPE.information} element={<Profil />} />
+        <Route path={DIRECTION_TYPE.information} element={<Profil />}></Route>
+
         <Route path={DIRECTION_TYPE.menu} element={<Menu />} />
         <Route
           path={DIRECTION_TYPE.listofproducts}

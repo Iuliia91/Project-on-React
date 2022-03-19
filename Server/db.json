@@ -237,6 +237,24 @@
       "userWeigth": "75",
       "userGoaldWeigth": "60",
       "id": 25
+    },
+    {
+      "email": "sasha@gmail.com",
+      "password": "$2a$10$/Pc7s9TA7JcwmFkvGBMe.etL7HS4HPWvYk9YDL2WjaICoWYLs1q/.",
+      "userName": "Sasha",
+      "userGrowth": "170",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 26
+    },
+    {
+      "email": "sasha91@gmail.com",
+      "password": "$2a$10$Jq91W/0SvM.8zzpwIzZWkusLLFVHcLAzy2puIRnH3.SUrXFc2Fl/i",
+      "userName": "Sasha",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 27
     }
   ],
   "recipes": [
@@ -257,7 +275,9 @@
   "phase": [
     {
       "Phase": "Phase 1",
-      "calorie": "1200 cal ",
+      "calorie": {
+        "min": 1200
+      },
       "breakfast": 200,
       "snack": 100,
       "lunch": 400,
@@ -265,7 +285,10 @@
     },
     {
       "Phase": "Phase 2",
-      "calorie": "1800 cal- 2200 cal ",
+      "calorie": {
+        "min": 1800,
+        "max": 2200
+      },
       "breakfast": 200,
       "snack": 200,
       "lunch": 600,
@@ -273,7 +296,9 @@
     },
     {
       "Phase": "Phase 3",
-      "calorie": "3000 cal",
+      "calorie": {
+        "min": 3000
+      },
       "breakfast": 500,
       "snack": 400,
       "lunch": 800,
@@ -285,6 +310,21 @@
       "weigthValue": "80",
       "day": 17,
       "id": 1
+    },
+    {
+      "weigthValue": "73",
+      "day": 18,
+      "id": 2
+    },
+    {
+      "weigthValue": "65",
+      "day": 18,
+      "id": 3
+    },
+    {
+      "weigthValue": "73",
+      "day": 18,
+      "id": 4
     }
   ]
 }

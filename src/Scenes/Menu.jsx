@@ -40,7 +40,10 @@ const Menu = () => {
               <thead>
                 <tr>
                   <h2>{item.Phase} </h2>
-                  <h3>{item.calorie}</h3>
+                  <h3>
+                    {item.calorie.min}cal {item.calorie.max}
+                  </h3>
+                  <h3></h3>
                 </tr>
               </thead>
               <tbody>

@@ -5,18 +5,21 @@ import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { Formik, Form } from 'formik'
 import FormikInput from 'Components/formikFields/FormikInput'
-
+import { amountCaloriesPerDay } from 'store/actions/exampleOfMenu'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import ProgressBar from 'Components/ProgressBar/ProgressBar'
 import Schedule from 'Components/Schedule/Schedule'
 import Server from 'api/server.instance'
+import { Link, NavLink } from 'react-router-dom'
 import ModalContextElement from 'Components/ModalContext/ModalContext'
 import { render } from 'react-dom'
+import Card from 'Components/Card/Card'
 const StyledProfil = styled.div`
 width:80%;
 margin:auto;
 aling-item:center;
   display: grid;
+  
   grid-template-columns: repeat(5, 1fr);
   
  grid-gap:20px;
@@ -94,6 +97,7 @@ background: #ece9e0;
     text-align: center;
   }
 
+ 
 
 `
 
@@ -121,50 +125,42 @@ const StyledModalProfilForm = styled.div`
     text-align: center;
   }
 `
-
-/*  if (indexBody >= 16 && indexBody <= 18.5) {
-    const valueCalorisMax = 3000
-    return (
-      <div className="user_suggestion">
-        {'Not enough body weight'}
-        <p>'We recommend eating a 3000 calories meal peer day '</p>
-      </div>
-    )
-  } else if (indexBody >= 18.6 && indexBody <= 25) {
-    const valueCalorisMin = 1800
-    const valueCalorisMax = 2200
-
-    return (
-      <div className="user_suggestion">
-        <p>{'Your weigth is norma'}</p>
-        <p>'We recommend eating a 1800 -2200 calories meal peer day '</p>
-      </div>
-    )
-  } else if (indexBody >= 25.1 && indexBody <= 40) {
-    const valueCaloris = 1200
-
-    return (
-      <div className="user_suggestion">
-        <p>{'You have overweight '}</p>
-        <p>We recommend eating a 1200 calorie meal peer day</p>
-      </div>
-    )
+const StyeldExampleMenu = styled.div`
+  margin: 0;
+  .menu {
+    list-style: none;
+    font-family: ;
   }
 
-  return*/
+  .menu li {
+    margin-bottom: 5px;
+    border-bottom: 2px #404b51 dotted;
+    font-size: 26px;
+    line-height: 1;
+  }
 
+  .menu li span:nth-child(odd) {
+    padding-right: 6px;
+  }
+  .menu li span:nth-child(even) {
+    float: right;
+    padding-left: 6px;
+    color: #35d1ce;
+  }
+  .menu span {
+    position: relative;
+    bottom: -7px;
+  }
+`
 const DataIndex = (props) => {
   const user = useSelector((store) => store.userReducer)
-
+  const dispatch = useDispatch()
   const t = Math.pow(user.userGrowth, 2) / 10000
 
   const indexBody = user.userWeigth / t
-  console.log(indexBody)
-  console.log(user.userWeigth)
-  console.log(user.userGrowth)
 
   if (indexBody >= 16 && indexBody <= 18.5) {
-    const valueCalorisMax = 3000
+    dispatch(amountCaloriesPerDay(3000))
     return (
       <div className="user_suggestion">
         {'Not enough body weight'}
@@ -172,9 +168,7 @@ const DataIndex = (props) => {
       </div>
     )
   } else if (indexBody >= 18.6 && indexBody <= 25) {
-    const valueCalorisMin = 1800
-    const valueCalorisMax = 2200
-
+    dispatch(amountCaloriesPerDay(1800, 2200))
     return (
       <div className="user_suggestion">
         <p>{'Your weigth is norma'}</p>
@@ -182,8 +176,7 @@ const DataIndex = (props) => {
       </div>
     )
   } else if (indexBody >= 25.1 && indexBody <= 40) {
-    const valueCaloris = 1200
-
+    dispatch(amountCaloriesPerDay(1200))
     return (
       <div className="user_suggestion">
         <p>{'You have overweight '}</p>
@@ -193,15 +186,105 @@ const DataIndex = (props) => {
   }
 }
 
+const ExampleOfMenu = (props) => {
+  const setModal = useContext(ModalContext)
+  const data = useSelector((state) => state.exampleOfMenueReducer)
+  consr[(isVisible, seIsVisible)] = useState(false)
+  const listOfMenu = data.listOFMenu
+
+  const items = listOfMenu.find((item) => {
+    if (item.calorie.min == data.caloriesAmountPerDay) {
+      return item
+    }
+    return
+  })
+
+  return (
+    <StyeldExampleMenu>
+      <button onClick={() => setModal()}>X</button>
+      <ul className="menu">
+        <li>
+          <span>Menu</span>
+          <span>
+            {items.calorie.min} - {items.calorie.max}
+          </span>
+        </li>
+        <li>
+          <span>Breakfast</span>
+          <span>{items.breakfast}cal</span>
+        </li>
+        <li>
+          <span>Snack</span>
+          <span>{items.snack}cal</span>
+        </li>
+        <li>
+          <span>Lunch</span>
+          <span>{items.lunch}cal</span>
+        </li>
+        <li>
+          <span>Snack</span>
+          <span>{items.snack}cal</span>
+        </li>
+        <li>
+          <span>Dinner</span>
+          <span>{items.dinner}cal</span>
+        </li>
+      </ul>
+    </StyeldExampleMenu>
+  )
+}
+
 const Profil = () => {
   const user = useSelector((store) => store.userReducer)
   const setModalContext = useContext(ModalContext)
-  const [getDifferenceInWeight, setGetDifferenceInWeigh] = useState('')
+  const [isVisible, seIsVisible] = useState(true)
+  const data = useSelector((state) => state.exampleOfMenueReducer)
+  const listOfMenu = data.listOFMenu
+
   const dispatch = useDispatch()
 
-  //const user = useSelector((store) => store.userReducer)
-  // const t = Math.pow(user.userGrowth, 2) / 10000
-  // const indexBody = user.userWeigth / t
+  const handleOpenExampleOfMenu = () => {
+    const items = listOfMenu.find((item) => {
+      if (item.calorie.min == data.caloriesAmountPerDay) {
+        return item
+      }
+      return
+    })
+
+    setModalContext(
+      <StyeldExampleMenu>
+        <button onClick={() => setModalContext()}>X</button>
+        <ul className="menu">
+          <li>
+            <span>Menu</span>
+            <span>
+              {items.calorie.min} - {items.calorie.max}
+            </span>
+          </li>
+          <li>
+            <span>Breakfast</span>
+            <span>{items.breakfast}cal</span>
+          </li>
+          <li>
+            <span>Snack</span>
+            <span>{items.snack}cal</span>
+          </li>
+          <li>
+            <span>Lunch</span>
+            <span>{items.lunch}cal</span>
+          </li>
+          <li>
+            <span>Snack</span>
+            <span>{items.snack}cal</span>
+          </li>
+          <li>
+            <span>Dinner</span>
+            <span>{items.dinner}cal</span>
+          </li>
+        </ul>
+      </StyeldExampleMenu>
+    )
+  }
 
   const hendleAddWeigthValue = () => {
     let day = new Date()
@@ -307,6 +390,7 @@ const Profil = () => {
       <div className="user_information">
         {' '}
         <DataIndex />
+        <button onClick={handleOpenExampleOfMenu}>Example of menu</button>
       </div>
     </StyledProfil>
   )

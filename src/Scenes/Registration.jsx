@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import ButtonOptions from 'Components/ButtonOptions'
 import { useDispatch } from 'react-redux'
 import { userLoggedIn, userLoggedOut } from '../store/actions/userAction'
-
+import { ExampleOfMenue } from '../store/actions/exampleOfMenu'
 import FormikInput from 'Components/formikFields/FormikInput'
 import { Formik, Form } from 'formik'
 const StyledRegistrationHolder = styled.div`
@@ -13,7 +13,8 @@ const StyledRegistrationHolder = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f5d7bf;
+  background: linear-gradient(to top left, powderblue, rgb(245, 215, 191, 0.9));
+  /* background: #f5d7bf;*/
   * {
     box-sizing: border-box;
   }
@@ -101,6 +102,7 @@ const Registration = () => {
             return errorObj
           }}
           onSubmit={(formValues, { resetForm }) => {
+            dispatch(ExampleOfMenue())
             console.log(formValues)
             Server.post('/register', {
               email: formValues.email,
@@ -111,7 +113,6 @@ const Registration = () => {
               userGoaldWeigth: formValues.userGoaldWeigth,
             })
               .then((response) => {
-                console.log(response)
                 dispatch(
                   userLoggedIn({
                     userName: response.data.user.userName,

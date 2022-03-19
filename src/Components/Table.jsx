@@ -173,9 +173,12 @@ const TableElement = (props) => {
       let item = listOfProduct[i].Weigth
       sum += item
     }
-    console.log(sum)
+
     openModal(
       <div>
+        <div>
+          <p>Choos the type of dish</p>
+        </div>
         <p>There are {listOfProduct.length} calories in 100 grams</p>
         <button>Retorn</button>
         <button>Save</button>

@@ -63,7 +63,7 @@ const CalorieCount = (props) => {
     url: 'http://localhost:3000/recipes?userid=3',
   }*/
 
-  const handleChoosenType = (e, index, item) => {
+  const handleChoosenType = (index) => {
     setarea(index)
     //setDisable(true)
   }
@@ -75,13 +75,12 @@ const CalorieCount = (props) => {
         <div className="main__content">
           {typeOfDishes.map((item, index) => (
             <button
-              disabled={disable === index ? true : false}
               type="button"
               value={item}
               className={areae == index ? 'active' : 'button'}
               onClick={(e) => {
                 setDisable(index)
-                handleChoosenType(e, index, item)
+                handleChoosenType(index)
                 setIsChoosen(item)
                 dispatch(typeOfDish({ items: item }))
               }}

@@ -15,7 +15,8 @@ const StyledLoginHolder = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f5d7bf;
+  background: linear-gradient(to top left, powderblue, rgb(245, 215, 191, 0.9));
+  /*background: #f5d7bf;*/
 
   .loginCard {
     display: flex;
@@ -24,6 +25,7 @@ const StyledLoginHolder = styled.div`
     justify-content: center;
     width: 400px;
     height: 300px;
+
     background-color: #ece9e0;
     border-radius: 30px;
     margin: 20px;

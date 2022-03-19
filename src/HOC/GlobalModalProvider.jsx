@@ -14,13 +14,17 @@ const StyledGlobalModalProvider = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   .modal {
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.5);
-    background-color: rgb(236, 233, 224, 0.9);
+    background: linear-gradient(
+      to top left,
+      powderblue,
+      rgb(236, 233, 224, 0.9)
+    );
+
     border-radius: 20px;
     width: 400px;
     height: 400px;
