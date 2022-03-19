@@ -65,9 +65,11 @@ background: #ece9e0;
   
   button{
     border: none;  
+    background: transparent;
   }
 
   button:hover{
+    transform: scale(1.2);
     background: rgb(199, 211, 222)
   }
   .user_line{
@@ -127,25 +129,60 @@ const StyledModalProfilForm = styled.div`
 `
 const StyeldExampleMenu = styled.div`
   margin: 0;
+
+  button {
+    position: absolute;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    top: 10px;
+    right: 20px;
+  }
+  button:hover {
+    transform: scale(1.5);
+  }
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 3px solid black;
+  }
+  p {
+    margin: 0;
+    margin-top: 30px;
+    text-align: cente;
+    font-size: 26px;
+    line-height: 1.5;
+  }
+  .titel {
+    margin-bottom: 5px;
+    text-align: cente;
+    font-size: 26px;
+    line-height: 1.5;
+  }
   .menu {
     list-style: none;
     font-family: ;
+    padding: 0;
   }
 
+  .menu ul {
+    padding: 0;
+  }
   .menu li {
     margin-bottom: 5px;
     border-bottom: 2px #404b51 dotted;
     font-size: 26px;
-    line-height: 1;
+    line-height: 1.5;
   }
 
   .menu li span:nth-child(odd) {
-    padding-right: 6px;
+    padding-right: 100px;
   }
   .menu li span:nth-child(even) {
     float: right;
     padding-left: 6px;
-    color: #35d1ce;
+    color: black;
   }
   .menu span {
     position: relative;
@@ -186,54 +223,6 @@ const DataIndex = (props) => {
   }
 }
 
-const ExampleOfMenu = (props) => {
-  const setModal = useContext(ModalContext)
-  const data = useSelector((state) => state.exampleOfMenueReducer)
-  consr[(isVisible, seIsVisible)] = useState(false)
-  const listOfMenu = data.listOFMenu
-
-  const items = listOfMenu.find((item) => {
-    if (item.calorie.min == data.caloriesAmountPerDay) {
-      return item
-    }
-    return
-  })
-
-  return (
-    <StyeldExampleMenu>
-      <button onClick={() => setModal()}>X</button>
-      <ul className="menu">
-        <li>
-          <span>Menu</span>
-          <span>
-            {items.calorie.min} - {items.calorie.max}
-          </span>
-        </li>
-        <li>
-          <span>Breakfast</span>
-          <span>{items.breakfast}cal</span>
-        </li>
-        <li>
-          <span>Snack</span>
-          <span>{items.snack}cal</span>
-        </li>
-        <li>
-          <span>Lunch</span>
-          <span>{items.lunch}cal</span>
-        </li>
-        <li>
-          <span>Snack</span>
-          <span>{items.snack}cal</span>
-        </li>
-        <li>
-          <span>Dinner</span>
-          <span>{items.dinner}cal</span>
-        </li>
-      </ul>
-    </StyeldExampleMenu>
-  )
-}
-
 const Profil = () => {
   const user = useSelector((store) => store.userReducer)
   const setModalContext = useContext(ModalContext)
@@ -253,14 +242,17 @@ const Profil = () => {
 
     setModalContext(
       <StyeldExampleMenu>
-        <button onClick={() => setModalContext()}>X</button>
+        <button className="button" onClick={() => setModalContext()}>
+          X
+        </button>
+        <header>
+          <p className="titel">Menu</p>
+          <p>
+            {items.calorie.min} - {items.calorie.max}
+          </p>
+        </header>
+
         <ul className="menu">
-          <li>
-            <span>Menu</span>
-            <span>
-              {items.calorie.min} - {items.calorie.max}
-            </span>
-          </li>
           <li>
             <span>Breakfast</span>
             <span>{items.breakfast}cal</span>

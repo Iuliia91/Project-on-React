@@ -7,6 +7,8 @@ import Spinner from './Spinner/Spinner'
 import Tooltip from './Tooltip/Tooltip'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import { deleteItem, editItem } from 'store/actions/recipeCard'
+import DropDownMenu from 'Components/dropDownMenu/DropDownMenu'
+
 const StyledTable = styled.div`
   margin-top: 30px;
   padding-top: 20px;
@@ -64,7 +66,8 @@ const StyledTable = styled.div`
   }
 
   button:hover {
-    background-color: grey;
+    transform: scale(1.5);
+    color: red;
   }
 `
 
@@ -97,6 +100,47 @@ const StyledModalTableElement = styled.div`
     padding: 15px 60px;
     margin: 5px;
     border-radius: 20px;
+  }
+`
+
+const StyledModalInformOfRecipe = styled.div`
+  margin: 0;
+
+  .context {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    rigth: 10%;
+    margin-top: 50px;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+  }
+  button:hover {
+    transform: scale(1.5);
+  }
+  .button {
+    position: absolute;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    top: 10px;
+    right: 20px;
+  }
+  .button:hover {
+    transform: scale(1.5);
+  }
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    top: 100px;
+  }
+  header p {
+    font-size: 25px;
   }
 `
 
@@ -151,7 +195,7 @@ const TableElement = (props) => {
   const listOfProduct = useSelector(
     (state) => state.productCardReducer.listOfProduct
   )
-
+  const elementForDropDownMenu = ['Breakfast', 'Snack', 'Lunch', 'Dinner']
   const handleRemoveItem = (index) => {
     console.log(index)
     dispatch(deleteItem(index))
@@ -172,17 +216,41 @@ const TableElement = (props) => {
     for (let i = 0; i < listOfProduct.length; i++) {
       let item = listOfProduct[i].Weigth
       sum += item
+      console.log(sum)
     }
 
     openModal(
-      <div>
-        <div>
-          <p>Choos the type of dish</p>
+      <StyledModalInformOfRecipe>
+        {' '}
+        <button
+          className="button"
+          onClick={() => {
+            openModal()
+          }}
+        >
+          X
+        </button>
+        <div className="context">
+          <header>
+            <p>Information about dish</p>{' '}
+          </header>
+          <div>
+            <DropDownMenu
+              children={elementForDropDownMenu}
+              text={'Choos the type of dish'}
+            />
+          </div>
+          <p>There are {listOfProduct.length} calories in 100 grams</p>
+
+          <button
+            onClick={() => {
+              openModal()
+            }}
+          >
+            Save
+          </button>
         </div>
-        <p>There are {listOfProduct.length} calories in 100 grams</p>
-        <button>Retorn</button>
-        <button>Save</button>
-      </div>
+      </StyledModalInformOfRecipe>
     )
   }
 

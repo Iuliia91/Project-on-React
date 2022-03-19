@@ -14,6 +14,7 @@ const StyledGlobalModalProvider = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   .modal {
     display: flex;
     align-items: center;

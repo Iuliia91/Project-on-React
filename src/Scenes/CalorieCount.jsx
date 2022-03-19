@@ -67,7 +67,6 @@ const CalorieCount = (props) => {
     setarea(index)
     //setDisable(true)
   }
-  console.log(isChoosen)
 
   return (
     <StyledCalorieCount>
@@ -79,9 +78,8 @@ const CalorieCount = (props) => {
               value={item}
               className={areae == index ? 'active' : 'button'}
               onClick={(e) => {
-                setDisable(index)
                 handleChoosenType(index)
-                setIsChoosen(item)
+
                 dispatch(typeOfDish({ items: item }))
               }}
             >

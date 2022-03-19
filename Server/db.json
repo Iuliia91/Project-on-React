@@ -325,6 +325,16 @@
       "weigthValue": "73",
       "day": 18,
       "id": 4
+    },
+    {
+      "weigthValue": "65",
+      "day": 19,
+      "id": 5
+    },
+    {
+      "weigthValue": "89",
+      "day": 19,
+      "id": 6
     }
   ]
 }
