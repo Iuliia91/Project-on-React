@@ -335,6 +335,46 @@
       "weigthValue": "89",
       "day": 19,
       "id": 6
+    },
+    {
+      "weigthValue": "74",
+      "day": 20,
+      "id": 7
+    },
+    {
+      "weigthValue": "85",
+      "day": 20,
+      "id": 8
+    },
+    {
+      "weigthValue": "20",
+      "day": 20,
+      "id": 9
+    },
+    {
+      "weigthValue": "73",
+      "day": 20,
+      "id": 10
+    },
+    {
+      "weigthValue": "73",
+      "day": 20,
+      "id": 11
+    },
+    {
+      "weigthValue": "73",
+      "day": 20,
+      "id": 12
+    },
+    {
+      "weigthValue": "84",
+      "day": 20,
+      "id": 13
+    },
+    {
+      "weigthValue": "65",
+      "day": 21,
+      "id": 14
     }
   ]
 }

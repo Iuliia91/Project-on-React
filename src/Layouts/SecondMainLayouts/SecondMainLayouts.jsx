@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import {
+  faUserCircle,
+  faCalendarAlt,
+  faDumbbell,
+} from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 const StyledNavigation = styled.div`
   background-repeat: no-repeat;
@@ -16,8 +20,8 @@ const StyledNavigation = styled.div`
     z-index: 1;
     top: 0;
     left: 0;
-    //background: #f5d7bf;
-    background-color: rgb(223, 230, 236);
+    background: rgb(239, 235, 235);
+
     overflow-x: hidden;
   }
 
@@ -31,15 +35,20 @@ const StyledNavigation = styled.div`
   }
 
   .sidenav a:hover {
-    background-color: rgb(199, 211, 222);
+    //background-color: rgb(199, 211, 222);
   }
   .active {
-    background-color: rgb(199, 211, 222);
+    background-color: rgb(248, 192, 132, 0.4);
+    //background-color: rgb(199, 211, 222);
   }
   .main {
     height: 100%;
+    background: linear-gradient(
+      to top left,
+      powderblue,
+      rgb(245, 215, 191, 0.9)
+    );
 
-    background-color: rgb(199, 211, 222);
     margin-left: 160px;
     padding: 0px 10px;
   }

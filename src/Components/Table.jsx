@@ -107,10 +107,10 @@ const StyledModalInformOfRecipe = styled.div`
   margin: 0;
 
   .context {
+    text-aling: center;
     position: absolute;
     top: 0;
-    left: 10%;
-    rigth: 10%;
+    right: 83px;
     margin-top: 50px;
   }
 
@@ -176,11 +176,6 @@ const InputNewValueWeigth = (props) => {
       <button className="formik_button " onClick={handleEditNewWeigth}>
         Change
       </button>
-      {/*<ButtonOptions
-        className={button}
-        handleClick={handleEditNewWeigth}
-        textInsideButton="make a change"
-      />*/}
     </StyledModalTableElement>
   )
 }

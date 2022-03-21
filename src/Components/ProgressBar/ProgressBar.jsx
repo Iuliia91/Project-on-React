@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 const StyledProgressBar = styled.div`
-  width: 400px;
-
   .weigth_Informstion {
     display: flex;
     flex-direction: row;
@@ -36,7 +34,7 @@ const ProgressBar = (props) => {
   const user = useSelector((store) => store.userReducer)
   const { userWeigth, userGoaldWeigth } = user
   const procentt = props.procent
-  console.log(procentt)
+
   return (
     <StyledProgressBar value={procentt}>
       <div className="bar-wrap">

@@ -57,7 +57,7 @@ const CalorieCount = (props) => {
   const [areae, setarea] = useState()
   const [isChoosen, setIsChoosen] = useState('button')
   const typeOfDishes = ['breakfast', 'snack', 'lunch', 'dinner']
-  const [disable, setDisable] = useState(false)
+
   /* const options = {
     method: 'GET',
     url: 'http://localhost:3000/recipes?userid=3',
@@ -72,20 +72,6 @@ const CalorieCount = (props) => {
     <StyledCalorieCount>
       <main className="main">
         <div className="main__content">
-          {typeOfDishes.map((item, index) => (
-            <button
-              type="button"
-              value={item}
-              className={areae == index ? 'active' : 'button'}
-              onClick={(e) => {
-                handleChoosenType(index)
-
-                dispatch(typeOfDish({ items: item }))
-              }}
-            >
-              {item}
-            </button>
-          ))}
           <div className="form">
             <Formik
               initialValues={{

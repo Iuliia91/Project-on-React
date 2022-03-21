@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { typeOfDish } from 'store/actions/recipeCard'
-
+import { ModalContext } from 'HOC/GlobalModalProvider'
 const StyledDropDownMenu = styled.div`
   div {
     margin-top: 20px;
   }
   p {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 100;
     color: rgb(194, 62, 71);
   }
@@ -17,6 +17,7 @@ const StyledDropDownMenu = styled.div`
     color: blue;
   }
 `
+
 const StyledDropDownItem = styled.div`
   position: absolute;
   top: 95px;
@@ -38,6 +39,7 @@ const StyledDropDownItem = styled.div`
 `
 
 const DropDownMenu = (props) => {
+  const setModalContext = useContext(ModalContext)
   const [show, setShow] = useState(true)
   const [open, setOpen] = useState(false)
   const [areae, setarea] = useState(false)

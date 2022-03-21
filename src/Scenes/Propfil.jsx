@@ -10,31 +10,32 @@ import { ModalContext } from 'HOC/GlobalModalProvider'
 import ProgressBar from 'Components/ProgressBar/ProgressBar'
 import Schedule from 'Components/Schedule/Schedule'
 import Server from 'api/server.instance'
-import { Link, NavLink } from 'react-router-dom'
-import ModalContextElement from 'Components/ModalContext/ModalContext'
-import { render } from 'react-dom'
-import Card from 'Components/Card/Card'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
+import CirculProgressBar from 'Components/ProgressBar/circularProgressBar/CirculProgressBar'
 const StyledProfil = styled.div`
-width:80%;
+width:92%;
 margin:auto;
 aling-item:center;
   display: grid;
   
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   
- grid-gap:20px;
+ grid-row-gap:50px;
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', 
   border: 16px solid #ece9e0;
-  padding:10px;
+  padding-top:40px;
  
   .user_name{
-   
+    box-shadow: inset 100px 100px 30px;
     box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
+    background:rgb(239,235,235);
 
-background: #ece9e0;
-width:80%;
- grid-column: 3/4;
+width:100%;
+
+ grid-column: 1/4;
+ grid-row:1/2;
  padding:30px 50px;
  margin:auto;
   border-radius: 20px;
@@ -49,17 +50,30 @@ width:80%;
   }
 
   .user_information{
-background: #ece9e0;
+   
+    grid-column: 4/6;
+ grid-row:1/2;
+    box-shadow: inset 100px 100px 30px;
+    box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    background:rgb(239,235,235);
 
- grid-column:2/5;
- padding:30px;
- border-radius: 20px;
+width:100%;
+
+ 
+ padding:30px 50px;
+ margin:auto;
+  border-radius: 20px;
   }
-
+  
+  .user_name_text{
+  text-align: center;
+  }
+  
   .button{
   text-align: center;
     margin-top:20px;
-    
+  
   }
 
   
@@ -77,6 +91,11 @@ background: #ece9e0;
     
   }
 
+  .ProgressBar{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+  }
   .user_weigth_data{
     display:flex;
     flex-direction:column;
@@ -87,11 +106,42 @@ background: #ece9e0;
     text-align: center;
   }
 
-  .user_schedule{
-    grid-column:3/4;
-    grid-row:3/6
+  .user_weigth_today snap{
+    font-size:30px;
+    color : blue;
+    font-weight:bold;
   }
 
+  .user_schedule{
+    width:500px;
+    grid-column:4/5;
+    grid-row:3;
+    background: rgb(239, 235, 235);
+    border-radius: 20px;
+  }
+
+  .circle_progressBar{
+   grid-column:1/3;
+   
+   grid-row:3 ;
+   
+   
+    
+    width:300px;
+    border-radius: 30px;
+    background:rgb(239,235,235);
+  }
+
+  .user_sport{
+    grid-column:6/7;
+    grid-row:3;
+   
+  
+    padding:100px 90px;
+   
+    border-radius: 30px;
+    background:rgb(239,235,235);
+  }
   .user_suggestion{
     display:flex;
     flex-direction:column;
@@ -358,7 +408,7 @@ const Profil = () => {
           <div className="user_weigth-information">
             <p className="user_weigth_today">
               {' '}
-              Your weigth - {user.userWeigthToday}
+              Your weigth today - <snap>{user.userWeigthToday}</snap>
             </p>
             <p className="user_weigth-differance">
               {user.amountOfDroppedWeigth}
@@ -379,10 +429,19 @@ const Profil = () => {
         {' '}
         <Schedule weigthToday={user.userWeigthToday} />
       </div>
+      <div className="circle_progressBar">
+        <CirculProgressBar />
+      </div>
       <div className="user_information">
         {' '}
         <DataIndex />
         <button onClick={handleOpenExampleOfMenu}>Example of menu</button>
+      </div>
+      <div className="user_sport">
+        <FontAwesomeIcon
+          icon={faDumbbell}
+          style={{ width: 150, height: 150, color: '#e0c412' }}
+        />
       </div>
     </StyledProfil>
   )
