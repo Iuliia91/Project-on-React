@@ -26,6 +26,7 @@ export const addProduct = createAsyncThunk(
   }
 )
 
+export const caloriesInDish = createAction()
 export const deleteItem = createAction('deleteItem')
 
 export const editItem = createAction('editItem')

@@ -57,6 +57,7 @@ const CalorieCount = (props) => {
   const [areae, setarea] = useState()
   const [isChoosen, setIsChoosen] = useState('button')
   const typeOfDishes = ['breakfast', 'snack', 'lunch', 'dinner']
+  const [value, setValue] = useState(0)
 
   /* const options = {
     method: 'GET',
@@ -68,6 +69,7 @@ const CalorieCount = (props) => {
     //setDisable(true)
   }
 
+  console.log(value)
   return (
     <StyledCalorieCount>
       <main className="main">
@@ -97,7 +99,9 @@ const CalorieCount = (props) => {
               onSubmit={(formValues, { resetForm }) => {
                 const obj = { ...formValues, types: isChoosen }
 
-                dispatch(addProduct(obj)).then(() => {
+                setValue(value + Number(formValues.Weigth))
+
+                dispatch(addProduct(obj)).then((response) => {
                   resetForm()
                 })
               }}
@@ -129,7 +133,7 @@ const CalorieCount = (props) => {
             </Formik>
           </div>
 
-          <TableList typeOfDish={isChoosen} />
+          <TableList typeOfDish={isChoosen} total={value} />
         </div>
       </main>
     </StyledCalorieCount>

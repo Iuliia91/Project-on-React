@@ -184,6 +184,7 @@ const TableElement = (props) => {
   const [coordinataX, setcoordinataX] = useState(0)
   const [coordinataY, setcoordinataY] = useState(0)
   const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState(props.total)
   const openModal = useContext(ModalContext)
   const coords = useRef('')
   const dispatch = useDispatch()
@@ -205,15 +206,8 @@ const TableElement = (props) => {
       />
     )
   }
-  const handleSaveRecipies = () => {
-    let sum = 0
-
-    for (let i = 0; i < listOfProduct.length; i++) {
-      let item = listOfProduct[i].Weigth
-      sum += item
-      console.log(sum)
-    }
-
+  console.log(value)
+  const handleSaveRecipies = (props) => {
     openModal(
       <StyledModalInformOfRecipe>
         {' '}
@@ -235,7 +229,7 @@ const TableElement = (props) => {
               text={'Choos the type of dish'}
             />
           </div>
-          <p>There are {listOfProduct.length} calories in 100 grams</p>
+          <p>There are {props.total} calories in 100 grams</p>
 
           <button
             onClick={() => {
@@ -326,23 +320,6 @@ const TableElement = (props) => {
               There are {listOfProduct.length} calories in 100 grams
             </td>
           </tr>
-          {/*  <tr>
-            <td>
-              <div>
-                <p>Total{listOfProduct.length} </p>
-              </div>
-            </td>
-            <td>
-              <ButtonOptions
-                textInsideButton="Save the recipe"
-                type="button"
-                handleClick={() => {
-                  handleRemoveClick
-                }}
-              />
-              <button> </button>
-            </td>
-          </tr>*/}
         </tfoot>
       </table>
     </div>
@@ -350,8 +327,9 @@ const TableElement = (props) => {
 }
 
 const TableList = (props) => {
+  const v = props.total
   const loading = useSelector((state) => state.productCardReducer.loading)
-
+  console.log
   return (
     <StyledTable>
       <div>{loading === 'pending' && <Spinner />}</div>

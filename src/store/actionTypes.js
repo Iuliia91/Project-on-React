@@ -2,6 +2,7 @@ export const CARD_LIST_ACTIONS = {
   add: 'addProduct',
   list: 'addRecipe',
   calorie: 'getCalorie',
+  totalCalorie: 'get_total_calorie',
   typeOfDish: 'type_of_dish',
 }
 
