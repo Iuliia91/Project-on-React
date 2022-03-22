@@ -51,7 +51,7 @@ width:100%;
 
   .user_information{
    
-    grid-column: 4/6;
+    grid-column: 5/6;
  grid-row:1/2;
     box-shadow: inset 100px 100px 30px;
     box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
