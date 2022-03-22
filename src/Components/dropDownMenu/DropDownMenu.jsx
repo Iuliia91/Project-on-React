@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { typeOfDish } from 'store/actions/recipeCard'
 import { ModalContext } from 'HOC/GlobalModalProvider'
+import { userCHoosenTypeOfDish } from 'store/actions/exampleOfMenu'
 const StyledDropDownMenu = styled.div`
   div {
     margin-top: 20px;
@@ -44,15 +45,17 @@ const DropDownMenu = (props) => {
   const [open, setOpen] = useState(false)
   const [areae, setarea] = useState(false)
   const [isChoosen, setIsChoosen] = useState()
+
   const elements = props.children
   const dispatch = useDispatch()
   const handleChoosenType = (item) => {
+    dispatch(userCHoosenTypeOfDish(item))
     setIsChoosen(item)
     setarea(true)
     setOpen(false)
     setShow(false)
   }
-
+  console.log(isChoosen)
   const DropDownItem = () => {
     return (
       <StyledDropDownItem>

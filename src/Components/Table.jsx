@@ -8,7 +8,7 @@ import Tooltip from './Tooltip/Tooltip'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import { deleteItem, editItem } from 'store/actions/recipeCard'
 import DropDownMenu from 'Components/dropDownMenu/DropDownMenu'
-
+import { userMenu } from 'store/actions/exampleOfMenu'
 const StyledTable = styled.div`
   margin-top: 30px;
   padding-top: 20px;
@@ -184,7 +184,7 @@ const TableElement = (props) => {
   const [coordinataX, setcoordinataX] = useState(0)
   const [coordinataY, setcoordinataY] = useState(0)
   const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState(props.total)
+  const [value, setValue] = useState(0)
   const openModal = useContext(ModalContext)
   const coords = useRef('')
   const dispatch = useDispatch()
@@ -208,6 +208,14 @@ const TableElement = (props) => {
   }
   console.log(value)
   const handleSaveRecipies = (props) => {
+    let totalWeigth = listOfProduct.reduce((a, b) => a + Number(b.Weigth), 0)
+    let totalCalories = listOfProduct.reduce((a, b) => a + Number(b.calorie), 0)
+    let totalCalorie = (totalCalories * 100) / totalWeigth
+
+    const handleSavetheDish = () => {
+      dispatch(userMenu({ dish: listOfProduct, calorie: totalCalorie }))
+      openModal()
+    }
     openModal(
       <StyledModalInformOfRecipe>
         {' '}
@@ -229,15 +237,10 @@ const TableElement = (props) => {
               text={'Choos the type of dish'}
             />
           </div>
-          <p>There are {props.total} calories in 100 grams</p>
-
-          <button
-            onClick={() => {
-              openModal()
-            }}
-          >
-            Save
-          </button>
+          <p>There are {totalCalorie} calories in 100 grams</p>
+          <p> There are {listOfProduct.length} products</p>
+          <p>Total weigth {totalWeigth}</p>
+          <button onClick={handleSavetheDish}>Save</button>
         </div>
       </StyledModalInformOfRecipe>
     )

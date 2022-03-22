@@ -7,11 +7,12 @@ import {
   typeOfDish,
 } from 'store/actions/recipeCard'
 import { createReducer } from '@reduxjs/toolkit'
-
+import { userMenu } from '../actions/exampleOfMenu'
 const initialState = {
   product: null,
   listOfProduct: [],
   typeOfDish: '',
+  userMenuOfList: [],
   isEdited: false,
   loading: 'loading',
 }
@@ -54,6 +55,13 @@ const productCardReducer = createReducer(initialState, (builder) => {
 
     .addCase(typeOfDish, (state, action) => {
       state.typeOfDish = action.payload
+    })
+    .addCase(userMenu, (state, action) => {
+      const obj = { dish: action.payload, type: state.typeOfDish }
+      console.log(obj)
+      state.userMenuOfList.push(obj)
+      state.listOfProduct = []
+      console.log('hi')
     })
     .addMatcher(
       (action) => {

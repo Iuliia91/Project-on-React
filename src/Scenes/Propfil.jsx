@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { usersWeigth, amountOfLosedWeigth } from 'store/actions/userAction'
-
+import MenuExample from 'Helpers/menuExample/MenuExample'
+import DropDownMenu from 'Components/dropDownMenu/DropDownMenu'
 import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { Formik, Form } from 'formik'
@@ -15,6 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
 import CirculProgressBar from 'Components/ProgressBar/circularProgressBar/CirculProgressBar'
 const StyledProfil = styled.div`
+
 width:90%;
 margin:auto;
 aling-item:center;
@@ -31,15 +33,17 @@ main{
     display:flex;
     flex-direction:row;
     justify-content:space-between;
+    margin-bottom:30px;
     width:100%;
   }
   .user_name{
+    porition:absplute;
     box-shadow: inset 100px 100px 30px;
     box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
     background:rgb(239,235,235);
       margin-right:20px;
-     width:80%;
+     width:60%;
      padding:30px 50px;
      margin:auto;
     margin-bottom:20px;
@@ -49,7 +53,13 @@ main{
   .block2{
     display:flex;
     justify-content:space-between;
+    margin-bottom:30px;
 
+  }
+
+  .block3{
+    display:flex;
+    justify-content:space-between;
   }
   .user_name_text{
   text-align: center;
@@ -63,20 +73,21 @@ main{
   
     box-shadow: inset 100px 100px 30px;
     box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
-    margin: 0 auto;
+    
     background:rgb(239,235,235);
 
     width:40%;
     padding:20px 40px;
-   
+   text-alingh:center;
      margin:auto;
   border-radius: 20px;
   }
   .user_menu{
+ 
     width:40%;
     box-shadow: inset 100px 100px 30px;
     box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
-    margin: 0 auto;
+  padding-top:64px;
     background:rgb(239,235,235);
     border-radius: 20px;
     
@@ -119,6 +130,7 @@ main{
 
   .user_weigth_today,.user_weigth-differance{
     text-align: center;
+    
   }
 
   .user_weigth_today snap{
@@ -184,68 +196,7 @@ const StyledModalProfilForm = styled.div`
     text-align: center;
   }
 `
-const StyeldExampleMenu = styled.div`
-  margin: 0;
 
-  button {
-    position: absolute;
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    top: 10px;
-    right: 20px;
-  }
-  button:hover {
-    transform: scale(1.5);
-  }
-  header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 3px solid black;
-  }
-  p {
-    margin: 0;
-    margin-top: 30px;
-    text-align: cente;
-    font-size: 26px;
-    line-height: 1.5;
-  }
-  .titel {
-    margin-bottom: 5px;
-    text-align: cente;
-    font-size: 26px;
-    line-height: 1.5;
-  }
-  .menu {
-    list-style: none;
-    font-family: ;
-    padding: 0;
-  }
-
-  .menu ul {
-    padding: 0;
-  }
-  .menu li {
-    margin-bottom: 5px;
-    border-bottom: 2px #404b51 dotted;
-    font-size: 26px;
-    line-height: 1.5;
-  }
-
-  .menu li span:nth-child(odd) {
-    padding-right: 100px;
-  }
-  .menu li span:nth-child(even) {
-    float: right;
-    padding-left: 6px;
-    color: black;
-  }
-  .menu span {
-    position: relative;
-    bottom: -7px;
-  }
-`
 const DataIndex = (props) => {
   const user = useSelector((store) => store.userReducer)
   const dispatch = useDispatch()
@@ -283,57 +234,11 @@ const DataIndex = (props) => {
 const Profil = () => {
   const user = useSelector((store) => store.userReducer)
   const setModalContext = useContext(ModalContext)
-  const [isVisible, seIsVisible] = useState(true)
+
   const data = useSelector((state) => state.exampleOfMenueReducer)
   const listOfMenu = data.listOFMenu
 
   const dispatch = useDispatch()
-
-  const handleOpenExampleOfMenu = () => {
-    const items = listOfMenu.find((item) => {
-      if (item.calorie.min == data.caloriesAmountPerDay) {
-        return item
-      }
-      return
-    })
-
-    setModalContext(
-      <StyeldExampleMenu>
-        <button className="button" onClick={() => setModalContext()}>
-          X
-        </button>
-        <header>
-          <p className="titel">Menu</p>
-          <p>
-            {items.calorie.min} - {items.calorie.max}
-          </p>
-        </header>
-
-        <ul className="menu">
-          <li>
-            <span>Breakfast</span>
-            <span>{items.breakfast}cal</span>
-          </li>
-          <li>
-            <span>Snack</span>
-            <span>{items.snack}cal</span>
-          </li>
-          <li>
-            <span>Lunch</span>
-            <span>{items.lunch}cal</span>
-          </li>
-          <li>
-            <span>Snack</span>
-            <span>{items.snack}cal</span>
-          </li>
-          <li>
-            <span>Dinner</span>
-            <span>{items.dinner}cal</span>
-          </li>
-        </ul>
-      </StyeldExampleMenu>
-    )
-  }
 
   const hendleAddWeigthValue = () => {
     let day = new Date()
@@ -425,7 +330,6 @@ const Profil = () => {
               </div>
               <ProgressBar procent={user.procent} />
               <div className="button">
-                {' '}
                 <ButtonOptions
                   handleClick={hendleAddWeigthValue}
                   className="button button_add"
@@ -440,24 +344,23 @@ const Profil = () => {
             {' '}
             <DataIndex />
           </div>
-          <div className="user_menu">
-            <button onClick={handleOpenExampleOfMenu}>Example of menu</button>
+          <MenuExample />
+        </div>
+        <div className="block3">
+          <div className="user_schedule">
+            {' '}
+            <Schedule weigthToday={user.userWeigthToday} />
           </div>
-        </div>
+          <div className="circle_progressBar">
+            <CirculProgressBar />
+          </div>
 
-        <div className="user_schedule">
-          {' '}
-          <Schedule weigthToday={user.userWeigthToday} />
-        </div>
-        <div className="circle_progressBar">
-          <CirculProgressBar />
-        </div>
-
-        <div className="user_sport">
-          <FontAwesomeIcon
-            icon={faDumbbell}
-            style={{ width: 150, height: 150, color: '#e0c412' }}
-          />
+          <div className="user_sport">
+            <FontAwesomeIcon
+              icon={faDumbbell}
+              style={{ width: 150, height: 150, color: '#e0c412' }}
+            />
+          </div>
         </div>
       </main>
     </StyledProfil>
