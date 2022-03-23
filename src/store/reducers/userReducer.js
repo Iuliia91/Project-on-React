@@ -46,7 +46,7 @@ const userReducer = createReducer(InitialState, (builder) => {
     })
     .addCase(amountOfLosedWeigth, (state, action) => {
       const weigth = action.payload
-      console.log(weigth)
+
       if (weigth >= state.userWeigth) {
         const difference = weigth - state.userWeigth
         state.amountOfDroppedWeigth = `You up on weigth + ${difference}kg`
