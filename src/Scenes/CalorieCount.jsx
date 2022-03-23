@@ -10,10 +10,14 @@ import TableList from 'Components/Table'
 import FormikInput from 'Components/formikFields/FormikInput'
 import { Formik, Form } from 'formik'
 const StyledCalorieCount = styled.div`
+  max-width: 1400px;
+  margin: auto;
   .main {
+    margin: 0;
+
     text-align: center;
     margin: auto;
-    width: 50%;
+    width: 80%;
   }
   .main__content {
     display: flex;
@@ -29,6 +33,7 @@ const StyledCalorieCount = styled.div`
   }
   .form {
     padding-bottmo: 30px;
+    margin: auto;
   }
   button {
     padding: 12px;

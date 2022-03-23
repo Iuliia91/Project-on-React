@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import exampleOfMenueReducer from 'store/reducers/exampleOfMenueReducer'
-
+import { TYPE_OF_RECIPE } from './scenesTypes'
 const StyledMenu = styled.div`
+  max-width: 1200px;
   margin: auto;
   padding-top: 20px;
-  table {
+  /* table {
     width: 90%;
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', Sans-Serif;
     text-align: left;
@@ -24,17 +25,11 @@ const StyledMenu = styled.div`
   tr {
     display: flex;
     justify-content: space-around;
-  }
+  }*/
 `
-
-const Menu = () => {
-  const dispatch = useDispatch()
-  const menu = useSelector((store) => store.exampleOfMenueReducer.listOFMenu)
-  console.log(menu)
-  return (
-    <StyledMenu>
-      <div>
-        {menu.map((item, index) => (
+{
+  /* <div>
+      {menu.map((item, index) => (
           <React.Fragment>
             <table>
               <thead>
@@ -73,6 +68,68 @@ const Menu = () => {
             </table>
           </React.Fragment>
         ))}
+      </div>*/
+}
+
+const TypeOfMenuRecipe = () => {
+  const recipes = useSelector(
+    (store) => store.productCardReducer.userMenuOfList
+  )
+
+  const b = recipes
+  const itemOfRecipeBreakfast = recipes.map((item) => {
+    const arr = []
+    if (item.type.items === TYPE_OF_RECIPE.breakfast) {
+      arr.push(item)
+    }
+
+    return arr
+  })
+
+  const itemOfRecipeSnack = recipes.map((item) => {
+    const arr = []
+    if (item.type.items === TYPE_OF_RECIPE.snack) {
+      arr.push(item)
+    }
+
+    return arr
+  })
+
+  const itemOfRecipeLunch = recipes.map((item) => {
+    const arr = []
+    if (item.type.items == TYPE_OF_RECIPE.lunch) {
+      console.log(item)
+      arr.push(item)
+    } else if (item.lenght === 0) {
+      return
+    }
+
+    return arr
+  })
+
+  const itemOfRecipeDinner = recipes.map((item) => {
+    const arr = []
+    if (item.type.items === TYPE_OF_RECIPE.dinner) {
+      arr.push(item)
+    }
+
+    return arr
+  })
+
+  console.log(b)
+  return <div>hi</div>
+}
+const Menu = () => {
+  const dispatch = useDispatch()
+  const recipes = useSelector((store) => store.productCardReducer.listOFMenu)
+
+  return (
+    <StyledMenu>
+      <div container>
+        <h1>Day1</h1>
+        <main>
+          <TypeOfMenuRecipe />
+        </main>
       </div>
     </StyledMenu>
   )

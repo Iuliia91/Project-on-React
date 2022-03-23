@@ -72,11 +72,17 @@ const SecondMainLayouts = (props) => {
           activeclassname={'active'}
         >
           <FontAwesomeIcon icon={faUserCircle} />
-          Профиль
+          Me
         </NavLink>
-
+        <NavLink
+          to={'caloriecount'}
+          className={'dscf'}
+          activeclassname={'active'}
+        >
+          Create your recipe
+        </NavLink>
         <NavLink to={'menu'} className={'dscf'} activeclassname={'active'}>
-          Меню
+          Menu
         </NavLink>
         <NavLink
           to={'listofproducts'}
@@ -85,13 +91,7 @@ const SecondMainLayouts = (props) => {
         >
           Список продуктов
         </NavLink>
-        <NavLink
-          to={'caloriecount'}
-          className={'dscf'}
-          activeclassname={'active'}
-        >
-          Подсчет калорийности блюда
-        </NavLink>
+
         <a href="#">
           <FontAwesomeIcon icon={faCalendarAlt} />
         </a>

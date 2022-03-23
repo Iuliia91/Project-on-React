@@ -6,9 +6,14 @@ import { useState } from 'react'
 import Spinner from './Spinner/Spinner'
 import Tooltip from './Tooltip/Tooltip'
 import { ModalContext } from 'HOC/GlobalModalProvider'
-import { deleteItem, editItem } from 'store/actions/recipeCard'
+import {
+  deleteItem,
+  editItem,
+  cleanState,
+  userMenu,
+} from 'store/actions/recipeCard'
 import DropDownMenu from 'Components/dropDownMenu/DropDownMenu'
-import { userMenu } from 'store/actions/exampleOfMenu'
+
 const StyledTable = styled.div`
   margin-top: 30px;
   padding-top: 20px;
@@ -105,7 +110,10 @@ const StyledModalTableElement = styled.div`
 
 const StyledModalInformOfRecipe = styled.div`
   margin: 0;
-
+  width: 1000px;
+  height: 100%;
+  display: block;
+  z-index: 99999;
   .context {
     text-aling: center;
     position: absolute;
@@ -188,10 +196,12 @@ const TableElement = (props) => {
   const openModal = useContext(ModalContext)
   const coords = useRef('')
   const dispatch = useDispatch()
+  const isChoosen = useSelector((state) => state.productCardReducer.isChoosen)
+
   const listOfProduct = useSelector(
     (state) => state.productCardReducer.listOfProduct
   )
-  const elementForDropDownMenu = ['Breakfast', 'Snack', 'Lunch', 'Dinner']
+
   const handleRemoveItem = (index) => {
     console.log(index)
     dispatch(deleteItem(index))
@@ -206,22 +216,32 @@ const TableElement = (props) => {
       />
     )
   }
-  console.log(value)
-  const handleSaveRecipies = (props) => {
+  console.log(isChoosen)
+
+  const handleSavetheDish = () => {
     let totalWeigth = listOfProduct.reduce((a, b) => a + Number(b.Weigth), 0)
     let totalCalories = listOfProduct.reduce((a, b) => a + Number(b.calorie), 0)
     let totalCalorie = (totalCalories * 100) / totalWeigth
-
-    const handleSavetheDish = () => {
+    console.log(isChoosen)
+    if (!isChoosen) {
       dispatch(userMenu({ dish: listOfProduct, calorie: totalCalorie }))
+      // dispatch(cleanState(false))
       openModal()
     }
-    openModal(
-      <StyledModalInformOfRecipe>
+  }
+  const NewElement = (props) => {
+    let totalWeigth = listOfProduct.reduce((a, b) => a + Number(b.Weigth), 0)
+    let totalCalories = listOfProduct.reduce((a, b) => a + Number(b.calorie), 0)
+    let totalCalorie = (totalCalories * 100) / totalWeigth
+    const elementForDropDownMenu = ['Breakfast', 'Snack', 'Lunch', 'Dinner']
+    console.log('hi from new element')
+    return (
+      <StyledTable>
         {' '}
         <button
           className="button"
           onClick={() => {
+            dispatch(cleanState(false))
             openModal()
           }}
         >
@@ -242,8 +262,61 @@ const TableElement = (props) => {
           <p>Total weigth {totalWeigth}</p>
           <button onClick={handleSavetheDish}>Save</button>
         </div>
-      </StyledModalInformOfRecipe>
+      </StyledTable>
     )
+  }
+
+  const handleSaveRecipies = (props) => {
+    let totalWeigth = listOfProduct.reduce((a, b) => a + Number(b.Weigth), 0)
+    let totalCalories = listOfProduct.reduce((a, b) => a + Number(b.calorie), 0)
+    let totalCalorie = (totalCalories * 100) / totalWeigth
+    dispatch(userMenu({ dish: listOfProduct, calorie: totalCalorie }))
+    if (listOfProduct.length === 0) {
+      return openModal(
+        <StyledModalInformOfRecipe>
+          <button
+            className="button"
+            onClick={() => {
+              openModal()
+            }}
+          >
+            X
+          </button>
+          <div className="context">You dont add any product </div>
+        </StyledModalInformOfRecipe>
+      )
+    } else {
+      return openModal(<NewElement />)
+      /*return openModal(
+        <StyledModalInformOfRecipe>
+          {' '}
+          <button
+            className="button"
+            onClick={() => {
+              dispatch(cleanState(false))
+              openModal()
+            }}
+          >
+            X
+          </button>
+          <div className="context">
+            <header>
+              <p>Information about dish</p>{' '}
+            </header>
+            <div>
+              <DropDownMenu
+                children={elementForDropDownMenu}
+                text={'Choos the type of dish'}
+              />
+            </div>
+            <p>There are {totalCalorie} calories in 100 grams</p>
+            <p> There are {listOfProduct.length} products</p>
+            <p>Total weigth {totalWeigth}</p>
+            <button onClick={handleSavetheDish}>Save</button>
+          </div>
+        </StyledModalInformOfRecipe>
+      )*/
+    }
   }
 
   const show = (Event) => {
@@ -320,7 +393,6 @@ const TableElement = (props) => {
           <tr>
             <td colspan="5">
               <button onClick={handleSaveRecipies}>Save</button>
-              There are {listOfProduct.length} calories in 100 grams
             </td>
           </tr>
         </tfoot>

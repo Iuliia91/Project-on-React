@@ -29,3 +29,6 @@ export const caloriesInDish = createAction()
 export const deleteItem = createAction('deleteItem')
 
 export const editItem = createAction('editItem')
+
+export const userMenu = createAction('user_menu_create')
+export const cleanState = createAction('user_cancel_saving')
