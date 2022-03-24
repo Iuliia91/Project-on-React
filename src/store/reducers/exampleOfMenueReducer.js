@@ -3,7 +3,7 @@ import { ExampleOfMenue, amountCaloriesPerDay } from '../actions/exampleOfMenu'
 
 const InitialState = {
   caloriesAmountPerDay: '',
-  listOFMenu: null,
+  listOFMenu: [],
 }
 
 const exampleOfMenueReducer = createReducer(InitialState, (builder) => {

@@ -33,7 +33,8 @@ main{
     display:flex;
     flex-direction:row;
     justify-content:space-between;
-    margin-bottom:30px;
+    margin-bottom:10px;
+    padding-bottom:28px;
     width:100%;
   }
   .user_name{
@@ -44,7 +45,7 @@ main{
     background:rgb(239,235,235);
       margin-right:20px;
      width:60%;
-     padding:30px 50px;
+     
      margin:auto;
     margin-bottom:20px;
      border-radius: 20px;
@@ -53,13 +54,14 @@ main{
   .block2{
     display:flex;
     justify-content:space-between;
-    margin-bottom:30px;
+    margin-bottom:10px;
 
   }
 
   .block3{
     display:flex;
     justify-content:space-between;
+    padding:50px;
   }
   .user_name_text{
   text-align: center;
@@ -75,7 +77,7 @@ main{
     box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
     
     background:rgb(239,235,235);
-
+padding:0 20px;
     width:40%;
     padding:20px 40px;
    text-alingh:center;
@@ -84,13 +86,17 @@ main{
   }
   .user_menu{
  
-    width:40%;
+    text-align: center;
     box-shadow: inset 100px 100px 30px;
     box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
-  padding-top:64px;
+  
     background:rgb(239,235,235);
     border-radius: 20px;
     
+  }
+
+  .user__information-data{
+    padding:5px 20px;
   }
   .user_name_text{
   text-align: center;
@@ -155,7 +161,7 @@ main{
   }
 
   .user_sport{
-   
+   width:180px;
     padding:100px 90px;
    
     border-radius: 30px;
@@ -167,8 +173,17 @@ main{
     justify-content: center;
     text-align: center;
   }
-
- 
+  @media (max-width: 1457px) {
+    .block3{
+      display:flex;
+      justify-content:center;
+      flex-direction:column;
+      margin:auto;
+    }
+    .block3 > div{
+      margin-bottom:20px;
+    }
+  }
 
 `
 
@@ -274,13 +289,6 @@ const Profil = () => {
             return errorObj
           }}
           onSubmit={(formValues, { resetForm }) => {
-            console.log(formValues.day)
-            if (formValues.day % 2 != 0) {
-              let arr = []
-              arr.push(formValues)
-              console.log(arr)
-              console.log(arr[arr.length - 1])
-            }
             dispatch(usersWeigth(formValues))
 
             dispatch(amountOfLosedWeigth(formValues.weigthValue))

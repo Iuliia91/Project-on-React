@@ -61,14 +61,13 @@ const productCardReducer = createReducer(initialState, (builder) => {
       state.isChoosen = true
     })
     .addCase(userMenu, (state, action) => {
-      state.userMenuOfList.push({
-        dish: action.payload,
-        type: state.typeOfDish,
-      })
-      //state.listOfProduct = []
+      let v = state.typeOfDish
+      console.log({ ...action.payload, type: v })
+      state.userMenuOfList.push({ ...action.payload, type: v })
+      state.listOfProduct = []
     })
     .addCase(cleanState, (state, action) => {
-      //  state.typeOfDish = ''
+      state.typeOfDish = ''
       state.isChoosen = action.payload
     })
     .addMatcher(

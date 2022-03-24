@@ -54,11 +54,22 @@ const CirculProgressBar = (props) => {
   const percentage = 100 - item
 
   const handleAIncriseValue = () => {
-    setValue(value + 0.3)
-    const v = Math.round((goal - value) / proportion)
+    let item = value + 0.3
+    if (item > 2.4) {
+      setValue(0)
+    } else {
+      setValue(item)
+    }
+    console.log(item)
   }
   const handleDecriseValue = () => {
-    setValue(value - 0.3)
+    let item = value - 0.3
+    if (item < 0) {
+      setValue(0)
+    } else {
+      setValue(item)
+    }
+    console.log(item)
   }
 
   return (

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import exampleOfMenueReducer from 'store/reducers/exampleOfMenueReducer'
 import { TYPE_OF_RECIPE } from './scenesTypes'
+import { userMenu } from 'store/actions/exampleOfMenu'
 const StyledMenu = styled.div`
   max-width: 1200px;
   margin: auto;
@@ -121,7 +122,7 @@ const TypeOfMenuRecipe = () => {
 }
 const Menu = () => {
   const dispatch = useDispatch()
-  const recipes = useSelector((store) => store.productCardReducer.listOFMenu)
+  //const recipes = useSelector((store) => store.productCardReducer.listOFMenu)
 
   return (
     <StyledMenu>

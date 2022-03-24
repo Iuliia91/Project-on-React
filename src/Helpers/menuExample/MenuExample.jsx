@@ -10,6 +10,10 @@ const StyeldExampleMenu = styled.div`
   width: 30%;
   margin: auto;
 
+  .user_menu {
+    padding: 0;
+    margin: 0;
+  }
   .main {
     background: yellow;
     padding: 40px;
@@ -17,6 +21,7 @@ const StyeldExampleMenu = styled.div`
   button {
     position: absolute;
     background: transparent;
+    margin: auto;
     border: none;
     font-size: 20px;
     top: 10px;
@@ -71,6 +76,17 @@ const StyeldExampleMenu = styled.div`
   .menu span {
     position: relative;
     bottom: -7px;
+  }
+`
+const StyledMenuBlock = styled.div`
+  width: 600px;
+
+  .user_menu {
+    padding: 50px;
+    text-align: center;
+  }
+  .user_menu button {
+    text-align: center;
   }
 `
 
@@ -130,12 +146,12 @@ const MenuExample = (props) => {
     )
   }
   return (
-    <React.Fragment>
+    <StyledMenuBlock>
       <div className="user_menu">
         <button onClick={handleOpenExampleOfMenu}>Example of menu</button>
       </div>
       {isVisible && <Menu />}
-    </React.Fragment>
+    </StyledMenuBlock>
   )
 }
 

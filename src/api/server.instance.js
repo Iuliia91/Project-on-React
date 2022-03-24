@@ -10,7 +10,7 @@ const Server = axios.create({
 
 /*Server.interceptors.request.use((request) => {
   request.headers.acces = store.getState().userReducer.isLoggedIn
-  console.log(request)
+
   return request
 })
 

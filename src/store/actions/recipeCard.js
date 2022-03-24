@@ -1,6 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { CARD_LIST_ACTIONS } from 'store/actionTypes'
-import axios from 'axios'
+import apiRequest from 'api/ApiInstance'
 
 export const recipeCard = createAction(CARD_LIST_ACTIONS.list)
 
@@ -15,13 +15,14 @@ export const addProduct = createAsyncThunk(
         query: `${productItem.productName}`,
       },
     }
+    // { productName: 'carrot', Weigth: '200', calorie: '65' }
 
-    /* const response = await apiRequest.request('/foods/search', options)
-    {
+    const response = await apiRequest.request('/foods/search', options)
+
+    return {
       ...productItem,
       calorie: response.data.foods[0].foodNutrients[3].value,
-    }*/
-    return { productName: 'carrot', Weigth: '200', calorie: '65' }
+    }
   }
 )
 

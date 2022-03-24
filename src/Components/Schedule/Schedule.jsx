@@ -31,7 +31,7 @@ const Schedule = (props) => {
   console.log(data)
   return (
     <StyledSchedule>
-      <LineChart width={400} height={350} data={data} margin={{ top: 30 }}>
+      <LineChart width={400} height={300} data={data} margin={{ top: 30 }}>
         <ReferenceLine y={dataMin} label="Goal " stroke="red" />
         <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
         <XAxis

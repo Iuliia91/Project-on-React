@@ -5,30 +5,54 @@ import { typeOfDish } from 'store/actions/recipeCard'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 
 const StyledDropDownMenu = styled.div`
-  div {
-    margin-top: 20px;
-  }
+
   p {
-    font-size: 25px;
-    font-weight: 100;
+    font-weight: bold;
+    font-size: 20px;
+
     color: rgb(194, 62, 71);
+  }
+
+  p:hover {
+    transform: scale(1.2);
   }
   type_dish {
     font-size: 20px;
     color: blue;
   }
+
+  .menu
+  width: 0px
+  height: 560px
+  background: #ff5500
+  position: absolute
+  transition: 0.3s ease-in-out 0.1s
+  &.move
+    left: 0px
+    width: 240px
+    transition: 0.3s ease-in-out 0.1s
+    background: #ff5500
 `
 
 const StyledDropDownItem = styled.div`
   position: absolute;
-  top: 95px;
-  right: -50px;
+
   //background: rgb(168, 214, 227);
   background: #ece9e0;
   padding: 20px;
   border-radius: 20px;
   box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.5);
 
+  width: 0px
+  height: 560px
+  background: #ff5500
+  position: absolute
+  transition: 0.3s ease-in-out 0.1s
+  &.move
+    left: 0px
+    width: 240px
+    transition: 0.3s ease-in-out 0.1s
+    background: #ff5500
   p {
     padding: 0;
   }
@@ -62,7 +86,7 @@ const DropDownMenu = (props) => {
           <p
             onClick={(e) => {
               handleChoosenType(item)
-              dispatch(typeOfDish({ items: item }))
+              dispatch(typeOfDish(item))
             }}
           >
             {item}
@@ -82,9 +106,9 @@ const DropDownMenu = (props) => {
               setOpen(!open)
             }}
           >
-            {props.text}
+            <p>{props.text}</p>
           </div>
-          {open && <DropDownItem />}
+          <div className="menu">{open && <DropDownItem />}</div>
         </div>
       )}
       {areae && <p className="type_dish">{isChoosen}</p>}
