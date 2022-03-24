@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const StyeldExampleMenu = styled.div`
   position: absolute;
   top: 450px;
-  right: 160px;
+  right: 180px;
   margin: 0;
   width: 30%;
   margin: auto;
@@ -15,8 +15,10 @@ const StyeldExampleMenu = styled.div`
     margin: 0;
   }
   .main {
+    margin: 0;
     background: yellow;
     padding: 40px;
+    width: 300px;
   }
   button {
     position: absolute;
@@ -24,8 +26,6 @@ const StyeldExampleMenu = styled.div`
     margin: auto;
     border: none;
     font-size: 20px;
-    top: 10px;
-    right: 20px;
   }
   button:hover {
     transform: scale(1.5);
@@ -108,9 +108,13 @@ const MenuExample = (props) => {
   const Menu = () => {
     return (
       <StyeldExampleMenu>
-        <button className="button" onClick={() => seIsVisible(false)}>
-          X
-        </button>
+        <div className="menu_button">
+          {' '}
+          <button className="button" onClick={() => seIsVisible(false)}>
+            X
+          </button>
+        </div>
+
         <div className="main">
           <header>
             <p className="titel">Menu</p>

@@ -94,14 +94,25 @@ padding:0 20px;
     border-radius: 20px;
     
   }
-
+.user_information{
+margin-right:40px;
+}
   .user__information-data{
     padding:5px 20px;
   }
+
   .user_name_text{
   text-align: center;
+  font-size:20px;
   }
+
   
+  .user_name_text snap{
+    font-size:30px;
+    padding:0 20px;
+    font-weight:bold;
+    color:orange;
+  }
   .button{
   text-align: center;
     margin-top:20px;
@@ -326,7 +337,9 @@ const Profil = () => {
           <div className="user_name">
             <div className="user__information-data">
               {' '}
-              <p className="user_name_text">Hi, {user.userName}</p>
+              <p className="user_name_text">
+                Hi, <snap>{user.userName}</snap>
+              </p>
               <div className="user_weigth-information">
                 <p className="user_weigth_today">
                   {' '}
