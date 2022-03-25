@@ -8,11 +8,16 @@ import {
   faDumbbell,
 } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink, Outlet } from 'react-router-dom'
+import svg from 'assets/svg/Vector.svg'
 const StyledNavigation = styled.div`
   background-repeat: no-repeat;
   position: absolute;
   height: 100%;
   width: 100%;
+
+  // max-width: 1420px;
+  //height: 1123px;
+
   .sidenav {
     height: 100%;
     width: 170px;
@@ -42,15 +47,16 @@ const StyledNavigation = styled.div`
     //background-color: rgb(199, 211, 222);
   }
   .main {
+    width: calc(80% -170px);
     height: 100%;
-    background: linear-gradient(
+    margin-left: 170px;
+    /*  background: linear-gradient(
       to top left,
       powderblue,
       rgb(245, 215, 191, 0.9)
     );
 
-    margin-left: 160px;
-    padding: 0px 10px;
+    margin-left: 160px;*/
   }
 `
 

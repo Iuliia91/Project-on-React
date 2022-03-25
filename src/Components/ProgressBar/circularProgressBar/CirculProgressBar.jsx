@@ -77,7 +77,6 @@ const CirculProgressBar = (props) => {
     <StyledCirculProgressBar>
       <div>
         You need dring water
-        {/*<p>Drunk water</p>*/}
         <p className="titel">Goal:2.2L</p>
       </div>{' '}
       <div className="circle">
@@ -94,7 +93,7 @@ const CirculProgressBar = (props) => {
               textSize: '16px',
 
               pathTransitionDuration: 0.5,
-              //pathColor: `rgba(80, 134, 11, ${percentage / 100})`,
+
               pathColor: `rgba(2, 149, 234, ${percentage / 100})`,
               textColor: '#f88',
               trailColor: '#e0c412',

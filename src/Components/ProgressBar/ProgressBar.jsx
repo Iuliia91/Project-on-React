@@ -24,7 +24,7 @@ const StyledProgressBar = styled.div`
 
     transition: width 0.15s ease-out;
 
-    background-color: #38b000;
+    background-color: #e0c412;
     border-radius: 100px;
     box-shadow: inset -1px -1px 10px rgb(0 0 0 / 0.5);
   }

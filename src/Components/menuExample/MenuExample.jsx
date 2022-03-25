@@ -4,15 +4,16 @@ import styled from 'styled-components'
 import svg from 'assets/svg/Vector.svg'
 const StyeldExampleMenu = styled.div`
   position: absolute;
-  max-width: 1920px;
+  background-color: rgb(134, 189, 114, 25%);
+  /*max-width: 1920px;
   //height: 1123px;
   left: 0px;
   top: 0px;
-  background-image: url(${svg});
+  background-image: url(${svg});*/
 `
 const StyledMenuBlock = styled.div`
   width: 600px;
-  background-color: rgb(134, 189, 114, 25%);
+  // background-color: rgb(134, 189, 114, 25%);
   .user_menu {
     padding: 50px;
     text-align: center;

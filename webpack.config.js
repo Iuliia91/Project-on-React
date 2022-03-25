@@ -37,20 +37,17 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
-        loader: 'url-loader?limit=100000',
-      },
-      /* {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(jpe?g|png|gif|woff|woff2|otf|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              limit: 8192,
+              limit: 1000,
+              name: 'assets/img/[name].[ext]',
             },
           },
         ],
-      },*/
+      },
       {
         test: /\.(css)$/,
         use: [

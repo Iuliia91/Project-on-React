@@ -15,187 +15,136 @@ import Server from 'api/server.instance'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
 import CirculProgressBar from 'Components/ProgressBar/circularProgressBar/CirculProgressBar'
+import svg from 'assets/svg/Vector.svg'
+import svgAvacado from 'assets/svg/avacado.svg'
+import itemAvacado from 'assets/svg/itemAvocado.svg'
+import ImigAvocado from 'Helpers/Avacado/ImigAvocado'
+import LineAvocado from 'assets/svg/line.svg'
+import ImigCarrot from 'Helpers/Carrot/Carroy'
 const StyledProfil = styled.div`
+  background-color: rgb(134, 189, 114, 0.2);
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100%;
 
-width:90%;
+  // width: 90%;
+
+  /* width:90%;
 margin:auto;
 aling-item:center;
  
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', 
   border: 16px solid #ece9e0;
-  padding-top:20px;
+  padding-top:20px;*/
 
-main{
-   display: flex;
-   flex-direction:column;
-}
-  .block1{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-    margin-bottom:10px;
-    padding-bottom:28px;
-    width:100%;
+  .block {
+    opasiti: 0.33;
   }
-  .user_name{
-    porition:absplute;
+  .image {
+    position: absolute;
+    color: #85b472;
+    z-index: -1;
+    opacity: 0.3;
+    right: 0;
+    top: -0.15%;
+    bottom: 0.06%;
+    //background: #85b472;
+
+    mix-blend-mode: soft-light;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
+  main {
+    display: flex;
+    flex-direction: row;
+  }
+  .block1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 28px;
+    width: 100%;
+  }
+  /* .user_name {
+    porition: absplute;
     box-shadow: inset 100px 100px 30px;
     box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
-    background:rgb(239,235,235);
-      margin-right:20px;
-     width:60%;
-     
-     margin:auto;
-    margin-bottom:20px;
-     border-radius: 20px;
-  }
-  
-  .block2{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:10px;
-
-  }
-
-  .block3{
-    display:flex;
-    justify-content:space-between;
-    padding:50px;
-  }
-  .user_name_text{
-  text-align: center;
-  }
-
-  .user_weigth_data{
-  text-align: center;
-  }
-
-  .user_information{
-  
-    box-shadow: inset 100px 100px 30px;
-    box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
-    
-    background:rgb(239,235,235);
-padding:0 20px;
-    width:40%;
-    padding:20px 40px;
-   text-alingh:center;
-     margin:auto;
-  border-radius: 20px;
-  }
-  .user_menu{
- 
-    text-align: center;
-    box-shadow: inset 100px 100px 30px;
-    box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
-  
-    background:rgb(239,235,235);
-    border-radius: 20px;
-    
-  }
-.user_information{
-margin-right:40px;
-}
-  .user__information-data{
-    padding:5px 20px;
-  }
-
-  .user_name_text{
-  text-align: center;
-  font-size:20px;
-  }
-
-  
-  .user_name_text snap{
-    font-size:30px;
-    padding:0 20px;
-    font-weight:bold;
-    color:orange;
-  }
-  .button{
-  text-align: center;
-    margin-top:20px;
-  
-  }
-
-  
-  button{
-    border: none;  
-    background: transparent;
-  }
-
-  button:hover{
-    transform: scale(1.2);
-    background: rgb(199, 211, 222)
-  }
-  .user_line{
-    display:flex;
-    
-  }
-
-  .ProgressBar{
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-  }
-  .user_weigth_data{
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-  }
-
-  .user_weigth_today,.user_weigth-differance{
-    text-align: center;
-    
-  }
-
-  .user_weigth_today snap{
-    font-size:30px;
-    color : blue;
-    font-weight:bold;
-  }
-
-  .user_schedule{
-    width:500px;
-    grid-column:4/5;
-    grid-row:3;
     background: rgb(239, 235, 235);
+    margin-right: 20px;
+    width: 60%;
+
+    margin: auto;
+    margin-bottom: 20px;
     border-radius: 20px;
-  }
+  }*/
 
-  .circle_progressBar{
+  /*
+  @media (max-width: 1457px) {
+    .block3 {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: auto;
+    }
+    .block3 > div {
+      margin-bottom: 20px;
+    }
+  }*/
 
-    width:300px;
-    border-radius: 30px;
-    background:rgb(239,235,235);
-  }
+  /*.user__information-data {
+    display: flex;
+    flex-direction: column;
+  }*/
 
-  .user_sport{
-   width:180px;
-    padding:100px 90px;
-   
-    border-radius: 30px;
-    background:rgb(239,235,235);
+  .user__information-data {
+    text-aling: center;
+
+    //background-image: url(${svgAvacado});
+    background-repeat: no-repeat;
+    z-index: -1;
+    //background: rgba(134, 180, 114, 25%);
   }
-  .user_suggestion{
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
+  .user_name_text {
+    font-family: 'spartanmedium';
+    font-weight: 600;
+    font-size: 55px;
+    color: #86b472;
+    margin: 0;
+    line-height: 85px;
     text-align: center;
   }
-  @media (max-width: 1457px) {
-    .block3{
-      display:flex;
-      justify-content:center;
-      flex-direction:column;
-      margin:auto;
-    }
-    .block3 > div{
-      margin-bottom:20px;
-    }
+  .user_weigth_today {
+    font-family: 'spartanmedium';
+    font-weight: 300;
+    font-size: 35px;
+    color: #86b472;
+    margin: 0;
+    line-height: 85px;
+    text-align: center;
+  }
+  .user_weigth_today snap {
+    font-weight: 500;
+  }
+  .user_weigth-differance {
+    font-family: 'spartanmedium';
+    font-weight: 300;
+    font-size: 20px;
+    color: #86b472;
+    margin: 0 0 10px 0;
+    text-align: center;
   }
 
+  /*.image_avocado {
+    position: relative;
+    top: 10px;
+    opacity: 0.3;
+  }
+  .image_avocado_item {
+    position: absolute;
+    top: 20px;
+    opacity: 0.3;
+  }*/
 `
 
 const StyledModalProfilForm = styled.div`
@@ -332,11 +281,20 @@ const Profil = () => {
 
   return (
     <StyledProfil>
+      <div className="block">
+        <img className="image" src={svg}></img>
+      </div>
+
+      <div className="block">
+        <p>Privet</p>
+        <ImigAvocado />
+        <ImigCarrot />
+      </div>
+
       <main>
         <div className="block1">
           <div className="user_name">
             <div className="user__information-data">
-              {' '}
               <p className="user_name_text">
                 Hi, <snap>{user.userName}</snap>
               </p>

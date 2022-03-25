@@ -3,10 +3,12 @@ import { ModalContext } from 'HOC/GlobalModalProvider'
 import styled from 'styled-components'
 
 const StyledButtonOptions = styled.div`
+text-align: center;
   .button {
     border: none;
-    border-radius: 120px;
-    box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(180.61deg, #98D67D 0.45%, #569F36 99.39%);
+box-shadow: 0px 19px 42px rgba(134, 180, 114, 0.3);
+border-radius: 10px;;
   }
 
   .button:hover {
