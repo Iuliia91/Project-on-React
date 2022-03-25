@@ -25,6 +25,7 @@ background:rgb(239,235,235);
   .circle{
     margin:auto;
     text-align: center;
+    color:green;
     //padding-left:25px;
   }
   p {
@@ -34,8 +35,8 @@ background:rgb(239,235,235);
   }
   button {
     
-    background-color:green:
-  // margin-top:10px;
+    color:green;
+ margin-bottom:10px;
     
   }
   .CircularProgressbar-path {

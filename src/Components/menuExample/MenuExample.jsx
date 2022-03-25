@@ -1,86 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-
+import svg from 'assets/svg/Vector.svg'
 const StyeldExampleMenu = styled.div`
   position: absolute;
-  top: 450px;
-  right: 180px;
-  margin: 0;
-  width: 30%;
-  margin: auto;
-
-  .user_menu {
-    padding: 0;
-    margin: 0;
-  }
-  .main {
-    margin: 0;
-    background: yellow;
-    padding: 40px;
-    width: 300px;
-  }
-  button {
-    position: absolute;
-    background: transparent;
-    margin: auto;
-    border: none;
-    font-size: 20px;
-  }
-  button:hover {
-    transform: scale(1.5);
-  }
-  header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 3px solid black;
-  }
-  p {
-    margin: 0;
-    margin-top: 30px;
-    text-align: cente;
-    font-size: 26px;
-    line-height: 1.5;
-  }
-  .titel {
-    margin-bottom: 5px;
-    text-align: cente;
-    font-size: 26px;
-    line-height: 1.5;
-  }
-  .menu {
-    list-style: none;
-    font-family: ;
-    padding: 0;
-  }
-
-  .menu ul {
-    padding: 0;
-  }
-  .menu li {
-    margin-bottom: 5px;
-    border-bottom: 2px #404b51 dotted;
-    font-size: 26px;
-    line-height: 1.5;
-  }
-
-  .menu li span:nth-child(odd) {
-    padding-right: 100px;
-  }
-  .menu li span:nth-child(even) {
-    float: right;
-    padding-left: 6px;
-    color: black;
-  }
-  .menu span {
-    position: relative;
-    bottom: -7px;
-  }
+  max-width: 1920px;
+  //height: 1123px;
+  left: 0px;
+  top: 0px;
+  background-image: url(${svg});
 `
 const StyledMenuBlock = styled.div`
   width: 600px;
-
+  background-color: rgb(134, 189, 114, 25%);
   .user_menu {
     padding: 50px;
     text-align: center;
@@ -94,7 +26,7 @@ const MenuExample = (props) => {
   const [isVisible, seIsVisible] = useState(false)
   const data = useSelector((state) => state.exampleOfMenueReducer)
   const listOfMenu = data.listOFMenu
-  console.log(listOfMenu)
+
   const items = listOfMenu.find((item) => {
     if (item.calorie.min == data.caloriesAmountPerDay) {
       return item

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { usersWeigth, amountOfLosedWeigth } from 'store/actions/userAction'
-import MenuExample from 'Helpers/menuExample/MenuExample'
+import MenuExample from 'Components/menuExample/MenuExample'
 import DropDownMenu from 'Components/dropDownMenu/DropDownMenu'
 import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
