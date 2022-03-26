@@ -19,7 +19,7 @@ const StyledProgressBar = styled.div`
 
   .bar {
     width: ${(props) => props.value};
-    max-width: 100%;
+    max-width: 90%;
     height: 15px;
 
     transition: width 0.15s ease-out;
@@ -33,6 +33,11 @@ const StyledProgressBar = styled.div`
     font-size: 20px;
     color: #86b472;
     padding-top: 10px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #dff0c6 0%, #ffffff 77.6%);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 10px 32px rgba(131, 209, 96, 0.26);
+    border-radius: 56px;
   }
 `
 

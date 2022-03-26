@@ -48,6 +48,7 @@ const StyledNavigation = styled.div`
   }
   .main {
     width: calc(80% -170px);
+    //width: 100%;
     height: 100%;
     margin-left: 170px;
     /*  background: linear-gradient(

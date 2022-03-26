@@ -10,7 +10,7 @@ const StyledImigAvocado = styled.div`
   .image_avocado {
     position: absolute;
     top: 10px;
-    opacity: 0.3;
+    opacity: 0.25;
   }
   .image_avocado_item {
     position: absolute;
@@ -20,6 +20,7 @@ const StyledImigAvocado = styled.div`
   }
   .image_avocado_item2 {
     left: 10px;
+    top: 30px;
     position: absolute;
     opacity: 0.3;
   }

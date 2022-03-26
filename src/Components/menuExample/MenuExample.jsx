@@ -12,14 +12,19 @@ const StyeldExampleMenu = styled.div`
   background-image: url(${svg});*/
 `
 const StyledMenuBlock = styled.div`
-  width: 600px;
+  width: 90%;
   // background-color: rgb(134, 189, 114, 25%);
   .user_menu {
     padding: 50px;
     text-align: center;
   }
   .user_menu button {
+    padding: 8px;
     text-align: center;
+    background: linear-gradient(90deg, #dff0c6 0%, #ffffff 77.6%);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 10px 32px rgba(131, 209, 96, 0.26);
+    border-radius: 56px;
   }
 `
 

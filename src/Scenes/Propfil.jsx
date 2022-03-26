@@ -15,94 +15,40 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
 import CirculProgressBar from 'Components/ProgressBar/circularProgressBar/CirculProgressBar'
 import svg from 'assets/svg/Vector.svg'
-
+import imgsalat from '../assets/images/Salat.png'
 import ImigAvocado from 'Helpers/Avacado/ImigAvocado'
 import svg2 from 'assets/svg/sheet.svg'
+import svg3 from 'assets/svg/sheet.svg'
 import ImigCarrot from 'Helpers/Carrot/Carroy'
 const StyledProfil = styled.div`
   background-color: rgb(134, 189, 114, 0.2);
-  background-repeat: no-repeat;
+
   position: relative;
   height: 100%;
+  width: 100%;
 
-  // width: 90%;
-
-  /* width:90%;
-margin:auto;
-aling-item:center;
- 
-  font-family: 'Lucida Sans Unicode', 'Lucida Grande', 
-  border: 16px solid #ece9e0;
-  padding-top:20px;*/
-
-  .block {
-    opasiti: 0.33;
-  }
-  .image {
+  .pict {
     position: absolute;
-    color: #85b472;
-    z-index: -1;
-    opacity: 0.3;
-    right: 0;
-    top: -0.15%;
-    bottom: 0.06%;
-    //background: #85b472;
-
-    mix-blend-mode: soft-light;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
+    opacity: 0.25;
   }
-  main {
+  .content {
     display: flex;
     flex-direction: row;
+    width: 85%;
+    margin: auto;
+    justify-content: space-between;
+  }
+
+  .block2 {
+    position: relative;
+    margin-top: 200px;
+    width: 45%;
   }
   .block1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding-bottom: 28px;
-    width: 100%;
+    width: 45%;
+    margin-top: 10%;
   }
-  /* .user_name {
-    porition: absplute;
-    box-shadow: inset 100px 100px 30px;
-    box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.5);
-    margin: 0 auto;
-    background: rgb(239, 235, 235);
-    margin-right: 20px;
-    width: 60%;
 
-    margin: auto;
-    margin-bottom: 20px;
-    border-radius: 20px;
-  }*/
-
-  /*
-  @media (max-width: 1457px) {
-    .block3 {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      margin: auto;
-    }
-    .block3 > div {
-      margin-bottom: 20px;
-    }
-  }*/
-
-  /*.user__information-data {
-    display: flex;
-    flex-direction: column;
-  }*/
-
-  .user__information-data {
-    text-aling: center;
-
-    //background-image: url(${svgAvacado});
-    background-repeat: no-repeat;
-    z-index: -1;
-    //background: rgba(134, 180, 114, 25%);
-  }
   .user_name_text {
     font-family: 'spartanmedium';
     font-weight: 600;
@@ -116,7 +62,7 @@ aling-item:center;
     font-family: 'spartanmedium';
     font-weight: 300;
     font-size: 35px;
-    color: #86b472;
+    color: #545454;
     margin: 0;
     line-height: 85px;
     text-align: center;
@@ -128,17 +74,19 @@ aling-item:center;
     font-family: 'spartanmedium';
     font-weight: 300;
     font-size: 20px;
-    color: #86b472;
+    color: #545454;
     margin: 0 0 10px 0;
     text-align: center;
   }
+
   .user_schedule {
     position: relative;
     background: #ffffff;
     // z-index: 8000;
     width: 470px;
     border-radius: 20px;
-    margin: 30px 100px;
+    margin: 10% auto;
+    text-align: center;
   }
 
   .user_schedule img:nth-of-type(1) {
@@ -149,26 +97,20 @@ aling-item:center;
     bottom: -0.04%;
     transform: rotate(20deg);
     z-index: -1;
-    opacity: 0.7;
-  }
-
-  /*   .user_schedule div {
-    position: absolute;
-    top: 0;
-    left: 0;
+    opacity: 0.25;
   }
 
   .user_schedule img:nth-of-type(2) {
+    opacity: 0.25;
     position: absolute;
-    left: -90px;
-    // right: -200px;
-    top: -180px;
+    //left: -90px;
+    right: -87px;
+    top: -100px;
     bottom: -0.04%;
-    transform: matrix(-0.59, 0.81, 0.81, 0.59, 0, 0);
+    transform: matrix(-0.95, 0.97, 0.5, 0.59, 0, 0);
     z-index: -1;
-
-     z-index: -1;
   }
+
   .elips {
     position: absolute;
     width: 200px;
@@ -179,6 +121,36 @@ aling-item:center;
     opacity: 0.6;
     filter: blur(130px);
     z-index: 9000;
+  }
+
+  .user_information {
+    position: relative;
+    background: linear-gradient(158.25deg, #e1ecdc 27.9%, #ffffff 90.49%);
+    box-shadow: 0px 15px 50px rgba(51, 114, 25, 0.2);
+    border-radius: 15px;
+    //height: 100px;
+    text-align: center;
+    width: 100%;
+  }
+  .user_suggestion {
+    padding: 40px;
+    width: 90%;
+  }
+  .user_suggestion p {
+    font-family: 'spartanmedium';
+  }
+
+  .block2 img:nth-of-type(1) {
+    position: absolute;
+    top: -130px;
+    left: -20px;
+    z-index: 1000;
+  }
+
+  .block {
+    position: absolute;
+    left: 48%;
+    top: 405;
   }
 `
 
@@ -218,8 +190,9 @@ const DataIndex = (props) => {
     dispatch(amountCaloriesPerDay(3000))
     return (
       <div className="user_suggestion">
-        {'Not enough body weight'}
-        <p>'We recommend eating a 3000 calories peer day '</p>
+        <p>{'Not enough body weight'}</p>
+        <p>We recommend eating a 3000 calories peer day</p>
+        <p>Dring water min-2.2L </p>
       </div>
     )
   } else if (indexBody >= 18.6 && indexBody <= 25) {
@@ -227,7 +200,8 @@ const DataIndex = (props) => {
     return (
       <div className="user_suggestion">
         <p>{'Your weigth is norma'}</p>
-        <p>'We recommend eating a 1800 -2200 calories peer day '</p>
+        <p>We recommend eating a 1800 -2200 calories peer day </p>
+        <p>Dring water min-2.2L </p>
       </div>
     )
   } else if (indexBody >= 25.1 && indexBody <= 40) {
@@ -236,6 +210,7 @@ const DataIndex = (props) => {
       <div className="user_suggestion">
         <p>{'You have overweight '}</p>
         <p>We recommend eating a 1200 calories peer day</p>
+        <p>Dring water min-2.2L </p>
       </div>
     )
   }
@@ -316,16 +291,13 @@ const Profil = () => {
 
   return (
     <StyledProfil>
-      <div className="block">
-        <img className="image" src={svg}></img>
-      </div>
-
+      <img className="pict" src={svg} />
       <div className="block">
         <ImigAvocado />
-        <ImigCarrot />
+        {/*
+        <ImigCarrot />*/}
       </div>
-
-      <main>
+      <div className="content">
         <div className="block1">
           <div className="user_name">
             <div className="user__information-data">
@@ -354,33 +326,35 @@ const Profil = () => {
 
           <div className="user_schedule">
             <div className="elips"></div>
-            <img className="svg2_1" src={svg2} />
-            <img className="svg2" src={svg2} />
+            <img src={svg2} />
+            <img src={svg3} />
+
             <div>
               <Schedule weigthToday={user.userWeigthToday} />
             </div>
           </div>
         </div>
         <div className="block2">
+          <img src={imgsalat} />
           <div className="user_information">
-            {' '}
             <DataIndex />
           </div>
           <MenuExample />
-        </div>
-        <div className="block3">
-          <div className="circle_progressBar">
-            <CirculProgressBar />
-          </div>
 
-          <div className="user_sport">
-            <FontAwesomeIcon
-              icon={faDumbbell}
-              style={{ width: 150, height: 150, color: '#e0c412' }}
-            />
+          <div className="block3">
+            <div className="circle_progressBar">
+              <CirculProgressBar />
+            </div>
+
+            <div className="user_sport">
+              <FontAwesomeIcon
+                icon={faDumbbell}
+                style={{ width: 150, height: 150, color: '#e0c412' }}
+              />
+            </div>
           </div>
         </div>
-      </main>
+      </div>
     </StyledProfil>
   )
 }

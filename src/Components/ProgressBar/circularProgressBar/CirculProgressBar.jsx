@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const StyledCirculProgressBar = styled.div`
 margin :0 20px;
-background:rgb(239,235,235);
+background: #ffffff;
   display: flex;
   width:200px;
   height:350px;
