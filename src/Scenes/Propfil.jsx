@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { usersWeigth, amountOfLosedWeigth } from 'store/actions/userAction'
 import MenuExample from 'Components/menuExample/MenuExample'
-import DropDownMenu from 'Components/dropDownMenu/DropDownMenu'
 import ButtonOptions from 'Components/ButtonOptions'
 import styled from 'styled-components'
 import { Formik, Form } from 'formik'
@@ -16,10 +15,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
 import CirculProgressBar from 'Components/ProgressBar/circularProgressBar/CirculProgressBar'
 import svg from 'assets/svg/Vector.svg'
-import svgAvacado from 'assets/svg/avacado.svg'
-import itemAvacado from 'assets/svg/itemAvocado.svg'
+
 import ImigAvocado from 'Helpers/Avacado/ImigAvocado'
-import LineAvocado from 'assets/svg/line.svg'
+import svg2 from 'assets/svg/sheet.svg'
 import ImigCarrot from 'Helpers/Carrot/Carroy'
 const StyledProfil = styled.div`
   background-color: rgb(134, 189, 114, 0.2);
@@ -59,7 +57,7 @@ aling-item:center;
   }
   .block1 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 10px;
     padding-bottom: 28px;
@@ -134,17 +132,54 @@ aling-item:center;
     margin: 0 0 10px 0;
     text-align: center;
   }
-
-  /*.image_avocado {
+  .user_schedule {
     position: relative;
-    top: 10px;
-    opacity: 0.3;
+    background: #ffffff;
+    // z-index: 8000;
+    width: 470px;
+    border-radius: 20px;
+    margin: 30px 100px;
   }
-  .image_avocado_item {
+
+  .user_schedule img:nth-of-type(1) {
     position: absolute;
-    top: 20px;
-    opacity: 0.3;
-  }*/
+    left: -90px;
+    right: ;
+    top: -100px;
+    bottom: -0.04%;
+    transform: rotate(20deg);
+    z-index: -1;
+    opacity: 0.7;
+  }
+
+  /*   .user_schedule div {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .user_schedule img:nth-of-type(2) {
+    position: absolute;
+    left: -90px;
+    // right: -200px;
+    top: -180px;
+    bottom: -0.04%;
+    transform: matrix(-0.59, 0.81, 0.81, 0.59, 0, 0);
+    z-index: -1;
+
+     z-index: -1;
+  }
+  .elips {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 100px;
+    top: 100px;
+    background: #86b472;
+    opacity: 0.6;
+    filter: blur(130px);
+    z-index: 9000;
+  }
 `
 
 const StyledModalProfilForm = styled.div`
@@ -286,7 +321,6 @@ const Profil = () => {
       </div>
 
       <div className="block">
-        <p>Privet</p>
         <ImigAvocado />
         <ImigCarrot />
       </div>
@@ -317,6 +351,15 @@ const Profil = () => {
               </div>
             </div>
           </div>
+
+          <div className="user_schedule">
+            <div className="elips"></div>
+            <img className="svg2_1" src={svg2} />
+            <img className="svg2" src={svg2} />
+            <div>
+              <Schedule weigthToday={user.userWeigthToday} />
+            </div>
+          </div>
         </div>
         <div className="block2">
           <div className="user_information">
@@ -326,10 +369,6 @@ const Profil = () => {
           <MenuExample />
         </div>
         <div className="block3">
-          <div className="user_schedule">
-            {' '}
-            <Schedule weigthToday={user.userWeigthToday} />
-          </div>
           <div className="circle_progressBar">
             <CirculProgressBar />
           </div>

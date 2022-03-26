@@ -28,6 +28,12 @@ const StyledProgressBar = styled.div`
     border-radius: 100px;
     box-shadow: inset -1px -1px 10px rgb(0 0 0 / 0.5);
   }
+  .startWeigth {
+    font-family: 'spartanmedium';
+    font-size: 20px;
+    color: #86b472;
+    padding-top: 10px;
+  }
 `
 
 const ProgressBar = (props) => {

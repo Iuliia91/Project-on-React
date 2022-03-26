@@ -12,12 +12,10 @@ import {
 import { useSelector } from 'react-redux'
 import Server from 'api/server.instance'
 const StyledSchedule = styled.div`
-  //width: 450px;
-  //heigth: 800px;
-  //padding: 10px;
-  background: rgb(239, 235, 235);
+  // background: #ffffff;
   border-radius: 20px;
-  grid-column: 7/8;
+  z-index: 1;
+  width: 50%;
 `
 
 const Schedule = (props) => {
