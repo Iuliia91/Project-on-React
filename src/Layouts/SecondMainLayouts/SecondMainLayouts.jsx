@@ -48,16 +48,8 @@ const StyledNavigation = styled.div`
   }
   .main {
     width: calc(80% -170px);
-    //width: 100%;
-    height: 100%;
     margin-left: 170px;
-    /*  background: linear-gradient(
-      to top left,
-      powderblue,
-      rgb(245, 215, 191, 0.9)
-    );
-
-    margin-left: 160px;*/
+    //height: 100%;
   }
 `
 

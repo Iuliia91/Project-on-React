@@ -273,6 +273,15 @@
       "userWeigth": "70",
       "userGoaldWeigth": "60",
       "id": 29
+    },
+    {
+      "email": "iull@gmail.com",
+      "password": "$2a$10$KaDTvI7UvzGgOWOn1TpwaesGwdvwvG1qnpNYiCah5YPEmzeHyMGPK",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 30
     }
   ],
   "recipes": [
@@ -478,6 +487,46 @@
       "weigthValue": "80",
       "day": 26,
       "id": 31
+    },
+    {
+      "weigthValue": "67",
+      "day": 27,
+      "id": 32
+    },
+    {
+      "weigthValue": "78",
+      "day": 27,
+      "id": 33
+    },
+    {
+      "weigthValue": "65",
+      "day": 27,
+      "id": 34
+    },
+    {
+      "weigthValue": "60",
+      "day": 27,
+      "id": 35
+    },
+    {
+      "weigthValue": "65",
+      "day": 27,
+      "id": 36
+    },
+    {
+      "weigthValue": "73",
+      "day": 27,
+      "id": 37
+    },
+    {
+      "weigthValue": "65",
+      "day": 27,
+      "id": 38
+    },
+    {
+      "weigthValue": "73",
+      "day": 28,
+      "id": 39
     }
   ]
 }

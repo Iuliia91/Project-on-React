@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
 import CirculProgressBar from 'Components/ProgressBar/circularProgressBar/CirculProgressBar'
 import svg from 'assets/svg/Vector.svg'
+import svgsecond from 'assets/svg/Vector.svg'
 import imgsalat from '../assets/images/Salat.png'
 import ImigAvocado from 'Helpers/Avacado/ImigAvocado'
 import svg2 from 'assets/svg/sheet.svg'
@@ -24,12 +25,19 @@ const StyledProfil = styled.div`
   background-color: rgb(134, 189, 114, 0.2);
 
   position: relative;
-  height: 100%;
+
   width: 100%;
 
   .pict {
     position: absolute;
     opacity: 0.25;
+  }
+  .pict1 {
+    position: absolute;
+    opacity: 0.25;
+    top: 480px;
+    right: 50px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
   }
   .content {
     display: flex;
@@ -45,7 +53,7 @@ const StyledProfil = styled.div`
     width: 45%;
   }
   .block1 {
-    width: 45%;
+    //width: 45%;
     margin-top: 10%;
   }
 
@@ -81,9 +89,9 @@ const StyledProfil = styled.div`
 
   .user_schedule {
     position: relative;
-    background: #ffffff;
+   // background: #ffffff;
     // z-index: 8000;
-    width: 470px;
+    width: 100%;
     border-radius: 20px;
     margin: 10% auto;
     text-align: center;
@@ -140,7 +148,7 @@ const StyledProfil = styled.div`
     font-family: 'spartanmedium';
   }
 
-  .block2 img:nth-of-type(1) {
+  .imgSalat {
     position: absolute;
     top: -130px;
     left: -20px;
@@ -152,6 +160,59 @@ const StyledProfil = styled.div`
     left: 48%;
     top: 405;
   }
+  .block3 {
+  
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-around;
+  }
+
+  .circle_progressBar {
+    padding-top: 20px;
+    width: 250px;
+   
+  }
+
+  @media (max-width: 1407px) {
+    .block3 {
+      flex-direction: column;
+    }
+    @media (max-width: 1297px) {
+      .content {
+        flex-direction: column;
+        margin:auto;
+      }
+     
+      .block1{
+        
+        margin: auto;
+        padding:30px;
+        margin-bottom:40px;
+      }
+    
+      .pict1{
+        top:0;
+        reight:0;
+        justify-content: space-evenly;
+      }
+      .block2{
+        display:flex;
+        flex-direction:column;
+        margin: 80px auto;
+        width:100%;
+      }
+      .block3{
+        width:100%;
+        display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+      }
+      .user_information{
+        width:100%;
+        height:100%;
+      }
+    }
 `
 
 const StyledModalProfilForm = styled.div`
@@ -232,12 +293,7 @@ const Profil = () => {
     setModalContext(
       <StyledModalProfilForm>
         <div className="close_element">
-          <button
-            className="button_close"
-            onClick={() => {
-              setModalContext()
-            }}
-          >
+          <button className="button_close" onClick={() => setModalContext()}>
             X
           </button>
         </div>
@@ -292,6 +348,7 @@ const Profil = () => {
   return (
     <StyledProfil>
       <img className="pict" src={svg} />
+      <img className="pict1" src={svgsecond} />
       <div className="block">
         <ImigAvocado />
         {/*
@@ -335,23 +392,15 @@ const Profil = () => {
           </div>
         </div>
         <div className="block2">
-          <img src={imgsalat} />
+          <img className="imgSalat" src={imgsalat} />
           <div className="user_information">
             <DataIndex />
           </div>
-          <MenuExample />
-
           <div className="block3">
             <div className="circle_progressBar">
               <CirculProgressBar />
             </div>
-
-            <div className="user_sport">
-              <FontAwesomeIcon
-                icon={faDumbbell}
-                style={{ width: 150, height: 150, color: '#e0c412' }}
-              />
-            </div>
+            <MenuExample />
           </div>
         </div>
       </div>

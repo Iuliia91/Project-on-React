@@ -3,49 +3,63 @@ import styled from 'styled-components'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import glass from 'assets/svg/glass.jpg'
+import branch from 'assets/svg/Branch.svg'
+import branch2 from 'assets/svg/Branch.svg'
 const StyledCirculProgressBar = styled.div`
-margin :0 20px;
-background: #ffffff;
+
+
+  border-radius: 20px;
+  width: 260px;
   display: flex;
-  width:200px;
-  height:350px;
   flex-direction: column;
- padding:10px //;
-  justify-content: center;
   text-align: center;
-  border-radius: 30px;
-  padding-left:25px;
+padding-bottom:30px;
+  background: #ffffff 90.49%;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0px 10px 32px rgba(131, 209, 96, 0.26);
 
   button {
-    font-size: 50px;
-    padding-top:5px;
-    padding-left:20px;
+    font-size: 35px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    padding-left: 20px;
   }
-  .circle{
-    margin:auto;
+  button p {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+  }
+  .circle {
+    margin: auto;
     text-align: center;
-    color:green;
+    color: green;
     //padding-left:25px;
   }
-  p {
-    font-size: 25px;
+  .titel {
+    font-size: 30px;
     font-weight: bold;
     text-align: center;
+    margin: 0;
+    padding: 20px 0;
   }
   button {
-    
-    color:green;
- margin-bottom:10px;
-    
+    color: green;
+    margin-bottom: 10px;
   }
   .CircularProgressbar-path {
     stroke: red;
+  }
+  
   }
 `
 
 const CirculProgressBar = (props) => {
   const [value, setValue] = useState(0)
+  const [visible, setVisible] = useState(false)
   const goal = 2.4
   const initial = 0
 
@@ -53,6 +67,11 @@ const CirculProgressBar = (props) => {
   const item = Math.round((goal - value) / proportion)
 
   const percentage = 100 - item
+
+  const handleOpenCircularProgressBar = () => {
+    setVisible(!visible)
+    console.log('hi')
+  }
 
   const handleAIncriseValue = () => {
     let item = value + 0.3
@@ -76,12 +95,11 @@ const CirculProgressBar = (props) => {
   return (
     <StyledCirculProgressBar>
       <div>
-        You need dring water
         <p className="titel">Goal:2.2L</p>
       </div>{' '}
       <div className="circle">
         {' '}
-        <div style={{ width: 200, height: 200 }}>
+        <div style={{ width: 150, height: 150 }}>
           <CircularProgressbar
             value={percentage}
             text={`${percentage}%`}
@@ -103,8 +121,12 @@ const CirculProgressBar = (props) => {
         </div>
       </div>
       <div>
-        <button onClick={handleAIncriseValue}>+</button>
-        <button onClick={handleDecriseValue}>-</button>
+        <button onClick={handleAIncriseValue}>
+          <p>+</p>
+        </button>
+        <button onClick={handleDecriseValue}>
+          <p>-</p>
+        </button>
       </div>
     </StyledCirculProgressBar>
   )

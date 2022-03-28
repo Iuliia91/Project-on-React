@@ -12,10 +12,7 @@ import {
 import { useSelector } from 'react-redux'
 import Server from 'api/server.instance'
 const StyledSchedule = styled.div`
-  // background: #ffffff;
-  border-radius: 20px;
-  z-index: 1;
-  width: 50%;
+  background: #ffffff;
 `
 
 const Schedule = (props) => {
@@ -29,7 +26,12 @@ const Schedule = (props) => {
   console.log(data)
   return (
     <StyledSchedule>
-      <LineChart width={400} height={300} data={data} margin={{ top: 30 }}>
+      <LineChart
+        width={400}
+        height={300}
+        data={data}
+        margin={{ top: 30, right: 20 }}
+      >
         <ReferenceLine y={dataMin} label="Goal " stroke="red" />
         <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
         <XAxis
