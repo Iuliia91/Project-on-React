@@ -137,7 +137,7 @@ const TableElement = (props) => {
           type: typeOfDish,
         })
       )
-      dispatch(cleanState(false))
+      // dispatch(cleanState(false))
       console.log(check)
       setCheck(false)
     }

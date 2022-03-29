@@ -62,22 +62,26 @@ const productCardReducer = createReducer(initialState, (builder) => {
     })
     .addCase(userMenu, (state, action) => {
       let v = state.typeOfDish
-      console.log({ ...action.payload, type: v })
-      state.userMenuOfList.push({ ...action.payload, type: v })
+
+      let arr = []
+      arr.push({ ...action.payload, type: state.typeOfDish })
+
+      state.userMenuOfList = arr
+      console.log(arr)
       state.listOfProduct = []
     })
     .addCase(cleanState, (state, action) => {
       state.typeOfDish = ''
       state.isChoosen = action.payload
     })
-    .addMatcher(
+  /* .addMatcher(
       (action) => {
         return action.payload && typeof action.payload.setListModifyed
       },
       (state) => {
         state.isEdited = true
       }
-    )
+    )*/
 })
 
 export default productCardReducer

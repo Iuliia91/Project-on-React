@@ -13,6 +13,10 @@ import { useSelector } from 'react-redux'
 import Server from 'api/server.instance'
 const StyledSchedule = styled.div`
   background: #ffffff;
+
+  
+
+  }
 `
 
 const Schedule = (props) => {

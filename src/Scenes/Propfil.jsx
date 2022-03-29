@@ -25,7 +25,7 @@ const StyledProfil = styled.div`
   background-color: rgb(134, 189, 114, 0.2);
 
   position: relative;
-
+  height: 100%;
   width: 100%;
 
   .pict {
@@ -42,8 +42,9 @@ const StyledProfil = styled.div`
   .content {
     display: flex;
     flex-direction: row;
-    width: 85%;
+    width: 92%;
     margin: auto;
+   
     justify-content: space-between;
   }
 
@@ -174,21 +175,41 @@ const StyledProfil = styled.div`
    
   }
 
+
+  }
+  
   @media (max-width: 1407px) {
     .block3 {
-      flex-direction: column;
+      flex-direction: row;
     }
-    @media (max-width: 1297px) {
+  }
+    @media (max-width: 1297px ) {
+.user_name_text{
+  font-size:25px;
+  line-height:35px;
+}
+.user_weigth_today{
+  font-size:18px;
+  line-height:35px;
+}
+.user_suggestion{
+  padding:14px;
+ 
+}
+.user_suggestion p{
+  font-size:14px;
+ 
+}
       .content {
-        flex-direction: column;
+      flex-direction: row;
         margin:auto;
+       // height:100%;
+        justify-content: flex-start;
+      
       }
      
       .block1{
-        
-        margin: auto;
-        padding:30px;
-        margin-bottom:40px;
+        margin:30px auto;
       }
     
       .pict1{
@@ -199,20 +220,85 @@ const StyledProfil = styled.div`
       .block2{
         display:flex;
         flex-direction:column;
-        margin: 80px auto;
+       // justify-content: space-between;
+       margin: 0 auto ;
+      padding-top:180px;
         width:100%;
       }
       .block3{
         width:100%;
         display: flex;
     flex-direction: row;
-    justify-content: space-around;
+   justify-content: space-around;
       }
       .user_information{
-        width:100%;
-        height:100%;
+        width:80%;
+        margin:0 auto;
+height:200px;
+       
+      }
+      .user_information p{
+       text-aling:center;
+  
+      }
+     /* .imgSalat{
+        right:0;
+      //  left:70%;
+        //top:-100px;
+        width:150px;
+      }*/
+    }
+  /*  @media (min-width: 1550px){
+      .block2{
+        margin-top:300px;  
+      }
+
+    }*/
+    @media (max-width: 1300px){
+      .imgSalat{
+        left:70%;
+        //top:0;
+        width:150px;
       }
     }
+
+    @media (max-width: 800px){
+      .block2{
+        flex-direction:column;
+      }
+    }
+    @media (max-width: 1100px){
+      .content{
+       
+        
+        flex-direction:column;
+      }
+      .block1{
+        display:flex;
+        flex-direction:row;
+        margin:0;
+
+      }
+      .user_schedule img:nth-of-type(2) {
+     display:none;
+      }
+      .user_name{
+        width:90%;
+        padding-top:100px;
+      }
+.block2{
+  flex-direction:row;
+  padding:0;
+}
+.imgSalat{
+  left:0;
+  //top:0;
+  width:150px;
+}
+    }
+
+    
+  
 `
 
 const StyledModalProfilForm = styled.div`
@@ -392,8 +478,8 @@ const Profil = () => {
           </div>
         </div>
         <div className="block2">
-          <img className="imgSalat" src={imgsalat} />
           <div className="user_information">
+            <img className="imgSalat" src={imgsalat} />
             <DataIndex />
           </div>
           <div className="block3">

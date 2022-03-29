@@ -53,7 +53,10 @@ padding-bottom:30px;
   .CircularProgressbar-path {
     stroke: red;
   }
-  
+  @media (max-width: 1297px) {
+    margin:0;
+    padding:0;
+  }
   }
 `
 

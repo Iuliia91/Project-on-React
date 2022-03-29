@@ -13,13 +13,13 @@ const StyeldExampleMenu = styled.div`
   width: 50%;
   height: 600px;
   border-radiuce: 30px;
-  // background-image: url(${svg});
 `
 const StyledMenuBlock = styled.div`
-  padding-top: 40px;
+  padding: 40px 0;
+  position: relative;
   .user_menu {
     width: 200px;
-    padding: 40px 25px;
+    padding: 30px 25px;
     text-align: center;
     background: #ffffff;
     border: 2px solid rgba(255, 255, 255, 0.9);
@@ -32,11 +32,17 @@ const StyledMenuBlock = styled.div`
     background: transparent;
     border: none;
   }
+
+  @media (max-width: 1470px) {
+    .user_menu {
+      width: 100px;
+    }
+  }
 `
 
 const MenuExample = (props) => {
   const [isVisible, seIsVisible] = useState(false)
-  const [active, setActive] = useState('-100%')
+
   const data = useSelector((state) => state.exampleOfMenueReducer)
   const listOfMenu = data.listOFMenu
 
@@ -52,38 +58,36 @@ const MenuExample = (props) => {
 
   const Menu = () => {
     return (
-      <StyeldExampleMenu activ={active}>
-        <div className="main">
-          <header>
-            <p className="titel">Menu</p>
-            <p>
-              {items.calorie.min} - {items.calorie.max}
-            </p>
-          </header>
+      <StyeldExampleMenu>
+        <header>
+          <p className="titel">Menu</p>
+          <p>
+            {items.calorie.min} - {items.calorie.max}
+          </p>
+        </header>
 
-          <ul className="menu">
-            <li>
-              <span>Breakfast</span>
-              <span>{items.breakfast}cal</span>
-            </li>
-            <li>
-              <span>Snack</span>
-              <span>{items.snack}cal</span>
-            </li>
-            <li>
-              <span>Lunch</span>
-              <span>{items.lunch}cal</span>
-            </li>
-            <li>
-              <span>Snack</span>
-              <span>{items.snack}cal</span>
-            </li>
-            <li>
-              <span>Dinner</span>
-              <span>{items.dinner}cal</span>
-            </li>
-          </ul>
-        </div>
+        <ul className="menu">
+          <li>
+            <span>Breakfast</span>
+            <span>{items.breakfast}cal</span>
+          </li>
+          <li>
+            <span>Snack</span>
+            <span>{items.snack}cal</span>
+          </li>
+          <li>
+            <span>Lunch</span>
+            <span>{items.lunch}cal</span>
+          </li>
+          <li>
+            <span>Snack</span>
+            <span>{items.snack}cal</span>
+          </li>
+          <li>
+            <span>Dinner</span>
+            <span>{items.dinner}cal</span>
+          </li>
+        </ul>
       </StyeldExampleMenu>
     )
   }
