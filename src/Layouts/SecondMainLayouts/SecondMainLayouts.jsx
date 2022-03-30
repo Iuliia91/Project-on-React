@@ -51,6 +51,47 @@ const StyledNavigation = styled.div`
     margin-left: 170px;
     //height: 100%;
   }
+  @media (max-width: 1150px) {
+    .sidenav {
+      width: 120px;
+    }
+    .main {
+      margin-left: 120px;
+    }
+  }
+  @media (max-width: 850px) {
+    .sidenav {
+      width: 80px;
+    }
+    .main {
+      // width: calc(80% -80px);
+      margin-left: 80px;
+    }
+    .sidenav a {
+      padding: 10px 5px 7px 8px;
+      text-decoration: none;
+      font-size: 18px;
+      color: black;
+      display: block;
+      text-align: center;
+    }
+  }
+  @media (max-width: 427px) {
+    .sidenav {
+      width: 50px;
+    }
+    .main {
+      margin-left: 50px;
+    }
+    .sidenav a {
+      padding: 10px 2px;
+      text-decoration: none;
+      font-size: 18px;
+      color: black;
+      display: block;
+      text-align: center;
+    }
+  }
 `
 
 const SecondMainLayouts = (props) => {
@@ -70,6 +111,7 @@ const SecondMainLayouts = (props) => {
           className={'dscf'}
           activeclassname={'active'}
         >
+          {' '}
           <FontAwesomeIcon icon={faUserCircle} />
           Me
         </NavLink>

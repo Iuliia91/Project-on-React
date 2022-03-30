@@ -58,6 +58,20 @@ padding-bottom:30px;
     padding:0;
   }
   }
+
+  @media (max-width: 850px){
+    width:200px;
+    .titel{
+      font-size:20px;
+      padding:5px 0;
+    }
+    button p{
+      font-size:20px;
+    }
+  }
+  @media (max-width: 620px) {
+    width:170px;
+  }
 `
 
 const CirculProgressBar = (props) => {

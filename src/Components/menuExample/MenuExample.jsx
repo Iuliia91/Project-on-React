@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import svg from 'assets/svg/Vector.svg'
+import fruts from 'assets/svg/fruts.svg'
+import ImigPear from 'Helpers/Pear/PearImg'
+
 const StyeldExampleMenu = styled.div`
   position: fixed;
   left: 0;
@@ -12,9 +15,30 @@ const StyeldExampleMenu = styled.div`
   z-index: 99999;
   width: 50%;
   height: 600px;
-  border-radiuce: 30px;
+  border-radius: 30px;
+
+  .titel {
+    font-family: 'spartanmedium';
+    font-size: 40px;
+  }
+  li {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  li span {
+    line-height: 35px;
+    font-family: 'spartanmedium';
+    font-size: 20px;
+  }
+  li:first-of-type span {
+    margin-left: -7px;
+  }
+
+  li span:
 `
 const StyledMenuBlock = styled.div`
+  margin-top: 10px;
   padding: 40px 0;
   position: relative;
   .user_menu {
@@ -35,7 +59,18 @@ const StyledMenuBlock = styled.div`
 
   @media (max-width: 1470px) {
     .user_menu {
-      width: 100px;
+      width: 70px;
+    }
+  }
+
+  @media (max-width: 850px) {
+    padding: 0;
+  }
+
+  @media (max-width: 650px) {
+    .user_menu {
+      width: 100%;
+      padding: 0;
     }
   }
 `
@@ -59,11 +94,13 @@ const MenuExample = (props) => {
   const Menu = () => {
     return (
       <StyeldExampleMenu>
+        <img src={fruts} />
+        <ImigPear />
         <header>
-          <p className="titel">Menu</p>
-          <p>
-            {items.calorie.min} - {items.calorie.max}
+          <p className="titel">
+            Menu {items.calorie.min} - {items.calorie.max}
           </p>
+          <p></p>
         </header>
 
         <ul className="menu">

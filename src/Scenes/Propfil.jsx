@@ -11,8 +11,6 @@ import { ModalContext } from 'HOC/GlobalModalProvider'
 import ProgressBar from 'Components/ProgressBar/ProgressBar'
 import Schedule from 'Components/Schedule/Schedule'
 import Server from 'api/server.instance'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDumbbell } from '@fortawesome/free-solid-svg-icons'
 import CirculProgressBar from 'Components/ProgressBar/circularProgressBar/CirculProgressBar'
 import svg from 'assets/svg/Vector.svg'
 import svgsecond from 'assets/svg/Vector.svg'
@@ -44,7 +42,7 @@ const StyledProfil = styled.div`
     flex-direction: row;
     width: 92%;
     margin: auto;
-   
+
     justify-content: space-between;
   }
 
@@ -90,7 +88,7 @@ const StyledProfil = styled.div`
 
   .user_schedule {
     position: relative;
-   // background: #ffffff;
+    // background: #ffffff;
     // z-index: 8000;
     width: 100%;
     border-radius: 20px;
@@ -157,12 +155,11 @@ const StyledProfil = styled.div`
   }
 
   .block {
-    position: absolute;
+    position: fixed;
     left: 48%;
     top: 405;
   }
   .block3 {
-  
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -172,133 +169,118 @@ const StyledProfil = styled.div`
   .circle_progressBar {
     padding-top: 20px;
     width: 250px;
-   
   }
 
+  @media (max-width: 1150px) {
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+    .block1 {
+      display: flex;
+      flex-direction: row;
+      margin: 10px;
+    }
+    .user_name {
+      margin: auto;
+      margin-left: 5px;
+    }
+    .user_schedule {
+      width: 400px;
+      margin: 40px auto;
+    }
+    .user_schedule img {
+      display: none;
+    }
+    .user_name_text {
+      font-weight: 600;
+      font-size: 35px;
+      line-height: 45px;
+    }
+    .user_weigth_today {
+      font-size: 25px;
+      line-height: 45px;
+    }
+    .block2 {
+      width: 95%;
+      display: flex;
+      flex-direction: row;
+      margin: 20px 10px;
+      justify-content: space-between;
+    }
+    .user_information {
+      width: 35%;
+    }
+    .user_suggestion {
+      //margin-top: 30px;
+      width: 90%;
+      padding: 100px 0 0;
+      text-aling: center;
+    }
 
-  }
-  
-  @media (max-width: 1407px) {
     .block3 {
-      flex-direction: row;
+      width: 60%;
+    }
+    .imgSalat {
+      width: 150px;
+      top: -40px;
     }
   }
-    @media (max-width: 1297px ) {
-.user_name_text{
-  font-size:25px;
-  line-height:35px;
-}
-.user_weigth_today{
-  font-size:18px;
-  line-height:35px;
-}
-.user_suggestion{
-  padding:14px;
- 
-}
-.user_suggestion p{
-  font-size:14px;
- 
-}
-      .content {
+
+  @media (max-width: 850px) {
+    .user_schedule {
+      margin: 20px 0;
+      width: 100%;
+    }
+    .block1 {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 50px;
+    }
+    .block2 {
+      width: 95%;
+      display: flex;
       flex-direction: row;
-        margin:auto;
-       // height:100%;
-        justify-content: flex-start;
-      
-      }
-     
-      .block1{
-        margin:30px auto;
-      }
-    
-      .pict1{
-        top:0;
-        reight:0;
-        justify-content: space-evenly;
-      }
-      .block2{
-        display:flex;
-        flex-direction:column;
-       // justify-content: space-between;
-       margin: 0 auto ;
-      padding-top:180px;
-        width:100%;
-      }
-      .block3{
-        width:100%;
-        display: flex;
-    flex-direction: row;
-   justify-content: space-around;
-      }
-      .user_information{
-        width:80%;
-        margin:0 auto;
-height:200px;
-       
-      }
-      .user_information p{
-       text-aling:center;
-  
-      }
-     /* .imgSalat{
-        right:0;
-      //  left:70%;
-        //top:-100px;
-        width:150px;
-      }*/
     }
-  /*  @media (min-width: 1550px){
-      .block2{
-        margin-top:300px;  
-      }
-
-    }*/
-    @media (max-width: 1300px){
-      .imgSalat{
-        left:70%;
-        //top:0;
-        width:150px;
-      }
+    .user_name {
+      margin: 0;
     }
-
-    @media (max-width: 800px){
-      .block2{
-        flex-direction:column;
-      }
+    .user_suggestion {
+      padding: 30px 10px 10px;
     }
-    @media (max-width: 1100px){
-      .content{
-       
-        
-        flex-direction:column;
-      }
-      .block1{
-        display:flex;
-        flex-direction:row;
-        margin:0;
-
-      }
-      .user_schedule img:nth-of-type(2) {
-     display:none;
-      }
-      .user_name{
-        width:90%;
-        padding-top:100px;
-      }
-.block2{
-  flex-direction:row;
-  padding:0;
-}
-.imgSalat{
-  left:0;
-  //top:0;
-  width:150px;
-}
+    .user_information {
+      // width: 50%;
     }
+    .block3 {
+      width: 50%;
+    }
+    .circle_progressBar {
+      padding: 0;
+    }
+    .imgSalat {
+      width: 80px;
+    }
+  }
 
-    
-  
+  @media (max-width: 620px) {
+    .imgSalat {
+      display: none;
+      width: 100px;
+    }
+    .elips {
+      display: none;
+    }
+    .user_suggestion {
+      padding: 0;
+    }
+    .circle_progressBar {
+      width: 50%;
+    }
+    .block3 {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 `
 
 const StyledModalProfilForm = styled.div`
