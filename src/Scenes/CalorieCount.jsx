@@ -6,11 +6,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addProduct, typeOfDish } from 'store/actions/recipeCard'
 import ButtonOptions from 'Components/ButtonOptions'
 import TableList from 'Components/Table'
-
+import GroupOfImiges from 'Helpers/groupOfImiges/GroupOfImiges'
 import FormikInput from 'Components/formikFields/FormikInput'
 import { Formik, Form } from 'formik'
 const StyledCalorieCount = styled.div`
-  max-width: 1400px;
+  // max-width: 1400px;
+  background: #ffffff;
   margin: auto;
   .main {
     margin: 0;
@@ -74,10 +75,10 @@ const CalorieCount = (props) => {
     //setDisable(true)
   }
 
-  console.log(value)
   return (
     <StyledCalorieCount>
       <main className="main">
+        <GroupOfImiges />
         <div className="main__content">
           <div className="form">
             <Formik

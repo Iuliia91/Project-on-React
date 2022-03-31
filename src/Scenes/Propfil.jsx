@@ -267,6 +267,10 @@ const StyledProfil = styled.div`
       display: none;
       width: 100px;
     }
+    .user_weigth_today {
+      font-size: 18px;
+      line-height: 20px;
+    }
     .elips {
       display: none;
     }

@@ -17,6 +17,9 @@ const StyledSchedule = styled.div`
 
   height: 300px;
 
+  @media (max-width: 850px) {
+    height: 260px;
+  }
   @media (max-width: 620px) {
     height: 220px;
   }
