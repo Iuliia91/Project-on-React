@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useField } from 'formik'
 import styled from 'styled-components'
-import { ModalContext } from 'HOC/GlobalModalProvider'
+
 const StyledFormikInput = styled.div`
   input {
     outline: none;

@@ -8,6 +8,7 @@ import {
   cleanState,
   userMenu,
 } from 'store/actions/recipeCard'
+import { store } from 'store/initStore'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
@@ -18,6 +19,8 @@ const initialState = {
   isEdited: false,
   isChoosen: false,
   loading: 'loading',
+
+  getSomethingWrong: false,
 }
 
 const productCardReducer = createReducer(initialState, (builder) => {
@@ -29,13 +32,19 @@ const productCardReducer = createReducer(initialState, (builder) => {
 
     .addCase(addProduct.pending, (state, action) => {
       state.loading = 'pending'
+      state.getSomethingWrong = false
     })
     .addCase(addProduct.fulfilled, (state, action) => {
       state.loading = 'fulfilled'
+      state.getSomethingWrong = false
 
       state.listOfProduct.push(action.payload)
     })
-    .addCase(addProduct.rejected, (state, action) => {})
+    .addCase(addProduct.rejected, (state, action) => {
+      state.loading = 'fulfilled'
+      // state.message = 'Ups somthing went wrong'
+      state.getSomethingWrong = true
+    })
     .addCase(deleteItem, (state, action) => {
       const newlistofProduct = [...state.listOfProduct]
       newlistofProduct.splice(action.payload, 1)

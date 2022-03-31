@@ -98,7 +98,7 @@ const MenuExample = (props) => {
         <ImigPear />
         <header>
           <p className="titel">
-            Menu {items.calorie.min} - {items.calorie.max}
+            Menu {items.calorie.min}cal {items.calorie.max}
           </p>
           <p></p>
         </header>

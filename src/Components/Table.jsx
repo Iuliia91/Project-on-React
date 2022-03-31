@@ -114,6 +114,19 @@ const StyledModalInformOfRecipe = styled.div`
     font-size: 25px;
   }
 `
+const StyledApiFaild = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  background: pink;
+
+  div {
+    padding: 18px;
+
+    text-aling: center;
+  }
+`
 
 const TableElement = (props) => {
   const openModal = useContext(ModalContext)
@@ -138,7 +151,7 @@ const TableElement = (props) => {
         })
       )
       // dispatch(cleanState(false))
-      console.log(check)
+
       setCheck(false)
     }
   }
@@ -182,13 +195,29 @@ const TableElement = (props) => {
   )
 }
 
+const RequestFaild = () => {
+  return (
+    <StyledApiFaild>
+      {' '}
+      <div>
+        {' '}
+        <p>Ups...Something went wrong.Try again</p>
+      </div>
+    </StyledApiFaild>
+  )
+}
+
 const TableList = () => {
   const loading = useSelector((state) => state.productCardReducer.loading)
+  const getSmtWrong = useSelector(
+    (state) => state.productCardReducer.getSomethingWrong
+  )
 
   return (
     <StyledTable>
       <div>{loading === 'pending' && <Spinner />}</div>
       <div>{loading === 'fulfilled' && <TableElement />}</div>
+      <div>{getSmtWrong === true && <RequestFaild />}</div>
     </StyledTable>
   )
 }

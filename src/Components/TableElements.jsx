@@ -3,13 +3,15 @@ import { ModalContext } from 'HOC/GlobalModalProvider'
 import Tooltip from './Tooltip/Tooltip'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { cleanState } from 'store/actions/recipeCard'
+
+import { deleteItem, cleanState } from 'store/actions/recipeCard'
 import ButtonOptions from 'Components/ButtonOptions'
 import InputNewValueWeigth from 'Components/changeWeightOfProduct/InputNewValueWeigth'
 const TableElements = (props) => {
   const [coordinataX, setcoordinataX] = useState(0)
   const [coordinataY, setcoordinataY] = useState(0)
   const [visible, setVisible] = useState(false)
+  const dispatch = useDispatch()
   const listOfProduct = useSelector(
     (state) => state.productCardReducer.listOfProduct
   )
