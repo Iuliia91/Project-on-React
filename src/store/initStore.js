@@ -17,6 +17,7 @@ const composedEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 const persistConfig = {
   key: 'root',
   storage,
+  version: 0,
 }
 const persisterRootReducer = persistReducer(persistConfig, CommonReducer)
 

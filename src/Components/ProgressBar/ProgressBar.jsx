@@ -19,14 +19,25 @@ const StyledProgressBar = styled.div`
 
   .bar {
     width: ${(props) => props.value};
-    max-width: 100%;
+    max-width: 90%;
     height: 15px;
 
     transition: width 0.15s ease-out;
 
-    background-color: #38b000;
+    background-color: #e0c412;
     border-radius: 100px;
     box-shadow: inset -1px -1px 10px rgb(0 0 0 / 0.5);
+  }
+  .startWeigth {
+    font-family: 'spartanmedium';
+    font-size: 20px;
+    color: #86b472;
+    padding-top: 10px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #dff0c6 0%, #ffffff 77.6%);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 10px 32px rgba(131, 209, 96, 0.26);
+    border-radius: 56px;
   }
 `
 

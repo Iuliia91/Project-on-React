@@ -8,11 +8,16 @@ import {
   faDumbbell,
 } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink, Outlet } from 'react-router-dom'
+import svg from 'assets/svg/Vector.svg'
 const StyledNavigation = styled.div`
   background-repeat: no-repeat;
   position: absolute;
   height: 100%;
   width: 100%;
+
+  // max-width: 1420px;
+  //height: 1123px;
+
   .sidenav {
     height: 100%;
     width: 170px;
@@ -42,15 +47,50 @@ const StyledNavigation = styled.div`
     //background-color: rgb(199, 211, 222);
   }
   .main {
-    height: 100%;
-    background: linear-gradient(
-      to top left,
-      powderblue,
-      rgb(245, 215, 191, 0.9)
-    );
-
-    margin-left: 160px;
-    padding: 0px 10px;
+    width: calc(80% -170px);
+    margin-left: 170px;
+    //height: 100%;
+  }
+  @media (max-width: 1150px) {
+    .sidenav {
+      width: 120px;
+    }
+    .main {
+      margin-left: 120px;
+    }
+  }
+  @media (max-width: 850px) {
+    .sidenav {
+      width: 80px;
+    }
+    .main {
+      // width: calc(80% -80px);
+      margin-left: 80px;
+    }
+    .sidenav a {
+      padding: 10px 5px 7px 8px;
+      text-decoration: none;
+      font-size: 18px;
+      color: black;
+      display: block;
+      text-align: center;
+    }
+  }
+  @media (max-width: 427px) {
+    .sidenav {
+      width: 50px;
+    }
+    .main {
+      margin-left: 50px;
+    }
+    .sidenav a {
+      padding: 10px 2px;
+      text-decoration: none;
+      font-size: 18px;
+      color: black;
+      display: block;
+      text-align: center;
+    }
   }
 `
 
@@ -71,6 +111,7 @@ const SecondMainLayouts = (props) => {
           className={'dscf'}
           activeclassname={'active'}
         >
+          {' '}
           <FontAwesomeIcon icon={faUserCircle} />
           Me
         </NavLink>

@@ -114,6 +114,19 @@ const StyledModalInformOfRecipe = styled.div`
     font-size: 25px;
   }
 `
+const StyledApiFaild = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  background: pink;
+
+  div {
+    padding: 18px;
+
+    text-aling: center;
+  }
+`
 
 const TableElement = (props) => {
   const openModal = useContext(ModalContext)
@@ -129,7 +142,7 @@ const TableElement = (props) => {
     let totalWeigth = listOfProduct.reduce((a, b) => a + Number(b.Weigth), 0)
     let totalCalories = listOfProduct.reduce((a, b) => a + Number(b.calorie), 0)
     let totalCalorie = (totalCalories * 100) / totalWeigth
-    if (!isChoosen) {
+    if (isChoosen) {
       dispatch(
         userMenu({
           dish: listOfProduct,
@@ -137,8 +150,8 @@ const TableElement = (props) => {
           type: typeOfDish,
         })
       )
-      dispatch(cleanState(false))
-      console.log(check)
+      // dispatch(cleanState(false))
+
       setCheck(false)
     }
   }
@@ -182,13 +195,29 @@ const TableElement = (props) => {
   )
 }
 
+const RequestFaild = () => {
+  return (
+    <StyledApiFaild>
+      {' '}
+      <div>
+        {' '}
+        <p>Ups...Something went wrong.Try again</p>
+      </div>
+    </StyledApiFaild>
+  )
+}
+
 const TableList = () => {
   const loading = useSelector((state) => state.productCardReducer.loading)
+  const getSmtWrong = useSelector(
+    (state) => state.productCardReducer.getSomethingWrong
+  )
 
   return (
     <StyledTable>
       <div>{loading === 'pending' && <Spinner />}</div>
       <div>{loading === 'fulfilled' && <TableElement />}</div>
+      <div>{getSmtWrong === true && <RequestFaild />}</div>
     </StyledTable>
   )
 }
