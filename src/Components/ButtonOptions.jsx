@@ -6,21 +6,33 @@ const StyledButtonOptions = styled.div`
 text-align: center;
   .button {
     border: none;
+    padding:10px;
     background: linear-gradient(180.61deg, #98d67d 0.45%, #569f36 99.39%);
     opacity: 0.6;
 border-radius: 10px;;
   }
 
   .button:hover {
-    background-color: rgb(199, 211, 222);
+    background:#eadc7e;
 
     border-radius: 120px;
   }
 
-  .button__singIn,
-  .button__registration,
+  p{
+    margin:0;
+   color:black;
+  }
+
+ 
   .button_reset,
   .button_add {
+    background: linear-gradient(180.61deg, #98D67D 0.45%, #569F36 99.39%);
+box-shadow: 0px 19px 42px rgba(134, 180, 114, 0.4);
+border-radius: 10px;
+  }
+  .button__singIn,
+  .button__registration,
+  {
     padding: 12px;
     margin-right: 20px;
   }
@@ -42,8 +54,10 @@ const ButtonOptions = (props, { disabled = false }) => {
         onClick={props.handleClick}
         disabled={props.disabled}
       >
-        {props.iconOptions}
-        {props.textInsideButton}
+        <p>
+          {props.iconOptions}
+          {props.textInsideButton}
+        </p>
       </button>
     </StyledButtonOptions>
   )

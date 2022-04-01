@@ -9,6 +9,11 @@ import { ModalContext } from 'HOC/GlobalModalProvider'
 import { deleteItem, cleanState, userMenu } from 'store/actions/recipeCard'
 import TableElements from 'Components/TableElements'
 import NewElement from 'Components/Card/NewElement'
+import svg from 'assets/svg/Vector.svg'
+import cucumber from 'assets/images/Cucumber.png'
+import olive from 'assets/images/OlivePict.png'
+import onion from 'assets/images/Onion.png'
+import tomato from 'assets/images/TomatosPict.png'
 const StyledTable = styled.div`
   margin-top: 30px;
   padding-top: 20px;
@@ -18,20 +23,28 @@ const StyledTable = styled.div`
     text-align: left;
     border-collapse: separate;
     border-spacing: 5px;
-    background: #ece9e0;
+    //background: #ece9e0;
     color: #656665;
-    border: 16px solid #ece9e0;
+    border: 16px solid #e1ecdc;
     border-radius: 20px;
     margin: auto;
+    background: linear-gradient(158.25deg, #e1ecdc 27.9%, #ffffff 90.49%);
+    box-shadow: 0px 15px 50px rgba(51, 114, 25, 0.2);
+    border-radius: 10px;
   }
   th {
     font-size: 18px;
-    padding: 20px;
+    padding: 15px;
+    text-align: center;
   }
   td {
     position: relavite;
     background: #f5d7bf;
+    background: rgba(134, 180, 114, 0.25);
+    // background: transparete;
+    border: 1px solid #98d67d;
     padding: 10px;
+    text-align: center;
   }
   .pending {
     background-color: pink;
@@ -72,26 +85,8 @@ const StyledTable = styled.div`
 `
 
 const StyledModalInformOfRecipe = styled.div`
-  margin: 0;
-  width: 1000px;
-  height: 100%;
-  display: block;
-  z-index: 99999;
-  .context {
-    text-aling: center;
-    position: absolute;
-    top: 0;
-    right: 83px;
-    margin-top: 50px;
-  }
+  overflow: hidden;
 
-  button {
-    background: transparent;
-    border: none;
-  }
-  button:hover {
-    transform: scale(1.5);
-  }
   .button {
     position: absolute;
     background: transparent;
@@ -103,15 +98,49 @@ const StyledModalInformOfRecipe = styled.div`
   .button:hover {
     transform: scale(1.5);
   }
-  header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 2px solid black;
-    top: 100px;
+  .cucumber {
+    position: absolute;
+    top: -5%;
+    left: 90px;
+    opacity: 0.7;
   }
-  header p {
-    font-size: 25px;
+  .olive {
+    width: 150px;
+    position: absolute;
+    top: 73%;
+    left: 250px;
+    z-index: 99999;
+    opacity: 0.7;
+  }
+
+  .onion {
+    width: 100px;
+    position: absolute;
+    top: 79%;
+    left: 0;
+    z-index: 99999;
+    opacity: 0.7;
+  }
+  .tomato {
+    width: 120px;
+    position: absolute;
+    top: 79%;
+    left: 140px;
+    z-index: 99999;
+    opacity: 0.7;
+  }
+  p {
+    position: relative;
+    font-size: 20px;
+    font-family: 'spartanmedium';
+    margin: 0;
+    color: red;
+    border-top: 2px solid red;
+    border-bottom: 2px solid red;
+    padding: 114px 46px;
+    background: linear-gradient(158.25deg, #e1ecdc 27.9%, #ffffff 90.49%);
+    box-shadow: 0px 15px 50px rgba(51, 114, 25, 0.2);
+    border-radius: 15px;
   }
 `
 const StyledApiFaild = styled.div`
@@ -119,12 +148,19 @@ const StyledApiFaild = styled.div`
   top: 0;
   right: 0;
   width: 30%;
-  background: pink;
+  background: #f1eb6f;
+  border: 1px solid red;
 
   div {
     padding: 18px;
 
     text-aling: center;
+  }
+  p {
+    margin: 0;
+    font-size: 16px;
+    font-family: 'spartanmedium';
+    color: red;
   }
 `
 
@@ -177,7 +213,13 @@ const TableElement = (props) => {
           >
             X
           </button>
-          <div className="context">You dont add any product </div>
+          <img src={cucumber} className="cucumber" />
+          <img src={olive} className="olive" />
+          <img src={onion} className="onion" />
+          <img src={tomato} className="tomato" />
+          <div className="context">
+            <p>You dont add any product !!!</p>
+          </div>
         </StyledModalInformOfRecipe>
       )
     } else {
@@ -201,7 +243,7 @@ const RequestFaild = () => {
       {' '}
       <div>
         {' '}
-        <p>Ups...Something went wrong.Try again</p>
+        <p>Ups...Something went wrong.Try again!!!</p>
       </div>
     </StyledApiFaild>
   )

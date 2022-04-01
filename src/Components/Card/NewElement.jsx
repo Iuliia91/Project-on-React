@@ -23,6 +23,8 @@ const StyledNewElement = styled.div`
     background-color: transparent;
     border: none;
     padding-bottom: 20px;
+    font-family: 'spartanmedium';
+    font-weight: 600;
   }
   .new_button :hover {
     transform: scale(1.5);
@@ -36,12 +38,14 @@ const StyledNewElement = styled.div`
     margin: auto;
     color: #8d4e0b;
     border-bottom: 2px solid black;
+    font-family: 'spartanmedium';
   }
 
   snap {
     font-size: 20px;
     color: green;
     font-weight: bold;
+    font-family: 'spartanmedium';
   }
 
   snap:hover {
@@ -76,8 +80,6 @@ const NewElement = (props) => {
               <h2>Information about dish</h2>{' '}
             </header>
             <div className="menu">
-              {/* {isChoosen && typeOfDish}*/}
-
               <DropDownMenu
                 children={elementForDropDownMenu}
                 text={'Choos the type of dish'}

@@ -75,7 +75,7 @@ const DropDownMenu = (props) => {
   const handleChoosenType = (item) => {
     setIsChoosen(item)
     setarea(true)
-    setOpen(false)
+    // setOpen(false)
     setShow(false)
   }
 

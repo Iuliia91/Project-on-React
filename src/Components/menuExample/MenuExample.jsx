@@ -7,6 +7,9 @@ import ImigPear from 'Helpers/Pear/PearImg'
 import branch from 'assets/svg/Branch.svg'
 import lemon from 'assets/svg/lemon.svg'
 import carrot from 'assets/svg/carrot.svg'
+import onion from 'assets/images/Onion.png'
+import cucumber from 'assets/images/Cucumber.png'
+import OliverPict from 'assets/images/Onion.png'
 const StyeldExampleMenu = styled.div`
   position: fixed;
   left: 0;
@@ -184,6 +187,7 @@ const MenuExample = (props) => {
         <img src={fruts} className="fruts" />
         <img src={lemon} className="lemon" />
         <img src={carrot} className="carrot" />
+        <img src={onion} className="onion" />
         <ImigPear />
         <header>
           <p className="titel">

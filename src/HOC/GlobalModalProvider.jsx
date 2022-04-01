@@ -5,7 +5,8 @@ export const ModalContext = React.createContext()
 
 const StyledGlobalModalProvider = styled.div`
   position: absolute;
- 
+  overflow: hidden;
+
   top: 0;
   left: 0;
   z-index: 9000;
@@ -35,7 +36,7 @@ const StyledGlobalModalProvider = styled.div`
     background: #86b472;
     opacity: 0.6;
     filter: blur(70px);
-    z-index: 8000;
+    z-index: 5000;
   }
   img{
     position: absolute;

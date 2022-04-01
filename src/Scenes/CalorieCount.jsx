@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 
 import { useSelector, useDispatch } from 'react-redux'
-
+import Arrow from 'Helpers/arrow/Arrow'
 import { addProduct, typeOfDish } from 'store/actions/recipeCard'
 import ButtonOptions from 'Components/ButtonOptions'
 import TableList from 'Components/Table'
@@ -20,6 +20,11 @@ const StyledCalorieCount = styled.div`
     margin: auto;
     width: 80%;
   }
+
+  .block_form {
+    display: flex;
+    margin: auto;
+  }
   .main__content {
     display: flex;
     flex-direction: column;
@@ -28,16 +33,23 @@ const StyledCalorieCount = styled.div`
   }
   .formik_button {
     display: flex;
-    position: absolute;
+
     justify-content: center;
-    left: 50%;
+    margin: auto;
+    padding-top: 20px;
+  }
+  .form_block {
+    margin: auto;
+    background: linear-gradient(158.25deg, #e1ecdc 27.9%, #ffffff 90.49%);
+    box-shadow: 0px 15px 50px rgba(51, 114, 25, 0.2);
+    border-radius: 10px;
   }
   .form {
-    padding-bottmo: 30px;
-    margin: auto;
+    padding: 50px;
+    //
   }
   button {
-    padding: 12px;
+    padding: 10px;
     margin-right: 20px;
   }
 
@@ -51,10 +63,6 @@ const StyledCalorieCount = styled.div`
 
   .active {
     background: pink;
-  }
-  .button {
-    border: none;
-    background: white;
   }
 `
 
@@ -77,68 +85,74 @@ const CalorieCount = (props) => {
 
   return (
     <StyledCalorieCount>
+      <Arrow />
       <main className="main">
-        <GroupOfImiges />
-        <div className="main__content">
-          <div className="form">
-            <Formik
-              initialValues={{
-                productName: '',
-                Weigth: '',
-                calorie: '',
-              }}
-              validate={(formValues) => {
-                const errorObj = {}
-                let isValid = true
+        <div className="block_form">
+          {' '}
+          <GroupOfImiges />
+          <div className="form_block">
+            <div className="form">
+              <Formik
+                initialValues={{
+                  productName: '',
+                  Weigth: '',
+                  calorie: '',
+                }}
+                validate={(formValues) => {
+                  const errorObj = {}
+                  let isValid = true
 
-                if (!formValues.productName) {
-                  isValid = false
-                  errorObj.productName = 'Fill the fields'
-                } else if (!formValues.Weigth) {
-                  errorObj.Weigth = 'Fill the fields'
-                } else if (!formValues.Weigth.replace(/\D+/g, '')) {
-                  errorObj.Weigth = 'Write the number'
-                }
+                  if (!formValues.productName) {
+                    isValid = false
+                    errorObj.productName = 'Fill the fields'
+                  } else if (!formValues.Weigth) {
+                    errorObj.Weigth = 'Fill the fields'
+                  } else if (!formValues.Weigth.replace(/\D+/g, '')) {
+                    errorObj.Weigth = 'Write the number'
+                  }
 
-                return errorObj
-              }}
-              onSubmit={(formValues, { resetForm }) => {
-                const obj = { ...formValues, types: isChoosen }
+                  return errorObj
+                }}
+                onSubmit={(formValues, { resetForm }) => {
+                  const obj = { ...formValues, types: isChoosen }
 
-                setValue(value + Number(formValues.Weigth))
+                  setValue(value + Number(formValues.Weigth))
 
-                dispatch(addProduct(obj)).then((response) => {
-                  resetForm()
-                })
-              }}
-            >
-              <Form>
-                <FormikInput
-                  name="productName"
-                  type="text"
-                  placeholder="Write the product name"
-                />
-                <FormikInput
-                  name="Weigth"
-                  placeholder="Write the weigth of product"
-                />
-                <div className="formik_button">
-                  <ButtonOptions
-                    type="reset"
-                    className="button button_reset"
-                    textInsideButton="Reset"
+                  dispatch(addProduct(obj)).then((response) => {
+                    resetForm()
+                  })
+                }}
+              >
+                <Form>
+                  <FormikInput
+                    name="productName"
+                    type="text"
+                    placeholder="Write the product name"
                   />
-
-                  <ButtonOptions
-                    type="submit"
-                    className="button button_add"
-                    textInsideButton={'Add product'}
+                  <FormikInput
+                    name="Weigth"
+                    placeholder="Write the weigth of product"
                   />
-                </div>
-              </Form>
-            </Formik>
+                  <div className="formik_button">
+                    <ButtonOptions
+                      type="reset"
+                      className="button button_reset"
+                      textInsideButton="Reset"
+                    />
+
+                    <ButtonOptions
+                      type="submit"
+                      className="button button_add"
+                      textInsideButton={'Add product'}
+                    />
+                  </div>
+                </Form>
+              </Formik>
+            </div>
           </div>
+        </div>
 
+        <div className="main__content">
           <TableList typeOfDish={isChoosen} total={value} />
         </div>
       </main>
