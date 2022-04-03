@@ -7,6 +7,10 @@ import {
   typeOfDish,
   cleanState,
   userMenu,
+  deletRecipeFromSnackList,
+  deletRecipeFromBrakfastList,
+  deletRecipeFromDinnerList,
+  deletRecipeFromLunchList,
 } from 'store/actions/recipeCard'
 import { store } from 'store/initStore'
 import { createReducer } from '@reduxjs/toolkit'
@@ -19,7 +23,10 @@ const initialState = {
   isEdited: false,
   isChoosen: false,
   loading: 'loading',
-
+  breakfast: [],
+  snack: [],
+  lunch: [],
+  dinner: [],
   getSomethingWrong: false,
 }
 
@@ -71,14 +78,61 @@ const productCardReducer = createReducer(initialState, (builder) => {
     })
     .addCase(userMenu, (state, action) => {
       state.isChoosen = false
-      state.userMenuOfList.push(action.payload)
-      console.log(state.userMenuOfList)
+      if (action.payload.type == 'Snack') {
+        state.snack.push(action.payload)
+      } else if (action.payload.type == 'Breakfast') {
+        state.breakfast.push(action.payload)
+      } else if (action.payload.type == 'Lunch') {
+        state.lunch.push(action.payload)
+      } else if (action.payload.type == 'Dinner') {
+        state.dinner.push(action.payload)
+      }
+
       state.listOfProduct = []
     })
+
+    .addCase(deletRecipeFromSnackList, (state, action) => {
+      let itemIndex = action.payload
+
+      state.snack.map((item, index) => {
+        if (index === itemIndex) {
+          state.snack.splice(index, 1)
+        }
+      })
+    })
+    .addCase(deletRecipeFromBrakfastList, (state, action) => {
+      let itemIndex = action.payload
+
+      state.breakfast.map((item, index) => {
+        if (index === itemIndex) {
+          state.breakfast.splice(index, 1)
+        }
+      })
+    })
+    .addCase(deletRecipeFromDinnerList, (state, action) => {
+      let itemIndex = action.payload
+
+      state.dinner.map((item, index) => {
+        if (index === itemIndex) {
+          state.dinner.splice(index, 1)
+        }
+      })
+    })
+    .addCase(deletRecipeFromLunchList, (state, action) => {
+      let itemIndex = action.payload
+
+      state.lunch.map((item, index) => {
+        if (index === itemIndex) {
+          state.lunch.splice(index, 1)
+        }
+      })
+    })
+
     .addCase(cleanState, (state, action) => {
       state.typeOfDish = ''
       state.isChoosen = action.payload
     })
+
   /* .addMatcher(
       (action) => {
         return action.payload && typeof action.payload.setListModifyed

@@ -15,9 +15,6 @@ const StyledNavigation = styled.div`
   height: 100%;
   width: 100%;
 
-  // max-width: 1420px;
-  //height: 1123px;
-
   .sidenav {
     height: 100%;
     width: 170px;
@@ -25,7 +22,7 @@ const StyledNavigation = styled.div`
     z-index: 1;
     top: 0;
     left: 0;
-    background: rgb(239, 235, 235);
+    background: rgba(134, 180, 114, 0.25);
 
     overflow-x: hidden;
   }
@@ -41,10 +38,12 @@ const StyledNavigation = styled.div`
 
   .sidenav a:hover {
     //background-color: rgb(199, 211, 222);
+    background-color: #569F3;
   }
   .active {
-    background-color: rgb(248, 192, 132, 0.4);
-    //background-color: rgb(199, 211, 222);
+    background: linear-gradient(180.61deg, #98d67d 0.45%, #569f36 99.39%);
+    box-shadow: 0px 19px 42px rgba(134, 180, 114, 0.4);
+    border-radius: 10px;
   }
   .main {
     width: calc(80% -170px);

@@ -188,7 +188,7 @@ const TableElement = (props) => {
   const handleSavetheDish = () => {
     let totalWeigth = listOfProduct.reduce((a, b) => a + Number(b.Weigth), 0)
     let totalCalories = listOfProduct.reduce((a, b) => a + Number(b.calorie), 0)
-    let totalCalorie = (totalCalories * 100) / totalWeigth
+    let totalCalorie = Math.round((totalCalories * 100) / totalWeigth)
     if (isChoosen) {
       dispatch(
         userMenu({
