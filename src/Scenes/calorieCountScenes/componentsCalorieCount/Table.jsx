@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import styled from 'styled-components'
 import { useState } from 'react'
-import Spinner from './Spinner/Spinner'
-
+import Spinner from '../../../Components/Spinner/Spinner'
 import { ModalContext } from 'HOC/GlobalModalProvider'
 import { deleteItem, cleanState, userMenu } from 'store/actions/recipeCard'
-import TableElements from 'Components/TableElements'
-import NewElement from 'Components/Card/NewElement'
-import svg from 'assets/svg/Vector.svg'
+import TableElements from './TableElements'
+import NewElement from '../componentsCalorieCount/NewElement'
 import cucumber from 'assets/images/Cucumber.png'
 import olive from 'assets/images/OlivePict.png'
 import onion from 'assets/images/Onion.png'
@@ -64,7 +62,19 @@ const StyledTable = styled.div`
   .button_weigth {
     margin: 0;
   }
-
+  .inform {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    background: #f1eb6f;
+  }
+  .inform p {
+    margin: 0;
+    font-size: 20px;
+    font-family: 'spartanmedium';
+    color: red;
+  }
   .element {
     display: block;
     width: 70%;
@@ -167,6 +177,7 @@ const StyledApiFaild = styled.div`
 const TableElement = (props) => {
   const openModal = useContext(ModalContext)
   const dispatch = useDispatch()
+  const [inform, setInform] = useState(false)
   const [check, setCheck] = useState(false)
   const isChoosen = useSelector((state) => state.productCardReducer.isChoosen)
   const typeOfDish = useSelector((state) => state.productCardReducer.typeOfDish)
@@ -186,15 +197,18 @@ const TableElement = (props) => {
           type: typeOfDish,
         })
       )
-      // dispatch(cleanState(false))
 
+      console.log(listOfProduct)
       setCheck(false)
+      setInform(false)
+    } else {
+      setInform(true)
     }
   }
 
   const handleCancel = () => {
     dispatch(cleanState(false))
-
+    console.log('privet')
     setCheck(false)
   }
   const handleSaveRecipies = (props) => {
@@ -218,12 +232,13 @@ const TableElement = (props) => {
           <img src={onion} className="onion" />
           <img src={tomato} className="tomato" />
           <div className="context">
-            <p>You dont add any product !!!</p>
+            <p>You didnt add any product!!</p>
           </div>
         </StyledModalInformOfRecipe>
       )
     } else {
       setCheck(true)
+      console.log()
     }
   }
 
@@ -232,6 +247,11 @@ const TableElement = (props) => {
       <TableElements handleSaverecipe={handleSaveRecipies} />
       {check && (
         <NewElement function={handleSavetheDish} handleCancel={handleCancel} />
+      )}
+      {inform && (
+        <div className="inform">
+          <p>Choose the type of dish</p>
+        </div>
       )}
     </div>
   )

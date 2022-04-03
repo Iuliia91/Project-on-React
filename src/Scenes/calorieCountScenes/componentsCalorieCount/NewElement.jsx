@@ -6,17 +6,18 @@ import { cleanState } from 'store/actions/recipeCard'
 import DropDownMenu from 'Components/dropDownMenu/DropDownMenu'
 const StyledNewElement = styled.div`
   position: absolute;
-  background-color: #ece9e0;
-  width: 400px;
+
+  width: 500px;
   top: 30%;
   left: 40%;
-  border-radius: 30px;
 
   .block {
     width: 80%;
-
-    background-color: rgb(241, 177, 108, 0.4);
-    border-radius: 8px;
+    background: linear-gradient(158.25deg, #e1ecdc 27.9%, #ffffff 90.49%);
+    box-shadow: 0px 15px 50px rgba(51, 114, 25, 0.2);
+    border-radius: 10px;
+    // background-color: rgb(241, 177, 108, 0.4);
+    // border-radius: 8px;
     margin: auto;
   }
   .new_button {
@@ -39,6 +40,7 @@ const StyledNewElement = styled.div`
     color: #8d4e0b;
     border-bottom: 2px solid black;
     font-family: 'spartanmedium';
+    color: red;
   }
 
   snap {

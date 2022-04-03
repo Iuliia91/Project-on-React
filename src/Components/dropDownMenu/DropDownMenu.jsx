@@ -69,14 +69,16 @@ const DropDownMenu = (props) => {
   const [open, setOpen] = useState(false)
   const [areae, setarea] = useState(false)
   const [isChoosen, setIsChoosen] = useState()
+  const [s, setS] = useState(false)
 
   const elements = props.children
   const dispatch = useDispatch()
   const handleChoosenType = (item) => {
     setIsChoosen(item)
     setarea(true)
-    // setOpen(false)
+
     setShow(false)
+    setS(false)
   }
 
   const DropDownItem = () => {
@@ -84,6 +86,7 @@ const DropDownMenu = (props) => {
       <StyledDropDownItem>
         {elements.map((item, index) => (
           <p
+            key={index}
             onClick={(e) => {
               handleChoosenType(item)
               dispatch(typeOfDish(item))
@@ -95,9 +98,9 @@ const DropDownMenu = (props) => {
       </StyledDropDownItem>
     )
   }
+
   return (
     <StyledDropDownMenu>
-      {' '}
       {show && (
         <div>
           {' '}
@@ -111,7 +114,24 @@ const DropDownMenu = (props) => {
           <div className="menu">{open && <DropDownItem />}</div>
         </div>
       )}
-      {areae && <p className="type_dish">{isChoosen}</p>}
+      {s && <DropDownItem />}
+      {areae && (
+        <div>
+          {' '}
+          <p
+            className="type_dish"
+            onClick={() => {
+              setS(!s)
+
+              setShow(false)
+              setOpen(false)
+              setarea(true)
+            }}
+          >
+            {isChoosen}
+          </p>
+        </div>
+      )}
     </StyledDropDownMenu>
   )
 }

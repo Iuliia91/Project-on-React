@@ -38,12 +38,7 @@ const Schedule = (props) => {
       <div style={{ width: '100%', height: '100%' }}>
         {' '}
         <ResponsiveContainer>
-          <LineChart
-            /*width={100}
-        height={300}*/
-            data={data}
-            margin={{ top: 30, right: 20 }}
-          >
+          <LineChart data={data} margin={{ top: 30, right: 20 }}>
             <ReferenceLine y={dataMin} label="Goal " stroke="red" />
             <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
             <XAxis
@@ -65,32 +60,6 @@ const Schedule = (props) => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-
-      {/* <LineChart
-        width={100}
-        height={300}
-        data={data}
-        margin={{ top: 30, right: 20 }}
-      >
-        <ReferenceLine y={dataMin} label="Goal " stroke="red" />
-        <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-        <XAxis
-          dataKey="day"
-          type="number"
-          padding={{ left: 30, right: 30 }}
-          domain={[(dataMin) => (dataMin = 3), (dataMax) => (dataMax = 30)]}
-        />
-        <YAxis
-          dataKey={maxweigth}
-          type="number"
-          domain={[
-            (dataMin) => (dataMin = weigthData.userGoaldWeigth - 3),
-            (dataMax) => (dataMax = maxweigth + 10.5),
-          ]}
-        />
-
-        <Line type="monotone" dataKey="weigthValue" stroke="green" />
-      </LineChart>*/}
     </StyledSchedule>
   )
 } //

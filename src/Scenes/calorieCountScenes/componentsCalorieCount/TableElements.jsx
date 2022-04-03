@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ModalContext } from 'HOC/GlobalModalProvider'
-import Tooltip from './Tooltip/Tooltip'
+import Tooltip from '../../../Components/Tooltip/Tooltip'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { deleteItem, cleanState } from 'store/actions/recipeCard'
 import ButtonOptions from 'Components/ButtonOptions'
-import InputNewValueWeigth from 'Components/changeWeightOfProduct/InputNewValueWeigth'
+import InputNewValueWeigth from '../componentsCalorieCount/changeWeightOfProduct/InputNewValueWeigth'
+
 const TableElements = (props) => {
   const [coordinataX, setcoordinataX] = useState(0)
   const [coordinataY, setcoordinataY] = useState(0)
@@ -42,8 +43,7 @@ const TableElements = (props) => {
   const hidden = () => {
     setVisible(false)
   }
-  //ref={coords}
-  //handleSaveRecipies
+
   return (
     <div>
       {visible && (

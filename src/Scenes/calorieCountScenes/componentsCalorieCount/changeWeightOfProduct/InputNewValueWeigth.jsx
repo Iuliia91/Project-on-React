@@ -9,7 +9,11 @@ import {
   userMenu,
 } from 'store/actions/recipeCard'
 const StyledModalTableElement = styled.div`
-  margin-bottom: 50px;
+  //margin-bottom: 50px;
+  background: linear-gradient(158.25deg, #e1ecdc 27.9%, #ffffff 90.49%);
+  box-shadow: 0px 15px 50px rgba(51, 114, 25, 0.2);
+  border-radius: 10px;
+  padding: 90px 0;
   .close_element {
     position: absolute;
     top: 20px;
@@ -18,18 +22,24 @@ const StyledModalTableElement = styled.div`
 
   .button_close {
     border: none;
-    background-color: rgb(236, 233, 224);
+    background: transparent;
+    font-size: 20px;
   }
-
+  .button_close {
+  }
   header {
     margin: 30px;
     font-size: 30px;
     text-align: center;
-    color: black;
+    color: green;
   }
   .formik_button {
+    border: none;
     margin-top: 20px;
     text-align: center;
+    background: transparent;
+    color: green;
+    font-size: 20px;
   }
   input {
     outline: none;

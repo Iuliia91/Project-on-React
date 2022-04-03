@@ -125,17 +125,6 @@ const SecondMainLayouts = (props) => {
         <NavLink to={'menu'} className={'dscf'} activeclassname={'active'}>
           Menu
         </NavLink>
-        <NavLink
-          to={'listofproducts'}
-          className={'dscf'}
-          activeclassname={'active'}
-        >
-          Список продуктов
-        </NavLink>
-
-        <a href="#">
-          <FontAwesomeIcon icon={faCalendarAlt} />
-        </a>
       </nav>
       <div className="main">
         <Outlet />

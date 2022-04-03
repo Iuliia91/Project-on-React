@@ -88,8 +88,7 @@ const StyledProfil = styled.div`
 
   .user_schedule {
     position: relative;
-    // background: #ffffff;
-    // z-index: 8000;
+
     width: 100%;
     border-radius: 20px;
     margin: 10% auto;
@@ -388,7 +387,7 @@ const Profil = () => {
           }}
           onSubmit={(formValues, { resetForm }) => {
             dispatch(usersWeigth(formValues))
-
+            console.log(formValues)
             dispatch(amountOfLosedWeigth(formValues.weigthValue))
             Server.post('/historyOfWeigth', {
               weigthValue: formValues.weigthValue,

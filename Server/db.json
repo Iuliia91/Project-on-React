@@ -532,6 +532,26 @@
       "weigthValue": "70",
       "day": 28,
       "id": 40
+    },
+    {
+      "weigthValue": "65",
+      "day": 3,
+      "id": 41
+    },
+    {
+      "weigthValue": "78",
+      "day": 3,
+      "id": 42
+    },
+    {
+      "weigthValue": "73",
+      "day": 3,
+      "id": 43
+    },
+    {
+      "weigthValue": "70",
+      "day": 3,
+      "id": 44
     }
   ]
 }
