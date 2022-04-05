@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env apiKey=d891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12 webpack server",
-    "Server": "json-server ./Server/db.json -m ./node_modules/json-server-auth --port 3000"
+    "Server": "json-server ./Server/db.json -m ./node_modules/json-server-auth --port 3000",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/Iuliia91/Project-on-React/issues"
   },
-  "homepage": "https://github.com/Iuliia91/Project-on-React#readme",
+  "homepage": "https://github.com/Iuliia91/Project-on-React",
   "dependencies": {
     "@babel/core": "^7.16.10",
     "@babel/preset-env": "^7.16.11",
@@ -32,12 +33,12 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-styled-components": "^2.0.2",
-    "css-loader": "^6.5.1",
     "downshift": "^6.1.7",
     "formik": "^2.2.9",
     "html-webpack-plugin": "^5.5.0",
     "immer": "^9.0.12",
     "json-server-auth": "^2.1.0",
+    "npm": "^6.5.1",
     "react": "^17.0.2",
     "react-circular-progressbar": "^2.0.4",
     "react-dom": "^17.0.2",
@@ -65,6 +66,7 @@
     "@babel/plugin-transform-runtime": "^7.17.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "cross-env": "^7.0.3",
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "gh-pages": "^3.2.3"
   }
 }

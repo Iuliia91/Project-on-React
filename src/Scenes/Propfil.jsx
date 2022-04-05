@@ -422,8 +422,7 @@ const Profil = () => {
       <img className="pict1" src={svgsecond} />
       <div className="block">
         <ImigAvocado />
-        {/*
-        <ImigCarrot />*/}
+       
       </div>
       <div className="content">
         <div className="block1">
