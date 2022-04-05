@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env apiKey=d891d3ad3cmshd44c450c381af3fp14e2fcjsn300b575d9d12 webpack server",
-    "Server": "json-server ./Server/db.json -m ./node_modules/json-server-auth --port 3000",
-    "build": "webpack",
-    "deploy": "gh-pages -d build"
+    "Server": "json-server ./Server/db.json -m ./node_modules/json-server-auth --port 3000"
   },
   "repository": {
     "type": "git",
