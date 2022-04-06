@@ -238,7 +238,7 @@ const TableElement = (props) => {
       )
     } else {
       setCheck(true)
-      console.log()
+      
     }
   }
 

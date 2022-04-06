@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
-import 'react-circular-progressbar/dist/styles.css'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import glass from 'assets/svg/glass.jpg'
 import branch from 'assets/svg/Branch.svg'
