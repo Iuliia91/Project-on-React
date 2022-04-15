@@ -21,7 +21,6 @@ apiRequest.interceptors.response.use(
     return response
   },
   (error) => {
-    console.log(error)
     if (error.code === 401) {
       store.dispatch(userLoggedOut({ logOutReason: 'session time out' }))
     } else {

@@ -282,6 +282,15 @@
       "userWeigth": "70",
       "userGoaldWeigth": "60",
       "id": 30
+    },
+    {
+      "email": "iulii@gmail.com",
+      "password": "$2a$10$zbnmM8APp2wOoCYTG1A7BuUdm7L2RnRUvZIwgFscZKxI4HtfBCwCC",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 31
     }
   ],
   "recipes": [
@@ -557,6 +566,21 @@
       "weigthValue": "73",
       "day": 3,
       "id": 45
+    },
+    {
+      "weigthValue": "83",
+      "day": 10,
+      "id": 46
+    },
+    {
+      "weigthValue": "73",
+      "day": 12,
+      "id": 47
+    },
+    {
+      "weigthValue": "65",
+      "day": 12,
+      "id": 48
     }
   ]
 }
