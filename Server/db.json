@@ -291,6 +291,87 @@
       "userWeigth": "70",
       "userGoaldWeigth": "60",
       "id": 31
+    },
+    {
+      "email": "adfa@gmail.com",
+      "password": "$2a$10$hbZiK/t.nHeoPUlHkybYregg86TEqGIcSxd.qeVhVa5NU0Y5LaVUC",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 32
+    },
+    {
+      "email": "trgfbth@gmail.com",
+      "password": "$2a$10$g8RbtWyBqlF7HcVPjHxWyOig7rgndA4HnfIMaq3ulgKys9eysUlp2",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 33
+    },
+    {
+      "email": "sdfgv@gmail.com",
+      "password": "$2a$10$cPgY04JLZORFBJDRA1WZBeu7jS1pj1Gj8WSfkvs3s57OLNvmC0YZO",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 34
+    },
+    {
+      "email": "dfgbfthftg@gmail.com",
+      "password": "$2a$10$.3nkLATRmBYHShpT/1N1Wu84xzZPg5PI2J8S.kHZc0KjLg.MuhDx6",
+      "userName": "Anita",
+      "userGrowth": "170",
+      "userWeigth": "90",
+      "userGoaldWeigth": "60",
+      "id": 35
+    },
+    {
+      "email": "dgbrfjhn@gmail.com",
+      "password": "$2a$10$bq.aIgjYQa.BJPAb/dsDCeR4g7UZcqKw0NBTP1UbaqmonoESdduS6",
+      "userName": "Anna",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 36
+    },
+    {
+      "email": "fgyhng@gmail.com",
+      "password": "$2a$10$8qPyIauD6qulcyjAdrM1veJQ3iTtpctLxdt7hd7cRa.vHKZo6QnqK",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 37
+    },
+    {
+      "email": "dsfgvbdf@gmail.com",
+      "password": "$2a$10$XLT1nG6RHAqB563.Gb0RYenkNwqdpxnqjzMoMW59CGiWOg2p.6.8y",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 38
+    },
+    {
+      "email": "dsfgihoiyhoi80f@gmail.com",
+      "password": "$2a$10$fmDodKT6dZTtrVP24KvYBu6y1bCEUi5wooOa5f3Tf3OSBopElp2SW",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 39
+    },
+    {
+      "email": "rgfvddd@gmail.com",
+      "password": "$2a$10$HumgV1uuKYopZce0p.zJ9.WsGWreOtVlco0/2RTiVFvu0LqyhatCO",
+      "userName": "Iuliia",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 40
     }
   ],
   "recipes": [
@@ -581,6 +662,51 @@
       "weigthValue": "65",
       "day": 12,
       "id": 48
+    },
+    {
+      "weigthValue": "547",
+      "day": 6,
+      "id": 49
+    },
+    {
+      "weigthValue": "73",
+      "day": 6,
+      "id": 50
+    },
+    {
+      "weigthValue": "65",
+      "day": 6,
+      "id": 51
+    },
+    {
+      "weigthValue": "62",
+      "day": 6,
+      "id": 52
+    },
+    {
+      "weigthValue": "39",
+      "day": 6,
+      "id": 53
+    },
+    {
+      "weigthValue": "78",
+      "day": 6,
+      "id": 54
+    },
+    {
+      "weigthValue": "73",
+      "day": 6,
+      "id": 55
+    },
+    {
+      "weigthValue": "65",
+      "day": 6,
+      "id": 56
+    },
+    {
+      "weigthValue": "73",
+      "day": 6,
+      "id": 57
     }
   ]
 }

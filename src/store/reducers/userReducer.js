@@ -33,7 +33,7 @@ const userReducer = createReducer(InitialState, (builder) => {
       state.isLoggedIn = action.payload.isLoggedIn
       state.userListOfWeifth.push({
         weigthValue: state.userWeigth,
-        day: 8,
+        day: 1,
       })
     })
     .addCase(userLoggedOut, (state, action) => {
@@ -70,7 +70,8 @@ const userReducer = createReducer(InitialState, (builder) => {
       } else {
         state.procent = procentValue
       }
-
+      console.log(action.payload)
+      console.log(state.userListOfWeifth)
       state.userListOfWeifth.push(action.payload)
     })
 })
