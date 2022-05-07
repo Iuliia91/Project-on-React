@@ -422,19 +422,18 @@ const Profil = () => {
       <img className="pict1" src={svgsecond} />
       <div className="block">
         <ImigAvocado />
-       
       </div>
       <div className="content">
         <div className="block1">
           <div className="user_name">
             <div className="user__information-data">
               <p className="user_name_text">
-                Hi, <snap>{user.userName}</snap>
+                Hi, <span>{user.userName}</span>
               </p>
               <div className="user_weigth-information">
                 <p className="user_weigth_today">
                   {' '}
-                  Your weigth today - <snap>{user.userWeigthToday}</snap>
+                  Your weigth today - <span>{user.userWeigthToday}</span>
                 </p>
                 <p className="user_weigth-differance">
                   {user.amountOfDroppedWeigth}

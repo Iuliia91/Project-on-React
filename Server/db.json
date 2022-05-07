@@ -372,6 +372,15 @@
       "userWeigth": "70",
       "userGoaldWeigth": "60",
       "id": 40
+    },
+    {
+      "email": "dsanita@gmail.com",
+      "password": "$2a$10$1j4P4GvEbScI0X/qIJwE4uzcpwtFUYwUTfgx4ChlYgc6QcYBHG.9.",
+      "userName": "Anita",
+      "userGrowth": "168",
+      "userWeigth": "70",
+      "userGoaldWeigth": "60",
+      "id": 41
     }
   ],
   "recipes": [
